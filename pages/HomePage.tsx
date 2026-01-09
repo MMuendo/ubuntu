@@ -15,17 +15,52 @@ const HomePage: React.FC = () => {
 
   return (
     <>
-      {/* Hero Section */}
-      <section className="relative pt-20 pb-32 overflow-hidden">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-brand-blue/20 rounded-full blur-[100px] -z-10 opacity-30"></div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl md:text-7xl font-bold text-white tracking-tight mb-6">
+      {/* Hero Section with Background Image */}
+      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1920&auto=format&fit=crop&q=80"
+            alt="Analytics Dashboard Background"
+            className="w-full h-full object-cover"
+          />
+          {/* Dark overlay for text readability */}
+          <div className="absolute inset-0 bg-gradient-to-b from-brand-dark/80 via-brand-dark/70 to-brand-dark"></div>
+          {/* Blue accent overlay */}
+          <div className="absolute inset-0 bg-gradient-to-br from-brand-blue/20 via-transparent to-brand-cyan/10"></div>
+        </div>
+
+        {/* Floating metric cards on background */}
+        <div className="absolute top-20 left-4 md:left-20 bg-brand-dark/80 backdrop-blur-md rounded-lg p-3 md:p-4 border border-white/10 animate-float z-10 hidden sm:block">
+          <div className="flex items-center gap-2">
+            <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+            <span className="text-xs text-gray-400">Revenue Growth</span>
+          </div>
+          <div className="text-xl md:text-2xl font-bold text-white mt-1">+47.5%</div>
+        </div>
+
+        <div className="absolute bottom-32 right-4 md:right-20 bg-brand-dark/80 backdrop-blur-md rounded-lg p-3 md:p-4 border border-white/10 animate-float z-10 hidden sm:block" style={{ animationDelay: '0.5s' }}>
+          <div className="flex items-center gap-2">
+            <div className="w-2 h-2 bg-brand-cyan rounded-full animate-pulse"></div>
+            <span className="text-xs text-gray-400">Data Accuracy</span>
+          </div>
+          <div className="text-xl md:text-2xl font-bold text-white mt-1">99.2%</div>
+        </div>
+
+        <div className="absolute top-1/3 right-4 md:right-32 bg-brand-dark/80 backdrop-blur-md rounded-lg p-3 md:p-4 border border-brand-blue/30 animate-float z-10 hidden md:block" style={{ animationDelay: '1s' }}>
+          <div className="text-xs text-brand-blue mb-1">AI Insights</div>
+          <div className="text-sm text-white">Actionable</div>
+        </div>
+
+        {/* Content overlay */}
+        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="text-5xl md:text-7xl font-bold text-white tracking-tight mb-6 drop-shadow-lg">
             Unlock Your Potential With <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan to-brand-blue animate-pulse-slow">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan to-brand-blue">
               AI & Data Fluency
             </span>
           </h1>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto mb-10 leading-relaxed">
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-10 leading-relaxed drop-shadow-md">
             We provide mentorship, training, and consultancy designed to turn raw data into actionable insights.
             Our approach ensures organizations not only understand their data but can apply it to drive informed decisions,
             optimize operations, and unlock tangible business value.
@@ -41,7 +76,7 @@ const HomePage: React.FC = () => {
               href="https://www.linkedin.com/company/106319269"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-8 py-4 bg-white/5 border border-white/10 text-white rounded-full font-bold text-lg hover:bg-white/10 transition-all"
+              className="px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/20 text-white rounded-full font-bold text-lg hover:bg-white/20 transition-all"
             >
               Learn More
             </a>

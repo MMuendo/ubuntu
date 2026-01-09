@@ -10,6 +10,7 @@ import CheckoutPage from './pages/CheckoutPage';
 import SuccessPage from './pages/SuccessPage';
 import AgenticPage from './pages/AgenticPage';
 import BlogPage from './pages/BlogPage';
+import BlogPostPage from './pages/BlogPostPage';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
 import ResetPasswordPage from './pages/ResetPasswordPage';
@@ -107,6 +108,14 @@ const App: React.FC = () => {
                     element={
                         <Layout>
                             <AgenticPage />
+                        </Layout>
+                    }
+                />
+                <Route
+                    path="/blog/:id"
+                    element={
+                        <Layout>
+                            <BlogPostPage />
                         </Layout>
                     }
                 />

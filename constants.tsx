@@ -1,4 +1,4 @@
-import { Course, Product, Question } from './types';
+import { Course, Product, Question, BlogPost } from './types';
 import React from 'react';
 import { BarChart3, Brain, Bot, FileSpreadsheet, Database, Zap } from 'lucide-react';
 
@@ -6,49 +6,49 @@ export const COURSES: Course[] = [
   {
     id: 'excel-workshop',
     title: 'Excel Workshop',
-    price: 5000,
-    description: 'Master advanced Excel functions, pivot tables, and data visualization techniques.',
+    price: 20000,
+    description: 'Master advanced Excel functions, pivot tables, and data visualization techniques. Includes 3 months access, personalized playbook mastery, weekly mentorship check-ins, private WhatsApp community, and practical weekly tasks.',
     level: 'Beginner',
-    tags: ['Data Analysis', 'Productivity']
+    tags: ['Data Analysis', 'Productivity', '3 Months']
   },
   {
     id: 'powerbi-workshop',
     title: 'Excel & Power BI Hybrid',
-    price: 8500,
-    description: 'Bridge the gap between spreadsheets and modern business intelligence dashboards.',
+    price: 25000,
+    description: 'Bridge the gap between spreadsheets and modern business intelligence dashboards. Includes 3 months access, personalized playbook mastery, weekly mentorship check-ins, private WhatsApp community, and practical weekly tasks.',
     level: 'Intermediate',
-    tags: ['BI', 'Visualization']
+    tags: ['BI', 'Visualization', '3 Months']
   },
   {
     id: 'ai-agents-masterclass',
     title: 'AI Agents Masterclass',
-    price: 12000,
-    description: 'Learn to design and deploy autonomous AI agents for business automation.',
+    price: 12500,
+    description: 'Learn to design and deploy autonomous AI agents for business automation. Includes n8n Automation, APIs, Agentic Workflows, weekly mentorship check-ins, private WhatsApp community, and practical weekly tasks.',
     level: 'Advanced',
-    tags: ['Agentic AI', 'Automation']
+    tags: ['Agentic AI', 'Automation', '1 Month']
   },
   {
     id: 'ai-mastery',
     title: 'AI Mastery',
-    price: 15000,
-    description: 'Complete data science bootcamp covering Python, ML, and AI ethics.',
-    level: 'Advanced',
-    tags: ['Machine Learning', 'Python']
+    price: 7500,
+    description: 'Master AI fundamentals, prompting techniques, and ethics for modern business. Includes personalized playbook mastery, weekly mentorship check-ins, private WhatsApp community, and practical weekly tasks.',
+    level: 'Intermediate',
+    tags: ['AI Fluency', 'Prompting', '1 Month']
   }
 ];
 
 export const PLANS: { [key: string]: Product } = {
   BASIC: {
-    id: 'mastery-plan',
-    name: '1-Month AI Mastery Plan',
-    price: 2500,
-    description: 'Master the fundamentals with structured weekly modules and expert check-ins.'
+    id: 'ai-mastery-plan',
+    name: 'AI Mastery Plan',
+    price: 7500,
+    description: 'Master AI fundamentals, prompting techniques, and ethics. Includes weekly mentorship check-ins and WhatsApp community access.'
   },
   ADVANCED: {
-    id: 'agent-plan',
-    name: '1-Month AI Agents Mastery Plan',
-    price: 7500,
-    description: 'Design and deploy autonomous AI agents with direct mentor guidance.'
+    id: 'ai-agents-plan',
+    name: 'AI Agents Mastery Plan',
+    price: 12500,
+    description: 'Design and deploy autonomous AI agents with n8n automation, APIs, and agentic workflows. Includes weekly mentorship and WhatsApp community.'
   }
 };
 
@@ -71,246 +71,309 @@ export const SERVICES = [
 ];
 
 export const ASSESSMENT_QUESTIONS: Question[] = [
-  // PART 1: Foundations (Questions 1-10)
+  // PART 1: AI Fluency (Questions 1-10) - Intermediate Level
   {
     id: 1,
-    text: "What does 'EDA' stand for in Data Science?",
+    text: "You are a Kenyan SME owner wanting to draft a localized marketing email for a Nairobi audience. Which prompting technique would yield the most culturally relevant result?",
     options: [
-      "Exploratory Data Analysis",
-      "External Database Access",
-      "Ethical Data Assessment",
-      "Essential Digital Assets"
+      "Act as a Kenyan digital marketer. Write an email for [Product] using local slang (Sheng) and professional English, targeting youth in Kilimani.",
+      "Write a marketing email for [Product].",
+      "Summarize this product description into an email.",
+      "Write a sales pitch in the style of Shakespeare."
     ],
     correctIndex: 0,
-    category: "Technical"
+    category: "Intermediate"
   },
   {
     id: 2,
-    text: "Which Python library is most commonly used for data manipulation and analysis?",
+    text: "Which AI tool is best suited for 'Real-Time' market research (e.g., finding current maize prices in Nakuru or competitor pricing)?",
     options: [
-      "Flask",
-      "Pandas",
-      "PyGame",
-      "Requests"
+      "Perplexity AI / Google Gemini (Tools with Web Search)",
+      "ChatGPT (Free Version 3.5)",
+      "Midjourney",
+      "Jasper AI"
     ],
-    correctIndex: 1,
-    category: "Technical"
+    correctIndex: 0,
+    category: "Intermediate"
   },
   {
     id: 3,
-    text: "What is the primary role of a 'Primary Key' in a database?",
+    text: "Under Kenya's Data Protection Act (2019), what is a major risk when pasting customer phone numbers and credit limits into a public LLM like ChatGPT?",
     options: [
-      "To encrypt the data",
-      "To uniquely identify each record",
-      "To store the password",
-      "To sort data alphabetically only"
+      "Data Leakage & Violation of Privacy (The model might train on this confidential data).",
+      "The model will refuse to process numbers.",
+      "It costs too much money.",
+      "The internet connection will fail."
     ],
-    correctIndex: 1,
-    category: "Technical"
+    correctIndex: 0,
+    category: "Intermediate"
   },
   {
     id: 4,
-    text: "In Machine Learning, what is 'Overfitting'?",
+    text: "You want to automate customer support for your business on a platform most Africans use daily. Which tool integration is most valuable?",
     options: [
-      "When the model performs well on training data but poorly on new data",
-      "When the model is too slow",
-      "When the dataset is too small",
-      "When the computer overheats"
+      "WhatsApp Business API + AI Chatbot",
+      "Slack Bot",
+      "Discord Server",
+      "Email Autoresponder"
     ],
     correctIndex: 0,
-    category: "Technical"
+    category: "Intermediate"
   },
   {
     id: 5,
-    text: "Which of the following is an example of Supervised Learning?",
+    text: "What is 'Chain of Thought' prompting?",
     options: [
-      "Clustering customers based on behavior",
-      "Predicting house prices based on historical data",
-      "Dimensionality reduction",
-      "Anomaly detection"
+      "Asking the AI to 'Think step-by-step' to improve reasoning on complex math or logic problems.",
+      "Asking the AI to link multiple websites together.",
+      "Writing a very long prompt with no punctuation.",
+      "Translating text from English to Swahili."
     ],
-    correctIndex: 1,
-    category: "Technical"
+    correctIndex: 0,
+    category: "Intermediate"
   },
   {
     id: 6,
-    text: "What is the main advantage of Power BI over standard Excel for large datasets?",
+    text: "Your AI just invented a fact about a Kenyan historical figure that isn't true. What is this phenomenon called?",
     options: [
-      "It is free",
-      "It can handle millions of rows and create interactive relationships efficiently",
-      "It has a calculator",
-      "It creates PDFs"
+      "Hallucination",
+      "Temperature Spiking",
+      "Overfitting",
+      "RAG"
     ],
-    correctIndex: 1,
-    category: "Strategy"
+    correctIndex: 0,
+    category: "Intermediate"
   },
   {
     id: 7,
-    text: "What constitutes 'Dirty Data'?",
+    text: "Which of these is a 'Generative AI' task?",
     options: [
-      "Data containing private info",
-      "Data with errors, duplicates, or missing values",
-      "Data that is encrypted",
-      "Data stored on old hard drives"
+      "Creating a new logo or writing a blog post from scratch.",
+      "Sorting an Excel sheet alphabetically.",
+      "Calculating the sum of a sales column.",
+      "Storing files in the cloud."
     ],
-    correctIndex: 1,
-    category: "Technical"
+    correctIndex: 0,
+    category: "Intermediate"
   },
   {
     id: 8,
-    text: "Why is 'Data Ethics' crucial in AI development?",
+    text: "Why is 'Context Window' important when analyzing a long PDF report (e.g., a 50-page annual report)?",
     options: [
-      "It makes the code run faster",
-      "It saves storage space",
-      "To ensure fairness, privacy, and accountability",
-      "It is not important"
+      "It limits how much text the AI can 'read' and remember at one time.",
+      "It determines the speed of the internet.",
+      "It changes the color of the interface.",
+      "It is the price per month of the tool."
     ],
-    correctIndex: 2,
-    category: "Ethics"
+    correctIndex: 0,
+    category: "Intermediate"
   },
   {
     id: 9,
-    text: "Which chart type is best for showing a trend over time?",
+    text: "For a graphic designer in Nairobi, which tool is specifically built for generating high-quality images from text?",
     options: [
-      "Pie Chart",
-      "Line Chart",
-      "Scatter Plot",
-      "TreeMap"
+      "Midjourney / DALL-E 3",
+      "Claude 3.5 Sonnet",
+      "GitHub Copilot",
+      "Zapier"
     ],
-    correctIndex: 1,
-    category: "Technical"
+    correctIndex: 0,
+    category: "Intermediate"
   },
   {
     id: 10,
-    text: "What is a 'Dashboard' in Business Intelligence?",
+    text: "What is the most effective way to protect your job as a content writer in the age of AI?",
     options: [
-      "A type of database",
-      "A visual display of key metrics and KPIs",
-      "A programming language",
-      "A hardware component"
-    ],
-    correctIndex: 1,
-    category: "Strategy"
-  },
-  // PART 2: Agentic AI & Automation (Questions 11-20)
-  {
-    id: 11,
-    text: "What distinguishes an 'AI Agent' from a standard 'Chatbot'?",
-    options: [
-      "Agents can use tools and execute autonomous actions; Chatbots primarily converse.",
-      "Agents are faster than Chatbots.",
-      "Chatbots use LLMs; Agents do not.",
-      "There is no difference; they are synonyms."
+      "Becoming an 'AI Editor' who adds human insight, local context, and strategy to AI drafts.",
+      "Refusing to use AI tools.",
+      "Typing faster than the AI.",
+      "Switching to manual typewriter."
     ],
     correctIndex: 0,
-    category: "Strategy"
+    category: "Intermediate"
+  },
+  // PART 2: AI Agents (Questions 11-20) - Advanced Level
+  {
+    id: 11,
+    text: "What is the primary difference between a 'Workflow Automation' (like Zapier) and a true 'AI Agent'?",
+    options: [
+      "Automation follows a rigid 'If This, Then That' path; an Agent can 'Reason' and decide which tools to use dynamically.",
+      "Automation is cheaper.",
+      "Agents only work on mobile phones.",
+      "Automation requires code; Agents do not."
+    ],
+    correctIndex: 0,
+    category: "Advanced"
   },
   {
     id: 12,
-    text: "In the ReAct prompting framework (Reasoning + Acting), what is the first step the agent takes?",
+    text: "You are building an agent to process payments. Which 'Tool' would you give the agent to trigger an M-Pesa transaction?",
     options: [
-      "Think / Reason about the task.",
-      "Immediately execute the first tool available.",
-      "Ask the user for more data.",
-      "Output the final answer."
+      "An API Function Call (POST request) to the Daraja API.",
+      "A link to the Safaricom website.",
+      "A text file with phone numbers.",
+      "A screenshot of a QR code."
     ],
     correctIndex: 0,
-    category: "Technical"
+    category: "Advanced"
   },
   {
     id: 13,
-    text: "Which tool is commonly used to visually build low-code AI automation workflows?",
+    text: "In the context of n8n (a low-code automation tool), what does a 'Webhook' allow you to do?",
     options: [
-      "n8n",
-      "Jupyter Notebook",
-      "Tableau",
-      "Figma"
+      "Receive real-time data from an external source (e.g., a Typeform submission) to trigger a workflow.",
+      "Catch fish in a digital pond.",
+      "Design a website landing page.",
+      "Encrypt your password."
     ],
     correctIndex: 0,
-    category: "Technical"
+    category: "Advanced"
   },
   {
     id: 14,
-    text: "What is 'RAG' (Retrieval-Augmented Generation)?",
+    text: "What does RAG (Retrieval-Augmented Generation) allow an AI agent to do for a Kenyan Law Firm?",
     options: [
-      "Fetching external data to ground the LLM's response before generating an answer.",
-      "Generating random answers to test the model.",
-      "A method for compressing large language models.",
-      "Retraining the model on new data every day."
+      "Search a private database of Kenyan Legal Precedents before answering a client's question.",
+      "Generate random laws.",
+      "Search Google for US laws only.",
+      "Automatically sue people."
     ],
     correctIndex: 0,
-    category: "Technical"
+    category: "Advanced"
   },
   {
     id: 15,
-    text: "When building an agent, what is the purpose of 'Memory'?",
+    text: "You are designing a 'Customer Support Agent.' What is the risk of an 'Infinite Loop'?",
     options: [
-      "To retain context from previous turns in the conversation/workflow.",
-      "To store the API keys securely.",
-      "To increase the speed of the GPU.",
-      "To lower the cost of the API calls."
+      "The agent keeps trying to solve a problem without success, burning through your API credits and money.",
+      "The agent becomes sentient.",
+      "The customer gets too many free products.",
+      "The internet connection becomes too fast."
     ],
     correctIndex: 0,
-    category: "Technical"
+    category: "Advanced"
   },
   {
     id: 16,
-    text: "What is 'Function Calling' in the context of OpenAI/Anthropic models?",
+    text: "What is the role of a 'Router' in a Multi-Agent System?",
     options: [
-      "The ability of the model to output a structured JSON object to trigger external code.",
-      "Calling a Python function inside a loop.",
-      "The model speaking out loud using text-to-speech.",
-      "Importing a library in Python."
+      "It acts as a traffic controller, deciding whether to send a user's query to the 'Sales Agent' or the 'Tech Support Agent.'",
+      "It provides Wi-Fi to the office.",
+      "It translates English to Swahili.",
+      "It generates images for the chat."
     ],
     correctIndex: 0,
-    category: "Technical"
+    category: "Advanced"
   },
   {
     id: 17,
-    text: "In a Multi-Agent system, what does a 'Router' agent do?",
+    text: "Which format is commonly used to structure data when passing it between an AI Agent and an API (like M-Pesa or Shopify)?",
     options: [
-      "It directs the user's query to the most specific sub-agent (e.g., Coding vs. Writing).",
-      "It connects the server to the internet.",
-      "It summarizes the final conversation.",
-      "It generates the bill for the user."
+      "JSON (JavaScript Object Notation)",
+      "PDF",
+      "MS Word Doc",
+      "JPEG Image"
     ],
     correctIndex: 0,
-    category: "Strategy"
+    category: "Advanced"
   },
   {
     id: 18,
-    text: "Which of these is a major risk when deploying autonomous agents?",
+    text: "Why is 'Human-in-the-Loop' critical when using agents for high-stakes tasks (like approving loans)?",
     options: [
-      "Infinite loops (agents calling tools repeatedly without stopping).",
-      "Slow internet connection.",
-      "The agent forgetting its name.",
-      "The user typing too fast."
+      "To prevent the AI from making biased or costly errors by requiring human approval before the final action.",
+      "Because AI cannot do math.",
+      "To slow down the process intentionally.",
+      "To ensure the AI doesn't get lonely."
     ],
     correctIndex: 0,
-    category: "Ethics"
+    category: "Advanced"
   },
   {
     id: 19,
-    text: "What role does LangChain play in AI development?",
+    text: "You are using LangChain to build an agent. What is 'Memory'?",
     options: [
-      "It is an orchestration framework for chaining LLMs, tools, and memory.",
-      "It is a database for storing images.",
-      "It is a programming language specifically for AI.",
-      "It is a hosting provider."
+      "The mechanism that allows the agent to remember previous messages in the conversation to maintain context.",
+      "The hard drive space on your laptop.",
+      "The training data from 2021.",
+      "The speed of the processor."
     ],
     correctIndex: 0,
-    category: "Technical"
+    category: "Advanced"
   },
   {
     id: 20,
-    text: "What is the 'Human-in-the-loop' design pattern?",
+    text: "A 'ReAct' Agent follows which cycle to solve problems?",
     options: [
-      "Pausing the agent's execution to require human approval before a critical action.",
-      "Replacing the AI entirely with a human.",
-      "Training the AI on human biology.",
-      "Having a human write the code for the agent."
+      "Reason -> Act -> Observe (It thinks, uses a tool, looks at the result, and thinks again).",
+      "Read -> React -> Repeat.",
+      "Random -> Action -> Output.",
+      "Request -> API -> JSON."
     ],
     correctIndex: 0,
-    category: "Strategy"
+    category: "Advanced"
+  }
+];
+
+export const BLOG_POSTS: BlogPost[] = [
+  {
+    id: 'phoenix-ai-summit-2025',
+    title: 'Phoenix AI Agents Summit 2025: Building for Us',
+    excerpt: 'Reflections on the recent summit and why building indigenous AI solutions is critical for Africa\'s future.',
+    date: 'Feb 15, 2025',
+    author: 'Ezra Muinde',
+    image: 'https://images.unsplash.com/photo-1591115765373-5207764f72e7?w=800&auto=format&fit=crop',
+    tags: ['AI Agents', 'Community', 'Innovation'],
+    content: `
+      <p class="mb-4">The Phoenix AI Agents Summit 2025 was not just a conference; it was a declaration. As we gathered to discuss the future of autonomous systems, one theme rang louder than the rest: <strong>We must build for us.</strong></p>
+      
+      <h3 class="text-xl font-bold text-white mt-6 mb-3">The Agentic Shift</h3>
+      <p class="mb-4">We are witnessing a shift from passive tools to active agents. In the African context, this distinction is vital. Our markets are fragmented, our infrastructure is unique, and our problems are complex. Off-the-shelf AI models from the West often lack the nuance to navigate mobile money integrations, local languages, or informal sector dynamics.</p>
+      
+      <h3 class="text-xl font-bold text-white mt-6 mb-3">Local Context is King</h3>
+      <p class="mb-4">During the summit, we explored how agents can bridge gaps in healthcare logistics and fintech. Imagine an agent that doesn't just chat but actively negotiates supply prices for a 'mama mboga' via WhatsApp, or an agent that triages patients in rural clinics based on local epidemiological data.</p>
+      
+      <p class="mb-4">The energy in the room confirmed that the talent to build these solutions is here. It is time to stop consuming and start architecting.</p>
+    `
+  },
+  {
+    id: 'why-excel-matters',
+    title: 'Why Excel Still Matters in the Age of AI',
+    excerpt: 'In a world of LLMs and Python, the spreadsheet remains the undefeated champion of business data.',
+    date: 'Jan 10, 2025',
+    author: 'Ezra Muinde',
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop',
+    tags: ['Data Science', 'Excel', 'Foundations'],
+    content: `
+      <p class="mb-4">It is fashionable in tech circles to bash Excel. "It's not reproducible," they say. "It can't handle big data," they argue. And while true, they miss the point entirely.</p>
+      
+      <h3 class="text-xl font-bold text-white mt-6 mb-3">The UI of Business</h3>
+      <p class="mb-4">Excel is the user interface of business. You can build the most sophisticated Python model in the world, but the output will almost certainly need to be delivered in a spreadsheet for the CEO to read it. It is the common language of commerce.</p>
+      
+      <h3 class="text-xl font-bold text-white mt-6 mb-3">AI Needs Structure</h3>
+      <p class="mb-4">With the advent of Copilot and AI integrations, Excel is getting a second wind. But here is the catch: AI cannot fix messy data. To leverage AI effectively in Excel, you still need to understand data structure, normalization, and logic. You cannot prompt your way out of a bad pivot table.</p>
+      
+      <p>So before you rush to learn the latest vector database, make sure you can still do a VLOOKUP. It matters more than you think.</p>
+    `
+  },
+  {
+    id: 'colleagues-friends',
+    title: 'Your Colleagues Are Actually Your Friends (Shoot Me)',
+    excerpt: '"But of course you are replaceable… but your impact isn\'t."',
+    date: 'Dec 25, 2024',
+    author: 'Ezra Muinde',
+    image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&auto=format&fit=crop',
+    tags: ['Culture', 'Workplace', 'Mental Health'],
+    content: `
+      <p class="mb-4">There is a popular LinkedIn sentiment that says, "Your colleagues are not your family; they are just people you work with." I want to push back on that.</p>
+      
+      <h3 class="text-xl font-bold text-white mt-6 mb-3">The Cost of Armor</h3>
+      <p class="mb-4">We spend more waking hours with our colleagues than with anyone else. Maintaining a rigid "professional mask" is exhausting. It requires constant energy to filter your personality, hide your struggles, and present a polished facade. This armor doesn't protect us; it isolates us.</p>
+      
+      <h3 class="text-xl font-bold text-white mt-6 mb-3">Vulnerability as a KPI</h3>
+      <p class="mb-4">In high-performing technical teams, trust is the currency. You cannot build complex systems if you are afraid to say, "I don't know," or "I made a mistake." Real friendship—the kind that allows for psychological safety—is actually a productivity hack. When we care about each other, we communicate better, we forgive faster, and we build better products.</p>
+      
+      <p>So yes, maybe they are just colleagues. But making them friends might be the best career move you ever make.</p>
+    `
   }
 ];

@@ -82,3 +82,17 @@ body {
 .animate-bounce-in {
   animation: bounce-in 0.4s ease-out;
 }
+
+/* Floating animation for hero metric cards */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}

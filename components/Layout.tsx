@@ -38,7 +38,13 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       <nav className="sticky top-0 z-50 bg-brand-dark/90 backdrop-blur-md border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            <Link to="/" className="flex-shrink-0 group">
+            <Link to="/" className="flex-shrink-0 group flex items-center gap-2">
+              {/* Ubuntu AnalytIQ Logo */}
+              <img
+                src="/favicon/favicon.svg"
+                alt="Ubuntu AnalytIQ Logo"
+                className="h-8 w-auto"
+              />
               <span className="text-xl font-bold tracking-tight text-white group-hover:text-brand-cyan transition-colors">
                 Ubuntu <span className="text-brand-cyan">AnalytIQ</span>
               </span>
@@ -119,9 +125,17 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-4 md:mb-0">
-              <span className="text-lg font-bold text-white">
-                Ubuntu <span className="text-brand-cyan">AnalytIQ</span>
-              </span>
+              <div className="flex items-center gap-2">
+                {/* Ubuntu AnalytIQ Logo */}
+                <img
+                  src="/favicon/favicon.svg"
+                  alt="Ubuntu AnalytIQ Logo"
+                  className="h-7 w-auto"
+                />
+                <span className="text-lg font-bold text-white">
+                  Ubuntu <span className="text-brand-cyan">AnalytIQ</span>
+                </span>
+              </div>
               <p className="text-sm text-gray-400 mt-1">
                 Empowering teams with Data & AI fluency.
               </p>
@@ -173,8 +187,19 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               </a>
             </div>
           </div>
-          <div className="mt-8 pt-8 border-t border-white/5 text-center text-sm text-gray-500">
-            &copy; {new Date().getFullYear()} Ubuntu AnalytIQ. All rights reserved.
+          <div className="mt-8 pt-8 border-t border-white/5 text-center">
+            <p className="text-sm text-gray-500">
+              &copy; {new Date().getFullYear()} Ubuntu AnalytIQ. All rights reserved.
+            </p>
+            <a
+              href="https://glidexoutsourcing.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block mt-3 text-xs font-medium transition-all hover:underline"
+              style={{ color: '#6EC1E4' }}
+            >
+              Powered by GlideX
+            </a>
           </div>
         </div>
       </footer>
