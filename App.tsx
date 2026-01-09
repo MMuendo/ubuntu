@@ -19,6 +19,11 @@ import EnrollmentOptionsPage from './pages/EnrollmentOptionsPage';
 import ConsultationBookingPage from './pages/ConsultationBookingPage';
 import ConsultationSuccessPage from './pages/ConsultationSuccessPage';
 import NotFoundPage from './pages/NotFoundPage';
+// Admin Pages
+import AdminDashboard from './pages/admin/AdminDashboard';
+import PricingManager from './pages/admin/PricingManager';
+import LeadsManager from './pages/admin/LeadsManager';
+import SettingsManager from './pages/admin/SettingsManager';
 import { Product, Course } from './types';
 
 const App: React.FC = () => {
@@ -39,6 +44,48 @@ const App: React.FC = () => {
                         <ProtectedRoute>
                             <Layout>
                                 <DashboardPage />
+                            </Layout>
+                        </ProtectedRoute>
+                    }
+                />
+
+                {/* Admin Routes - Protected with requireAdmin */}
+                <Route
+                    path="/admin"
+                    element={
+                        <ProtectedRoute requireAdmin>
+                            <Layout>
+                                <AdminDashboard />
+                            </Layout>
+                        </ProtectedRoute>
+                    }
+                />
+                <Route
+                    path="/admin/pricing"
+                    element={
+                        <ProtectedRoute requireAdmin>
+                            <Layout>
+                                <PricingManager />
+                            </Layout>
+                        </ProtectedRoute>
+                    }
+                />
+                <Route
+                    path="/admin/leads"
+                    element={
+                        <ProtectedRoute requireAdmin>
+                            <Layout>
+                                <LeadsManager />
+                            </Layout>
+                        </ProtectedRoute>
+                    }
+                />
+                <Route
+                    path="/admin/settings"
+                    element={
+                        <ProtectedRoute requireAdmin>
+                            <Layout>
+                                <SettingsManager />
                             </Layout>
                         </ProtectedRoute>
                     }

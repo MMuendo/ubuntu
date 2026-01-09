@@ -94,6 +94,18 @@ const UserMenu: React.FC = () => {
                             Dashboard
                         </Link>
 
+                        {/* Admin Portal Link */}
+                        {profile?.role === 'admin' && (
+                            <Link
+                                to="/admin"
+                                onClick={() => setIsOpen(false)}
+                                className="flex items-center gap-3 px-4 py-2 text-sm text-brand-cyan hover:bg-brand-cyan/10 transition-colors"
+                            >
+                                <Settings className="h-4 w-4" />
+                                Admin Portal
+                            </Link>
+                        )}
+
                         <Link
                             to="/dashboard/settings"
                             onClick={() => setIsOpen(false)}

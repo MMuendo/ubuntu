@@ -1,14 +1,16 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Approach from '../components/Approach';
-import { SERVICES, COURSES } from '../constants';
-import { Course } from '../types';
+import { SERVICES } from '../constants';
+import { useCourses } from '../hooks/useCourses';
 import { ArrowRight, MapPin, Phone, Mail } from 'lucide-react';
+import LoadingSpinner from '../components/LoadingSpinner';
 
 const HomePage: React.FC = () => {
   const navigate = useNavigate();
+  const { courses, loading: coursesLoading } = useCourses();
 
-  const handleEnroll = (course: Course) => {
+  const handleEnroll = (course: { id: string; title: string; price: number; description: string }) => {
     // Navigate to enrollment options page with course data
     navigate(`/enroll?courseId=${course.id}&courseName=${encodeURIComponent(course.title)}&coursePrice=${course.price}&courseDescription=${encodeURIComponent(course.description)}`);
   };
@@ -109,26 +111,32 @@ const HomePage: React.FC = () => {
             <p className="text-gray-400">Industry-leading courses designed for real-world application.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {COURSES.map((course) => (
-              <div key={course.id} className="bg-brand-surface border border-white/5 rounded-xl p-6 flex flex-col hover:border-brand-cyan/30 transition-all">
-                <div className="mb-4">
-                  <span className="text-xs font-semibold text-brand-cyan uppercase tracking-wider bg-brand-cyan/10 px-2 py-1 rounded">
-                    {course.level}
-                  </span>
-                </div>
-                <h3 className="text-xl font-bold text-white mb-2">{course.title}</h3>
-                <p className="text-sm text-gray-400 mb-6 flex-grow">{course.description}</p>
-                <div className="flex items-center justify-between mt-4 pt-4 border-t border-white/5">
-                  <span className="text-white font-mono font-bold">KES {course.price.toLocaleString()}</span>
-                  <button
-                    onClick={() => handleEnroll(course)}
-                    className="text-brand-cyan hover:text-white text-sm font-semibold flex items-center gap-1"
-                  >
-                    Enroll <ArrowRight className="w-4 h-4" />
-                  </button>
-                </div>
+            {coursesLoading ? (
+              <div className="col-span-full flex justify-center py-12">
+                <LoadingSpinner size="lg" />
               </div>
-            ))}
+            ) : (
+              courses.map((course) => (
+                <div key={course.id} className="bg-brand-surface border border-white/5 rounded-xl p-6 flex flex-col hover:border-brand-cyan/30 transition-all">
+                  <div className="mb-4">
+                    <span className="text-xs font-semibold text-brand-cyan uppercase tracking-wider bg-brand-cyan/10 px-2 py-1 rounded">
+                      {course.level}
+                    </span>
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-2">{course.title}</h3>
+                  <p className="text-sm text-gray-400 mb-6 flex-grow">{course.description}</p>
+                  <div className="flex items-center justify-between mt-4 pt-4 border-t border-white/5">
+                    <span className="text-white font-mono font-bold">KES {course.price.toLocaleString()}</span>
+                    <button
+                      onClick={() => handleEnroll(course)}
+                      className="text-brand-cyan hover:text-white text-sm font-semibold flex items-center gap-1"
+                    >
+                      Enroll <ArrowRight className="w-4 h-4" />
+                    </button>
+                  </div>
+                </div>
+              ))
+            )}
           </div>
         </div>
       </section>

@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ASSESSMENT_QUESTIONS, PLANS } from '../constants';
+import { ASSESSMENT_QUESTIONS } from '../constants';
+import { usePlans, Plan } from '../hooks/usePlans';
 import { Lock, Sparkles, Brain, Zap, CheckCircle } from 'lucide-react';
 import { validateEmail } from '../utils/validation';
 import LoadingSpinner from '../components/LoadingSpinner';
@@ -8,6 +9,7 @@ import { createLead } from '../lib/supabase';
 
 const AssessmentPage: React.FC = () => {
     const navigate = useNavigate();
+    const { plans, getRecommendation, loading: plansLoading } = usePlans();
     const [started, setStarted] = useState(false);
     const [qIndex, setQIndex] = useState(0);
     const [answers, setAnswers] = useState<number[]>([]);
@@ -17,6 +19,7 @@ const AssessmentPage: React.FC = () => {
     const [email, setEmail] = useState('');
     const [emailError, setEmailError] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [recommendation, setRecommendation] = useState<Plan | null>(null);
 
     const handleAnswer = (optionIndex: number) => {
         const newAnswers = [...answers, optionIndex];
@@ -32,6 +35,9 @@ const AssessmentPage: React.FC = () => {
             });
             const finalPercentage = Math.round((correctCount / ASSESSMENT_QUESTIONS.length) * 100);
             setScore(finalPercentage);
+            // Get recommendation from dynamic plans
+            const rec = getRecommendation(finalPercentage);
+            setRecommendation(rec);
             setShowEmailGate(true);
         }
     };
@@ -55,7 +61,7 @@ const AssessmentPage: React.FC = () => {
                 source: 'assessment',
                 assessment_score: score,
                 assessment_answers: answers,
-                recommended_plan: recommendation.name,
+                recommended_plan: recommendation?.name || 'Unknown',
             });
             console.log('Lead saved to database');
         } catch (error) {
@@ -68,9 +74,9 @@ const AssessmentPage: React.FC = () => {
         setShowResult(true);
     };
 
-    // Updated recommendation logic: ≥70% = AI Agents, <70% = AI Mastery
-    const recommendation = score >= 70 ? PLANS.ADVANCED : PLANS.BASIC;
-    const scoreTitle = score >= 70 ? "AI Agent Builder" : "AI Fluency Learner";
+    // Dynamic score title based on threshold
+    const threshold = plans.advanced?.threshold_score || 70;
+    const scoreTitle = score >= threshold ? "AI Agent Builder" : "AI Fluency Learner";
 
     // Landing Section (before assessment starts)
     if (!started) {
@@ -152,38 +158,45 @@ const AssessmentPage: React.FC = () => {
                         </div>
 
                         {/* Recommendation */}
-                        <div className="bg-white/5 rounded-2xl p-8 border border-brand-cyan/30 mb-8">
-                            <h3 className="text-xl text-white font-bold mb-2">Recommended: {recommendation.name}</h3>
-                            <p className="text-gray-300 mb-6">{recommendation.description}</p>
-                            <div className="text-3xl font-bold text-white mb-6">KES {recommendation.price.toLocaleString()}</div>
+                        {recommendation ? (
+                            <div className="bg-white/5 rounded-2xl p-8 border border-brand-cyan/30 mb-8">
+                                <h3 className="text-xl text-white font-bold mb-2">Recommended: {recommendation.name}</h3>
+                                <p className="text-gray-300 mb-6">{recommendation.description}</p>
+                                <div className="text-3xl font-bold text-white mb-6">KES {recommendation.price.toLocaleString()}</div>
 
-                            <div className="relative">
-                                {/* Blurred Plan Mockup */}
-                                <div className="absolute inset-0 bg-brand-surface/80 backdrop-blur-sm flex items-center justify-center z-10 rounded-xl">
-                                    <button
-                                        onClick={() => {
-                                            // Navigate to checkout with plan details
-                                            const params = new URLSearchParams({
-                                                courseId: recommendation.id,
-                                                courseName: recommendation.name,
-                                                coursePrice: recommendation.price.toString(),
-                                                courseDescription: recommendation.description,
-                                            });
-                                            navigate(`/checkout?${params.toString()}`);
-                                        }}
-                                        className="px-6 py-3 bg-brand-cyan text-brand-dark font-bold rounded-full hover:bg-cyan-300 transition-colors shadow-lg flex items-center gap-2"
-                                    >
-                                        <Lock className="w-4 h-4" /> Unlock My Personalized Plan
-                                    </button>
-                                </div>
-                                <div className="space-y-3 opacity-30 p-4 border border-white/10 rounded-xl">
-                                    <div className="h-4 bg-gray-600 rounded w-3/4"></div>
-                                    <div className="h-4 bg-gray-600 rounded w-1/2"></div>
-                                    <div className="h-4 bg-gray-600 rounded w-full"></div>
-                                    <div className="h-4 bg-gray-600 rounded w-5/6"></div>
+                                <div className="relative">
+                                    {/* Blurred Plan Mockup */}
+                                    <div className="absolute inset-0 bg-brand-surface/80 backdrop-blur-sm flex items-center justify-center z-10 rounded-xl">
+                                        <button
+                                            onClick={() => {
+                                                // Navigate to checkout with plan details
+                                                const params = new URLSearchParams({
+                                                    courseId: recommendation.id,
+                                                    courseName: recommendation.name,
+                                                    coursePrice: recommendation.price.toString(),
+                                                    courseDescription: recommendation.description,
+                                                });
+                                                navigate(`/checkout?${params.toString()}`);
+                                            }}
+                                            className="px-6 py-3 bg-brand-cyan text-brand-dark font-bold rounded-full hover:bg-cyan-300 transition-colors shadow-lg flex items-center gap-2"
+                                        >
+                                            <Lock className="w-4 h-4" /> Unlock My Personalized Plan
+                                        </button>
+                                    </div>
+                                    <div className="space-y-3 opacity-30 p-4 border border-white/10 rounded-xl">
+                                        <div className="h-4 bg-gray-600 rounded w-3/4"></div>
+                                        <div className="h-4 bg-gray-600 rounded w-1/2"></div>
+                                        <div className="h-4 bg-gray-600 rounded w-full"></div>
+                                        <div className="h-4 bg-gray-600 rounded w-5/6"></div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        ) : (
+                            <div className="bg-white/5 rounded-2xl p-8 border border-brand-cyan/30 mb-8">
+                                <LoadingSpinner size="lg" />
+                                <p className="text-gray-400 mt-4">Loading recommendation...</p>
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>
