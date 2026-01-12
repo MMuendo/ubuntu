@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { MessageSquare, X, Send, Bot, Loader2 } from 'lucide-react';
-import { streamChatResponse } from '../services/geminiService';
-import { GenerateContentResponse } from "@google/genai";
+import { streamChatResponse } from '../services/aiService';
 
 interface ChatMessage {
   role: 'user' | 'model';
@@ -47,8 +46,7 @@ const ChatWidget: React.FC = () => {
       setMessages(prev => [...prev, { role: 'model', text: '' }]);
 
       for await (const chunk of streamResult) {
-        const c = chunk as GenerateContentResponse;
-        const text = c.text;
+        const text = chunk.choices[0]?.delta?.content || '';
         if (text) {
           fullResponse += text;
           setMessages(prev => {
@@ -104,8 +102,8 @@ const ChatWidget: React.FC = () => {
               >
                 <div
                   className={`max-w-[80%] p-3 rounded-2xl text-sm ${msg.role === 'user'
-                      ? 'bg-brand-cyan text-brand-dark rounded-tr-none'
-                      : 'bg-white/10 text-slate-200 rounded-tl-none'
+                    ? 'bg-brand-cyan text-brand-dark rounded-tr-none'
+                    : 'bg-white/10 text-slate-200 rounded-tl-none'
                     }`}
                 >
                   {msg.text}

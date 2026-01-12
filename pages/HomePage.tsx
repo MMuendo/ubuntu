@@ -21,11 +21,7 @@ const HomePage: React.FC = () => {
       <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
-          <img
-            src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1920&auto=format&fit=crop&q=80"
-            alt="Analytics Dashboard Background"
-            className="w-full h-full object-cover"
-          />
+
           {/* Dark overlay for text readability */}
           <div className="absolute inset-0 bg-gradient-to-b from-brand-dark/80 via-brand-dark/70 to-brand-dark"></div>
           {/* Blue accent overlay */}

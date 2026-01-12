@@ -354,6 +354,29 @@ export async function getLeads(
     return { leads: data || [], total: count || 0 };
 }
 
+export async function createLead(lead: Partial<Lead> & { metadata?: Record<string, any> }): Promise<Lead | null> {
+    const { data, error } = await supabase
+        .from('leads')
+        .insert([{
+            email: lead.email,
+            source: lead.source || 'chat',
+            status: 'new',
+            metadata: lead.metadata || {},
+            // Default fields
+            assessment_score: lead.assessment_score || null,
+            recommended_plan: lead.recommended_plan || null,
+        }])
+        .select()
+        .single();
+
+    if (error) {
+        console.error('Error creating lead:', error);
+        return null;
+    }
+
+    return data;
+}
+
 export async function updateLeadStatus(
     id: string,
     status: string

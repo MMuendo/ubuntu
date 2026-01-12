@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { BLOG_POSTS } from '../constants';
-import { summarizeBlog } from '../services/geminiService';
+import { summarizeBlog } from '../services/aiService';
 import { ArrowLeft, Share2, Zap, Loader2, CheckCircle } from 'lucide-react';
 
 const BlogPostPage: React.FC = () => {
@@ -110,8 +110,8 @@ const BlogPostPage: React.FC = () => {
                                     onClick={handleSummarize}
                                     disabled={isSummarizing || summary !== null}
                                     className={`flex items-center space-x-2 px-4 py-2 rounded-full text-xs font-bold transition-all border ${summary
-                                            ? 'bg-green-500/20 text-green-400 border-green-500/30'
-                                            : 'bg-brand-dark hover:bg-brand-surface text-brand-cyan border-brand-cyan/30 hover:border-brand-cyan'
+                                        ? 'bg-green-500/20 text-green-400 border-green-500/30'
+                                        : 'bg-brand-dark hover:bg-brand-surface text-brand-cyan border-brand-cyan/30 hover:border-brand-cyan'
                                         }`}
                                 >
                                     {isSummarizing ? (

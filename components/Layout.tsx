@@ -187,19 +187,33 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               </a>
             </div>
           </div>
-          <div className="mt-8 pt-8 border-t border-white/5 text-center">
-            <p className="text-sm text-gray-500">
-              &copy; {new Date().getFullYear()} Ubuntu AnalytIQ. All rights reserved.
-            </p>
-            <a
-              href="https://glidexoutsourcing.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block mt-3 text-xs font-medium transition-all hover:underline"
-              style={{ color: '#6EC1E4' }}
-            >
-              Powered by GlideX
-            </a>
+          <div className="border-t border-white/10 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
+            <p>&copy; {new Date().getFullYear()} Ubuntu AnalytIQ. All rights reserved.</p>
+            <div className="flex items-center space-x-6 mt-4 md:mt-0">
+              <Link to="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
+              <Link to="/terms" className="hover:text-white transition-colors">Terms of Service</Link>
+              <span className="text-gray-500">•</span>
+              <span className="flex items-center gap-1.5 text-gray-500">
+                Powered by{' '}
+                <a
+                  href="https://www.glidexoutsourcing.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 group"
+                >
+                  <img
+                    src="/glidex_logo.png"
+                    alt="GlideX"
+                    width={20}
+                    height={20}
+                    className="opacity-80 group-hover:opacity-100 transition-opacity"
+                  />
+                  <span className="font-semibold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent group-hover:from-blue-400 group-hover:to-cyan-400 transition-all duration-300">
+                    GlideX™
+                  </span>
+                </a>
+              </span>
+            </div>
           </div>
         </div>
       </footer>

@@ -1,4 +1,4 @@
-import { GoogleGenAI, GenerateContentResponse } from "@google/genai";
+import OpenAI from "openai";
 
 const SYSTEM_INSTRUCTION = `You are the helpful AI assistant for Ubuntu AnalytIQ, a platform specializing in data science mentorship, training, and AI consultancy.
 Your goal is to answer visitor questions about our courses (Excel, Power BI, AI Agents), our services (Business Analytics, AI Fluency, Agentic Workflows), and general AI concepts.
@@ -12,16 +12,19 @@ Key offerings:
 
 Guide them to the "Courses" page for enrollment or "AI Fluency" page to take the assessment.`;
 
-let ai: GoogleGenAI | null = null;
+let openai: OpenAI | null = null;
 
 try {
-    if (process.env.API_KEY) {
-        ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+    if (import.meta.env.OPENAI_API_KEY) {
+        openai = new OpenAI({
+            apiKey: import.meta.env.OPENAI_API_KEY,
+            dangerouslyAllowBrowser: true // Enabling for frontend-only demo usage. In production, proxy via backend.
+        });
     } else {
-        console.warn("Gemini API Key is missing. Chat will not function.");
+        console.warn("OpenAI API Key is missing. Chat will not function.");
     }
 } catch (error) {
-    console.error("Error initializing Gemini client", error);
+    console.error("Error initializing OpenAI client", error);
 }
 
 // Streaming chat response for real-time UI updates
@@ -29,46 +32,66 @@ export const streamChatResponse = async (
     userMessage: string,
     history: { role: 'user' | 'model'; parts: { text: string }[] }[]
 ) => {
-    if (!ai) throw new Error("AI client not initialized");
+    if (!openai) throw new Error("AI client not initialized");
 
     try {
-        const chat = ai.chats.create({
-            model: 'gemini-2.5-flash',
-            config: {
-                systemInstruction: SYSTEM_INSTRUCTION,
-            },
-            history: history
+        const messages: OpenAI.Chat.ChatCompletionMessageParam[] = [
+            { role: "system", content: SYSTEM_INSTRUCTION }
+        ];
+
+        // Convert Gemini-style history to OpenAI format
+        history.forEach(msg => {
+            messages.push({
+                role: msg.role === 'model' ? 'assistant' : 'user',
+                content: msg.parts[0].text
+            });
         });
 
-        const result = await chat.sendMessageStream({ message: userMessage });
-        return result;
+        messages.push({ role: "user", content: userMessage });
+
+        const stream = await openai.chat.completions.create({
+            model: "gpt-4o",
+            messages: messages,
+            stream: true,
+        });
+
+        return stream;
 
     } catch (error) {
-        console.error("Gemini API Error:", error);
+        console.error("OpenAI API Error:", error);
         throw error;
     }
 };
 
 // Non-streaming chat response for simpler use cases
-export const sendMessageToGemini = async (
+export const sendMessageToAI = async (
     message: string,
     history: { role: string; parts: { text: string }[] }[] = []
 ): Promise<string> => {
-    if (!ai) return "I'm currently offline (API Key missing). Please check back later.";
+    if (!openai) return "I'm currently offline (API Key missing). Please check back later.";
 
     try {
-        const chat = ai.chats.create({
-            model: 'gemini-2.5-flash',
-            config: {
-                systemInstruction: SYSTEM_INSTRUCTION,
-            },
-            history: history
+        const messages: OpenAI.Chat.ChatCompletionMessageParam[] = [
+            { role: "system", content: SYSTEM_INSTRUCTION }
+        ];
+
+        history.forEach(msg => {
+            messages.push({
+                role: msg.role === 'model' ? 'assistant' : 'user',
+                content: msg.parts[0].text
+            });
         });
 
-        const result = await chat.sendMessage({ message });
-        return result.text || "I didn't catch that. Could you rephrase?";
+        messages.push({ role: "user", content: message });
+
+        const completion = await openai.chat.completions.create({
+            model: "gpt-4o",
+            messages: messages,
+        });
+
+        return completion.choices[0].message.content || "I didn't catch that. Could you rephrase?";
     } catch (error) {
-        console.error("Gemini API Error:", error);
+        console.error("OpenAI API Error:", error);
         return "I'm having trouble connecting to the neural network. Please try again.";
     }
 };
@@ -78,7 +101,7 @@ export const analyzeBusinessCase = async (
     company: string,
     useCase: string
 ): Promise<string> => {
-    if (!ai) return "System Offline. Unable to process analysis.";
+    if (!openai) return "System Offline. Unable to process analysis.";
 
     try {
         const prompt = `
@@ -94,21 +117,21 @@ export const analyzeBusinessCase = async (
       Format as a raw log without markdown code blocks. Keep it concise (4-6 lines).
     `;
 
-        const response = await ai.models.generateContent({
-            model: 'gemini-2.5-flash',
-            contents: prompt,
+        const completion = await openai.chat.completions.create({
+            model: "gpt-4o",
+            messages: [{ role: "user", content: prompt }],
         });
 
-        return response.text || "Analysis complete. Awaiting human verification.";
+        return completion.choices[0].message.content || "Analysis complete. Awaiting human verification.";
     } catch (error) {
-        console.error("Gemini Analysis Error:", error);
+        console.error("OpenAI Analysis Error:", error);
         return "Error generating analysis. Proceeding to manual override.";
     }
 };
 
 // Summarize blog post content
 export const summarizeBlog = async (content: string): Promise<string> => {
-    if (!ai) return "AI services unavailable.";
+    if (!openai) return "AI services unavailable.";
 
     try {
         const prompt = `
@@ -120,14 +143,14 @@ export const summarizeBlog = async (content: string): Promise<string> => {
       "${content}"
     `;
 
-        const response = await ai.models.generateContent({
-            model: 'gemini-2.5-flash',
-            contents: prompt,
+        const completion = await openai.chat.completions.create({
+            model: "gpt-4o",
+            messages: [{ role: "user", content: prompt }],
         });
 
-        return response.text || "Could not generate summary.";
+        return completion.choices[0].message.content || "Could not generate summary.";
     } catch (error) {
-        console.error("Gemini Summary Error:", error);
+        console.error("OpenAI Summary Error:", error);
         return "Error generating summary.";
     }
 };

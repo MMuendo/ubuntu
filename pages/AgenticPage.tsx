@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import EmailAutomationDemo from '../components/EmailAutomationDemo';
-import { analyzeBusinessCase } from '../services/geminiService';
+import { analyzeBusinessCase } from '../services/aiService';
 import { Calendar, CheckCircle, Terminal, BrainCircuit, Zap, X, Phone, Loader2 } from 'lucide-react';
+import { createLead } from '../services/adminService';
 
 const AgenticPage: React.FC = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -10,6 +11,7 @@ const AgenticPage: React.FC = () => {
     // Form State
     const [formData, setFormData] = useState({
         name: '',
+        email: '',
         phone: '',
         company: '',
         useCase: ''
@@ -35,6 +37,19 @@ const AgenticPage: React.FC = () => {
 
             // Call Gemini
             const result = await analyzeBusinessCase(formData.company, formData.useCase);
+
+            // Save Lead to Supabase
+            await createLead({
+                email: formData.email,
+                source: 'chat', // Using 'chat' as it maps best to agent interaction
+                metadata: {
+                    name: formData.name,
+                    phone: formData.phone,
+                    company: formData.company,
+                    use_case: formData.useCase,
+                    gemini_analysis: result
+                }
+            });
 
             // Simulate typing effect for the result lines
             const lines = result.split('\n').filter(line => line.trim() !== '');
@@ -62,7 +77,7 @@ const AgenticPage: React.FC = () => {
         setIsModalOpen(false);
         setStep('input');
         setAnalysisLog([]);
-        setFormData({ name: '', phone: '', company: '', useCase: '' });
+        setFormData({ name: '', email: '', phone: '', company: '', useCase: '' });
     };
 
     return (
@@ -189,6 +204,10 @@ const AgenticPage: React.FC = () => {
                                     <div>
                                         <label className="block text-brand-blue text-xs font-mono mb-1">IDENTIFIER (NAME)</label>
                                         <input required name="name" value={formData.name} onChange={handleInputChange} className="w-full bg-brand-surface border border-white/10 text-white p-2 rounded focus:border-brand-blue focus:outline-none focus:ring-1 focus:ring-brand-blue" placeholder="John Doe" />
+                                    </div>
+                                    <div>
+                                        <label className="block text-brand-blue text-xs font-mono mb-1">CONTACT_EMAIL</label>
+                                        <input required name="email" type="email" value={formData.email} onChange={handleInputChange} className="w-full bg-brand-surface border border-white/10 text-white p-2 rounded focus:border-brand-blue focus:outline-none focus:ring-1 focus:ring-brand-blue" placeholder="john@example.com" />
                                     </div>
                                     <div>
                                         <label className="block text-brand-blue text-xs font-mono mb-1">COMMS_LINK (PHONE)</label>
