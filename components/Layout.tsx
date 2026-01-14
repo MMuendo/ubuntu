@@ -125,17 +125,9 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-4 md:mb-0">
-              <div className="flex items-center gap-2">
-                {/* Ubuntu AnalytIQ Logo */}
-                <img
-                  src="/favicon/favicon.svg"
-                  alt="Ubuntu AnalytIQ Logo"
-                  className="h-7 w-auto"
-                />
-                <span className="text-lg font-bold text-white">
-                  Ubuntu <span className="text-brand-cyan">AnalytIQ</span>
-                </span>
-              </div>
+              <span className="text-lg font-bold text-white">
+                Ubuntu <span className="text-brand-cyan">AnalytIQ</span>
+              </span>
               <p className="text-sm text-gray-400 mt-1">
                 Empowering teams with Data & AI fluency.
               </p>
