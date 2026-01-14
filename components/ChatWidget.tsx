@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { MessageSquare, X, Send, Bot, Loader2 } from 'lucide-react';
-import { streamChatResponse } from '../services/aiService';
+import { queryRAG } from '../services/ragService';
 
 interface ChatMessage {
   role: 'user' | 'model';
@@ -34,34 +34,21 @@ const ChatWidget: React.FC = () => {
     setIsLoading(true);
 
     try {
-      // Format history for Gemini SDK
-      const historyForApi = messages.map(m => ({
-        role: m.role,
-        parts: [{ text: m.text }]
+      // Convert messages to the format expected by RAG service
+      const chatHistory = messages.map(m => ({
+        role: m.role === 'model' ? 'assistant' as const : 'user' as const,
+        content: m.text
       }));
 
-      const streamResult = await streamChatResponse(userMessage, historyForApi);
+      // Query the RAG system
+      const response = await queryRAG(userMessage, chatHistory);
 
-      let fullResponse = '';
-      setMessages(prev => [...prev, { role: 'model', text: '' }]);
-
-      for await (const chunk of streamResult) {
-        const text = chunk.choices[0]?.delta?.content || '';
-        if (text) {
-          fullResponse += text;
-          setMessages(prev => {
-            const newMessages = [...prev];
-            const lastMsg = newMessages[newMessages.length - 1];
-            if (lastMsg.role === 'model') {
-              lastMsg.text = fullResponse;
-            }
-            return newMessages;
-          });
-        }
-      }
+      // Add the RAG response to messages
+      setMessages(prev => [...prev, { role: 'model', text: response.answer }]);
 
     } catch (error) {
-      setMessages(prev => [...prev, { role: 'model', text: "I'm having trouble connecting right now. Please try again later." }]);
+      console.error('RAG Query Error:', error);
+      setMessages(prev => [...prev, { role: 'model', text: "I'm having trouble connecting to the knowledge base right now. Please try again later." }]);
     } finally {
       setIsLoading(false);
     }

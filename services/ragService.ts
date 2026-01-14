@@ -5,7 +5,7 @@
  * for course support questions. Falls back to direct Gemini if RAG is unavailable.
  */
 
-const RAG_API_URL = process.env.RAG_API_URL || 'http://localhost:8000';
+const RAG_API_URL = 'https://ubuntu-rag-agent.onrender.com';
 
 export interface RAGResponse {
     query: string;

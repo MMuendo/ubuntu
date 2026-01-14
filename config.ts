@@ -14,6 +14,9 @@ interface Config {
     // Application URLs
     appUrl: string;
     apiUrl: string;
+
+    // RAG System
+    ragApiUrl: string;
 }
 
 function getEnvVar(key: string, required: boolean = true): string {
@@ -33,6 +36,7 @@ export const config: Config = {
     paystackPublicKey: getEnvVar('VITE_PAYSTACK_PUBLIC_KEY', false) || 'pk_test_placeholder',
     appUrl: getEnvVar('VITE_APP_URL', false) || 'http://localhost:3000',
     apiUrl: getEnvVar('VITE_API_URL', false) || 'http://localhost:3000/api',
+    ragApiUrl: getEnvVar('VITE_RAG_API_URL', false) || 'https://ubuntu-rag-agent.onrender.com',
 };
 
 // Validate critical config on startup (only in development)
