@@ -59,9 +59,8 @@ const HomePage: React.FC = () => {
             </span>
           </h1>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-10 leading-relaxed drop-shadow-md">
-            We provide mentorship, training, and consultancy designed to turn raw data into actionable insights.
-            Our approach ensures organizations not only understand their data but can apply it to drive informed decisions,
-            optimize operations, and unlock tangible business value.
+            We build intelligence, enable people, and automate insight using Agentic AI, analytics consulting, and capability enablement to turn data into action. 
+            Through mentorship and courses in Analytics, AI, and Agentic AI Mastery, we develop Data & AI fluency and automate decision workflows.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <button
@@ -85,9 +84,21 @@ const HomePage: React.FC = () => {
       {/* Services Section */}
       <section className="py-20 bg-brand-surface/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              Our Services
+            </h2>
+            <p className="text-gray-400">
+              Build capability, unlock insight, automate outcomes.
+            </p>
+          </div>
+      
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {SERVICES.map((service, idx) => (
-              <div key={idx} className="bg-brand-dark p-8 rounded-2xl border border-white/5 hover:border-brand-cyan/20 transition-all group">
+              <div
+                key={idx}
+                className="bg-brand-dark p-8 rounded-2xl border border-white/5 hover:border-brand-cyan/20 transition-all group"
+              >
                 <div className="mb-6 p-4 bg-white/5 rounded-xl inline-block group-hover:bg-brand-cyan/10 transition-colors">
                   {service.icon}
                 </div>
@@ -150,7 +161,7 @@ const HomePage: React.FC = () => {
                 <div className="w-12 h-12 bg-brand-cyan/10 rounded-full flex items-center justify-center mb-4 text-brand-cyan">
                   <Phone className="w-6 h-6" />
                 </div>
-                <a href="tel:+254706719457" className="text-white font-medium hover:text-brand-cyan transition-colors">+254 706 719 457</a>
+                <a href="tel:+254706719457" className="text-white font-medium hover:text-brand-cyan transition-colors">+254706719457</a>
               </div>
               <div className="flex flex-col items-center">
                 <a
@@ -172,7 +183,7 @@ const HomePage: React.FC = () => {
                 >
                   <Mail className="w-6 h-6" />
                 </a>
-                <a href="mailto:hello@ubuntuanalytiq.com" className="text-white font-medium hover:text-brand-purple transition-colors">hello@ubuntuanalytiq.com</a>
+                <a href="mailto:hello@ubuntuanalytiq.com" className="text-white font-medium hover:text-brand-purple transition-colors">ezra@ubuntuanalytiq.com</a>
               </div>
               <div className="flex flex-col items-center">
                 <a
