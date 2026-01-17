@@ -35,8 +35,8 @@ const Approach: React.FC = () => {
                      <div className="absolute top-0 left-1/2 w-2 h-2 bg-brand-cyan rounded-full animate-bounce"></div>
                  </div>
              </div>
-             <h3 className="text-xl font-bold text-white mb-2">Data Storytelling</h3>
-             <p className="text-sm text-gray-400">Visualizing complex data flows to reveal hidden narratives and actionable insights.</p>
+             <h3 className="text-xl font-bold text-white mb-2">Decision-Driven Analytics</h3>
+             <p className="text-sm text-gray-400">Transforming complex data into business narratives that drive confident decisions.</p>
           </div>
 
           {/* Card 2: Knowledge Sharing (Sparkline) */}
@@ -64,9 +64,9 @@ const Approach: React.FC = () => {
                 </ResponsiveContainer>
              </div>
              <h3 className="text-xl font-bold text-white mb-2 flex items-center gap-2">
-                 Knowledge Sharing <Share2 className="w-4 h-4 text-brand-purple" />
+                 Skills & Capability Development <Share2 className="w-4 h-4 text-brand-purple" />
              </h3>
-             <p className="text-sm text-gray-400">Empowering teams through mentorship, ensuring sustainable growth and skill acquisition.</p>
+             <p className="text-sm text-gray-400">Empowering teams through structured mentorship and practical learning, enabling sustainable capability growth and long-term self-sufficiency.</p>
           </div>
 
           {/* Card 3: Automations */}
@@ -81,8 +81,8 @@ const Approach: React.FC = () => {
                     </div>
                 </div>
              </div>
-             <h3 className="text-xl font-bold text-white mb-2">Automations</h3>
-             <p className="text-sm text-gray-400">Building intelligent agents to automate repetitive tasks and optimize workflows.</p>
+             <h3 className="text-xl font-bold text-white mb-2">Intelligent Analytics Automation</h3>
+             <p className="text-sm text-gray-400">Designing intelligent automation across analytics workflows — from data pipelines and reporting to AI-driven agents that optimize decisions and operations.</p>
           </div>
 
         </div>
