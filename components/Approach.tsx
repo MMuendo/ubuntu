@@ -66,7 +66,7 @@ const Approach: React.FC = () => {
              <h3 className="text-xl font-bold text-white mb-2 flex items-center gap-2">
                  Skills & Capability Development <Share2 className="w-4 h-4 text-brand-purple" />
              </h3>
-             <p className="text-sm text-gray-400">Empowering teams through structured mentorship and practical learning, enabling sustainable capability growth and long-term self-sufficiency.</p>
+             <p className="text-sm text-gray-400">Empowering teams through mentorship and practical learning to build sustainable, self-sufficient capability.</p>
           </div>
 
           {/* Card 3: Automations */}
@@ -82,7 +82,7 @@ const Approach: React.FC = () => {
                 </div>
              </div>
              <h3 className="text-xl font-bold text-white mb-2">Intelligent Analytics Automation</h3>
-             <p className="text-sm text-gray-400">Designing intelligent automation across analytics workflows — from data pipelines and reporting to AI-driven agents that optimize decisions and operations.</p>
+             <p className="text-sm text-gray-400">Automating analytics workflows, from pipelines and reporting to AI-driven decision agents.</p>
           </div>
 
         </div>
