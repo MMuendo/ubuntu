@@ -163,10 +163,10 @@ CREATE POLICY "Admins can manage questions" ON assessment_questions
 
 -- Insert initial courses from constants
 INSERT INTO courses (id, title, description, price, level, tags, duration) VALUES
-  ('excel-workshop', 'Excel Workshop', 'Master advanced Excel functions, pivot tables, and data visualization techniques. Includes 3 months access, personalized playbook mastery, weekly mentorship check-ins, private WhatsApp community, and practical weekly tasks.', 20000, 'Beginner', ARRAY['Data Analysis', 'Productivity', '3 Months'], '3 months'),
-  ('powerbi-workshop', 'Excel & Power BI Hybrid', 'Bridge the gap between spreadsheets and modern business intelligence dashboards. Includes 3 months access, personalized playbook mastery, weekly mentorship check-ins, private WhatsApp community, and practical weekly tasks.', 25000, 'Intermediate', ARRAY['BI', 'Visualization', '3 Months'], '3 months'),
-  ('ai-agents-masterclass', 'AI Agents Masterclass', 'Learn to design and deploy autonomous AI agents for business automation. Includes n8n Automation, APIs, Agentic Workflows, weekly mentorship check-ins, private WhatsApp community, and practical weekly tasks.', 12500, 'Advanced', ARRAY['Agentic AI', 'Automation', '1 Month'], '1 month'),
-  ('ai-mastery', 'AI Mastery', 'Master AI fundamentals, prompting techniques, and ethics for modern business. Includes personalized playbook mastery, weekly mentorship check-ins, private WhatsApp community, and practical weekly tasks.', 7500, 'Intermediate', ARRAY['AI Fluency', 'Prompting', '1 Month'], '1 month')
+  ('excel-workshop', 'Data Thinking with Excel', 'Learn how to structure problems, model business logic, and communicate insights; not just use formulas. This program builds the analytical mindset every decision professional needs before scaling to BI or AI.', 20000, 'Foundation', ARRAY['Data Analysis', 'Productivity', '3 Months'], '3 months'),
+  ('powerbi-workshop', 'Decision Systems with Power BI', 'This pathway is for professionals who’ve outgrown spreadsheets and want to build decision-ready dashboards that executives actually use. You’ll learn how to translate business questions into automated, scalable decision systems.', 25000, 'Core', ARRAY['BI', 'Visualization', '3 Months'], '3 months'),
+  ('ai-mastery', 'AI Fluency for Business Leaders', 'This is not about prompts. It’s about understanding where AI fits — and where it doesn’t — in decision-making, analytics, and leadership. Ideal for professionals who want to lead AI conversations, not follow trends.', 7500, 'Strategic Mastery', ARRAY['AI Fluency', 'Prompting', '1 Month'], '1 month'),
+  ('ai-agents-masterclass', 'Agentic Systems for Decision Automation', 'Design AI agents that don’t just automate tasks — but support analysis, monitoring, and decision execution in real business environments. This is where analysts transition into system thinkers.', 12500, 'Advanced', ARRAY['Agentic AI', 'Automation', '1 Month'], '1 month')  
 ON CONFLICT (id) DO UPDATE SET
   title = EXCLUDED.title,
   description = EXCLUDED.description,
@@ -178,8 +178,8 @@ ON CONFLICT (id) DO UPDATE SET
 
 -- Insert initial plans
 INSERT INTO plans (id, name, description, price, threshold_score, plan_type) VALUES
-  ('ai-mastery-plan', 'AI Mastery Plan', 'Master AI fundamentals, prompting techniques, and ethics. Includes weekly mentorship check-ins and WhatsApp community access.', 7500, 0, 'basic'),
-  ('ai-agents-plan', 'AI Agents Mastery Plan', 'Design and deploy autonomous AI agents with n8n automation, APIs, and agentic workflows. Includes weekly mentorship and WhatsApp community.', 12500, 70, 'advanced')
+  ('ai-mastery-plan', 'AI Mastery Plan', 'This is not about prompts. It’s about understanding where AI fits — and where it doesn’t — in decision-making, analytics, and leadership. Ideal for professionals who want to lead AI conversations, not follow trends.', 7500, 0, 'basic'),
+  ('ai-agents-plan', 'AI Agents Mastery Plan', 'Design AI agents that don’t just automate tasks — but support analysis, monitoring, and decision execution in real business environments. This is where analysts transition into system thinkers.', 12500, 70, 'advanced')
 ON CONFLICT (id) DO UPDATE SET
   name = EXCLUDED.name,
   description = EXCLUDED.description,
