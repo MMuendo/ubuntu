@@ -317,7 +317,7 @@ export const ASSESSMENT_QUESTIONS: Question[] = [
     id: 19,
     text: "You are using LangChain to build an agent. What is 'Memory'?",
     options: [
-      "The mechanism that allows the agent to remember previous messages.,
+      "The mechanism that allows the agent to remember previous messages.",
       "The hard drive space on your laptop.",
       "The training data from 2021.",
       "The speed of the processor."
