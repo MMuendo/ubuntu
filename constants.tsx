@@ -7,33 +7,57 @@ export const COURSES: Course[] = [
     id: 'excel-workshop',
     title: 'Excel Workshop',
     price: 20000,
-    description: 'Master advanced Excel functions, pivot tables, and data visualization techniques. Includes 3 months access, personalized playbook mastery, weekly mentorship check-ins, private WhatsApp community, and practical weekly tasks.',
+    description: `
+    • Excel for data decisions.
+    • 12-week expert walkthrough.
+    • Personalized Excel playbook.
+    • Weekly practical assignments.
+    • Mentorship + community access.
+    `,
     level: 'Beginner',
     tags: ['Data Analysis', 'Productivity', '3 Months']
   },
   {
     id: 'powerbi-workshop',
-    title: 'Excel & Power BI Hybrid',
-    price: 25000,
-    description: 'Bridge the gap between spreadsheets and modern business intelligence dashboards. Includes 3 months access, personalized playbook mastery, weekly mentorship check-ins, private WhatsApp community, and practical weekly tasks.',
-    level: 'Intermediate',
-    tags: ['BI', 'Visualization', '3 Months']
-  },
-  {
-    id: 'ai-agents-masterclass',
-    title: 'AI Agents Masterclass',
-    price: 12500,
-    description: 'Learn to design and deploy autonomous AI agents for business automation. Includes n8n Automation, APIs, Agentic Workflows, weekly mentorship check-ins, private WhatsApp community, and practical weekly tasks.',
-    level: 'Advanced',
-    tags: ['Agentic AI', 'Automation', '1 Month']
+    title: 'Power BI Workshop',
+    price: 20000,
+    description: `
+    • Bridge spreadsheets to BI.
+    • 12-week expert-led journey.
+    • Personalized Power BI playbook.
+    • Weekly real-world dashboards.
+    • Mentorship + community access.
+    `,
+    level: 'Beginner',
+    tags: ['Business Intelligence', 'Dashboards', '3 Months']
   },
   {
     id: 'ai-mastery',
     title: 'AI Mastery',
     price: 7500,
-    description: 'Master AI fundamentals, prompting techniques, and ethics for modern business. Includes personalized playbook mastery, weekly mentorship check-ins, private WhatsApp community, and practical weekly tasks.',
+    description: `
+    • AI for business advantage.
+    • 4-week expert-led journey.
+    • Personalized AI playbook.
+    • Weekly practical AI tasks.
+    • Mentorship + community access.
+    `,
     level: 'Intermediate',
     tags: ['AI Fluency', 'Prompting', '1 Month']
+  },
+  {
+    id: 'ai-agents-masterclass',
+    title: 'AI Agents Masterclass',
+    price: 12500,
+    description: `
+    • Build autonomous AI agents.
+    • 12-week expert-led journey.
+    • Personalized agent playbook.
+    • Weekly automation mastery tasks.
+    • Mentorship + community access.
+    `,
+    level: 'Advanced',
+    tags: ['Agentic AI', 'Automation', '1 Month']
   }
 ];
 
