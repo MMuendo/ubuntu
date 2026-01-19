@@ -5,58 +5,34 @@ import { BarChart3, Brain, Bot, FileSpreadsheet, Database, Zap } from 'lucide-re
 export const COURSES: Course[] = [
   {
     id: 'excel-workshop',
-    title: 'Excel Workshop',
+    title: 'Data Thinking with Excel',
     price: 20000,
-    description: `
-    Excel for data decisions.
-    12-week expert walkthrough.
-    Personalized Excel playbook.
-    Weekly practical assignments.
-    Mentorship + community access.
-    `,
-    level: 'Beginner',
+    description: 'Learn how to structure problems, model business logic, and communicate insights — not just use formulas. This program builds the analytical mindset every decision professional needs before scaling to BI or AI.',
+    level: 'Excel Workshop',
     tags: ['Data Analysis', 'Productivity', '3 Months']
   },
   {
     id: 'powerbi-workshop',
-    title: 'Power BI Workshop',
+    title: 'From Reporting to Decision Systems',
     price: 20000,
-    description: `
-    Bridge spreadsheets to BI.
-    12-week expert-led journey.
-    Personalized Power BI playbook.
-    Weekly real-world dashboards.
-    Mentorship + community access.
-    `,
-    level: 'Beginner',
+    description: 'This mentorship is for professionals who’ve outgrown spreadsheets and want to build decision-ready dashboards that executives actually use. You’ll learn how to translate business questions into automated, scalable decision systems using Power BI.',
+    level: 'Power BI Hybrid',
     tags: ['Business Intelligence', 'Dashboards', '3 Months']
   },
   {
     id: 'ai-mastery',
-    title: 'AI Mastery',
+    title: 'AI Fluency for Business Leaders & Analysts',
     price: 7500,
-    description: `
-    AI for business advantage.
-    4-week expert-led journey.
-    Personalized AI playbook.
-    Weekly practical AI tasks.
-    Mentorship + community access.
-    `,
-    level: 'Intermediate',
+    description: 'This is not about prompts. It’s about understanding where AI fits — and where it doesn’t — in decision-making, analytics, and leadership. Ideal for professionals who want to lead AI conversations, not follow trends.',
+    level: 'AI Mastery',
     tags: ['AI Fluency', 'Prompting', '1 Month']
   },
   {
     id: 'ai-agents-masterclass',
-    title: 'AI Agents Masterclass',
+    title: 'Agentic Systems for Decision Automation',
     price: 12500,
-    description: `
-    Build autonomous AI agents.
-    12-week expert-led journey.
-    Personalized agent playbook.
-    Weekly automation mastery tasks.
-    Mentorship + community access.
-    `,
-    level: 'Advanced',
+    description: 'Design AI agents that don’t just automate tasks — but support analysis, monitoring, and decision execution in real business environments. This is where analysts transition into system thinkers.',
+    level: 'AI Agents',
     tags: ['Agentic AI', 'Automation', '1 Month']
   }
 ];
