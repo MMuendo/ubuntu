@@ -42,7 +42,7 @@ const Navbar: React.FC = () => {
           {/* Desktop Menu */}
           <div className="hidden md:flex space-x-8 items-center">
             <button onClick={() => navigate('/')} className="text-gray-300 hover:text-brand-accent transition-colors text-sm font-medium">Home</button>
-            <a href="#courses" onClick={handleScrollToCourses} className="text-gray-300 hover:text-brand-accent transition-colors text-sm font-medium cursor-pointer">Courses</a>
+            <a href="#courses" onClick={handleScrollToCourses} className="text-gray-300 hover:text-brand-accent transition-colors text-sm font-medium cursor-pointer">Pathways</a>
             <Link to="/assessment" className="text-gray-300 hover:text-brand-accent transition-colors text-sm font-medium">AI Fluency</Link>
             <Link to="/agentic" className="text-gray-300 hover:text-brand-accent transition-colors text-sm font-medium">Agentic AI</Link>
             <Link to="/blog" className="text-gray-300 hover:text-brand-accent transition-colors text-sm font-medium">Blog</Link>
