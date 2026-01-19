@@ -40,11 +40,11 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           <div className="flex items-center justify-between h-16">
             <Link to="/" className="flex-shrink-0 group flex items-center gap-2">
               {/* Ubuntu AnalytIQ Logo */}
-              <img
+              {/* <img
                 src="/favicon/favicon.svg"
                 alt="Ubuntu AnalytIQ Logo"
                 className="h-8 w-auto"
-              />
+              /> */}
               <span className="text-xl font-bold tracking-tight text-white group-hover:text-brand-cyan transition-colors">
                 Ubuntu <span className="text-brand-cyan">AnalytIQ</span>
               </span>

@@ -38,7 +38,7 @@ const EnrollmentOptionsPage: React.FC = () => {
                 </div>
 
                 {/* Options Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
                     {/* Option 1: Pay Now */}
                     <div className="bg-brand-surface border-2 border-brand-cyan/30 rounded-2xl p-8 hover:border-brand-cyan transition-all group relative overflow-hidden">
                         {/* Glow effect */}
@@ -133,6 +133,57 @@ const EnrollmentOptionsPage: React.FC = () => {
                             className="w-full py-4 border-2 border-brand-purple text-brand-purple font-bold rounded-lg hover:bg-brand-purple/10 transition-all flex items-center justify-center gap-2"
                         >
                             Schedule Consultation
+                            <ArrowRight className="w-5 h-5" />
+                        </button>
+                    </div>
+
+                    {/* Option 3: Get a Playbook */}
+                    <div className="bg-brand-surface border-2 border-brand-cyan/30 rounded-2xl p-8 hover:border-brand-cyan transition-all group relative overflow-hidden">
+                        {/* Glow effect */}
+                        <div className="absolute top-0 right-0 w-64 h-64 bg-brand-cyan/10 rounded-full blur-3xl -z-10 group-hover:bg-brand-cyan/20 transition-all"></div>
+
+                        <div className="flex items-center justify-center w-16 h-16 bg-brand-cyan/10 rounded-full mb-6 group-hover:bg-brand-cyan/20 transition-colors">
+                            <div className="w-8 h-8 text-brand-cyan">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" /><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" /></svg>
+                            </div>
+                        </div>
+
+                        <h2 className="text-3xl font-bold text-white mb-4">Get a Playbook</h2>
+                        <p className="text-gray-400 mb-6 text-lg">
+                            Comes with weekly mentorship and Q&A.
+                        </p>
+
+                        <div className="mb-8">
+                            <div className="text-4xl font-bold text-white mb-2">
+                                KES 2,500
+                            </div>
+                            <p className="text-sm text-gray-500">One-time payment</p>
+                        </div>
+
+                        <div className="space-y-3 mb-8">
+                            <div className="flex items-start gap-3">
+                                <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                                <span className="text-gray-300">Detailed Action Plan</span>
+                            </div>
+                            <div className="flex items-start gap-3">
+                                <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                                <span className="text-gray-300">Weekly Mentorship</span>
+                            </div>
+                            <div className="flex items-start gap-3">
+                                <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                                <span className="text-gray-300">Live Q&A Sessions</span>
+                            </div>
+                            <div className="flex items-start gap-3">
+                                <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                                <span className="text-gray-300">Community Access</span>
+                            </div>
+                        </div>
+
+                        <button
+                            onClick={() => navigate(`/checkout?courseId=playbook&courseName=Playbook&coursePrice=2500`)}
+                            className="w-full py-4 bg-brand-cyan/10 border-2 border-brand-cyan text-brand-cyan font-bold rounded-lg hover:bg-brand-cyan hover:text-brand-dark transition-all flex items-center justify-center gap-2"
+                        >
+                            Pay Now
                             <ArrowRight className="w-5 h-5" />
                         </button>
                     </div>
