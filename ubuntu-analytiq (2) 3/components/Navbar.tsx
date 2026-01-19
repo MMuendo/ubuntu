@@ -69,7 +69,7 @@ const Navbar: React.FC = () => {
         <div className="md:hidden bg-brand-darker border-b border-gray-800">
           <div className="px-4 pt-2 pb-4 space-y-2">
             <button onClick={() => handleNav('/')} className="block w-full text-left py-2 text-gray-300 hover:text-brand-accent">Home</button>
-            <a href="#courses" onClick={handleScrollToCourses} className="block w-full text-left py-2 text-gray-300 hover:text-brand-accent cursor-pointer">Courses</a>
+            <a href="#courses" onClick={handleScrollToCourses} className="block w-full text-left py-2 text-gray-300 hover:text-brand-accent cursor-pointer">Pathways</a>
             <button onClick={() => handleNav('/assessment')} className="block w-full text-left py-2 text-gray-300 hover:text-brand-accent">AI Fluency</button>
             <button onClick={() => handleNav('/agentic')} className="block w-full text-left py-2 text-gray-300 hover:text-brand-accent">Agentic AI</button>
              <button onClick={() => handleNav('/blog')} className="block w-full text-left py-2 text-gray-300 hover:text-brand-accent">Blog</button>
