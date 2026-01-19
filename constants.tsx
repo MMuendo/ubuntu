@@ -8,11 +8,11 @@ export const COURSES: Course[] = [
     title: 'Excel Workshop',
     price: 20000,
     description: `
-    • Excel for data decisions.
-    • 12-week expert walkthrough.
-    • Personalized Excel playbook.
-    • Weekly practical assignments.
-    • Mentorship + community access.
+    Excel for data decisions.
+    12-week expert walkthrough.
+    Personalized Excel playbook.
+    Weekly practical assignments.
+    Mentorship + community access.
     `,
     level: 'Beginner',
     tags: ['Data Analysis', 'Productivity', '3 Months']
@@ -22,11 +22,11 @@ export const COURSES: Course[] = [
     title: 'Power BI Workshop',
     price: 20000,
     description: `
-    • Bridge spreadsheets to BI.
-    • 12-week expert-led journey.
-    • Personalized Power BI playbook.
-    • Weekly real-world dashboards.
-    • Mentorship + community access.
+    Bridge spreadsheets to BI.
+    12-week expert-led journey.
+    Personalized Power BI playbook.
+    Weekly real-world dashboards.
+    Mentorship + community access.
     `,
     level: 'Beginner',
     tags: ['Business Intelligence', 'Dashboards', '3 Months']
@@ -36,11 +36,11 @@ export const COURSES: Course[] = [
     title: 'AI Mastery',
     price: 7500,
     description: `
-    • AI for business advantage.
-    • 4-week expert-led journey.
-    • Personalized AI playbook.
-    • Weekly practical AI tasks.
-    • Mentorship + community access.
+    AI for business advantage.
+    4-week expert-led journey.
+    Personalized AI playbook.
+    Weekly practical AI tasks.
+    Mentorship + community access.
     `,
     level: 'Intermediate',
     tags: ['AI Fluency', 'Prompting', '1 Month']
@@ -50,11 +50,11 @@ export const COURSES: Course[] = [
     title: 'AI Agents Masterclass',
     price: 12500,
     description: `
-    • Build autonomous AI agents.
-    • 12-week expert-led journey.
-    • Personalized agent playbook.
-    • Weekly automation mastery tasks.
-    • Mentorship + community access.
+    Build autonomous AI agents.
+    12-week expert-led journey.
+    Personalized agent playbook.
+    Weekly automation mastery tasks.
+    Mentorship + community access.
     `,
     level: 'Advanced',
     tags: ['Agentic AI', 'Automation', '1 Month']
