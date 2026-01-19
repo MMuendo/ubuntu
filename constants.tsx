@@ -112,48 +112,48 @@ export const ASSESSMENT_QUESTIONS: Question[] = [
     id: 2,
     text: "Which AI tool is best suited for 'Real-Time' market research (e.g., finding current maize prices in Nakuru or competitor pricing)?",
     options: [
-      "Perplexity AI / Google Gemini (Tools with Web Search)",
-      "ChatGPT (Free Version 3.5)",
       "Midjourney",
-      "Jasper AI"
+      "ChatGPT (Free Version 3.5)",
+      "Perplexity AI / Google Gemini (Tools with Web Search)",
+      "Claude AI"
     ],
-    correctIndex: 0,
+    correctIndex: 2,
     category: "Intermediate"
   },
   {
     id: 3,
     text: "Under Kenya's Data Protection Act (2019), what is a major risk when pasting customer phone numbers and credit limits into a public LLM like ChatGPT?",
     options: [
-      "Data Leakage & Violation of Privacy (The model might train on this confidential data).",
       "The model will refuse to process numbers.",
+      "Data Leakage & Violation of Privacy (The model might train on this confidential data).",
       "It costs too much money.",
       "The internet connection will fail."
     ],
-    correctIndex: 0,
+    correctIndex: 1,
     category: "Intermediate"
   },
   {
     id: 4,
     text: "You want to automate customer support for your business on a platform most Africans use daily. Which tool integration is most valuable?",
     options: [
-      "WhatsApp Business API + AI Chatbot",
+      "Email Autoresponder",
       "Slack Bot",
       "Discord Server",
-      "Email Autoresponder"
+      "WhatsApp Business API + AI Chatbot"
     ],
-    correctIndex: 0,
+    correctIndex: 3,
     category: "Intermediate"
   },
   {
     id: 5,
     text: "What is 'Chain of Thought' prompting?",
     options: [
-      "Asking the AI to 'Think step-by-step' to improve reasoning on complex math or logic problems.",
-      "Asking the AI to link multiple websites together.",
       "Writing a very long prompt with no punctuation.",
+      "Asking the AI to link multiple websites together.",
+      "Asking the AI to 'Think step-by-step' to improve reasoning on complex math or logic problems.",
       "Translating text from English to Swahili."
     ],
-    correctIndex: 0,
+    correctIndex: 2,
     category: "Intermediate"
   },
   {
@@ -172,36 +172,36 @@ export const ASSESSMENT_QUESTIONS: Question[] = [
     id: 7,
     text: "Which of these is a 'Generative AI' task?",
     options: [
-      "Creating a new logo or writing a blog post from scratch.",
+      "Storing files in the cloud.",
       "Sorting an Excel sheet alphabetically.",
       "Calculating the sum of a sales column.",
-      "Storing files in the cloud."
+      "Creating a new logo or writing a blog post from scratch."
     ],
-    correctIndex: 0,
+    correctIndex: 3,
     category: "Intermediate"
   },
   {
     id: 8,
     text: "Why is 'Context Window' important when analyzing a long PDF report (e.g., a 50-page annual report)?",
     options: [
-      "It limits how much text the AI can 'read' and remember at one time.",
       "It determines the speed of the internet.",
+      "It limits how much text the AI can 'read' and remember at one time.",
       "It changes the color of the interface.",
       "It is the price per month of the tool."
     ],
-    correctIndex: 0,
+    correctIndex: 1,
     category: "Intermediate"
   },
   {
     id: 9,
     text: "For a graphic designer in Nairobi, which tool is specifically built for generating high-quality images from text?",
     options: [
-      "Midjourney / DALL-E 3",
+      "Zapier",
       "Claude 3.5 Sonnet",
       "GitHub Copilot",
-      "Zapier"
+      "Midjourney / DALL-E 3"
     ],
-    correctIndex: 0,
+    correctIndex: 3,
     category: "Intermediate"
   },
   {
@@ -233,36 +233,36 @@ export const ASSESSMENT_QUESTIONS: Question[] = [
     id: 12,
     text: "You are building an agent to process payments. Which 'Tool' would you give the agent to trigger an M-Pesa transaction?",
     options: [
-      "An API Function Call (POST request) to the Daraja API.",
       "A link to the Safaricom website.",
+      "An API Function Call to the Daraja API.",
       "A text file with phone numbers.",
       "A screenshot of a QR code."
     ],
-    correctIndex: 0,
+    correctIndex: 1,
     category: "Advanced"
   },
   {
     id: 13,
     text: "In the context of n8n (a low-code automation tool), what does a 'Webhook' allow you to do?",
     options: [
-      "Receive real-time data from an external source (e.g., a Typeform submission) to trigger a workflow.",
+      "Encrypt your password.",
       "Catch fish in a digital pond.",
       "Design a website landing page.",
-      "Encrypt your password."
+      "Receive real-time data from an external source to trigger a workflow."
     ],
-    correctIndex: 0,
+    correctIndex: 3,
     category: "Advanced"
   },
   {
     id: 14,
     text: "What does RAG (Retrieval-Augmented Generation) allow an AI agent to do for a Kenyan Law Firm?",
     options: [
-      "Search a private database of Kenyan Legal Precedents before answering a client's question.",
-      "Generate random laws.",
       "Search Google for US laws only.",
+      "Generate random laws.",
+      "Search a private database of Kenyan Legal Precedents before answering a client's question.",
       "Automatically sue people."
     ],
-    correctIndex: 0,
+    correctIndex: 2,
     category: "Advanced"
   },
   {
@@ -281,7 +281,7 @@ export const ASSESSMENT_QUESTIONS: Question[] = [
     id: 16,
     text: "What is the role of a 'Router' in a Multi-Agent System?",
     options: [
-      "It acts as a traffic controller, deciding whether to send a user's query to the 'Sales Agent' or the 'Tech Support Agent.'",
+      "It acts as a traffic controller.",
       "It provides Wi-Fi to the office.",
       "It translates English to Swahili.",
       "It generates images for the chat."
@@ -293,19 +293,19 @@ export const ASSESSMENT_QUESTIONS: Question[] = [
     id: 17,
     text: "Which format is commonly used to structure data when passing it between an AI Agent and an API (like M-Pesa or Shopify)?",
     options: [
-      "JSON (JavaScript Object Notation)",
+      "JPEG Image",
       "PDF",
       "MS Word Doc",
-      "JPEG Image"
+      "JSON"
     ],
-    correctIndex: 0,
+    correctIndex: 3,
     category: "Advanced"
   },
   {
     id: 18,
     text: "Why is 'Human-in-the-Loop' critical when using agents for high-stakes tasks (like approving loans)?",
     options: [
-      "To prevent the AI from making biased or costly errors by requiring human approval before the final action.",
+      "To prevent the AI from making biased or costly errors.",
       "Because AI cannot do math.",
       "To slow down the process intentionally.",
       "To ensure the AI doesn't get lonely."
@@ -317,7 +317,7 @@ export const ASSESSMENT_QUESTIONS: Question[] = [
     id: 19,
     text: "You are using LangChain to build an agent. What is 'Memory'?",
     options: [
-      "The mechanism that allows the agent to remember previous messages in the conversation to maintain context.",
+      "The mechanism that allows the agent to remember previous messages.,
       "The hard drive space on your laptop.",
       "The training data from 2021.",
       "The speed of the processor."
@@ -329,12 +329,12 @@ export const ASSESSMENT_QUESTIONS: Question[] = [
     id: 20,
     text: "A 'ReAct' Agent follows which cycle to solve problems?",
     options: [
-      "Reason -> Act -> Observe (It thinks, uses a tool, looks at the result, and thinks again).",
-      "Read -> React -> Repeat.",
       "Random -> Action -> Output.",
+      "Read -> React -> Repeat.",
+      "Reason -> Act -> Observe.",
       "Request -> API -> JSON."
     ],
-    correctIndex: 0,
+    correctIndex: 2,
     category: "Advanced"
   }
 ];
