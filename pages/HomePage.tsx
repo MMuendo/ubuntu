@@ -133,12 +133,11 @@ const HomePage: React.FC = () => {
                   <h3 className="text-xl font-bold text-white mb-2">{course.title}</h3>
                   <p className="text-sm text-gray-400 mb-6 flex-grow">{course.description}</p>
                   <div className="flex items-center justify-between mt-4 pt-4 border-t border-white/5">
-                    <span className="text-white font-mono font-bold">KES {course.price.toLocaleString()}</span>
                     <button
                       onClick={() => handleEnroll(course)}
                       className="text-brand-cyan hover:text-white text-sm font-semibold flex items-center gap-1"
                     >
-                      Enroll <ArrowRight className="w-4 h-4" />
+                      Apply to Join <ArrowRight className="w-4 h-4" />
                     </button>
                   </div>
                 </div>
