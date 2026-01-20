@@ -195,7 +195,7 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* Enhanced Courses Section */}
-      <section id="courses" className="py-12 md:py-20 bg-gradient-to-b from-black via-gray-900/50 to-black">
+      <section id="courses" className="py-20 bg-gradient-to-b from-black via-gray-900/50 to-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
           <div className="text-center mb-12 md:mb-16">
