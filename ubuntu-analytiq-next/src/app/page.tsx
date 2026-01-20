@@ -76,11 +76,11 @@ const services = [
 const courses = [
   {
     id: "excel-workshop",
-    title: "Excel Workshop",
+    title: "Data Thinking with Excel",
     price: 20000,
     description:
-      "Master advanced Excel functions, pivot tables, and data visualization techniques.",
-    level: "Beginner",
+      "Build analytical thinking skills to structure problems, model business logic, and turn data into actionable insights using Excel.\n\nIncludes:\n• Advanced Excel formulas & functions\n• Data modeling & pivot tables\n• Business case studies & exercises\n• Weekly mentorship sessions",
+    level: "Foundation",
   },
   {
     id: "powerbi-workshop",
