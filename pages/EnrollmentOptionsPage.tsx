@@ -235,10 +235,6 @@ const EnrollmentOptionsPage: React.FC = () => {
                                 <CheckCircle className="w-5 h-5 text-brand-cyan flex-shrink-0 mt-0.5" />
                                 <span className="text-gray-300 font-medium">Professional certificate</span>
                             </div>
-                            <div className="flex items-start gap-3">
-                                <CheckCircle className="w-5 h-5 text-brand-cyan flex-shrink-0 mt-0.5" />
-                                <span className="text-gray-300 font-medium">Lifetime platform access</span>
-                            </div>
                         </div>
 
                         <button
