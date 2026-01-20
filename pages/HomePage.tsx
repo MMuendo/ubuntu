@@ -78,7 +78,7 @@ const HomePage: React.FC = () => {
       includes: [
         'AI agent design fundamentals',
         'AI agent design fundamentals',
-        'Knowledge, memory, and tools,
+        'Knowledge, memory, and tools',
         'Deploying agents across channels'
       ],
       gradient: 'from-orange-500/10 to-red-500/10',
