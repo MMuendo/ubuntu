@@ -1,94 +1,268 @@
 import React from 'react';
-import { LineChart, Line, ResponsiveContainer, XAxis, YAxis, Tooltip } from 'recharts';
-import { Database, Share2, Cog } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import {
+  ArrowRight,
+  MapPin,
+  Phone,
+  Mail,
+  CheckCircle2,
+  FileSpreadsheet,
+  BarChart3,
+  Brain,
+  Zap,
+  Bot,
+  Quote
+} from 'lucide-react';
 
-const sparkData = [
-  { val: 10 }, { val: 25 }, { val: 20 }, { val: 40 }, { val: 35 }, { val: 55 }, { val: 50 }, { val: 80 }
-];
+import Approach from '../components/Approach';
+import LoadingSpinner from '../components/LoadingSpinner';
+import { useCourses } from '../hooks/useCourses';
 
-const Approach: React.FC = () => {
+const HomePage: React.FC = () => {
+  const navigate = useNavigate();
+  const { loading: coursesLoading } = useCourses();
+
+  const enhancedCourses = [
+    {
+      id: 'excel-workshop',
+      title: 'Data Thinking with Excel',
+      level: 'Foundation',
+      description:
+        'Learn how to structure problems, think analytically, and make better decisions using data',
+      price: 20000,
+      icon: FileSpreadsheet,
+      includes: [
+        'Advanced Excel formulas and logic',
+        'Power Query and Power Pivot foundations',
+        'Business problem structuring frameworks',
+        'Decision-ready Excel models'
+      ]
+    },
+    {
+      id: 'powerbi-workshop',
+      title: 'Decision Systems with Power BI',
+      level: 'Core',
+      description:
+        'Turn data into decision-ready dashboards and decision systems leaders trust.',
+      price: 25000,
+      icon: BarChart3,
+      includes: [
+        'Power Query data transformation',
+        'Star-schema data modelling',
+        'DAX measures and time intelligence',
+        'Executive-ready dashboards'
+      ]
+    },
+    {
+      id: 'ai-mastery',
+      title: 'AI Fluency for Business Leaders',
+      level: 'AI Mastery',
+      description:
+        'Understand how to use AI confidently and responsibly for real work.',
+      price: 7500,
+      icon: Brain,
+      includes: [
+        'How modern AI systems think',
+        'Prompt engineering',
+        'AI tools and workflows',
+        'Responsible AI usage'
+      ]
+    },
+    {
+      id: 'ai-agents',
+      title: 'Agentic Systems for Automation',
+      level: 'Advanced',
+      description:
+        'Design AI systems that support decisions, execution, and scale.',
+      price: 12500,
+      icon: Zap,
+      includes: [
+        'Agent design fundamentals',
+        'Memory, tools, and orchestration',
+        'Deploying agents in business'
+      ]
+    }
+  ];
+
+  const services = [
+    {
+      id: 'analytics',
+      title: 'Business Analytics',
+      description:
+        'Analytics consulting and capability building to turn data into decisions.',
+      icon: BarChart3
+    },
+    {
+      id: 'ai-fluency',
+      title: 'AI & Data Fluency',
+      description:
+        'Practical AI training for leaders, teams, and organisations.',
+      icon: Brain
+    },
+    {
+      id: 'agentic',
+      title: 'Agentic Workflows',
+      description:
+        'Design and deployment of AI agents for operations, HR, and support.',
+      icon: Bot
+    }
+  ];
+
+  const testimonials = [
+    {
+      name: 'Sarah Mitchell',
+      role: 'Head of Analytics',
+      content:
+        'Ubuntu transformed our team from Excel users to decision thinkers.',
+    },
+    {
+      name: 'James Omondi',
+      role: 'CEO',
+      content:
+        'The AI fluency program helped us lead AI conversations confidently.',
+    },
+    {
+      name: 'Maria Santos',
+      role: 'Operations Director',
+      content:
+        'Agentic workflows saved us hundreds of hours every month.',
+    }
+  ];
+
+  const handleEnroll = (course: any) => {
+    navigate(
+      `/enroll?courseId=${course.id}&courseName=${encodeURIComponent(
+        course.title
+      )}&coursePrice=${course.price}`
+    );
+  };
+
   return (
-    <section className="py-20 bg-brand-dark relative overflow-hidden">
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-brand-cyan/30 to-transparent"></div>
-      
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Our Approach</h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">
-            Blending technical rigor with strategic foresight to deliver measurable impact.
+    <div className="bg-[#18100F] text-white">
+      {/* HERO */}
+      <section className="min-h-[90vh] flex items-center justify-center">
+        <div className="max-w-7xl mx-auto px-4 text-center">
+          <h1 className="text-5xl md:text-7xl font-bold mb-6">
+            Unlock Your Potential With <br />
+            <span className="text-[#00B5F1]">AI & Data Fluency</span>
+          </h1>
+
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-10">
+            We build intelligence, enable people, and automate insight using data and AI.
+          </p>
+
+          <div className="flex justify-center gap-4">
+            <button
+              onClick={() => navigate('/assessment')}
+              className="px-8 py-4 bg-[#00B5F1] text-black rounded-full font-bold"
+            >
+              Start Your Journey
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* WHO WE ARE */}
+      <section className="py-20">
+        <div className="max-w-5xl mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold mb-6">Who We Are</h2>
+          <p className="text-gray-300 text-lg">
+            Ubuntu is a data and AI capability partner helping professionals and
+            organisations think better, decide faster, and execute smarter.
           </p>
         </div>
+      </section>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          
-          {/* Card 1: Data Storytelling */}
-          <div className="bg-brand-surface border border-white/5 rounded-2xl p-6 relative group overflow-hidden hover:border-brand-cyan/30 transition-all duration-300">
-             <div className="absolute -right-10 -top-10 w-32 h-32 bg-brand-cyan/10 rounded-full blur-2xl group-hover:bg-brand-cyan/20 transition-all"></div>
-             <div className="h-40 flex items-center justify-center mb-6 relative">
-                 <div className="relative w-24 h-24">
-                     <div className="absolute inset-0 border-2 border-brand-cyan/30 rounded-full animate-[spin_10s_linear_infinite]"></div>
-                     <div className="absolute inset-2 border-2 border-brand-purple/30 rounded-full animate-[spin_7s_linear_infinite_reverse]"></div>
-                     <div className="absolute inset-0 flex items-center justify-center">
-                        <Database className="text-brand-cyan w-10 h-10 animate-pulse" />
-                     </div>
-                     {/* Flow particles */}
-                     <div className="absolute top-0 left-1/2 w-2 h-2 bg-brand-cyan rounded-full animate-bounce"></div>
-                 </div>
-             </div>
-             <h3 className="text-xl font-bold text-white mb-2">Decision-Driven Analytics</h3>
-             <p className="text-sm text-gray-400">Transforming complex data into business narratives that drive confident decisions.</p>
-          </div>
-
-          {/* Card 2: Knowledge Sharing (Sparkline) */}
-          <div className="bg-brand-surface border border-white/5 rounded-2xl p-6 relative group overflow-hidden hover:border-brand-purple/30 transition-all duration-300">
-             <div className="absolute -left-10 -bottom-10 w-32 h-32 bg-brand-purple/10 rounded-full blur-2xl group-hover:bg-brand-purple/20 transition-all"></div>
-             <div className="h-40 mb-6 w-full">
-                <ResponsiveContainer width="100%" height="100%">
-                    <LineChart data={sparkData}>
-                        <defs>
-                            <linearGradient id="colorVal" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="5%" stopColor="#8B5CF6" stopOpacity={0.8}/>
-                                <stop offset="95%" stopColor="#8B5CF6" stopOpacity={0}/>
-                            </linearGradient>
-                        </defs>
-                        <Line 
-                            type="monotone" 
-                            dataKey="val" 
-                            stroke="#8B5CF6" 
-                            strokeWidth={3} 
-                            dot={{ fill: '#8B5CF6', r: 4 }} 
-                            activeDot={{ r: 6 }} 
-                            animationDuration={2000}
-                        />
-                    </LineChart>
-                </ResponsiveContainer>
-             </div>
-             <h3 className="text-xl font-bold text-white mb-2 flex items-center gap-2">
-                 Skills & Capability Development <Share2 className="w-4 h-4 text-brand-purple" />
-             </h3>
-             <p className="text-sm text-gray-400">Empowering teams through mentorship and practical learning to build sustainable, self-sufficient capability.</p>
-          </div>
-
-          {/* Card 3: Automations */}
-          <div className="bg-brand-surface border border-white/5 rounded-2xl p-6 relative group overflow-hidden hover:border-brand-blue/30 transition-all duration-300">
-             <div className="absolute right-0 bottom-0 w-32 h-32 bg-brand-blue/10 rounded-full blur-2xl group-hover:bg-brand-blue/20 transition-all"></div>
-             <div className="h-40 flex items-center justify-center mb-6">
-                <div className="relative">
-                    <Cog className="w-20 h-20 text-brand-blue/20 animate-[spin_8s_linear_infinite]" />
-                    <Cog className="absolute -top-4 -right-4 w-12 h-12 text-brand-cyan/20 animate-[spin_5s_linear_infinite_reverse]" />
-                    <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="w-3 h-3 bg-brand-blue rounded-full shadow-[0_0_15px_#3B82F6] animate-pulse"></div>
-                    </div>
-                </div>
-             </div>
-             <h3 className="text-xl font-bold text-white mb-2">Intelligent Analytics Automation</h3>
-             <p className="text-sm text-gray-400">Automating analytics workflows, from pipelines and reporting to AI-driven decision agents.</p>
-          </div>
-
+      {/* OUR SERVICES */}
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-8">
+          {services.map((service) => {
+            const Icon = service.icon;
+            return (
+              <div
+                key={service.id}
+                className="border border-white/10 rounded-2xl p-8"
+              >
+                <Icon className="w-8 h-8 text-[#00B5F1] mb-4" />
+                <h3 className="text-xl font-bold mb-4">{service.title}</h3>
+                <p className="text-gray-400">{service.description}</p>
+              </div>
+            );
+          })}
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* APPROACH */}
+      <Approach />
+
+      {/* COURSES */}
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-4">
+          {coursesLoading ? (
+            <LoadingSpinner size="lg" />
+          ) : (
+            <div className="grid md:grid-cols-4 gap-6">
+              {enhancedCourses.map((course) => {
+                const Icon = course.icon;
+                return (
+                  <div
+                    key={course.id}
+                    className="border border-white/10 rounded-2xl p-6"
+                  >
+                    <Icon className="w-6 h-6 text-[#00B5F1] mb-4" />
+                    <h3 className="font-bold mb-2">{course.title}</h3>
+                    <p className="text-gray-400 text-sm mb-4">
+                      {course.description}
+                    </p>
+
+                    <div className="space-y-2 mb-6">
+                      {course.includes.map((item: string, i: number) => (
+                        <div key={i} className="flex gap-2 text-sm">
+                          <CheckCircle2 className="w-4 h-4 text-[#00B5F1]" />
+                          {item}
+                        </div>
+                      ))}
+                    </div>
+
+                    <button
+                      onClick={() => handleEnroll(course)}
+                      className="w-full border border-[#00B5F1] py-2 rounded-lg"
+                    >
+                      Apply to Join
+                    </button>
+                  </div>
+                );
+              })}
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* TESTIMONIALS */}
+      <section className="py-20">
+        <div className="max-w-5xl mx-auto px-4 grid md:grid-cols-3 gap-8">
+          {testimonials.map((t, i) => (
+            <div key={i} className="border border-white/10 p-6 rounded-2xl">
+              <Quote className="w-6 h-6 text-[#00B5F1] mb-4" />
+              <p className="text-gray-300 mb-4">{t.content}</p>
+              <p className="font-bold">{t.name}</p>
+              <p className="text-sm text-gray-500">{t.role}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* CONTACT */}
+      <section className="py-20 text-center">
+        <h2 className="text-3xl font-bold mb-8">Get in Touch</h2>
+        <div className="flex justify-center gap-12 text-gray-300">
+          <Phone />
+          <Mail />
+          <MapPin />
+        </div>
+      </section>
+    </div>
   );
 };
 
-export default Approach;
+export default HomePage;
