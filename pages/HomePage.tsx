@@ -3,16 +3,100 @@ import { useNavigate } from 'react-router-dom';
 import Approach from '../components/Approach';
 import { SERVICES } from '../constants';
 import { useCourses } from '../hooks/useCourses';
-import { ArrowRight, MapPin, Phone, Mail } from 'lucide-react';
+import { ArrowRight, MapPin, Phone, Mail, CheckCircle2, MessageCircle, FileSpreadsheet, BarChart3, Brain, Zap } from 'lucide-react';
 import LoadingSpinner from '../components/LoadingSpinner';
 
 const HomePage: React.FC = () => {
   const navigate = useNavigate();
-  const { courses, loading: coursesLoading } = useCourses();
+  const { courses: coursesFromDB, loading: coursesLoading } = useCourses();
+
+  // Enhanced courses data with icons and detailed includes
+  const enhancedCourses = [
+    {
+      id: 'excel-workshop',
+      title: 'Data Thinking with Excel',
+      level: 'Foundation',
+      description: 'Learn how to structure problems, model business logic, and communicate insights; not just use formulas. This program builds the analytical mindset every decision professional needs before scaling to BI or AI.',
+      price: 20000,
+      duration: '3 months',
+      tags: ['Data Analysis', 'Productivity', '3 Months'],
+      icon: FileSpreadsheet,
+      includes: [
+        'Advanced Excel functions and pivot table mastery',
+        'Personalized playbook for real-world application',
+        'Weekly mentorship check-ins with industry experts',
+        'Private WhatsApp community and weekly practical tasks'
+      ],
+      gradient: 'from-blue-500/10 to-cyan-500/10',
+      accentColor: 'text-blue-400'
+    },
+    {
+      id: 'powerbi-workshop',
+      title: 'Decision Systems with Power BI',
+      level: 'Core',
+      description: 'This pathway is for professionals who've outgrown spreadsheets and want to build decision-ready dashboards that executives actually use. You'll learn how to translate business questions into automated, scalable decision systems.',
+      price: 25000,
+      duration: '3 months',
+      tags: ['BI', 'Visualization', '3 Months'],
+      icon: BarChart3,
+      includes: [
+        'Bridge spreadsheets to modern BI dashboards',
+        'Personalized playbook mastery for your industry',
+        'Weekly mentorship check-ins via private sessions',
+        'Access to exclusive WhatsApp community with practical tasks'
+      ],
+      gradient: 'from-purple-500/10 to-pink-500/10',
+      accentColor: 'text-purple-400'
+    },
+    {
+      id: 'ai-mastery',
+      title: 'AI Fluency for Business Leaders',
+      level: 'Strategic Mastery',
+      description: 'This is not about prompts. It's about understanding where AI fits — and where it doesn't — in decision-making, analytics, and leadership. Ideal for professionals who want to lead AI conversations, not follow trends.',
+      price: 7500,
+      duration: '1 month',
+      tags: ['AI Fluency', 'Prompting', '1 Month'],
+      icon: Brain,
+      includes: [
+        'Master AI fundamentals and prompting techniques',
+        'Ethics framework for responsible AI deployment',
+        'Personalized playbook with weekly mentorship',
+        'Private WhatsApp community access with weekly tasks'
+      ],
+      gradient: 'from-emerald-500/10 to-teal-500/10',
+      accentColor: 'text-emerald-400'
+    },
+    {
+      id: 'ai-agents-masterclass',
+      title: 'Agentic Systems for Decision Automation',
+      level: 'Advanced',
+      description: 'Design AI agents that don't just automate tasks — but support analysis, monitoring, and decision execution in real business environments. This is where analysts transition into system thinkers.',
+      price: 12500,
+      duration: '1 month',
+      tags: ['Agentic AI', 'Automation', '1 Month'],
+      icon: Zap,
+      includes: [
+        'Design and deploy autonomous AI agents for business',
+        'n8n Automation, APIs, and Agentic Workflows mastery',
+        'Weekly mentorship with private WhatsApp community',
+        'Practical weekly tasks with personalized feedback'
+      ],
+      gradient: 'from-orange-500/10 to-red-500/10',
+      accentColor: 'text-orange-400'
+    }
+  ];
 
   const handleEnroll = (course: { id: string; title: string; price: number; description: string }) => {
     // Navigate to enrollment options page with course data
     navigate(`/enroll?courseId=${course.id}&courseName=${encodeURIComponent(course.title)}&coursePrice=${course.price}&courseDescription=${encodeURIComponent(course.description)}`);
+  };
+
+  const handleChatbot = () => {
+    // Add your chatbot trigger logic here
+    // For example: window.openChatbot() or navigate to chatbot
+    console.log('Opening Ubuntu Academy chatbot...');
+    // You can replace this with your actual chatbot integration
+    // navigate('/chat') or window.yourChatbotFunction()
   };
 
   return (
@@ -110,39 +194,120 @@ const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* Courses Section */}
-      <section id="courses" className="py-20">
+      {/* Enhanced Courses Section */}
+      <section id="courses" className="py-12 md:py-20 bg-gradient-to-b from-black via-gray-900/50 to-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">From Tools to Thinking</h2>
-            <p className="text-gray-400">Pathways for professionals ready to influence decisions, not just learn skills.</p>
+          {/* Header */}
+          <div className="text-center mb-12 md:mb-16">
+            <div className="inline-block mb-4">
+              <span className="text-brand-cyan text-xs md:text-sm font-semibold tracking-wider uppercase bg-brand-cyan/10 px-4 py-2 rounded-full border border-brand-cyan/20">
+                Learning Pathways
+              </span>
+            </div>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-white via-gray-100 to-gray-400 bg-clip-text text-transparent px-4">
+              From Tools to Thinking
+            </h2>
+            <p className="text-base md:text-lg text-gray-400 max-w-2xl mx-auto px-4">
+              Pathways for professionals ready to influence decisions, not just learn skills.
+            </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {coursesLoading ? (
-              <div className="col-span-full flex justify-center py-12">
-                <LoadingSpinner size="lg" />
-              </div>
-            ) : (
-              courses.map((course) => (
-                <div key={course.id} className="bg-brand-surface border border-white/5 rounded-xl p-6 flex flex-col hover:border-brand-cyan/30 transition-all">
-                  <div className="mb-4">
-                    <span className="text-xs font-semibold text-brand-cyan uppercase tracking-wider bg-brand-cyan/10 px-2 py-1 rounded">
-                      {course.level}
-                    </span>
+
+          {/* Courses Grid */}
+          {coursesLoading ? (
+            <div className="flex justify-center py-12">
+              <LoadingSpinner size="lg" />
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+              {enhancedCourses.map((course) => {
+                const IconComponent = course.icon;
+                return (
+                  <div
+                    key={course.id}
+                    className={`bg-gradient-to-br ${course.gradient} backdrop-blur-sm bg-gray-900/40 border border-white/10 rounded-2xl p-5 md:p-6 flex flex-col hover:border-brand-cyan/50 hover:shadow-lg hover:shadow-brand-cyan/10 transition-all duration-300 group relative overflow-hidden`}
+                  >
+                    {/* Animated background effect */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-brand-cyan/0 via-brand-cyan/0 to-brand-cyan/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    
+                    {/* Content */}
+                    <div className="relative z-10">
+                      {/* Level Badge & Icon */}
+                      <div className="mb-4 flex items-center justify-between">
+                        <span className={`text-xs font-bold ${course.accentColor} uppercase tracking-wider bg-white/5 px-2 md:px-3 py-1.5 rounded-lg border border-white/10`}>
+                          {course.level}
+                        </span>
+                        <div className="flex items-center gap-1.5 md:gap-2">
+                          <IconComponent className={`w-4 h-4 md:w-5 md:h-5 ${course.accentColor}`} />
+                          <span className="text-xs text-gray-500 font-medium">{course.duration}</span>
+                        </div>
+                      </div>
+
+                      {/* Title */}
+                      <h3 className="text-lg md:text-xl font-bold text-white mb-3 group-hover:text-brand-cyan transition-colors">
+                        {course.title}
+                      </h3>
+
+                      {/* Description */}
+                      <p className="text-xs md:text-sm text-gray-400 mb-6 leading-relaxed">
+                        {course.description}
+                      </p>
+
+                      {/* Includes Section */}
+                      <div className="mb-6 space-y-2 md:space-y-2.5">
+                        <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">
+                          What's Included
+                        </p>
+                        {course.includes.map((item, index) => (
+                          <div key={index} className="flex items-start gap-2">
+                            <CheckCircle2 className={`w-3.5 h-3.5 md:w-4 md:h-4 ${course.accentColor} mt-0.5 flex-shrink-0`} />
+                            <span className="text-xs text-gray-400 leading-relaxed">{item}</span>
+                          </div>
+                        ))}
+                      </div>
+
+                      {/* Price & CTA */}
+                      <div className="mt-auto pt-6 border-t border-white/10">
+                        <div className="flex items-center justify-between mb-4">
+                          <div>
+                            <span className="text-xl md:text-2xl font-bold text-white">
+                              KSh {course.price.toLocaleString()}
+                            </span>
+                            <span className="text-xs text-gray-500 ml-2">/{course.duration}</span>
+                          </div>
+                        </div>
+                        
+                        <button
+                          onClick={() => handleEnroll(course)}
+                          className={`w-full bg-gradient-to-r from-brand-cyan/10 to-brand-cyan/5 hover:from-brand-cyan hover:to-brand-cyan/80 text-brand-cyan hover:text-black border border-brand-cyan/30 hover:border-brand-cyan rounded-lg px-4 py-2.5 md:py-3 text-xs md:text-sm font-semibold flex items-center justify-center gap-2 transition-all duration-300 group/btn`}
+                        >
+                          Apply to Join
+                          <ArrowRight className="w-3.5 h-3.5 md:w-4 md:h-4 group-hover/btn:translate-x-1 transition-transform" />
+                        </button>
+                      </div>
+                    </div>
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-2">{course.title}</h3>
-                  <p className="text-sm text-gray-400 mb-6 flex-grow">{course.description}</p>
-                  <div className="flex items-center justify-between mt-4 pt-4 border-t border-white/5">
-                    <button
-                      onClick={() => handleEnroll(course)}
-                      className="text-brand-cyan hover:text-white text-sm font-semibold flex items-center gap-1"
-                    >
-                      Apply to Join <ArrowRight className="w-4 h-4" />
-                    </button>
-                  </div>
-                </div>
-              ))
-            )}
+                );
+              })}
+            </div>
+          )}
+
+          {/* Bottom CTA - Chatbot */}
+          <div className="mt-12 md:mt-16 text-center px-4">
+            <p className="text-sm md:text-base text-gray-400 mb-6">
+              Have questions about our programs?
+            </p>
+            <button 
+              onClick={handleChatbot}
+              className="inline-flex items-center gap-2 md:gap-3 bg-gradient-to-r from-brand-cyan/20 to-brand-cyan/10 hover:from-brand-cyan hover:to-brand-cyan/90 text-brand-cyan hover:text-black border-2 border-brand-cyan/40 hover:border-brand-cyan px-6 md:px-8 py-3 md:py-4 rounded-xl text-sm md:text-base font-semibold transition-all duration-300 group shadow-lg shadow-brand-cyan/20 hover:shadow-brand-cyan/40"
+            >
+              <MessageCircle className="w-4 h-4 md:w-5 md:h-5 group-hover:scale-110 transition-transform" />
+              <span className="hidden sm:inline">Chat with Ubuntu Academy Assistant</span>
+              <span className="sm:hidden">Chat with Assistant</span>
+              <ArrowRight className="w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform" />
+            </button>
+            <p className="text-xs text-gray-500 mt-4">
+              Get instant answers about courses, pricing, and enrollment
+            </p>
           </div>
         </div>
       </section>
