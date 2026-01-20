@@ -89,7 +89,7 @@ const EnrollmentOptionsPage: React.FC = () => {
                         <h2 className="text-3xl font-bold text-white mb-3 relative z-10">Free Consultation</h2>
                         <p className="text-brand-purple font-semibold mb-3 relative z-10">Perfect if you're just getting started</p>
                         <p className="text-gray-400 mb-6 text-base relative z-10">
-                            Talk with an expert to understand the course, clarify your goals, and get personalized recommendations—no pressure, no commitment.
+                            Talk with an expert to understand the course, clarify your goals — no pressure, no commitment.
                         </p>
 
                         <div className="mb-8 relative z-10">
@@ -127,7 +127,7 @@ const EnrollmentOptionsPage: React.FC = () => {
                         </button>
 
                         <p className="text-center text-xs text-gray-500 mt-4 relative z-10">
-                            Available Mon-Fri, 9AM-5PM EAT
+                            Available Mon-Fri, 6PM-9PM EAT
                         </p>
                     </div>
 
@@ -155,7 +155,7 @@ const EnrollmentOptionsPage: React.FC = () => {
                             <div className="text-5xl font-bold text-white mb-2">
                                 KES 2,500
                             </div>
-                            <p className="text-sm text-gray-500">One-time payment • 4-week program</p>
+                            <p className="text-sm text-gray-500">One-time payment</p>
                         </div>
 
                         <div className="space-y-3 mb-8 relative z-10">
@@ -186,7 +186,7 @@ const EnrollmentOptionsPage: React.FC = () => {
                         </button>
 
                         <p className="text-center text-xs text-gray-500 mt-4 relative z-10">
-                            Limited spots • Starts Monday
+                            Limited spots until 1st May
                         </p>
                     </div>
 
@@ -208,7 +208,7 @@ const EnrollmentOptionsPage: React.FC = () => {
                         <h2 className="text-3xl font-bold text-white mb-3 relative z-10">Start Your Classes</h2>
                         <p className="text-brand-cyan font-semibold mb-3 relative z-10">For serious learners ready to transform</p>
                         <p className="text-gray-400 mb-6 text-base relative z-10">
-                            Get instant access to comprehensive course materials, interactive lessons, and lifetime learning resources. Everything you need to master the subject.
+                            Get instant access to comprehensive course materials, interactive lessons, and lifetime learning resources.
                         </p>
 
                         <div className="mb-8 relative z-10">
@@ -221,7 +221,7 @@ const EnrollmentOptionsPage: React.FC = () => {
                         <div className="space-y-3 mb-8 relative z-10">
                             <div className="flex items-start gap-3">
                                 <CheckCircle className="w-5 h-5 text-brand-cyan flex-shrink-0 mt-0.5" />
-                                <span className="text-gray-300 font-medium">Immediate full course access</span>
+                                <span className="text-gray-300 font-medium">Full course access</span>
                             </div>
                             <div className="flex items-start gap-3">
                                 <CheckCircle className="w-5 h-5 text-brand-cyan flex-shrink-0 mt-0.5" />
