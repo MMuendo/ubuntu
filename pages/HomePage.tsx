@@ -8,7 +8,7 @@ import LoadingSpinner from '../components/LoadingSpinner';
 
 const HomePage: React.FC = () => {
   const navigate = useNavigate();
-  const { courses: coursesFromDB, loading: coursesLoading } = useCourses();
+  const { loading: coursesLoading } = useCourses();
 
   // Enhanced courses data with icons and detailed includes
   const enhancedCourses = [
@@ -34,7 +34,7 @@ const HomePage: React.FC = () => {
       id: 'powerbi-workshop',
       title: 'Decision Systems with Power BI',
       level: 'Core',
-      description: 'This pathway is for professionals who've outgrown spreadsheets and want to build decision-ready dashboards that executives actually use. You'll learn how to translate business questions into automated, scalable decision systems.',
+      description: 'This pathway is for professionals who have outgrown spreadsheets and want to build decision-ready dashboards that executives actually use. You will learn how to translate business questions into automated, scalable decision systems.',
       price: 25000,
       duration: '3 months',
       tags: ['BI', 'Visualization', '3 Months'],
@@ -52,7 +52,7 @@ const HomePage: React.FC = () => {
       id: 'ai-mastery',
       title: 'AI Fluency for Business Leaders',
       level: 'Strategic Mastery',
-      description: 'This is not about prompts. It's about understanding where AI fits — and where it doesn't — in decision-making, analytics, and leadership. Ideal for professionals who want to lead AI conversations, not follow trends.',
+      description: 'This is not about prompts. It is about understanding where AI fits — and where it does not — in decision-making, analytics, and leadership. Ideal for professionals who want to lead AI conversations, not follow trends.',
       price: 7500,
       duration: '1 month',
       tags: ['AI Fluency', 'Prompting', '1 Month'],
@@ -70,7 +70,7 @@ const HomePage: React.FC = () => {
       id: 'ai-agents-masterclass',
       title: 'Agentic Systems for Decision Automation',
       level: 'Advanced',
-      description: 'Design AI agents that don't just automate tasks — but support analysis, monitoring, and decision execution in real business environments. This is where analysts transition into system thinkers.',
+      description: 'Design AI agents that do not just automate tasks — but support analysis, monitoring, and decision execution in real business environments. This is where analysts transition into system thinkers.',
       price: 12500,
       duration: '1 month',
       tags: ['Agentic AI', 'Automation', '1 Month'],
@@ -255,7 +255,7 @@ const HomePage: React.FC = () => {
                       {/* Includes Section */}
                       <div className="mb-6 space-y-2 md:space-y-2.5">
                         <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">
-                          What's Included
+                          What is Included
                         </p>
                         {course.includes.map((item, index) => (
                           <div key={index} className="flex items-start gap-2">
