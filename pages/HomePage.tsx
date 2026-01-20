@@ -16,16 +16,16 @@ const HomePage: React.FC = () => {
       id: 'excel-workshop',
       title: 'Data Thinking with Excel',
       level: 'Foundation',
-      description: 'Learn how to structure problems, model business logic, and communicate insights; not just use formulas. This program builds the analytical mindset every decision professional needs before scaling to BI or AI.',
+      description: 'Learn how to structure problems, think analytically, and make better decisions using data',
       price: 20000,
       duration: '3 months',
       tags: ['Data Analysis', 'Productivity', '3 Months'],
       icon: FileSpreadsheet,
       includes: [
-        'Advanced Excel functions and pivot table mastery',
-        'Personalized playbook for real-world application',
-        'Weekly mentorship check-ins with industry experts',
-        'Private WhatsApp community and weekly practical tasks'
+        'Advanced Excel formulas and logic',
+        'Power Query and Power Pivot foundations',
+        'Business problem structuring frameworks',
+        'Decision-ready Excel models'
       ],
       gradient: 'from-blue-500/10 to-cyan-500/10',
       accentColor: 'text-blue-400'
@@ -34,16 +34,16 @@ const HomePage: React.FC = () => {
       id: 'powerbi-workshop',
       title: 'Decision Systems with Power BI',
       level: 'Core',
-      description: 'This pathway is for professionals who have outgrown spreadsheets and want to build decision-ready dashboards that executives actually use. You will learn how to translate business questions into automated, scalable decision systems.',
+      description: 'Turn data into decision-ready dashboards and decision systems leaders trust and actually use.',
       price: 25000,
       duration: '3 months',
       tags: ['BI', 'Visualization', '3 Months'],
       icon: BarChart3,
       includes: [
-        'Bridge spreadsheets to modern BI dashboards',
-        'Personalized playbook mastery for your industry',
-        'Weekly mentorship check-ins via private sessions',
-        'Access to exclusive WhatsApp community with practical tasks'
+        'Power Query data transformation',
+        'Star-schema data modelling',
+        'DAX measures and time intelligence',
+        'Executive-ready Power BI dashboards'
       ],
       gradient: 'from-purple-500/10 to-pink-500/10',
       accentColor: 'text-purple-400'
@@ -51,17 +51,17 @@ const HomePage: React.FC = () => {
     {
       id: 'ai-mastery',
       title: 'AI Fluency for Business Leaders',
-      level: 'Strategic Mastery',
-      description: 'This is not about prompts. It is about understanding where AI fits — and where it does not — in decision-making, analytics, and leadership. Ideal for professionals who want to lead AI conversations, not follow trends.',
+      level: 'AI Mastery',
+      description: 'Understand how to use AI confidently and responsibly to improve decisions, productivity, and strategy.',
       price: 7500,
       duration: '1 month',
       tags: ['AI Fluency', 'Prompting', '1 Month'],
       icon: Brain,
       includes: [
-        'Master AI fundamentals and prompting techniques',
-        'Ethics framework for responsible AI deployment',
-        'Personalized playbook with weekly mentorship',
-        'Private WhatsApp community access with weekly tasks'
+        'How modern AI systems think',
+        'Prompt engineering for real work',
+        'AI tools and workflows',
+        'Responsible, career-driven AI usage'
       ],
       gradient: 'from-emerald-500/10 to-teal-500/10',
       accentColor: 'text-emerald-400'
@@ -70,16 +70,16 @@ const HomePage: React.FC = () => {
       id: 'ai-agents-masterclass',
       title: 'Agentic Systems for Decision Automation',
       level: 'Advanced',
-      description: 'Design AI agents that do not just automate tasks — but support analysis, monitoring, and decision execution in real business environments. This is where analysts transition into system thinkers.',
+      description: 'Design AI systems that support decision-making, execution, and scale across the business.',
       price: 12500,
       duration: '1 month',
       tags: ['Agentic AI', 'Automation', '1 Month'],
       icon: Zap,
       includes: [
-        'Design and deploy autonomous AI agents for business',
-        'n8n Automation, APIs, and Agentic Workflows mastery',
-        'Weekly mentorship with private WhatsApp community',
-        'Practical weekly tasks with personalized feedback'
+        'AI agent design fundamentals',
+        'AI agent design fundamentals',
+        'Knowledge, memory, and tools,
+        'Deploying agents across channels'
       ],
       gradient: 'from-orange-500/10 to-red-500/10',
       accentColor: 'text-orange-400'
@@ -264,17 +264,6 @@ const HomePage: React.FC = () => {
                           </div>
                         ))}
                       </div>
-
-                      {/* Price & CTA */}
-                      <div className="mt-auto pt-6 border-t border-white/10">
-                        <div className="flex items-center justify-between mb-4">
-                          <div>
-                            <span className="text-xl md:text-2xl font-bold text-white">
-                              KSh {course.price.toLocaleString()}
-                            </span>
-                            <span className="text-xs text-gray-500 ml-2">/{course.duration}</span>
-                          </div>
-                        </div>
                         
                         <button
                           onClick={() => handleEnroll(course)}
