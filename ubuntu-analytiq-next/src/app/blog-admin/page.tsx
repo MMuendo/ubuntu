@@ -5,20 +5,17 @@ import Link from "next/link";
 import Header, { Footer } from "@/components/Header";
 import { 
   Plus, 
-  Save, 
-  Eye, 
-  Send, 
   Edit3, 
   Trash2, 
   Calendar,
   Tag,
-  Image as ImageIcon,
   FileText,
   CheckCircle2,
   Clock,
-  Archive
+  Archive,
+  Send,
+  Eye
 } from "lucide-react";
-
 
 type BlogStatus = "draft" | "published" | "archived";
 
@@ -56,8 +53,6 @@ export default function BlogAdmin() {
   ]);
 
   const [activeTab, setActiveTab] = useState<BlogStatus | "all">("all");
-  const [isEditorOpen, setIsEditorOpen] = useState(false);
-  const [currentPost, setCurrentPost] = useState<BlogPost | null>(null);
 
   const filteredPosts = activeTab === "all" 
     ? posts 
@@ -68,26 +63,6 @@ export default function BlogAdmin() {
     draft: posts.filter(p => p.status === "draft").length,
     published: posts.filter(p => p.status === "published").length,
     archived: posts.filter(p => p.status === "archived").length,
-  };
-
-  const handleNewPost = () => {
-    const newPost: BlogPost = {
-      id: `draft-${Date.now()}`,
-      title: "Untitled Draft",
-      excerpt: "",
-      content: "",
-      status: "draft",
-      date: new Date().toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }),
-      dateISO: new Date().toISOString().split('T')[0],
-      author: "Ezra Muinde",
-      image: "",
-      tags: [],
-      readTime: "1 min read",
-      lastModified: new Date().toISOString(),
-    };
-    setPosts([newPost, ...posts]);
-    setCurrentPost(newPost);
-    setIsEditorOpen(true);
   };
 
   const handleStatusChange = (postId: string, newStatus: BlogStatus) => {
@@ -119,13 +94,13 @@ export default function BlogAdmin() {
               </h1>
               <p className="text-gray-400">Draft, refine, and publish your insights</p>
             </div>
-            <button
-              onClick={handleNewPost}
+            <Link
+              href="/blog"
               className="flex items-center gap-2 px-6 py-3 bg-[var(--brand-cyan)] text-[var(--brand-dark)] rounded-full font-bold hover:bg-cyan-300 transition-all shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/40"
             >
               <Plus className="w-5 h-5" />
-              New Article
-            </button>
+              New Article (Coming Soon)
+            </Link>
           </div>
 
           {/* Status Tabs */}
@@ -221,11 +196,11 @@ export default function BlogAdmin() {
                             <span>•</span>
                             <div className="flex items-center gap-1 flex-wrap">
                               <Tag className="w-3 h-3" />
-                              {post.tags.slice(0, 3).map(tag => (
+                              {post.tags.slice(0, 3).map((tag, i) => (
                                 <span key={tag} className="text-[var(--brand-cyan)]">
-                                  {tag}
+                                  {tag}{i < Math.min(post.tags.length, 3) - 1 ? ', ' : ''}
                                 </span>
-                              )).reduce((prev, curr) => [prev, ', ', curr] as any)}
+                              ))}
                             </div>
                           </>
                         )}
@@ -233,16 +208,13 @@ export default function BlogAdmin() {
 
                       {/* Actions */}
                       <div className="flex flex-wrap gap-2">
-                        <button
-                          onClick={() => {
-                            setCurrentPost(post);
-                            setIsEditorOpen(true);
-                          }}
+                        <Link
+                          href={`/blog/${post.id}`}
                           className="flex items-center gap-1 px-3 py-1.5 bg-white/5 text-gray-300 rounded-lg text-sm font-semibold hover:bg-white/10 hover:text-white transition-all"
                         >
                           <Edit3 className="w-3.5 h-3.5" />
                           Edit
-                        </button>
+                        </Link>
                         
                         {post.status === 'draft' && (
                           <button
