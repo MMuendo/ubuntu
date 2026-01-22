@@ -315,19 +315,19 @@ export const ASSESSMENT_QUESTIONS: Question[] = [
   }
 ];
 
-export const BLOG_POSTS: BlogPost[] = [
+export const BLOG_POSTS: BlogPost[] = export const BLOG_POSTS: BlogPost[] = [
   {
-    "phoenix-ai-summit-2025": {
-        title: "Phoenix AI Agents Summit 2025: Building for Us",
-        excerpt: "Eight teams, one mission, and solutions only Africans could build. Reflections on the Summit that proved Africa doesn't need permission — we need opportunity.",
-        date: "Feb 15, 2025",
-        dateISO: "2025-02-15",
-        author: "Ezra Muinde",
-        image: "https://images.unsplash.com/photo-1591115765373-5207764f72e7?w=1200&auto=format&fit=crop",
-        tags: ["AI Agents", "Community", "Innovation", "Phoenix Summit"],
-        readTime: "12 min read",
-        status: "published",
-        content: `
+    id: "phoenix-ai-summit-2025", // Added ID property
+    title: "Phoenix AI Agents Summit 2025: Building for Us",
+    excerpt: "Eight teams, one mission, and solutions only Africans could build. Reflections on the Summit that proved Africa doesn't need permission — we need opportunity.",
+    date: "Feb 15, 2025",
+    // dateISO: "2025-02-15", // Ensure your Type definition includes this if you use it
+    author: "Ezra Muinde",
+    image: "https://images.unsplash.com/photo-1591115765373-5207764f72e7?w=1200&auto=format&fit=crop",
+    tags: ["AI Agents", "Community", "Innovation", "Phoenix Summit"],
+    readTime: "12 min read",
+    status: "published", // Ensure your Type definition includes this if you use it
+    content: `
       <p class="mb-6 text-lg text-gray-300 leading-relaxed italic">"Eight teams, one mission, and solutions only Africans could build."</p>
       
       <p class="mb-6 text-gray-300 leading-relaxed">This is the article I've kept in draft the longest.</p>
@@ -344,7 +344,6 @@ export const BLOG_POSTS: BlogPost[] = [
       
       <p class="mb-6 text-gray-300 leading-relaxed">Systems shaped by our culture, our languages, our challenges, and our brilliance.</p>
       
-      <!-- ADD IMAGE HERE -->
       <div class="my-8 rounded-xl overflow-hidden">
         <img 
           src="YOUR_IMAGE_URL_HERE" 
@@ -381,7 +380,6 @@ export const BLOG_POSTS: BlogPost[] = [
       
       <h2 class="text-2xl md:text-3xl font-bold text-white mt-12 mb-4">Setting the Tone: The Opening Keynote</h2>
       
-      <!-- ADD IMAGE HERE -->
       <div class="my-8 rounded-xl overflow-hidden">
         <img 
           src="YOUR_IMAGE_URL_HERE" 
@@ -587,7 +585,6 @@ export const BLOG_POSTS: BlogPost[] = [
       
       <h2 class="text-2xl md:text-3xl font-bold text-white mt-12 mb-4">The Moment That Rewrote the Room</h2>
       
-      <!-- ADD IMAGE HERE -->
       <div class="my-8 rounded-xl overflow-hidden">
         <img 
           src="YOUR_IMAGE_URL_HERE" 
@@ -674,7 +671,6 @@ export const BLOG_POSTS: BlogPost[] = [
       It is the technical work.<br/>
       It is the future.</strong></p>
     `,
-    }
   },
   {
     id: 'why-excel-matters',
