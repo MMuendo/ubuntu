@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import Header, { Footer } from "@/components/Header";
-import { ArrowLeft, Clock, User } from "lucide-react";
+import { ArrowLeft, Clock, User, Calendar, Share2, Bookmark, Tag } from "lucide-react";
 
 // Blog posts data - in production, fetch from CMS/database
 const blogPosts: Record<
@@ -18,6 +18,7 @@ const blogPosts: Record<
         tags: string[];
         content: string;
         readTime: string;
+        status: string;
     }
 > = {
     "phoenix-ai-summit-2025": {
@@ -31,18 +32,19 @@ const blogPosts: Record<
             "https://images.unsplash.com/photo-1591115765373-5207764f72e7?w=1200&auto=format&fit=crop",
         tags: ["AI Agents", "Community", "Innovation"],
         readTime: "5 min read",
+        status: "published",
         content: `
       <p class="mb-6 text-lg text-gray-300 leading-relaxed">The Phoenix AI Agents Summit 2025 was not just a conference; it was a declaration. As we gathered to discuss the future of autonomous systems, one theme rang louder than the rest: <strong class="text-white">We must build for us.</strong></p>
       
-      <h2 class="text-2xl font-bold text-white mt-10 mb-4">The Agentic Shift</h2>
+      <h2 class="text-2xl md:text-3xl font-bold text-white mt-10 mb-4">The Agentic Shift</h2>
       <p class="mb-6 text-gray-300 leading-relaxed">We are witnessing a shift from passive tools to active agents. In the African context, this distinction is vital. Our markets are fragmented, our infrastructure is unique, and our problems are complex. Off-the-shelf AI models from the West often lack the nuance to navigate mobile money integrations, local languages, or informal sector dynamics.</p>
       
-      <h2 class="text-2xl font-bold text-white mt-10 mb-4">Local Context is King</h2>
+      <h2 class="text-2xl md:text-3xl font-bold text-white mt-10 mb-4">Local Context is King</h2>
       <p class="mb-6 text-gray-300 leading-relaxed">During the summit, we explored how agents can bridge gaps in healthcare logistics and fintech. Imagine an agent that doesn't just chat but actively negotiates supply prices for a 'mama mboga' via WhatsApp, or an agent that triages patients in rural clinics based on local epidemiological data.</p>
       
       <p class="mb-6 text-gray-300 leading-relaxed">The energy in the room confirmed that the talent to build these solutions is here. It is time to stop consuming and start architecting.</p>
       
-      <h2 class="text-2xl font-bold text-white mt-10 mb-4">What This Means for Kenya</h2>
+      <h2 class="text-2xl md:text-3xl font-bold text-white mt-10 mb-4">What This Means for Kenya</h2>
       <p class="mb-6 text-gray-300 leading-relaxed">With the Data Protection Act (2019) and a growing tech ecosystem, Kenya is positioned to lead Africa's agentic AI revolution. We have M-Pesa, we have the developers, and now we need the strategic vision to deploy AI agents that understand our context.</p>
       
       <p class="mb-6 text-gray-300 leading-relaxed">At Ubuntu AnalytIQ, we're committed to training the next generation of AI builders who understand not just the technology, but the cultural and economic realities of Africa.</p>
@@ -59,19 +61,20 @@ const blogPosts: Record<
             "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&auto=format&fit=crop",
         tags: ["Data Science", "Excel", "Foundations"],
         readTime: "4 min read",
+        status: "published",
         content: `
       <p class="mb-6 text-lg text-gray-300 leading-relaxed">It is fashionable in tech circles to bash Excel. "It's not reproducible," they say. "It can't handle big data," they argue. And while true, they miss the point entirely.</p>
       
-      <h2 class="text-2xl font-bold text-white mt-10 mb-4">The UI of Business</h2>
+      <h2 class="text-2xl md:text-3xl font-bold text-white mt-10 mb-4">The UI of Business</h2>
       <p class="mb-6 text-gray-300 leading-relaxed">Excel is the user interface of business. You can build the most sophisticated Python model in the world, but the output will almost certainly need to be delivered in a spreadsheet for the CEO to read it. It is the common language of commerce.</p>
       
-      <h2 class="text-2xl font-bold text-white mt-10 mb-4">AI Needs Structure</h2>
+      <h2 class="text-2xl md:text-3xl font-bold text-white mt-10 mb-4">AI Needs Structure</h2>
       <p class="mb-6 text-gray-300 leading-relaxed">With the advent of Copilot and AI integrations, Excel is getting a second wind. But here is the catch: AI cannot fix messy data. To leverage AI effectively in Excel, you still need to understand data structure, normalization, and logic. You cannot prompt your way out of a bad pivot table.</p>
       
       <p class="mb-6 text-gray-300 leading-relaxed">So before you rush to learn the latest vector database, make sure you can still do a VLOOKUP. It matters more than you think.</p>
       
-      <h2 class="text-2xl font-bold text-white mt-10 mb-4">The Power BI Bridge</h2>
-      <p class="mb-6 text-gray-300 leading-relaxed">For those ready to level up, <a href="/courses/powerbi-workshop" class="text-[var(--brand-cyan)] hover:underline">Power BI offers the perfect bridge</a> between spreadsheet thinking and modern BI dashboards. It speaks Excel's language while unlocking the power of data modeling.</p>
+      <h2 class="text-2xl md:text-3xl font-bold text-white mt-10 mb-4">The Power BI Bridge</h2>
+      <p class="mb-6 text-gray-300 leading-relaxed">For those ready to level up, <a href="/courses/powerbi-workshop" class="text-[var(--brand-cyan)] hover:underline font-semibold">Power BI offers the perfect bridge</a> between spreadsheet thinking and modern BI dashboards. It speaks Excel's language while unlocking the power of data modeling.</p>
     `,
     },
     "colleagues-friends": {
@@ -85,13 +88,14 @@ const blogPosts: Record<
             "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&auto=format&fit=crop",
         tags: ["Culture", "Workplace", "Mental Health"],
         readTime: "3 min read",
+        status: "published",
         content: `
       <p class="mb-6 text-lg text-gray-300 leading-relaxed">There is a popular LinkedIn sentiment that says, "Your colleagues are not your family; they are just people you work with." I want to push back on that.</p>
       
-      <h2 class="text-2xl font-bold text-white mt-10 mb-4">The Cost of Armor</h2>
+      <h2 class="text-2xl md:text-3xl font-bold text-white mt-10 mb-4">The Cost of Armor</h2>
       <p class="mb-6 text-gray-300 leading-relaxed">We spend more waking hours with our colleagues than with anyone else. Maintaining a rigid "professional mask" is exhausting. It requires constant energy to filter your personality, hide your struggles, and present a polished facade. This armor doesn't protect us; it isolates us.</p>
       
-      <h2 class="text-2xl font-bold text-white mt-10 mb-4">Vulnerability as a KPI</h2>
+      <h2 class="text-2xl md:text-3xl font-bold text-white mt-10 mb-4">Vulnerability as a KPI</h2>
       <p class="mb-6 text-gray-300 leading-relaxed">In high-performing technical teams, trust is the currency. You cannot build complex systems if you are afraid to say, "I don't know," or "I made a mistake." Real friendship—the kind that allows for psychological safety—is actually a productivity hack. When we care about each other, we communicate better, we forgive faster, and we build better products.</p>
       
       <p class="mb-6 text-gray-300 leading-relaxed">So yes, maybe they are just colleagues. But making them friends might be the best career move you ever make.</p>
@@ -99,9 +103,17 @@ const blogPosts: Record<
     },
 };
 
-// Generate static params for all blog posts
+// Filter only published posts
+const publishedPosts = Object.entries(blogPosts).reduce((acc, [key, post]) => {
+    if (post.status === "published") {
+        acc[key] = post;
+    }
+    return acc;
+}, {} as typeof blogPosts);
+
+// Generate static params for published posts only
 export function generateStaticParams() {
-    return Object.keys(blogPosts).map((slug) => ({
+    return Object.keys(publishedPosts).map((slug) => ({
         slug,
     }));
 }
@@ -112,7 +124,7 @@ export function generateMetadata({
 }: {
     params: { slug: string };
 }): Metadata {
-    const post = blogPosts[params.slug];
+    const post = publishedPosts[params.slug];
     if (!post) {
         return {
             title: "Post Not Found",
@@ -151,7 +163,7 @@ export function generateMetadata({
 }
 
 export default function BlogPostPage({ params }: { params: { slug: string } }) {
-    const post = blogPosts[params.slug];
+    const post = publishedPosts[params.slug];
 
     if (!post) {
         notFound();
@@ -223,71 +235,97 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
                 }}
             />
 
-            <main className="min-h-screen pt-20 pb-16">
+            <main className="min-h-screen pt-20 pb-16 bg-[var(--brand-dark)]">
+                
                 {/* Breadcrumb */}
                 <nav
                     aria-label="Breadcrumb"
-                    className="max-w-4xl mx-auto px-4 pb-6 text-sm text-gray-400"
+                    className="max-w-4xl mx-auto px-4 sm:px-6 pb-6 text-sm text-gray-400"
                 >
-                    <ol className="flex items-center gap-2">
+                    <ol className="flex items-center gap-2 flex-wrap">
                         <li>
-                            <Link href="/" className="hover:text-[var(--brand-cyan)]">
+                            <Link href="/" className="hover:text-[var(--brand-cyan)] transition-colors">
                                 Home
                             </Link>
                         </li>
                         <li>/</li>
                         <li>
-                            <Link href="/blog" className="hover:text-[var(--brand-cyan)]">
+                            <Link href="/blog" className="hover:text-[var(--brand-cyan)] transition-colors">
                                 Blog
                             </Link>
                         </li>
                         <li>/</li>
-                        <li className="text-[var(--brand-cyan)] truncate max-w-[200px]">
+                        <li className="text-[var(--brand-cyan)] truncate max-w-[150px] sm:max-w-[200px]">
                             {post.title}
                         </li>
                     </ol>
                 </nav>
 
-                <article className="max-w-4xl mx-auto px-4">
+                <article className="max-w-4xl mx-auto px-4 sm:px-6">
+                    
                     {/* Back link */}
                     <Link
                         href="/blog"
-                        className="inline-flex items-center text-gray-400 hover:text-[var(--brand-cyan)] mb-8 transition-colors"
+                        className="inline-flex items-center text-gray-400 hover:text-[var(--brand-cyan)] mb-8 transition-colors group"
                     >
-                        <ArrowLeft className="w-4 h-4 mr-2" />
+                        <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
                         Back to Blog
                     </Link>
 
                     {/* Header */}
                     <header className="mb-8">
-                        <div className="flex flex-wrap gap-2 mb-4">
+                        <div className="flex flex-wrap gap-2 mb-6">
                             {post.tags.map((tag) => (
                                 <span
                                     key={tag}
-                                    className="bg-[var(--brand-cyan)]/10 text-[var(--brand-cyan)] text-xs font-bold px-3 py-1 rounded-full"
+                                    className="flex items-center gap-1 px-3 py-1 bg-[var(--brand-cyan)]/10 text-[var(--brand-cyan)] text-xs font-bold rounded-full"
                                 >
+                                    <Tag className="w-3 h-3" />
                                     {tag}
                                 </span>
                             ))}
                         </div>
-                        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+
+                        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
                             {post.title}
                         </h1>
-                        <div className="flex items-center gap-6 text-gray-400 text-sm">
+
+                        <p className="text-lg md:text-xl text-gray-400 mb-6 leading-relaxed">
+                            {post.excerpt}
+                        </p>
+
+                        <div className="flex flex-wrap items-center gap-4 md:gap-6 text-sm text-gray-400 pb-6 border-b border-white/10">
                             <div className="flex items-center gap-2">
                                 <User className="w-4 h-4" />
-                                <span>{post.author}</span>
+                                <span className="font-semibold text-white">{post.author}</span>
                             </div>
-                            <time dateTime={post.dateISO}>{post.date}</time>
+                            <span className="hidden sm:inline">•</span>
+                            <time dateTime={post.dateISO} className="flex items-center gap-2">
+                                <Calendar className="w-4 h-4" />
+                                {post.date}
+                            </time>
+                            <span className="hidden sm:inline">•</span>
                             <div className="flex items-center gap-2">
                                 <Clock className="w-4 h-4" />
                                 <span>{post.readTime}</span>
                             </div>
                         </div>
+
+                        {/* Share actions */}
+                        <div className="flex items-center gap-3 mt-6">
+                            <button className="flex items-center gap-2 px-4 py-2 bg-[var(--brand-surface)] border border-white/10 rounded-full text-gray-400 hover:text-white hover:border-white/20 transition-all text-sm font-semibold">
+                                <Share2 className="w-4 h-4" />
+                                <span className="hidden sm:inline">Share</span>
+                            </button>
+                            <button className="flex items-center gap-2 px-4 py-2 bg-[var(--brand-surface)] border border-white/10 rounded-full text-gray-400 hover:text-white hover:border-white/20 transition-all text-sm font-semibold">
+                                <Bookmark className="w-4 h-4" />
+                                <span className="hidden sm:inline">Save</span>
+                            </button>
+                        </div>
                     </header>
 
                     {/* Featured Image */}
-                    <div className="relative h-[400px] md:h-[500px] rounded-2xl overflow-hidden mb-12">
+                    <div className="relative h-[300px] sm:h-[400px] md:h-[500px] rounded-2xl overflow-hidden mb-12 bg-[var(--brand-surface)]">
                         <Image
                             src={post.image}
                             alt={post.title}
@@ -300,22 +338,55 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
 
                     {/* Content */}
                     <div
-                        className="prose prose-invert prose-lg max-w-none"
+                        className="prose prose-invert prose-lg max-w-none
+                                   prose-headings:font-bold
+                                   prose-h2:text-2xl prose-h2:md:text-3xl prose-h2:mt-10 prose-h2:mb-4
+                                   prose-h3:text-xl prose-h3:md:text-2xl prose-h3:mt-8 prose-h3:mb-3
+                                   prose-p:text-gray-300 prose-p:leading-relaxed prose-p:mb-6
+                                   prose-a:text-[var(--brand-cyan)] prose-a:font-semibold prose-a:no-underline hover:prose-a:underline
+                                   prose-strong:text-white prose-strong:font-bold
+                                   prose-li:text-gray-300"
                         dangerouslySetInnerHTML={{ __html: post.content }}
                     />
 
+                    {/* Author Bio */}
+                    <div className="mt-16 p-6 md:p-8 bg-[var(--brand-surface)] border border-white/10 rounded-2xl">
+                        <div className="flex items-start gap-4">
+                            <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[var(--brand-cyan)] to-[var(--brand-blue)] flex items-center justify-center text-white text-xl font-bold flex-shrink-0">
+                                EM
+                            </div>
+                            <div className="flex-1">
+                                <h3 className="text-xl font-bold text-white mb-2">
+                                    About {post.author}
+                                </h3>
+                                <p className="text-gray-400 leading-relaxed mb-4">
+                                    Founder of Ubuntu AnalytIQ, specializing in AI training and data strategy
+                                    for African organizations. Passionate about building indigenous tech solutions
+                                    that understand local context.
+                                </p>
+                                <Link
+                                    href="/about"
+                                    className="inline-flex items-center text-[var(--brand-cyan)] font-semibold hover:text-white transition-colors"
+                                >
+                                    Learn more
+                                    <ArrowRight className="w-4 h-4 ml-1" />
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
+
                     {/* CTA */}
-                    <div className="mt-16 p-8 bg-[var(--brand-surface)] border border-white/10 rounded-2xl text-center">
-                        <h2 className="text-2xl font-bold text-white mb-4">
+                    <div className="mt-16 p-8 md:p-10 bg-gradient-to-br from-[var(--brand-cyan)]/10 via-[var(--brand-surface)] to-[var(--brand-blue)]/10 border border-[var(--brand-cyan)]/20 rounded-2xl text-center">
+                        <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
                             Ready to Build Your AI Skills?
                         </h2>
-                        <p className="text-gray-400 mb-6">
+                        <p className="text-gray-400 mb-6 max-w-xl mx-auto">
                             Take our free assessment to discover your personalized learning
-                            path.
+                            path and start mastering AI tools today.
                         </p>
                         <Link
                             href="/assessment"
-                            className="inline-block px-8 py-4 bg-[var(--brand-cyan)] text-[var(--brand-dark)] rounded-full font-bold hover:bg-cyan-300 transition-all"
+                            className="inline-block px-8 py-4 bg-[var(--brand-cyan)] text-[var(--brand-dark)] rounded-full font-bold hover:bg-cyan-300 transition-all shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/40"
                         >
                             Start AI Fluency Assessment
                         </Link>
