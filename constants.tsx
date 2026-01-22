@@ -373,7 +373,7 @@ export const BLOG_POSTS: BlogPost[] = [
       
       <div class="my-8 rounded-xl overflow-hidden">
         <img 
-          src="/phoenix_AI_Agent_100.jpg" 
+          image="/phoenix_AI_Agent_100.jpg" 
           class="w-full h-auto"
         />
         <p class="text-gray-500 text-sm text-center mt-2 italic">Yours truly delivering the opening keynote</p>
@@ -577,7 +577,7 @@ export const BLOG_POSTS: BlogPost[] = [
       
       <div class="my-8 rounded-xl overflow-hidden">
         <img 
-          src="phoenix_AI_Agent_338.jpg"  
+          image="phoenix_AI_Agent_338.jpg"  
           class="w-full h-auto"
         />
         <p class="text-gray-500 text-sm text-center mt-2 italic">The Stahkit team during their presentation</p>
