@@ -315,7 +315,7 @@ export const ASSESSMENT_QUESTIONS: Question[] = [
   }
 ];
 
-export const BLOG_POSTS: BlogPost[] = export const BLOG_POSTS: BlogPost[] = [
+export const BLOG_POSTS: BlogPost[] = [
   {
     id: "phoenix-ai-summit-2025", // Added ID property
     title: "Phoenix AI Agents Summit 2025: Building for Us",
