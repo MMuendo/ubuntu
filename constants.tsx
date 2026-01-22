@@ -673,7 +673,7 @@ export const BLOG_POSTS: BlogPost[] = [
       It is the responsibility.<br/>
       It is the technical work.<br/>
       It is the future.</strong></p>
-    `,
+    `
   },
   {
     id: 'why-excel-matters',
