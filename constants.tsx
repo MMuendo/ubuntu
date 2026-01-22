@@ -323,7 +323,7 @@ export const BLOG_POSTS: BlogPost[] = [
     date: "Feb 15, 2025",
     // dateISO: "2025-02-15", // Ensure your Type definition includes this if you use it
     author: "Ezra Muinde",
-    image: "https://images.unsplash.com/photo-1591115765373-5207764f72e7?w=1200&auto=format&fit=crop",
+    image: "/phoenix_AI_Agent_367.jpg",
     tags: ["AI Agents", "Community", "Innovation", "Phoenix Summit"],
     readTime: "12 min read",
     status: "published", // Ensure your Type definition includes this if you use it
@@ -343,15 +343,6 @@ export const BLOG_POSTS: BlogPost[] = [
       <p class="mb-6 text-gray-300 leading-relaxed">Not retrofitted copies. Not globally trained models forced into local realities.</p>
       
       <p class="mb-6 text-gray-300 leading-relaxed">Systems shaped by our culture, our languages, our challenges, and our brilliance.</p>
-      
-      <div class="my-8 rounded-xl overflow-hidden">
-        <img 
-          src="YOUR_IMAGE_URL_HERE" 
-          alt="Phoenix AI Summit 2025 venue" 
-          class="w-full h-auto"
-        />
-        <p class="text-gray-500 text-sm text-center mt-2 italic">Phoenix AI Agents Summit 2025</p>
-      </div>
       
       <p class="mb-6 text-gray-300 leading-relaxed">That vision sat quietly for years until I started teaching AI Agent Masterclasses.</p>
       
@@ -382,8 +373,7 @@ export const BLOG_POSTS: BlogPost[] = [
       
       <div class="my-8 rounded-xl overflow-hidden">
         <img 
-          src="https://github.com/MMuendo/ubuntu/blob/main/public/phoenix_AI_Agent_100.jpg" 
-          alt="Ezra Muinde delivering opening keynote" 
+          src="/phoenix_AI_Agent_100.jpg" 
           class="w-full h-auto"
         />
         <p class="text-gray-500 text-sm text-center mt-2 italic">Yours truly delivering the opening keynote</p>
@@ -587,8 +577,7 @@ export const BLOG_POSTS: BlogPost[] = [
       
       <div class="my-8 rounded-xl overflow-hidden">
         <img 
-          src="YOUR_IMAGE_URL_HERE" 
-          alt="Stahkit team presenting" 
+          src="phoenix_AI_Agent_338.jpg"  
           class="w-full h-auto"
         />
         <p class="text-gray-500 text-sm text-center mt-2 italic">The Stahkit team during their presentation</p>
