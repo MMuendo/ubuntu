@@ -1,4 +1,5 @@
-import { Metadata } from "next";
+'use client';
+
 import { useState } from "react";
 import Link from "next/link";
 import Header, { Footer } from "@/components/Header";
@@ -18,10 +19,6 @@ import {
   Archive
 } from "lucide-react";
 
-export const metadata: Metadata = {
-  title: "Blog Admin | Ubuntu AnalytIQ",
-  description: "Manage and publish blog content",
-};
 
 type BlogStatus = "draft" | "published" | "archived";
 
