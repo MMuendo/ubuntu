@@ -382,7 +382,7 @@ export const BLOG_POSTS: BlogPost[] = [
       
       <div class="my-8 rounded-xl overflow-hidden">
         <img 
-          src="YOUR_IMAGE_URL_HERE" 
+          src="https://github.com/MMuendo/ubuntu/blob/main/public/phoenix_AI_Agent_100.jpg" 
           alt="Ezra Muinde delivering opening keynote" 
           class="w-full h-auto"
         />
