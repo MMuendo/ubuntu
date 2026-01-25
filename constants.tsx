@@ -470,7 +470,7 @@ export const BLOG_POSTS: BlogPost[] = [
       
       <p class="mb-6 text-gray-300 leading-relaxed">Whether it’s training technical teams, empowering business users and executives, or helping organizations move from reporting to decision-making, the goal is simple: make your data work for you. If you’re ready to stop collecting reports and start using them, let’s talk. Power BI is already in your organization. The only question is whether it’s working for you yet.</p>
     `,
-  }
+  },
   {
     id: "phoenix-ai-summit-2025", // Added ID property
     title: "Phoenix AI Agents Summit 2025: Building for Us",
