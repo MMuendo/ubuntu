@@ -817,24 +817,158 @@ export const BLOG_POSTS: BlogPost[] = [
     `,
   },
   {
-    id: 'why-excel-matters',
-    title: 'Why Excel Still Matters in the Age of AI',
-    excerpt: 'In a world of LLMs and Python, the spreadsheet remains the undefeated champion of business data.',
-    date: 'Jan 10, 2025',
-    author: 'Ezra Muinde',
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop',
-    tags: ['Data Science', 'Excel', 'Foundations'],
+    id: "why-excel-still-matters-in-the-age-of-ai",
+    title: "Why Excel Still Matters in the Age of AI",
+    excerpt: "I know you can ask GPT nearly everything but just stay with me on this piece. Because sometimes, the best lessons don’t come from asking a machine, they come from reflection, experience, and stories we share.",
+    date: "Jan 25, 2026",
+    author: "Ezra Muinde",
+    image: "/excel_dashboard_image.jpg",
+    tags: ["Excel", "Data Analytics", "AI", "Teaching", "Reflections"],
+    readTime: "10 min read",
+    status: "published",
     content: `
-      <p class="mb-4">It is fashionable in tech circles to bash Excel. "It's not reproducible," they say. "It can't handle big data," they argue. And while true, they miss the point entirely.</p>
+ 
+      <p class="mb-6 text-gray-300 leading-relaxed">My first analytics tool was Microsoft Excel.</p>
       
-      <h3 class="text-xl font-bold text-white mt-6 mb-3">The UI of Business</h3>
-      <p class="mb-4">Excel is the user interface of business. You can build the most sophisticated Python model in the world, but the output will almost certainly need to be delivered in a spreadsheet for the CEO to read it. It is the common language of commerce.</p>
+      <p class="mb-6 text-gray-300 leading-relaxed">Back in 2019, when I started my data journey in a research agency, I was fascinated by the “magic” that lookups, VBA, and PivotTables could produce.</p>
       
-      <h3 class="text-xl font-bold text-white mt-6 mb-3">AI Needs Structure</h3>
-      <p class="mb-4">With the advent of Copilot and AI integrations, Excel is getting a second wind. But here is the catch: AI cannot fix messy data. To leverage AI effectively in Excel, you still need to understand data structure, normalization, and logic. You cannot prompt your way out of a bad pivot table.</p>
+      <p class="mb-6 text-gray-300 leading-relaxed">What seemed like just a spreadsheet quickly became a universe of possibilities.</p>
       
-      <p>So before you rush to learn the latest vector database, make sure you can still do a VLOOKUP. It matters more than you think.</p>
-    `
+      <p class="mb-6 text-gray-300 leading-relaxed">Excel was my first taste of analytics, and honestly, it has never stopped amazing me.</p>
+      
+      <p class="mb-6 text-gray-300 leading-relaxed">People often say Excel is just basic. But I’ve come to believe Excel is not just a platform; it’s a powerhouse.</p>
+      
+      <p class="mb-6 text-gray-300 leading-relaxed">And when you look closely, even Power BI is just Excel with makeup, a refined extension of the same foundation.</p>
+      
+      <p class="mb-6 text-gray-300 leading-relaxed">The truth is, even with LLMs, AI agents, and countless analytics tools in the market today, Excel still stands tall as a master tool.</p>
+      
+      <h2 class="text-2xl md:text-3xl font-bold text-white mt-12 mb-4">Why Excel Still Rules the Game</h2>
+      
+      <p class="mb-6 text-gray-300 leading-relaxed">Let’s step back for a moment.</p>
+      
+      <p class="mb-6 text-gray-300 leading-relaxed">In 2025, the hype is all about AI, automation, and machine learning and yes, I’m right in the middle of it, guiding AI Agents Masterclasses.</p>
+      
+      <p class="mb-6 text-gray-300 leading-relaxed">Every week there’s a new tool promising to replace your analytics stack, automate your workflow, or think on your behalf.</p>
+      
+      <p class="mb-6 text-gray-300 leading-relaxed">Yet, behind the scenes, when decisions are being made, when budgets are being planned, when sales are being tracked, Excel is quietly there, holding everything together.</p>
+      
+      <p class="mb-6 text-gray-300 leading-relaxed">Consider this:</p>
+      
+      <ul class="mb-6 space-y-2 text-gray-300 ml-6">
+        <li class="flex items-start gap-2">
+          <span class="text-[var(--brand-cyan)] mt-1">•</span>
+          <span>Over 750 million people use Excel worldwide (that’s nearly 1 in 10 people on the planet).</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <span class="text-[var(--brand-cyan)] mt-1">•</span>
+          <span>According to Deloitte, 82% of businesses still rely on Excel for financial modeling, forecasting, and reporting.</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <span class="text-[var(--brand-cyan)] mt-1">•</span>
+          <span>A Forrester study found that 60% of business decisions are supported by Excel-based analysis, despite the rise of advanced BI platforms.</span>
+        </li>
+      </ul>
+      
+      <p class="mb-6 text-gray-300 leading-relaxed">That tells you something powerful: Excel isn’t just surviving, it’s thriving. Why?</p>
+      
+      <p class="mb-6 text-gray-300 leading-relaxed">Because it’s accessible, flexible, and trusted.</p>
+      
+      <p class="mb-6 text-gray-300 leading-relaxed">It doesn’t matter if you’re a small startup managing cashflows or a Fortune 500 consolidating multi-billion-dollar budgets, Excel has a seat at the table.</p>
+      
+      <h2 class="text-2xl md:text-3xl font-bold text-white mt-12 mb-4">Lessons From Teaching Excel</h2>
+      
+      <p class="mb-6 text-gray-300 leading-relaxed">After teaching my first Excel cohort over the last 3 months, a mix of beginners and advanced learners, I had a powerful realization:</p>
+      
+      <p class="mb-6 text-gray-300 leading-relaxed">Excel is not just about functions, it’s about confidence.</p>
+      
+      <p class="mb-6 text-gray-300 leading-relaxed">I saw beginners, who at first were intimidated by formulas, gradually light up when they got their first VLOOKUP to work or when they built their first PivotTable.</p>
+      
+      <p class="mb-6 text-gray-300 leading-relaxed">To them, it wasn’t just “a formula working”, it was proof they could actually master something that once felt impossible.</p>
+      
+      <p class="mb-6 text-gray-300 leading-relaxed">I also saw advanced learners, some with years of experience, suddenly discover tricks they had never used before.</p>
+      
+      <p class="mb-6 text-gray-300 leading-relaxed">A better way to clean data. A shortcut to automate reporting. A smarter way to structure models.</p>
+      
+      <p class="mb-6 text-gray-300 leading-relaxed">By the end, every participant showcased a project that reflected their unique journey, dashboards, pivot charts, even small-scale data models.</p>
+      
+      <p class="mb-6 text-gray-300 leading-relaxed">That was the shocker for me.</p>
+      
+      <p class="mb-6 text-gray-300 leading-relaxed">I had expected knowledge transfer. What I witnessed instead was transformation.</p>
+      
+      <div class="my-8 p-6 bg-[var(--brand-cyan)]/10 border-l-4 border-[var(--brand-cyan)] rounded-lg">
+        <p class="text-gray-300 leading-relaxed"><em>One learner told me something that stuck: “I thought Excel was just for recording data. Now I realize it can actually tell a story. And those VLOOKUPs I once feared? They’re actually simple once you understand them.”</em></p>
+      </div>
+      
+      <p class="mb-6 text-gray-300 leading-relaxed">And isn’t that the essence of analytics? Not the tool itself, but the ability to turn numbers into meaning.</p>
+      
+      <h2 class="text-2xl md:text-3xl font-bold text-white mt-12 mb-4">Analytics Beyond Tools</h2>
+      
+      <p class="mb-6 text-gray-300 leading-relaxed">There’s a misconception that analytics is about mastering the latest, shiniest tool.</p>
+      
+      <p class="mb-6 text-gray-300 leading-relaxed">But tools come and go.</p>
+      
+      <p class="mb-6 text-gray-300 leading-relaxed">Real analytics is about solving problems, asking the right questions, and communicating insights clearly.</p>
+      
+      <p class="mb-6 text-gray-300 leading-relaxed">Excel forces you to think that way.</p>
+      
+      <p class="mb-6 text-gray-300 leading-relaxed">Every time you design a model or structure a dataset, you’re practicing logic.</p>
+      
+      <p class="mb-6 text-gray-300 leading-relaxed">Every time you build a chart, you’re asking: How can this information be understood at a glance?</p>
+      
+      <p class="mb-6 text-gray-300 leading-relaxed">That’s why I call Excel the gym for analytical thinking.</p>
+      
+      <p class="mb-6 text-gray-300 leading-relaxed">If you can think in Excel, you can think in SQL, Python, R, Power BI, or even with AI tools. The tool changes, but the muscle you’ve built stays with you.</p>
+      
+      <p class="mb-6 text-gray-300 leading-relaxed">And here’s the irony: even the most advanced AI systems often present their results in a table or a spreadsheet.</p>
+      
+      <p class="mb-6 text-gray-300 leading-relaxed">Which means, to make sense of what AI gives you, you still need the mindset Excel teaches.</p>
+      
+      <h2 class="text-2xl md:text-3xl font-bold text-white mt-12 mb-4">A Personal Reflection</h2>
+      
+      <p class="mb-6 text-gray-300 leading-relaxed">When I look back at my own journey, Excel didn’t just teach me how to calculate, it taught me how to think.</p>
+      
+      <p class="mb-6 text-gray-300 leading-relaxed">Those hours of debugging formulas, cleaning messy data, and creating dashboards shaped my approach to problem-solving.</p>
+      
+      <p class="mb-6 text-gray-300 leading-relaxed">Excel became my first mentor in analytics.</p>
+      
+      <p class="mb-6 text-gray-300 leading-relaxed">Now, watching learners go through that same transformation in my class reminded me why this tool will always matter.</p>
+      
+      <p class="mb-6 text-gray-300 leading-relaxed">Excel is not just about cells and functions, it’s about unlocking possibility.</p>
+      
+      <p class="mb-6 text-gray-300 leading-relaxed">I’ll never forget the final presentations from the cohort.</p>
+      
+      <p class="mb-6 text-gray-300 leading-relaxed">What began as nervous introductions turned into confident storytelling.</p>
+      
+      <p class="mb-6 text-gray-300 leading-relaxed">Learners who once doubted themselves now stood tall, explaining their projects with clarity and pride.</p>
+      
+      <p class="mb-6 text-gray-300 leading-relaxed">For me, that was the most rewarding part: seeing how Excel could empower people not just technically, but personally.</p>
+      
+      <h2 class="text-2xl md:text-3xl font-bold text-white mt-12 mb-4">Why Excel Isn’t Going Anywhere</h2>
+      
+      <p class="mb-6 text-gray-300 leading-relaxed">The tech landscape will keep evolving. LLMs will get smarter. Automation will get faster.</p>
+      
+      <p class="mb-6 text-gray-300 leading-relaxed">But here’s what won’t change: the need for humans who can think critically, structure data, and make decisions.</p>
+      
+      <p class="mb-6 text-gray-300 leading-relaxed">That’s why Excel will always have a place.</p>
+      
+      <p class="mb-6 text-gray-300 leading-relaxed">It’s not because it’s perfect, it’s because it teaches you to engage with problems directly.</p>
+      
+      <p class="mb-6 text-gray-300 leading-relaxed">It keeps you close to the numbers, and that proximity builds intuition.</p>
+      
+      <p class="mb-6 text-gray-300 leading-relaxed">So yes, I know you can ask GPT almost anything.</p>
+      
+      <p class="mb-6 text-gray-300 leading-relaxed">But what Excel gives you isn’t just answers, it gives you the ability to understand the answers. And in a world drowning in information, that’s priceless.</p>
+      
+      <h2 class="text-2xl md:text-3xl font-bold text-white mt-12 mb-4">Closing Thought</h2>
+      
+      <p class="mb-6 text-gray-300 leading-relaxed">After 3 months of teaching Excel, here’s my biggest takeaway: Excel is not just software, it’s a teacher.</p>
+      
+      <p class="mb-6 text-gray-300 leading-relaxed">It humbles you, it challenges you, and if you stick with it, it empowers you.</p>
+      
+      <p class="mb-6 text-gray-300 leading-relaxed">And maybe that’s why, even after all the new tools I’ve learned, I still find myself going back to Excel.</p>
+      
+      <p class="mb-6 text-gray-300 leading-relaxed">Not because it’s the only tool, but because it’s the one that taught me how to think like an analyst.</p>
+    `,
   },
   {
     id: 'colleagues-friends',
