@@ -23,6 +23,17 @@ export const metadata: Metadata = {
 // Only published posts are shown
 const blogPosts = [
     {
+        id: "why-you-actually-need-to-learn-power-bi",
+        title: "Why You Actually Need to Learn Power BI",
+        excerpt: "A friendly defense of a tool that quietly runs the modern workplace — and the real answer to your boss’s question: itaongeza pesa kweli?",
+        date: "Jan 25, 2026",
+        author: "Ezra Muinde",
+        image: "/power_bi.png",
+        tags: ["Power BI", "Data Analytics", "Microsoft Fabric", "Business Intelligence"],
+        readTime: "12 min read",
+        status: "published",
+    },
+    {
         id: "phoenix-ai-summit-2025",
         title: "Phoenix AI Agents Summit 2025: Building for Us",
         excerpt:
