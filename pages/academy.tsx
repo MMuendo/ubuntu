@@ -97,17 +97,17 @@ const AcademyPage: React.FC = () => {
 
   // Upcoming webinar data
   const upcomingWebinar = {
-    title: 'Introduction to Data Analytics & AI',
-    description: 'Join us for an interactive session exploring how data analytics and AI can transform your career and business. Perfect for beginners and professionals looking to understand the landscape.',
-    date: 'February 15, 2026',
-    time: '3:00 PM EAT',
+    title: 'Agentic AI in 2026: How to Scale It for Africa',
+    description: 'Join fellow humans (yes, even the ones obsessed with spreadsheets) to explore how Agentic AI will shape Africa’s future - and maybe finally automate that task you’ve been secretly dreading. Bring curiosity, imagination, and a hint of mischief!',
+    date: 'February 12, 2026',
+    time: '7:00 PM EAT',
     duration: '90 minutes',
-    spots: 'Limited to 50 participants',
+    spots: 'Limited seats — reserve your spot now!',
     topics: [
-      'Understanding the data analytics landscape',
-      'AI fundamentals for business professionals',
-      'Career opportunities in data & AI',
-      'Live Q&A with industry experts'
+      'Agentic AI reshaping African business',
+      'Playful, human-centered AI approaches',
+      'Real-world AI examples instantly applicable',
+      'Live Q&A - Fun reflection: automate one task'
     ],
     registrationUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSer5DSzBxdi_kSF-WaVyEBtOPxMZN_3bXZS5TBK1Rv9NjWsxg/viewform'
   };
@@ -372,8 +372,11 @@ const AcademyPage: React.FC = () => {
                     <div className="w-2 h-2 bg-purple-400 rounded-full mt-2 animate-pulse"></div>
                     <div>
                       <p className="text-sm text-gray-300">
-                        <span className="font-semibold text-purple-400">Pro tip:</span> Attend the webinar to get an exclusive 
-                        <span className="text-white font-semibold"> 10% discount code</span> for any course enrollment!
+                        <span className="font-semibold text-purple-400">Pro tip:</span> 
+                          {" Attend the webinar to see live examples of Agentic AI in action. "}
+                          <span className="text-white font-semibold">
+                              You might even automate that task you’ve been secretly dreading! 😄
+                          </span>
                       </p>
                     </div>
                   </div>
