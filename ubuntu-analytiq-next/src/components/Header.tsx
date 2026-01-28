@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { Menu, X, Linkedin, Phone } from "lucide-react";
 
 const navLinks = [
-    { label: "Courses", path: "/#courses" },
+    { label: "Academy", path: "/academy" },
     { label: "AI Fluency", path: "/assessment" },
     { label: "Agentic AI", path: "/agentic-ai" },
     { label: "Blog", path: "/blog" },
