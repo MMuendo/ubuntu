@@ -14,7 +14,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   const { user } = useAuth();
 
   const navLinks = [
-    { label: 'Courses', path: '/', hash: 'courses' },
+    { label: 'Academy', path: '/academy', hash: '' },
     { label: 'AI Fluency', path: '/assessment', hash: '' },
     { label: 'Agentic AI', path: '/agentic-ai', hash: '' },
     { label: 'Blog', path: '/blog', hash: '' },
