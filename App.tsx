@@ -13,6 +13,7 @@ import BlogPage from './pages/BlogPage';
 import BlogPostPage from './pages/BlogPostPage';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
+import AcademyPage from './pages/academy';
 import ResetPasswordPage from './pages/ResetPasswordPage';
 import DashboardPage from './pages/DashboardPage';
 import EnrollmentOptionsPage from './pages/EnrollmentOptionsPage';
@@ -49,6 +50,8 @@ const App: React.FC = () => {
                     }
                 />
 
+                <Route path="/academy" element={<AcademyPage />} />
+                
                 {/* Admin Routes - Protected with requireAdmin */}
                 <Route
                     path="/admin"
