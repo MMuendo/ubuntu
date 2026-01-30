@@ -57,11 +57,15 @@ const App: React.FC = () => {
 
                 <Route path="/academy" element={<AcademyPage />} />
 
-                <Route path="/course/excel-workshop" element={<ExcelCoursePage />} />
-                <Route path="/course/powerbi-workshop" element={<PowerBICoursePage />} />
-                <Route path="/course/ai-mastery" element={<AIMasteryCoursePage />} />
-                <Route path="/course/ai-agents-masterclass" element={<AIAgentsCoursePage />} />
-                <Route path="/webinar" element={<WebinarDetailsPage />} />
+                {/* Dynamic Course Route wrapped in Layout */}
+                <Route
+                    path="/course/:id"
+                    element={
+                        <Layout>
+                            <CourseDetail />
+                        </Layout>
+                    }
+                />
                 
                 {/* Admin Routes - Protected with requireAdmin */}
                 <Route
