@@ -20,6 +20,11 @@ import EnrollmentOptionsPage from './pages/EnrollmentOptionsPage';
 import ConsultationBookingPage from './pages/ConsultationBookingPage';
 import ConsultationSuccessPage from './pages/ConsultationSuccessPage';
 import NotFoundPage from './pages/NotFoundPage';
+import ExcelCoursePage from './pages/excelcourse';
+import PowerBICoursePage from './pages/powerbicourse';
+import AIMasteryCoursePage from './pages/aimasterycourse';
+import AIAgentsCoursePage from './pages/aiagentscourse';
+import WebinarDetailsPage from './pages/webinardetails';
 // Admin Pages
 import AdminDashboard from './pages/admin/AdminDashboard';
 import PricingManager from './pages/admin/PricingManager';
@@ -51,6 +56,12 @@ const App: React.FC = () => {
                 />
 
                 <Route path="/academy" element={<AcademyPage />} />
+
+                <Route path="/course/excel-workshop" element={<ExcelCoursePage />} />
+                <Route path="/course/powerbi-workshop" element={<PowerBICoursePage />} />
+                <Route path="/course/ai-mastery" element={<AIMasteryCoursePage />} />
+                <Route path="/course/ai-agents-masterclass" element={<AIAgentsCoursePage />} />
+                <Route path="/webinar" element={<WebinarDetailsPage />} />
                 
                 {/* Admin Routes - Protected with requireAdmin */}
                 <Route
