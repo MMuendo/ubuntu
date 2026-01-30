@@ -97,17 +97,17 @@ const AcademyPage: React.FC = () => {
 
   // Upcoming webinar data
   const upcomingWebinar = {
-    title: 'Agentic AI in 2026: How to Scale It for Africa',
-    description: 'Join fellow humans (yes, even the ones obsessed with spreadsheets) to explore how Agentic AI will shape Africa’s future - and maybe finally automate that task you’ve been secretly dreading. Bring curiosity, imagination, and a hint of mischief!',
-    date: 'February 12, 2026',
-    time: '7:00 PM EAT',
+    title: 'Introduction to Data Analytics & AI',
+    description: 'Join us for an interactive session exploring how data analytics and AI can transform your career and business. Perfect for beginners and professionals looking to understand the landscape.',
+    date: 'February 15, 2026',
+    time: '3:00 PM EAT',
     duration: '90 minutes',
-    spots: 'Limited seats — reserve your spot now!',
+    spots: 'Limited to 50 participants',
     topics: [
-      'Agentic AI reshaping African business',
-      'Playful, human-centered AI approaches',
-      'Real-world AI examples instantly applicable',
-      'Live Q&A - Fun reflection: automate one task'
+      'Understanding the data analytics landscape',
+      'AI fundamentals for business professionals',
+      'Career opportunities in data & AI',
+      'Live Q&A with industry experts'
     ],
     registrationUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSer5DSzBxdi_kSF-WaVyEBtOPxMZN_3bXZS5TBK1Rv9NjWsxg/viewform'
   };
@@ -244,10 +244,10 @@ const AcademyPage: React.FC = () => {
                       </div>
                         
                       <button
-                        onClick={() => handleEnroll(course)}
+                        onClick={() => navigate(`/course/${course.id}`)}
                         className={`w-full bg-gradient-to-r from-brand-cyan/10 to-brand-cyan/5 hover:from-brand-cyan hover:to-brand-cyan/80 text-brand-cyan hover:text-black border border-brand-cyan/30 hover:border-brand-cyan rounded-lg px-4 py-2.5 md:py-3 text-xs md:text-sm font-semibold flex items-center justify-center gap-2 transition-all duration-300 group/btn`}
                       >
-                        Apply to Join
+                        More Details
                         <ArrowRight className="w-3.5 h-3.5 md:w-4 md:h-4 group-hover/btn:translate-x-1 transition-transform" />
                       </button>
                     </div>
@@ -349,15 +349,13 @@ const AcademyPage: React.FC = () => {
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <a
-                    href={upcomingWebinar.registrationUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <button
+                    onClick={() => navigate('/webinar')}
                     className="flex-1 bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 text-white rounded-xl px-8 py-4 font-bold text-center transition-all duration-300 shadow-lg shadow-purple-500/30 hover:shadow-purple-500/50 flex items-center justify-center gap-2 group/btn"
                   >
-                    Register Now - It's Free
-                    <ExternalLink className="w-4 h-4 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
-                  </a>
+                    More Details
+                    <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                  </button>
                   
                   <button
                     onClick={() => navigate('/')}
@@ -372,11 +370,8 @@ const AcademyPage: React.FC = () => {
                     <div className="w-2 h-2 bg-purple-400 rounded-full mt-2 animate-pulse"></div>
                     <div>
                       <p className="text-sm text-gray-300">
-                        <span className="font-semibold text-purple-400">Pro tip:</span> 
-                          {" Attend the webinar to see live examples of Agentic AI in action. "}
-                          <span className="text-white font-semibold">
-                              You might even automate that task you’ve been secretly dreading! 😄
-                          </span>
+                        <span className="font-semibold text-purple-400">Pro tip:</span> Attend the webinar to get an exclusive 
+                        <span className="text-white font-semibold"> 10% discount code</span> for any course enrollment!
                       </p>
                     </div>
                   </div>
