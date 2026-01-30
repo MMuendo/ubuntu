@@ -25,6 +25,7 @@ import PowerBICoursePage from './pages/powerbicourse';
 import AIMasteryCoursePage from './pages/aimasterycourse';
 import AIAgentsCoursePage from './pages/aiagentscourse';
 import WebinarDetailsPage from './pages/webinardetails';
+import CourseDetail from './pages/CourseDetail';
 // Admin Pages
 import AdminDashboard from './pages/admin/AdminDashboard';
 import PricingManager from './pages/admin/PricingManager';
