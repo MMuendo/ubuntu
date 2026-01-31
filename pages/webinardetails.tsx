@@ -20,8 +20,8 @@ const WebinarDetailsPage: React.FC = () => {
 
   const upcomingWebinar = {
     title: 'Agentic AI in 2026: How to Scale It for Africa',
-    description: 'Join fellow humans (yes, even the ones obsessed with spreadsheets) to explore how Agentic AI will shape Africa's future - and maybe finally automate that task you've been secretly dreading. Bring curiosity, imagination, and a hint of mischief!',
-    longDescription: 'This isn't your typical webinar. We're ditching the corporate jargon and diving into a playful, practical exploration of how Agentic AI is transforming work across Africa. Whether you're a business leader, developer, or just AI-curious, you'll leave with actionable insights and maybe a few laughs along the way.',
+    description: `Join fellow humans (yes, even the ones obsessed with spreadsheets) to explore how Agentic AI will shape Africa's future - and maybe finally automate that task you've been secretly dreading. Bring curiosity, imagination, and a hint of mischief!`,
+    longDescription: `This isn't your typical webinar. We're ditching the corporate jargon and diving into a playful, practical exploration of how Agentic AI is transforming work across Africa. Whether you're a business leader, developer, or just AI-curious, you'll leave with actionable insights and maybe a few laughs along the way.`,
     date: 'February 12, 2026',
     time: '7:00 PM EAT',
     duration: '90 minutes',
@@ -29,7 +29,7 @@ const WebinarDetailsPage: React.FC = () => {
     host: 'Ezra Muinde',
     hostTitle: 'Founder, Ubuntu Analytiq',
     registrationUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSer5DSzBxdi_kSF-WaVyEBtOPxMZN_3bXZS5TBK1Rv9NjWsxg/viewform'
-  };
+};
 
   const agenda = [
     {
