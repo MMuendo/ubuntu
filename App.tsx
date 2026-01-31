@@ -19,7 +19,6 @@ import DashboardPage from './pages/DashboardPage';
 import EnrollmentOptionsPage from './pages/EnrollmentOptionsPage';
 import ConsultationBookingPage from './pages/ConsultationBookingPage';
 import ConsultationSuccessPage from './pages/ConsultationSuccessPage';
-import NotFoundPage from './pages/NotFoundPage';
 import ExcelCoursePage from './pages/excelcourse';
 import PowerBICoursePage from './pages/powerbicourse';
 import AIMasteryCoursePage from './pages/aimasterycourse';
@@ -32,6 +31,7 @@ import PricingManager from './pages/admin/PricingManager';
 import LeadsManager from './pages/admin/LeadsManager';
 import SettingsManager from './pages/admin/SettingsManager';
 import { Product, Course } from './types';
+import NotFoundPage from './pages/NotFoundPage';
 
 const App: React.FC = () => {
     const navigate = useNavigate();
