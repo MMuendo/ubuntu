@@ -35,7 +35,7 @@ const WebinarDetailsPage: React.FC = () => {
     {
       time: '7:00 PM',
       title: 'Opening: The State of Agentic AI',
-      description: 'Where we are, where we're going, and why Africa is uniquely positioned to lead'
+      description: `Where we are, where we're going, and why Africa is uniquely positioned to lead`
     },
     {
       time: '7:15 PM',
@@ -50,12 +50,12 @@ const WebinarDetailsPage: React.FC = () => {
     {
       time: '8:00 PM',
       title: 'African Context: Opportunities & Challenges',
-      description: 'How to deploy AI agents given Africa's unique tech landscape'
+      description: `How to deploy AI agents given Africa's unique tech landscape`
     },
     {
       time: '8:20 PM',
       title: 'Live Q&A + Fun Reflection',
-      description: 'Your questions answered + share one task you'd love to automate'
+      description: `Your questions answered + share one task you'd love to automate`
     }
   ];
 
@@ -85,7 +85,7 @@ const WebinarDetailsPage: React.FC = () => {
   const benefits = [
     'Understand the Agentic AI landscape in 2026',
     'See live demos of working AI agents',
-    'Learn what's possible with your current resources',
+    `Learn what's possible with your current resources`,
     'Get your specific questions answered',
     'Network with fellow AI enthusiasts',
     'Receive exclusive 10% discount code for any course',
