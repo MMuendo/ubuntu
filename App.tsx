@@ -67,7 +67,16 @@ const App: React.FC = () => {
                         </Layout>
                     }
                 />
-                
+
+                <Route 
+                    path="/webinar" 
+                    element={
+                        <Layout>
+                            <WebinarDetailsPage />
+                        </Layout>
+                    } 
+                />
+                                
                 {/* Admin Routes - Protected with requireAdmin */}
                 <Route
                     path="/admin"
