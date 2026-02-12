@@ -28,7 +28,7 @@ const WebinarDetailsPage: React.FC = () => {
     spots: 'Limited seats — reserve your spot now!',
     host: 'Ezra Muinde',
     hostTitle: 'Founder, Ubuntu Analytiq',
-    registrationUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSer5DSzBxdi_kSF-WaVyEBtOPxMZN_3bXZS5TBK1Rv9NjWsxg/viewform'
+    registrationUrl: 'https://teams.microsoft.com/l/meetup-join/19%3ameeting_MDM1N2IxZGYtY2Q0ZS00YTI5LTliMzYtYmFhYjkyYjU1ZWY0%40thread.v2/0?context=%7b%22Tid%22%3a%220df752df-6ffd-48ba-9528-e1df9a03b887%22%2c%22Oid%22%3a%22fd55495a-b02e-4479-89b0-54c6c67d8b72%22%7d'
 };
 
   const agenda = [
@@ -154,7 +154,7 @@ const WebinarDetailsPage: React.FC = () => {
               rel="noopener noreferrer"
               className="px-8 py-4 bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 text-white rounded-full font-bold text-lg transition-all shadow-[0_0_30px_rgba(168,85,247,0.3)] hover:shadow-[0_0_40px_rgba(168,85,247,0.5)] inline-flex items-center gap-2"
             >
-              Register Now - It's Free
+              Join Now - It's Live
               <ExternalLink className="w-5 h-5" />
             </a>
             <button
