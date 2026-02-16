@@ -167,16 +167,19 @@ const WebinarDetailsPage: React.FC = () => {
         </div>
       </section>
 
-      {/* VIDEO/IMAGE SECTION */}
+      {/* VIDEO SECTION */}
       <section className="py-12 bg-[#18100F]">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="relative rounded-2xl overflow-hidden border border-purple-500/20 shadow-2xl shadow-purple-500/10">
-            <div className="aspect-video bg-gradient-to-br from-purple-900/30 to-cyan-900/30 flex items-center justify-center">
-              <div className="text-center">
-                <Play className="w-20 h-20 text-purple-400 mx-auto mb-4" />
-                <p className="text-white text-lg font-semibold">Webinar Preview</p>
-                <p className="text-gray-400 text-sm">See what you'll learn</p>
-              </div>
+          <div className="relative rounded-2xl overflow-hidden border border-gray-700 shadow-2xl">
+            <div className="aspect-video">
+              <iframe
+                className="w-full h-full"
+                src="https://www.youtube.com/embed/PndHwr6x5Ng"
+                title="Watch the Webinar"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
             </div>
           </div>
         </div>
