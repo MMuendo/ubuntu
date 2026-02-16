@@ -97,10 +97,10 @@ const AcademyPage: React.FC = () => {
 
   // Upcoming webinar data
   const upcomingWebinar = {
-    title: 'Introduction to Data Analytics & AI',
-    description: 'Join us for an interactive session exploring how data analytics and AI can transform your career and business. Perfect for beginners and professionals looking to understand the landscape.',
-    date: 'February 15, 2026',
-    time: '3:00 PM EAT',
+    title: 'Agentic AI in 2026: How to Scale It for Africa',
+    description: `Join fellow humans (yes, even the ones obsessed with spreadsheets) to explore how Agentic AI will shape Africa's future - and maybe finally automate that task you've been secretly dreading.`,
+    date: 'February 12, 2026',
+    time: '7:00 PM EAT',
     duration: '90 minutes',
     spots: 'Limited to 50 participants',
     topics: [
@@ -295,7 +295,7 @@ const AcademyPage: React.FC = () => {
                     <Video className="w-8 h-8 text-purple-400" />
                   </div>
                   <div>
-                    <div className="text-sm text-purple-400 font-semibold uppercase tracking-wide">Upcoming Webinar</div>
+                    <div className="text-sm text-gray-400 font-semibold uppercase tracking-wide">Completed Webinar</div>
                     <div className="text-xs text-gray-500">Free • Live Interactive Session</div>
                   </div>
                 </div>
