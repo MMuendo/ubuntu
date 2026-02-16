@@ -223,7 +223,7 @@ const AIAgentsCoursePage: React.FC = () => {
                 preload="metadata"
               >
                 <source
-                  src="https://raw.githubusercontent.com/MMuendo/ubuntu/main/public/AI_Agent_Course_Trailer_Script.mp4"
+                  src="/AI_Agent_Course_Trailer_Script.mp4"
                   type="video/mp4"
                 />
                 Your browser does not support the video tag.
