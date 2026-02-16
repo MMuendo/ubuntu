@@ -97,17 +97,17 @@ const AcademyPage: React.FC = () => {
 
   // Upcoming webinar data
   const upcomingWebinar = {
-    title: 'Introduction to Data Analytics & AI',
-    description: 'Join us for an interactive session exploring how data analytics and AI can transform your career and business. Perfect for beginners and professionals looking to understand the landscape.',
-    date: 'February 15, 2026',
-    time: '3:00 PM EAT',
+    title: 'Agentic AI in 2026: How to Scale It for Africa',
+    description: `Join fellow humans (yes, even the ones obsessed with spreadsheets) to explore how Agentic AI will shape Africa's future - and maybe finally automate that task you've been secretly dreading. Bring curiosity, imagination, and a hint of mischief!`,
+    date: 'February 12, 2026',
+    time: '7:00 PM EAT',
     duration: '90 minutes',
     spots: 'Limited to 50 participants',
     topics: [
-      'Understanding the data analytics landscape',
-      'AI fundamentals for business professionals',
-      'Career opportunities in data & AI',
-      'Live Q&A with industry experts'
+      'Agentic AI Fundamentals',
+      'Real-World Use Cases',
+      'Building vs Buying',
+      'Interactive Discussion'
     ],
     registrationUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSer5DSzBxdi_kSF-WaVyEBtOPxMZN_3bXZS5TBK1Rv9NjWsxg/viewform'
   };
@@ -295,7 +295,7 @@ const AcademyPage: React.FC = () => {
                     <Video className="w-8 h-8 text-purple-400" />
                   </div>
                   <div>
-                    <div className="text-sm text-purple-400 font-semibold uppercase tracking-wide">Upcoming Webinar</div>
+                    <div className="text-sm text-slate-400 font-semibold uppercase tracking-wide">Completed Webinar</div>
                     <div className="text-xs text-gray-500">Free • Live Interactive Session</div>
                   </div>
                 </div>
