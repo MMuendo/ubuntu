@@ -209,20 +209,30 @@ const AIAgentsCoursePage: React.FC = () => {
         </div>
       </section>
 
-      {/* VIDEO/IMAGE SECTION */}
+      {/* VIDEO SECTION */}
       <section className="py-12 bg-[#18100F]">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="relative rounded-2xl overflow-hidden border border-orange-500/20 shadow-2xl shadow-orange-500/10">
-            <div className="aspect-video bg-gradient-to-br from-orange-900/30 to-red-900/30 flex items-center justify-center">
-              <div className="text-center">
-                <Play className="w-20 h-20 text-orange-400 mx-auto mb-4" />
-                <p className="text-white text-lg font-semibold">Course Preview Video</p>
-                <p className="text-gray-400 text-sm">Watch AI agents in action</p>
-              </div>
+            <div className="aspect-video bg-black">
+              <video
+                className="w-full h-full object-cover"
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+              >
+                <source
+                  src="https://raw.githubusercontent.com/MMuendo/ubuntu/main/public/AI_Agent_Course_Trailer_Script.mp4"
+                  type="video/mp4"
+                />
+                Your browser does not support the video tag.
+              </video>
             </div>
           </div>
         </div>
       </section>
+
 
       {/* COURSE OUTLINE */}
       <section className="py-20 bg-[#18100F]">
