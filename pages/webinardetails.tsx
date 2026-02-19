@@ -14,6 +14,7 @@ import {
   MessageCircle,
   Play
 } from 'lucide-react';
+import { ArrowDown, ExternalLink } from 'lucide-react';
 
 const WebinarDetailsPage: React.FC = () => {
   const navigate = useNavigate();
@@ -127,9 +128,6 @@ const WebinarDetailsPage: React.FC = () => {
           <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-4 leading-relaxed">
             {upcomingWebinar.description}
           </p>
-          <p className="text-lg text-purple-300 max-w-2xl mx-auto mb-8">
-            {upcomingWebinar.longDescription}
-          </p>
 
           {/* Quick Stats */}
           <div className="flex flex-wrap justify-center gap-6 mb-10">
@@ -149,19 +147,18 @@ const WebinarDetailsPage: React.FC = () => {
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
-              href={upcomingWebinar.registrationUrl}
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#"
+              onClick={(e) => e.preventDefault()} // prevents default navigation
               className="px-8 py-4 bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 text-white rounded-full font-bold text-lg transition-all shadow-[0_0_30px_rgba(168,85,247,0.3)] hover:shadow-[0_0_40px_rgba(168,85,247,0.5)] inline-flex items-center gap-2"
             >
-              Join Now - It's Live
-              <ExternalLink className="w-5 h-5" />
+              Video Recording Below
+              <ArrowDown className="w-5 h-5" />
             </a>
             <button
               onClick={() => navigate('/academy')}
               className="px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/20 text-white rounded-full font-bold text-lg hover:bg-white/20 transition-all"
             >
-              Back to Academy
+              Go to Academy
             </button>
           </div>
         </div>
