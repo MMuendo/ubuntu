@@ -474,7 +474,7 @@ export const BLOG_POSTS: BlogPost[] = [
 
       <p class="mb-6 text-gray-300 leading-relaxed">Once you see Agentic AI as delegation, not intelligence, everything else becomes obvious.</p>
     `,
-  }
+  },
   {
     id: "why-you-actually-need-to-learn-power-bi",
     title: "Why You Actually Need to Learn Power BI",
