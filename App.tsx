@@ -56,7 +56,15 @@ const App: React.FC = () => {
                     }
                 />
 
-                <Route path="/academy" element={<AcademyPage />} />
+                <Route 
+                    path="/academy" 
+                    element={
+                        <Layout>
+                            <AcademyPage />
+                        </Layout>
+                    }
+                </Route>
+
 
                 {/* Dynamic Course Route wrapped in Layout */}
                 <Route
