@@ -223,7 +223,7 @@ const AIAgentsCoursePage: React.FC = () => {
                 preload="metadata"
               >
                 <source
-                  src="https://www.youtube.com/watch?v=I_7eKYxAxbE"
+                  src="https://www.youtube.com/embed/I_7eKYxAxbE?si=e3vRbkbNBxt7X29D"
                   type="video/mp4"
                 />
                 Your browser does not support the video tag.
