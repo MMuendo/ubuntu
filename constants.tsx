@@ -317,6 +317,165 @@ export const ASSESSMENT_QUESTIONS: Question[] = [
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    id: "how-agentic-ai-actually-works-using-n8n",
+    title: "How Agentic AI Actually Works: Using n8n",
+    excerpt: "When AI observes, reasons, and acts, you focus on what truly matters — a straight-to-the-point breakdown of automation, Agentic AI, and why n8n is the tool keeping us busy before we 'weka mawe'.",
+    date: "Feb 19, 2026",
+    author: "Ezra Muinde",
+    image: "/n8n.jpeg",
+    tags: ["Agentic AI", "n8n", "Automation", "Artificial Intelligence"],
+    readTime: "10 min read",
+    status: "published",
+    content: `
+
+      <p class="mb-6 text-gray-300 leading-relaxed">Let's be honest, sorry guys.</p>
+
+      <p class="mb-6 text-gray-300 leading-relaxed">I want to start this straight up because there's something important, I need you to understand before you start skipping my introduction.</p>
+
+      <p class="mb-6 text-gray-300 leading-relaxed">I know I'm not boring, but I also know you don't care 😂. So let me get straight to the point: <strong class="text-white">think it, build it, extend it.</strong></p>
+
+      <p class="mb-6 text-gray-300 leading-relaxed">That mindset is the foundation of everything I'm about to share.</p>
+
+      <p class="mb-6 text-gray-300 leading-relaxed">For the last two weeks, I've been deep inside the n8n ecosystem, going through almost the entire website.</p>
+
+      <p class="mb-6 text-gray-300 leading-relaxed">I haven't finished, and that's intentional. Not everything there is important to me, and not everything should be important to you.</p>
+
+      <p class="mb-6 text-gray-300 leading-relaxed">I focused on what actually helps people understand automation without drowning in theory.</p>
+
+      <p class="mb-6 text-gray-300 leading-relaxed">I did all this so that you can understand automation in the simplest way possible. And since I teach using n8n, you'll have to stay with n8n.</p>
+
+      <h2 class="text-2xl md:text-3xl font-bold text-white mt-12 mb-4">Automation Explained Simply</h2>
+
+      <p class="mb-6 text-gray-300 leading-relaxed">At its core, automation is not complicated. It's simply the act of removing humans from repetitive, predictable tasks.</p>
+
+      <p class="mb-6 text-gray-300 leading-relaxed">If something happens the same way every day, copying data, sending reports, updating sheets, responding to the same questions, then that task does not need your intelligence.</p>
+
+      <p class="mb-6 text-gray-300 leading-relaxed">It needs consistency. Automation is saying: <strong class="text-white">when X happens, do Y automatically.</strong> That's it.</p>
+
+      <p class="mb-6 text-gray-300 leading-relaxed">Now imagine scaling that idea. Messages come in, data is captured, calculations happen, reports are sent, and notifications go out, without you touching anything.</p>
+
+      <p class="mb-6 text-gray-300 leading-relaxed">That's what tools like n8n enable. You visually connect triggers, logic, and actions so systems work for you in the background while you focus on thinking, deciding, and building.</p>
+
+      <h2 class="text-2xl md:text-3xl font-bold text-white mt-12 mb-4">So What Is Agentic AI, Really?</h2>
+
+      <p class="mb-6 text-gray-300 leading-relaxed">Agentic AI is not a chatbot. It's not a prompt. And it's definitely not magic.</p>
+
+      <p class="mb-6 text-gray-300 leading-relaxed">Agentic AI is <strong class="text-white">automation with decision making ability.</strong> Instead of you telling AI what to do every single time, you give it a goal, rules, and access to tools, then it acts on your behalf.</p>
+
+      <p class="mb-6 text-gray-300 leading-relaxed">An AI agent follows a simple loop. It observes what is happening, reasons about what to do next, takes action using tools or systems, and then checks the outcome.</p>
+
+      <p class="mb-6 text-gray-300 leading-relaxed">That loop repeats until the task is done or a condition is met. This is why Agentic AI feels powerful. It does not wait for you to type again.</p>
+
+      <p class="mb-6 text-gray-300 leading-relaxed">This is also where n8n fits perfectly.</p>
+
+      <p class="mb-6 text-gray-300 leading-relaxed">n8n provides the structure for Agentic AI by connecting triggers, what the agent sees, logic and guardrails, how it decides, and actions, what it does in the real world.</p>
+
+      <p class="mb-6 text-gray-300 leading-relaxed">The AI is the brain, but the workflow is the body.</p>
+
+      <h2 class="text-2xl md:text-3xl font-bold text-white mt-12 mb-4">Automation and Agentic AI Explained Using Kenyan Politics</h2>
+
+      <p class="mb-6 text-gray-300 leading-relaxed">Think about Kenyan politics.</p>
+
+      <p class="mb-6 text-gray-300 leading-relaxed">A politician who does everything themselves, answering every call, planning every rally, approving every poster, negotiating every deal, does not scale.</p>
+
+      <p class="mb-6 text-gray-300 leading-relaxed">They burn out, make mistakes, and eventually lose control of the message. So what do they do instead? They delegate, do you think he ever delegates?</p>
+
+      <p class="mb-6 text-gray-300 leading-relaxed">They have advisors who analyze situations, aides who execute instructions, spokespeople who respond on their behalf, and security teams that enforce boundaries.</p>
+
+      <p class="mb-6 text-gray-300 leading-relaxed">The politician does not disappear. They set direction while others act.</p>
+
+      <p class="mb-6 text-gray-300 leading-relaxed">That is exactly how automation works in a business. And Agentic AI takes it one step further.</p>
+
+      <p class="mb-6 text-gray-300 leading-relaxed">Instead of hiring more people, you build agents that can observe situations, make decisions based on rules, and act without waiting for permission every time.</p>
+
+      <p class="mb-6 text-gray-300 leading-relaxed">In this analogy, n8n is the campaign office. The workflows are the staff. The AI is the advisor. Guardrails are the party constitution. And you remain the principal, setting vision, not running errands.</p>
+
+      <h2 class="text-2xl md:text-3xl font-bold text-white mt-12 mb-4">My Top n8n Nodes You Should Know</h2>
+
+      <p class="mb-6 text-gray-300 leading-relaxed">Before anything else, it's important to understand this: n8n has over 400 integrations, and it can connect to almost anything that exposes an API.</p>
+
+      <p class="mb-6 text-gray-300 leading-relaxed">That means you're rarely limited by tools. What matters is what you choose to automate and why.</p>
+
+      <ul class="mb-6 space-y-6 text-gray-300 ml-6">
+        <li class="flex items-start gap-2">
+          <span class="text-[var(--brand-cyan)] mt-1">1.</span>
+          <span>
+            <strong class="text-white">Guardrails node</strong>
+            <p class="mt-2">I'm starting with the Guardrails node because guardrails are not optional in Agentic AI.</p>
+            <p class="mt-2">The moment you allow AI to act on your behalf, you must define boundaries.</p>
+            <p class="mt-2">This node lets you validate user input before it reaches an AI model and check AI output before it is used anywhere else in your workflow.</p>
+            <p class="mt-2">In simple terms, it keeps your agents from saying or doing things they shouldn't. No serious Agentic AI system runs without guardrails.</p>
+          </span>
+        </li>
+        <li class="flex items-start gap-2">
+          <span class="text-[var(--brand-cyan)] mt-1">2.</span>
+          <span>
+            <strong class="text-white">Google Analytics node</strong>
+            <p class="mt-2">I'm choosing the Google Analytics node because, realistically, your entire analytics department can be automated with nodes.</p>
+            <p class="mt-2">Instead of people logging in, pulling reports, and forwarding numbers, this node allows performance data to flow automatically into spreadsheets, dashboards, or notifications.</p>
+            <p class="mt-2">Insights move on a schedule, not on someone's memory. This is how reporting becomes a system, not a task.</p>
+          </span>
+        </li>
+        <li class="flex items-start gap-2">
+          <span class="text-[var(--brand-cyan)] mt-1">3.</span>
+          <span>
+            <strong class="text-white">Microsoft</strong>
+            <p class="mt-2">Next is Microsoft, because whether you like it or not, most of you are already living inside Microsoft tools.</p>
+            <p class="mt-2">You're probably using Excel right now. n8n integrates directly with Microsoft services like Teams, Entra ID, and Excel, allowing data, reports, and alerts to move without manual effort.</p>
+            <p class="mt-2">At some point, Excel will also force you to think about databases and SQL, and automation is the bridge between those worlds.</p>
+          </span>
+        </li>
+        <li class="flex items-start gap-2">
+          <span class="text-[var(--brand-cyan)] mt-1">4.</span>
+          <span>
+            <strong class="text-white">Execute Command node</strong>
+            <p class="mt-2">I'm including the Execute Command node purely out of respect for my technical audience. If I don't mention it, they'll cancel their subscriptions to my articles.</p>
+            <p class="mt-2">This node allows you to run system-level commands and scripts, making it possible to automate technical workflows directly on servers or local machines.</p>
+            <p class="mt-2">It's powerful, dangerous if misused, and extremely useful when you know what you're doing.</p>
+          </span>
+        </li>
+        <li class="flex items-start gap-2">
+          <span class="text-[var(--brand-cyan)] mt-1">5.</span>
+          <span>
+            <strong class="text-white">Spotify node</strong>
+            <p class="mt-2">Finally, I'm choosing Spotify because you love music, and because it proves a deeper point.</p>
+            <p class="mt-2">Spotify lives inside your VS Code and now inside GPT, and with n8n, you can automate how you interact with it.</p>
+            <p class="mt-2">From creating playlists to syncing music across platforms, it shows that automation is not just for business processes.</p>
+            <p class="mt-2">If we can automate how we listen to music, imagine what we can do with work.</p>
+          </span>
+        </li>
+      </ul>
+
+      <h2 class="text-2xl md:text-3xl font-bold text-white mt-12 mb-4">What Makes n8n Special</h2>
+
+      <p class="mb-6 text-gray-300 leading-relaxed">What makes n8n special is the fact that you can run it locally.</p>
+
+      <p class="mb-6 text-gray-300 leading-relaxed">You are not forced into the cloud, and you maintain full control over your workflows.</p>
+
+      <p class="mb-6 text-gray-300 leading-relaxed">I know the code vibers using Claude want to debate, but for now, I am choosing n8n.</p>
+
+      <p class="mb-6 text-gray-300 leading-relaxed">It is perfect for experimentation, learning, and deployment without friction.</p>
+
+      <h2 class="text-2xl md:text-3xl font-bold text-white mt-12 mb-4">Finally - "Wacha niongee"</h2>
+
+      <p class="mb-6 text-gray-300 leading-relaxed">I still believe in building for us, by us. I am tired of endless customization for tools that were never designed with our realities in mind.</p>
+
+      <p class="mb-6 text-gray-300 leading-relaxed">But before I get tired, n8n is here to keep me busy, to experiment, deploy, and teach.</p>
+
+      <p class="mb-6 text-gray-300 leading-relaxed">This is our tool to do the push ups before we "weka mawe".</p>
+
+      <p class="mb-6 text-gray-300 leading-relaxed">My people, it's happening. What used to take four weeks can now be built in ten minutes.</p>
+
+      <p class="mb-6 text-gray-300 leading-relaxed">AI is not replacing us. It is freeing our mental space so we can focus on better work.</p>
+
+      <p class="mb-6 text-gray-300 leading-relaxed">Humans were never created to spend intelligence on repetitive tasks, so automate them.</p>
+
+      <p class="mb-6 text-gray-300 leading-relaxed">Instead of paying subscriptions to use ChatGPT or Claude like Google, get an API and start delegating. That shift, from chatting to delegating, is the heart of Agentic AI.</p>
+
+      <p class="mb-6 text-gray-300 leading-relaxed">Once you see Agentic AI as delegation, not intelligence, everything else becomes obvious.</p>
+    `,
+  }
+  {
     id: "why-you-actually-need-to-learn-power-bi",
     title: "Why You Actually Need to Learn Power BI",
     excerpt: "A friendly defense of a tool that quietly runs the modern workplace — and the real answer to your boss’s question: itaongeza pesa kweli?",
