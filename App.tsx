@@ -63,7 +63,7 @@ const App: React.FC = () => {
                             <AcademyPage />
                         </Layout>
                     }
-                </Route>
+                />
 
 
                 {/* Dynamic Course Route wrapped in Layout */}
