@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
+import ScrollToTop from './components/ScrollToTop';
 import { AuthProvider } from './contexts/AuthContext';
 import Layout from './components/Layout';
 import ProtectedRoute from './components/ProtectedRoute';
@@ -33,11 +34,13 @@ import SettingsManager from './pages/admin/SettingsManager';
 import { Product, Course } from './types';
 import NotFoundPage from './pages/NotFoundPage';
 
+
 const App: React.FC = () => {
     const navigate = useNavigate();
 
     return (
         <AuthProvider>
+            <ScrollToTop /> 
             <Routes>
                 {/* Auth Routes (without Layout) */}
                 <Route path="/login" element={<LoginPage />} />
