@@ -77,7 +77,7 @@ const App: React.FC = () => {
                 />
 
                 <Route 
-                    path="/webinar" 
+                    path="/webinar/:id" 
                     element={
                         <Layout>
                             <WebinarDetailsPage />
