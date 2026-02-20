@@ -104,7 +104,7 @@ const HomePage: React.FC = () => {
   const testimonials = [
     {
       name: 'Eric Onchonga',
-      role: 'CEO, Irri-hub
+      role: 'CEO, Irri-hub',
       content: 'Delivered a insightful Power BI dashboard integrated with Zoho Books and Zoho CRM APIs, providing real-time financial and customer visibility for our agricultural operations.',
       avatar: 'SM',
       rating: 5
