@@ -103,24 +103,24 @@ const HomePage: React.FC = () => {
   // Testimonials data
   const testimonials = [
     {
-      name: 'Sarah Mitchell',
-      role: 'Head of Analytics, TechCorp',
-      content: 'Ubuntu Academy transformed our team from Excel users to data strategists. The hands-on approach and real-world focus made all the difference.',
+      name: 'Eric Onchonga',
+      role: 'CEO, Irri-hub
+      content: 'Delivered a insightful Power BI dashboard integrated with Zoho Books and Zoho CRM APIs, providing real-time financial and customer visibility for our agricultural operations.',
       avatar: 'SM',
       rating: 5
     },
     {
-      name: 'James Omondi',
-      role: 'CEO, DataFlow Solutions',
-      content: 'The AI Mastery program gave us the confidence to implement AI responsibly. We are now leading conversations, not following trends.',
-      avatar: 'JO',
+      name: 'Duncan Mutulu',
+      role: 'Director, World Vision',
+      content: 'Built my supply chain inventory dashboard and trained me on Power BI Desktop and Service, enabling independent report development and management.',
+      avatar: 'DM',
       rating: 5
     },
     {
-      name: 'Maria Santos',
-      role: 'Operations Director, GlobalRetail',
-      content: 'The agentic workflow automation saved us 200+ hours monthly. Best investment in our team\'s productivity and growth.',
-      avatar: 'MS',
+      name: 'Monicah Gitagia',
+      role: 'Student, Microsoft Excel',
+      content: 'Ezra is a firm and fun tutor who provided one-on-one Excel coaching, significantly improving my confidence, efficiency, and accuracy in daily data analysis.',
+      avatar: 'MG',
       rating: 5
     }
   ];
