@@ -242,34 +242,6 @@ const WebinarDetailsPage: React.FC = () => {
         </div>
       </section>
 
-      {/* ── AGENDA ───────────────────────────────────────────────────────────── */}
-      <section className="py-20 bg-gradient-to-b from-[#18100F] via-purple-900/5 to-[#18100F]">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              {isCompleted ? 'Session Agenda' : 'Agenda'}
-            </h2>
-          </div>
-          <div className="space-y-4">
-            {webinar.agenda.map((item, index) => (
-              <div
-                key={index}
-                className="flex gap-4 md:gap-6 items-start bg-gradient-to-br from-gray-900/60 to-black/40 border border-white/10 rounded-xl p-5 hover:border-purple-500/20 transition-all"
-              >
-                <div className="flex-shrink-0 text-right min-w-[60px]">
-                  <span className="text-xs font-mono font-bold text-purple-400">{item.time}</span>
-                </div>
-                <div className="w-px bg-white/10 self-stretch" />
-                <div>
-                  <h4 className="text-white font-semibold mb-1">{item.title}</h4>
-                  <p className="text-sm text-gray-400">{item.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ── SPEAKERS ─────────────────────────────────────────────────────────── */}
       <section className="py-20 bg-[#18100F]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
