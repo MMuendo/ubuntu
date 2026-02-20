@@ -14,7 +14,7 @@ import {
   Play,
 } from 'lucide-react';
 import LoadingSpinner from '../components/LoadingSpinner';
-import { webinars, Webinar } from '../data/webinarsData';
+import { webinars, Webinar } from '../services/webinarsData';
 
 // ─── Icon map for course icons ────────────────────────────────────────────────
 const courseIconMap: Record<string, React.ElementType> = {
