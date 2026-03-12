@@ -9,7 +9,7 @@ const navLinks = [
     { label: "Academy", path: "/academy" },
     { label: "AI Fluency", path: "/assessment" },
     { label: "Agentic AI", path: "/agentic-ai" },
-    { label: "Blog", path: "/blog" },
+    { label: "Blo", path: "/blog" },
 ];
 
 export default function Header() {
