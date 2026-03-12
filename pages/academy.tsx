@@ -3,10 +3,11 @@ import { useNavigate, Link } from 'react-router-dom';
 import {
   ArrowRight, CheckCircle2, FileSpreadsheet, BarChart3, Brain, Zap,
   Calendar, Clock, Users, Play, Download, Lock, FolderOpen, Star,
-  BookOpen, Upload, CheckCircle, Eye, Database,
+  BookOpen, Upload, CheckCircle, Eye,
 } from 'lucide-react';
 import LoadingSpinner from '../components/LoadingSpinner';
-import { webinars, Webinar } from '../services/webinarsData';
+import { webinars } from '../services/webinarsData';
+type Webinar = (typeof webinars)[number] & { status?: string };
 import { useAuth } from '../hooks/useAuth';
 import { supabase } from '../lib/supabase';
 
@@ -828,7 +829,7 @@ const AcademyPage: React.FC = () => {
                           {project.datasetFile && (
                             <button onClick={() => handleDownload(project.datasetFile)}
                               className={`flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-sm font-semibold border transition-all ${currentTrack.bgColor} ${currentTrack.accentColor} ${currentTrack.borderColor} hover:opacity-80`}>
-                              <Database className="w-4 h-4" />Dataset
+                              <Download className="w-4 h-4" />Dataset
                             </button>
                           )}
                           <button onClick={() => handleDownload(project.taskFile)}
