@@ -482,7 +482,9 @@ const AcademyPage: React.FC = () => {
     </div>
   );
 
-  const currentTrack = projectTracks.find((t) => t.id === activeTrack)!;
+  const currentTrack =
+    projectTracks.find((t) => t.id === activeTrack) || projectTracks[0];
+
   const TrackIcon = currentTrack.icon;
 
   return (
