@@ -1,6 +1,5 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useCourses } from '../hooks/useCourses';
 import { 
   ArrowRight, 
   MapPin, 
