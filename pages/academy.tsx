@@ -483,6 +483,7 @@ const AcademyPage: React.FC = () => {
   );
 
   const currentTrack = projectTracks.find((t) => t.id === activeTrack)!;
+  const TrackIcon = currentTrack.icon;
 
   return (
     <div className="bg-[#18100F] min-h-screen">
@@ -733,7 +734,7 @@ const AcademyPage: React.FC = () => {
           {/* Track header */}
           <div className={`mb-8 p-5 rounded-2xl border ${currentTrack.borderColor} ${currentTrack.bgColor} flex items-center gap-4`}>
             <div className={`w-12 h-12 rounded-xl ${currentTrack.bgColor} border ${currentTrack.borderColor} flex items-center justify-center flex-shrink-0`}>
-              <currentTrack.icon className={`w-6 h-6 ${currentTrack.accentColor}`} />
+              <TrackIcon className={`w-6 h-6 ${currentTrack.accentColor}`} />
             </div>
             <div>
               <h3 className="text-lg font-bold text-white">{currentTrack.title}</h3>
