@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ASSESSMENT_QUESTIONS } from '../constants';
-import { usePlans, Plan } from '../hooks/usePlans';
 import { Lock, Sparkles, Brain, Zap, CheckCircle, ArrowRight } from 'lucide-react';
 import { validateEmail } from '../utils/validation';
 import LoadingSpinner from '../components/LoadingSpinner';
