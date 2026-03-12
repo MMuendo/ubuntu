@@ -3,11 +3,10 @@ import { useNavigate, Link } from 'react-router-dom';
 import {
   ArrowRight, CheckCircle2, FileSpreadsheet, BarChart3, Brain, Zap,
   Calendar, Clock, Users, Play, Download, Lock, FolderOpen, Star,
-  BookOpen, Upload, CheckCircle, Eye,
+  BookOpen, Upload, CheckCircle, Eye, Database,
 } from 'lucide-react';
 import LoadingSpinner from '../components/LoadingSpinner';
-import { webinars } from '../services/webinarsData';
-type Webinar = (typeof webinars)[number] & { status?: string };
+import { webinars, Webinar } from '../services/webinarsData';
 import { useAuth } from '../hooks/useAuth';
 import { supabase } from '../lib/supabase';
 
@@ -330,17 +329,16 @@ const statusConfig: Record<string, { label: string; color: string; icon: React.E
   reviewed:     { label: 'Reviewed ✓',  color: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20', icon: CheckCircle2 },
 };
 
-// Fixed: Use complete class names instead of dynamic construction for group-hover
 const sectionNav = [
   { id: 'courses',  label: 'Learning Pathways', icon: BookOpen,
-    activeClasses: 'bg-cyan-500/10 border-cyan-500/40 text-cyan-400',
-    hoverClasses:  'hover:bg-cyan-500/10 hover:border-cyan-500/30 hover:text-cyan-400' },
+    active: 'bg-brand-cyan/10 border-brand-cyan/40 text-brand-cyan',
+    hover:  'hover:bg-brand-cyan/10 hover:border-brand-cyan/30 hover:text-brand-cyan' },
   { id: 'webinars', label: 'Webinars', icon: Play,
-    activeClasses: 'bg-purple-500/10 border-purple-500/40 text-purple-400',
-    hoverClasses:  'hover:bg-purple-500/10 hover:border-purple-500/30 hover:text-purple-400' },
+    active: 'bg-purple-500/10 border-purple-500/40 text-purple-400',
+    hover:  'hover:bg-purple-500/10 hover:border-purple-500/30 hover:text-purple-400' },
   { id: 'projects', label: 'Projects', icon: FolderOpen,
-    activeClasses: 'bg-orange-500/10 border-orange-500/40 text-orange-400',
-    hoverClasses:  'hover:bg-orange-500/10 hover:border-orange-500/30 hover:text-orange-400' },
+    active: 'bg-orange-500/10 border-orange-500/40 text-orange-400',
+    hover:  'hover:bg-orange-500/10 hover:border-orange-500/30 hover:text-orange-400' },
 ];
 
 const enhancedCourses = [
@@ -350,11 +348,7 @@ const enhancedCourses = [
     price: 20000, duration: '3 months', icon: FileSpreadsheet,
     includes: ['Advanced Excel formulas and logic', 'Power Query and Power Pivot foundations', 'Business problem structuring frameworks', 'Decision-ready Excel models'],
     gradient: 'from-blue-500/10 to-cyan-500/10',
-    accent: 'text-blue-400', 
-    hoverBorder: 'hover:border-blue-400/60', 
-    hoverShadow: 'hover:shadow-blue-500/10',
-    // Added for fixed group-hover
-    groupHoverClass: 'group-hover:text-blue-400',
+    accent: 'text-blue-400', hoverBorder: 'hover:border-blue-400/60', hoverShadow: 'hover:shadow-blue-500/10',
   },
   {
     id: 'powerbi-workshop', title: 'Business Analytics with Power BI', level: 'Core',
@@ -362,10 +356,7 @@ const enhancedCourses = [
     price: 25000, duration: '3 months', icon: BarChart3,
     includes: ['Power Query data transformation', 'Star-schema data modelling', 'DAX measures and time intelligence', 'Executive-ready Power BI dashboards'],
     gradient: 'from-purple-500/10 to-pink-500/10',
-    accent: 'text-purple-400', 
-    hoverBorder: 'hover:border-purple-400/60', 
-    hoverShadow: 'hover:shadow-purple-500/10',
-    groupHoverClass: 'group-hover:text-purple-400',
+    accent: 'text-purple-400', hoverBorder: 'hover:border-purple-400/60', hoverShadow: 'hover:shadow-purple-500/10',
   },
   {
     id: 'ai-mastery', title: 'AI Fluency for Business Leaders', level: 'AI Mastery',
@@ -373,10 +364,7 @@ const enhancedCourses = [
     price: 7500, duration: '1 month', icon: Brain,
     includes: ['How modern AI systems think', 'Prompt engineering for real work', 'AI tools and workflows', 'Responsible, career-driven AI usage'],
     gradient: 'from-emerald-500/10 to-teal-500/10',
-    accent: 'text-emerald-400', 
-    hoverBorder: 'hover:border-emerald-400/60', 
-    hoverShadow: 'hover:shadow-emerald-500/10',
-    groupHoverClass: 'group-hover:text-emerald-400',
+    accent: 'text-emerald-400', hoverBorder: 'hover:border-emerald-400/60', hoverShadow: 'hover:shadow-emerald-500/10',
   },
   {
     id: 'ai-agents-masterclass', title: 'Agentic AI for Business', level: 'Advanced',
@@ -384,10 +372,7 @@ const enhancedCourses = [
     price: 12500, duration: '1 month', icon: Zap,
     includes: ['AI agent design fundamentals', 'n8n Automation, APIs, and Agentic Workflows', 'Knowledge, memory, and tools', 'Deploying agents across channels'],
     gradient: 'from-orange-500/10 to-red-500/10',
-    accent: 'text-orange-400', 
-    hoverBorder: 'hover:border-orange-400/60', 
-    hoverShadow: 'hover:shadow-orange-500/10',
-    groupHoverClass: 'group-hover:text-orange-400',
+    accent: 'text-orange-400', hoverBorder: 'hover:border-orange-400/60', hoverShadow: 'hover:shadow-orange-500/10',
   },
 ];
 
@@ -507,14 +492,14 @@ const AcademyPage: React.FC = () => {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm px-4">
           <div className="bg-[#1a1210] border border-white/10 rounded-2xl p-8 max-w-sm w-full text-center relative">
             <button onClick={() => setShowLoginPrompt(false)} className="absolute top-4 right-4 text-gray-500 hover:text-white text-lg">✕</button>
-            <div className="w-14 h-14 bg-cyan-500/10 border border-cyan-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Lock className="w-6 h-6 text-cyan-400" />
+            <div className="w-14 h-14 bg-brand-cyan/10 border border-brand-cyan/20 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Lock className="w-6 h-6 text-brand-cyan" />
             </div>
             <h3 className="text-xl font-bold text-white mb-2">Sign In to Download</h3>
             <p className="text-sm text-gray-400 mb-6">Project files are available to enrolled students. Sign in to access your downloads.</p>
             <div className="flex flex-col gap-3">
               <button onClick={() => { setShowLoginPrompt(false); navigate('/login'); }}
-                className="w-full py-3 bg-cyan-400 text-gray-900 rounded-lg font-bold hover:bg-cyan-300 transition-all">
+                className="w-full py-3 bg-brand-cyan text-brand-dark rounded-lg font-bold hover:bg-cyan-300 transition-all">
                 Sign In
               </button>
               <button onClick={() => { setShowLoginPrompt(false); navigate('/signup'); }}
@@ -529,19 +514,19 @@ const AcademyPage: React.FC = () => {
       {/* ── HERO ── */}
       <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden pt-20">
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-b from-gray-900/80 via-gray-900/70 to-gray-900" />
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 via-transparent to-cyan-400/10" />
+          <div className="absolute inset-0 bg-gradient-to-b from-brand-dark/80 via-brand-dark/70 to-brand-dark" />
+          <div className="absolute inset-0 bg-gradient-to-br from-brand-blue/20 via-transparent to-brand-cyan/10" />
         </div>
-        <div className="absolute top-20 left-10 bg-gray-900/80 backdrop-blur-md rounded-lg p-4 border border-white/10 animate-float z-10 hidden md:block">
-          <div className="flex items-center gap-2"><Brain className="w-5 h-5 text-cyan-400" /><span className="text-xs text-gray-400">AI-Powered Learning</span></div>
+        <div className="absolute top-20 left-10 bg-brand-dark/80 backdrop-blur-md rounded-lg p-4 border border-white/10 animate-float z-10 hidden md:block">
+          <div className="flex items-center gap-2"><Brain className="w-5 h-5 text-brand-cyan" /><span className="text-xs text-gray-400">AI-Powered Learning</span></div>
         </div>
-        <div className="absolute bottom-32 right-10 bg-gray-900/80 backdrop-blur-md rounded-lg p-4 border border-white/10 animate-float z-10 hidden md:block" style={{ animationDelay: '0.5s' }}>
-          <div className="flex items-center gap-2"><Users className="w-5 h-5 text-purple-400" /><span className="text-xs text-gray-400">500+ Students</span></div>
+        <div className="absolute bottom-32 right-10 bg-brand-dark/80 backdrop-blur-md rounded-lg p-4 border border-white/10 animate-float z-10 hidden md:block" style={{ animationDelay: '0.5s' }}>
+          <div className="flex items-center gap-2"><Users className="w-5 h-5 text-brand-purple" /><span className="text-xs text-gray-400">500+ Students</span></div>
         </div>
         <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-5xl md:text-7xl font-bold text-white tracking-tight mb-6 drop-shadow-lg">
             Welcome to <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan to-brand-blue">
               Ubuntu Academy
             </span>
           </h1>
@@ -554,12 +539,12 @@ const AcademyPage: React.FC = () => {
       {/* ── STICKY SECTION NAV ── */}
       <div className="sticky top-16 z-40 bg-[#18100F]/95 backdrop-blur-md border-b border-white/5 py-3">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-center gap-2">
-          {sectionNav.map(({ id, label, icon: Icon, activeClasses, hoverClasses }) => (
+          {sectionNav.map(({ id, label, icon: Icon, active, hover }) => (
             <a key={id} href={`#${id}`}
               className={`flex items-center gap-2 px-4 py-2 rounded-full border text-sm font-semibold transition-all duration-200 ${
                 activeSection === id
-                  ? activeClasses
-                  : `bg-white/5 border-white/10 text-gray-400 ${hoverClasses}`
+                  ? active
+                  : `bg-white/5 border-white/10 text-gray-400 ${hover}`
               }`}>
               <Icon className="w-4 h-4" />
               <span className="hidden sm:inline">{label}</span>
@@ -573,7 +558,7 @@ const AcademyPage: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 md:mb-16">
             <div className="inline-block mb-4">
-              <span className="text-cyan-400 text-sm font-semibold tracking-wider uppercase bg-cyan-500/10 px-4 py-2 rounded-full border border-cyan-500/20">
+              <span className="text-brand-cyan text-sm font-semibold tracking-wider uppercase bg-brand-cyan/10 px-4 py-2 rounded-full border border-brand-cyan/20">
                 Learning Pathways
               </span>
             </div>
@@ -604,8 +589,7 @@ const AcademyPage: React.FC = () => {
                           <span className="text-xs text-gray-500 font-medium">{course.duration}</span>
                         </div>
                       </div>
-                      {/* FIXED: Use complete class name from data instead of dynamic template literal */}
-                      <h3 className={`text-xl font-bold text-white mb-3 ${course.groupHoverClass} transition-colors`}>
+                      <h3 className={`text-xl font-bold text-white mb-3 group-hover:${course.accent} transition-colors`}>
                         {course.title}
                       </h3>
                       <p className="text-sm text-gray-400 mb-6 leading-relaxed">{course.description}</p>
@@ -690,7 +674,7 @@ const AcademyPage: React.FC = () => {
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-orange-500/30 to-transparent" />
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute -top-40 -left-40 w-96 h-96 bg-orange-500/5 rounded-full blur-3xl" />
-          <div className="absolute -bottom-40 -right-40 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl" />
+          <div className="absolute -bottom-40 -right-40 w-96 h-96 bg-brand-cyan/5 rounded-full blur-3xl" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -710,12 +694,12 @@ const AcademyPage: React.FC = () => {
 
           {/* Guest nudge */}
           {!isLoggedIn && (
-            <div className="max-w-2xl mx-auto mb-10 p-4 bg-cyan-500/5 border border-cyan-500/20 rounded-xl flex items-center gap-4">
-              <Lock className="w-5 h-5 text-cyan-400 flex-shrink-0" />
+            <div className="max-w-2xl mx-auto mb-10 p-4 bg-brand-cyan/5 border border-brand-cyan/20 rounded-xl flex items-center gap-4">
+              <Lock className="w-5 h-5 text-brand-cyan flex-shrink-0" />
               <p className="text-sm text-gray-300 flex-1">
-                <button onClick={() => navigate('/login')} className="text-cyan-400 font-semibold underline underline-offset-2">Sign in</button>
+                <button onClick={() => navigate('/login')} className="text-brand-cyan font-semibold underline underline-offset-2">Sign in</button>
                 {' '}to download project files.{' '}
-                <button onClick={() => navigate('/signup')} className="text-cyan-400 font-semibold underline underline-offset-2">Create a free account</button>
+                <button onClick={() => navigate('/signup')} className="text-brand-cyan font-semibold underline underline-offset-2">Create a free account</button>
               </p>
             </div>
           )}
@@ -844,7 +828,7 @@ const AcademyPage: React.FC = () => {
                           {project.datasetFile && (
                             <button onClick={() => handleDownload(project.datasetFile)}
                               className={`flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-sm font-semibold border transition-all ${currentTrack.bgColor} ${currentTrack.accentColor} ${currentTrack.borderColor} hover:opacity-80`}>
-                              <Download className="w-4 h-4" />Dataset
+                              <Database className="w-4 h-4" />Dataset
                             </button>
                           )}
                           <button onClick={() => handleDownload(project.taskFile)}
@@ -908,7 +892,7 @@ const AcademyPage: React.FC = () => {
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <a href="#courses"
-                  className="px-8 py-4 bg-cyan-400 text-gray-900 rounded-full font-bold text-lg hover:bg-cyan-300 transition-all shadow-[0_0_20px_rgba(34,211,238,0.3)]">
+                  className="px-8 py-4 bg-brand-cyan text-brand-dark rounded-full font-bold text-lg hover:bg-cyan-300 transition-all shadow-[0_0_20px_rgba(34,211,238,0.3)]">
                   Browse Courses
                 </a>
                 <button onClick={() => navigate('/assessment')}
