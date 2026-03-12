@@ -1,9 +1,5 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import ExcelCoursePage from './excelcourse';
-import PowerBICoursePage from './powerbicourse';
-import AIMasteryCoursePage from './aimasterycourse';
-import AIAgentsCoursePage from './aiagentscourse';
 import NotFoundPage from './NotFoundPage';
 
 const CourseDetail: React.FC = () => {
