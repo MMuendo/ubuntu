@@ -17,7 +17,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     { label: 'Academy', path: '/academy', hash: '' },
     { label: 'AI Fluency', path: '/assessment', hash: '' },
     { label: 'Agentic AI', path: '/agentic-ai', hash: '' },
-    { label: 'Blo', path: '/blog', hash: '' },
+    { label: 'Blog', path: '/blog', hash: '' },
   ];
 
   const handleNavClick = (hash: string) => {
