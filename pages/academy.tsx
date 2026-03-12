@@ -49,7 +49,7 @@ const projectTracks = [
   },
   {
     id: 'powerbi',
-    title: 'Decision Systems with Power BI',
+    title: 'Business Analytics with Power BI',
     icon: BarChart3,
     accentColor: 'text-purple-400',
     borderColor: 'border-purple-500/30',
@@ -113,7 +113,7 @@ const projectTracks = [
   },
   {
     id: 'ai-agents',
-    title: 'Agentic Systems for Decision Automation',
+    title: 'Agentic AI for Business',
     icon: Zap,
     accentColor: 'text-orange-400',
     borderColor: 'border-orange-500/30',
@@ -241,9 +241,9 @@ const AcademyPage: React.FC = () => {
 
   const enhancedCourses = [
     { id: 'excel-workshop', title: 'Data Analytics with Excel', level: 'Foundation', description: 'Learn how to structure problems, think analytically, and make better decisions using data', price: 20000, duration: '3 months', icon: FileSpreadsheet, includes: ['Advanced Excel formulas and logic', 'Power Query and Power Pivot foundations', 'Business problem structuring frameworks', 'Decision-ready Excel models'], gradient: 'from-blue-500/10 to-cyan-500/10', accentColor: 'text-blue-400' },
-    { id: 'powerbi-workshop', title: 'Decision Systems with Power BI', level: 'Core', description: 'Turn data into decision-ready dashboards and decision systems leaders trust and actually use.', price: 25000, duration: '3 months', icon: BarChart3, includes: ['Power Query data transformation', 'Star-schema data modelling', 'DAX measures and time intelligence', 'Executive-ready Power BI dashboards'], gradient: 'from-purple-500/10 to-pink-500/10', accentColor: 'text-purple-400' },
+    { id: 'powerbi-workshop', title: 'Business Analytics with Power BI', level: 'Core', description: 'Turn data into decision-ready dashboards and decision systems leaders trust and actually use.', price: 25000, duration: '3 months', icon: BarChart3, includes: ['Power Query data transformation', 'Star-schema data modelling', 'DAX measures and time intelligence', 'Executive-ready Power BI dashboards'], gradient: 'from-purple-500/10 to-pink-500/10', accentColor: 'text-purple-400' },
     { id: 'ai-mastery', title: 'AI Fluency for Business Leaders', level: 'AI Mastery', description: 'Understand how to use AI confidently and responsibly to improve decisions, productivity, and strategy.', price: 7500, duration: '1 month', icon: Brain, includes: ['How modern AI systems think', 'Prompt engineering for real work', 'AI tools and workflows', 'Responsible, career-driven AI usage'], gradient: 'from-emerald-500/10 to-teal-500/10', accentColor: 'text-emerald-400' },
-    { id: 'ai-agents-masterclass', title: 'Agentic Systems for Decision Automation', level: 'Advanced', description: 'Design AI systems that support decision-making, execution, and scale across the business.', price: 12500, duration: '1 month', icon: Zap, includes: ['AI agent design fundamentals', 'n8n Automation, APIs, and Agentic Workflows', 'Knowledge, memory, and tools', 'Deploying agents across channels'], gradient: 'from-orange-500/10 to-red-500/10', accentColor: 'text-orange-400' },
+    { id: 'ai-agents-masterclass', title: 'Agentic AI for Business', level: 'Advanced', description: 'Design AI systems that support decision-making, execution, and scale across the business.', price: 12500, duration: '1 month', icon: Zap, includes: ['AI agent design fundamentals', 'n8n Automation, APIs, and Agentic Workflows', 'Knowledge, memory, and tools', 'Deploying agents across channels'], gradient: 'from-orange-500/10 to-red-500/10', accentColor: 'text-orange-400' },
   ];
 
   // ─── Webinar Card ─────────────────────────────────────────────────────────
