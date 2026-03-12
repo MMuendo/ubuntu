@@ -249,7 +249,7 @@ const AcademyPage: React.FC = () => {
   // ─── Webinar Card ─────────────────────────────────────────────────────────
   const WebinarCard = ({ webinar }: { webinar: Webinar }) => (
     <div className="flex-shrink-0 w-80 bg-gradient-to-br from-gray-900/60 to-black/40 border border-purple-500/20 rounded-2xl p-6 flex flex-col hover:border-purple-500/40 transition-all duration-300 group relative overflow-hidden">
-      <div className="absolute -right-12 -top-12 w-40 h-40 bg-purple-500/5 rounded-full blur-2xl group-hover:bg-purple-500/10 transition-all pointer-events-none" />
+      <div className="absolute -left-12 -top-12 w-40 h-40 bg-purple-500/5 rounded-full blur-2xl group-hover:bg-purple-500/10 transition-all pointer-events-none" />
       <div className="flex items-center justify-between mb-4">
         <span className="text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-lg border text-gray-400 bg-white/5 border-white/10">
           Completed
