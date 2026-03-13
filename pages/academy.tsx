@@ -286,7 +286,7 @@ const AcademyPage: React.FC = () => {
     if (!fileName) return;
     if (!isLoggedIn) { setShowLogin(true); return; }
     window.open(
-      `https://lfqzzbfcgkdfmytrvtwa.supabase.co/storage/v1/object/public/projects/${fileName}`,
+      `https://lfqzzbfcgkdfmytrvtwa.supabase.co/storage/v1/object/public/Excel%20Files/${fileName}`,
       '_blank',
     );
   };
