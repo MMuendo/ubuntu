@@ -62,7 +62,7 @@ const projectTracks: Track[] = [
         learningOutcome: 'You will confidently navigate Excel, structure real business data, write your first formulas, and produce a chart-ready subscriber report.',
         dataSource: 'Safaricom Annual Report FY2024 (safaricom.co.ke)',
         datasetFile: 'Ubuntu%20Analytiq%20-%20Safaricom%20Dataset.xlsx',
-        taskFile: 'Ubuntu%20Analytiq%20-%20Safaricom%20task.docx',
+        taskFile: 'Ubuntu%20Analytiq%20-%20Safaricom%20task.pdf',
       },
       {
         id: 'ex-02',
