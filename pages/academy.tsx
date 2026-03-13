@@ -400,7 +400,7 @@ const AcademyPage: React.FC = () => {
           {loading ? (
             <div className="flex justify-center py-12"><LoadingSpinner size="lg" /></div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
               {enhancedCourses.map(({ id, title, level, description, price, duration, Icon: CourseIcon, includes, gradient, accent, hoverBorder, hoverShadow }) => (
                 <div key={id}
                   className={`bg-gradient-to-br ${gradient} bg-gray-900/40 border border-white/10 rounded-2xl p-5 md:p-6 flex flex-col ${hoverBorder} hover:shadow-lg ${hoverShadow} transition-all duration-300 group`}>
