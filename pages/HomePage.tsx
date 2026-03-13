@@ -21,7 +21,6 @@ import LoadingSpinner from '../components/LoadingSpinner';
 
 const HomePage: React.FC = () => {
   const navigate = useNavigate();
-  const { loading: coursesLoading } = useCourses();
 
   // Enhanced courses data
   const enhancedCourses = [
