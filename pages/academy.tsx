@@ -17,7 +17,6 @@ interface Project {
   company: string;
   companyTag: string;
   description: string;
-  lessonsCovered: string;
   level: string;
   estimatedTime: string;
   skills: string[];
@@ -318,8 +317,7 @@ const AcademyPage: React.FC = () => {
     finally { setUploading(null); }
   };
 
-  const currentTrack =
-    projectTracks.find((t) => t.id === activeTrack) ?? projectTracks[0];
+  const currentTrack = projectTracks.find((t) => t.id === activeTrack)!;
   // Safe icon reference — must be a capitalized const for JSX
   const TrackIcon = currentTrack.icon;
 
