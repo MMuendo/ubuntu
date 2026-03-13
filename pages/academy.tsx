@@ -78,7 +78,7 @@ const projectTracks: Track[] = [
         learningOutcome: 'You will move beyond basic Excel — writing logic-driven formulas, building lookup models, and producing a multi-series chart dashboard from real fintech data.',
         dataSource: 'Safaricom Annual Report FY2024 — M-Pesa segment disclosures',
         datasetFile: 'Ubuntu%20Analytiq%20-%20M-pesa%20Dataset.xlsx',
-        taskFile: 'Ubuntu%20Analytiq%20-%20M-pesa%20task.docx',
+        taskFile: 'Ubuntu%20Analytiq%20-%20M-pesa%20task.pdf',
       },
       {
         id: 'ex-03',
