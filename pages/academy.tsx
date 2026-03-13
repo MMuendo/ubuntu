@@ -61,8 +61,8 @@ const projectTracks: Track[] = [
         skills: ['Excel Interface & Navigation', 'Data Entry & Cell Formatting', 'SUM, AVERAGE, COUNT', 'Absolute vs Relative References', 'Bar & Line Charts', 'Print Area & Page Layout'],
         learningOutcome: 'You will confidently navigate Excel, structure real business data, write your first formulas, and produce a chart-ready subscriber report.',
         dataSource: 'Safaricom Annual Report FY2024 (safaricom.co.ke)',
-        datasetFile: 'ex-01-safaricom-dataset.xlsx',
-        taskFile: 'ex-01-safaricom-task.pdf',
+        datasetFile: 'Ubuntu%20Analytiq%20-%20Safaricom%20Dataset.xlsx',
+        taskFile: 'Ubuntu%20Analytiq%20-%20Safaricom%20task.docx',
       },
       {
         id: 'ex-02',
@@ -77,8 +77,8 @@ const projectTracks: Track[] = [
         skills: ['Conditional Formatting', 'IF, AND, OR Logic', 'VLOOKUP & XLOOKUP', 'LEFT, RIGHT, CONCATENATE', 'Combo Charts', 'Sparklines'],
         learningOutcome: 'You will move beyond basic Excel — writing logic-driven formulas, building lookup models, and producing a multi-series chart dashboard from real fintech data.',
         dataSource: 'Safaricom Annual Report FY2024 — M-Pesa segment disclosures',
-        datasetFile: 'ex-02-mpesa-dataset.xlsx',
-        taskFile: 'ex-02-mpesa-task.pdf',
+        datasetFile: 'Ubuntu%20Analytiq%20-%20M-pesa%20Dataset.xlsx',
+        taskFile: 'Ubuntu%20Analytiq%20-%20M-pesa%20task.docx',
       },
       {
         id: 'ex-03',
