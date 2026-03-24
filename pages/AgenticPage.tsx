@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import EmailAutomationDemo from '../components/EmailAutomationDemo';
 import { analyzeBusinessCase } from '../services/aiService';
 import { Calendar, CheckCircle, Terminal, BrainCircuit, Zap, X, Phone, Loader2 } from 'lucide-react';
 import { createLead } from '../services/adminService';
