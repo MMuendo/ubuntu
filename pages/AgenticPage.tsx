@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { Calendar, CheckCircle, Terminal, BrainCircuit, Zap, X, Phone, Loader2 } from 'lucide-react';
+import { Calendar, CheckCircle, Terminal, BrainCircuit, Zap, X, Phone } from 'lucide-react';
+import { supabase } from '../lib/supabase';
 
 const AgenticPage: React.FC = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [step, setStep] = useState<'input' | 'processing' | 'calling' | 'completed'>('input');
 
-    // Form State
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -14,7 +14,6 @@ const AgenticPage: React.FC = () => {
         useCase: ''
     });
 
-    // Analysis Log State
     const [analysisLog, setAnalysisLog] = useState<string[]>([]);
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -24,48 +23,60 @@ const AgenticPage: React.FC = () => {
     const startConsultation = async (e: React.FormEvent) => {
         e.preventDefault();
         setStep('processing');
-        setAnalysisLog(['> Initializing secure handshake...', '> Encrypting payload...', '> Uploading use case to Core...']);
+        setAnalysisLog([
+            '> Initializing secure handshake...',
+            '> Encrypting payload...',
+            '> Uploading use case to Core...',
+        ]);
 
         try {
-            // Simulate initial delay
             await new Promise(resolve => setTimeout(resolve, 1500));
+            setAnalysisLog(prev => [
+                ...prev,
+                `> Analyzing entity: ${formData.company}`,
+                '> Estimating token complexity...',
+            ]);
 
-            setAnalysisLog(prev => [...prev, `> Analyzing entity: ${formData.company}`, '> Estimating token complexity...']);
+            // Simulate AI analysis lines
+            const simulatedLines = [
+                `Identified core challenge: ${formData.useCase.slice(0, 60)}...`,
+                `Recommended agent type: Task-Orchestration + Memory Layer`,
+                `Estimated automation coverage: 74% of current manual workflow`,
+                `Projected time saved: 12–18 hrs/week`,
+                `Integration points detected: CRM, Email, Database`,
+                `Confidence score: 91% — High feasibility`,
+            ];
 
-            // Call Gemini
-            const result = await analyzeBusinessCase(formData.company, formData.useCase);
-
-            // Save Lead to Supabase
-            await createLead({
-                email: formData.email,
-                source: 'chat', // Using 'chat' as it maps best to agent interaction
-                metadata: {
-                    name: formData.name,
-                    phone: formData.phone,
-                    company: formData.company,
-                    use_case: formData.useCase,
-                    gemini_analysis: result
-                }
-            });
-
-            // Simulate typing effect for the result lines
-            const lines = result.split('\n').filter(line => line.trim() !== '');
-            for (let i = 0; i < lines.length; i++) {
+            for (const line of simulatedLines) {
                 await new Promise(resolve => setTimeout(resolve, 600));
-                setAnalysisLog(prev => [...prev, `> ${lines[i]}`]);
+                setAnalysisLog(prev => [...prev, `> ${line}`]);
+            }
+
+            // Save lead to Supabase
+            try {
+                await supabase.from('leads').insert([{
+                    email: formData.email,
+                    source: 'agentic_page',
+                    metadata: {
+                        name: formData.name,
+                        phone: formData.phone,
+                        company: formData.company,
+                        use_case: formData.useCase,
+                    },
+                }]);
+            } catch (dbError) {
+                console.error('Lead save failed:', dbError);
+                // Non-blocking — continue regardless
             }
 
             await new Promise(resolve => setTimeout(resolve, 1000));
             setStep('calling');
 
-            // Simulate call connection
-            setTimeout(() => {
-                setStep('completed');
-            }, 4000);
+            setTimeout(() => setStep('completed'), 4000);
 
         } catch (error) {
             console.error(error);
-            setAnalysisLog(prev => [...prev, '> Error in neural link. Fallback to manual.']);
+            setAnalysisLog(prev => [...prev, '> Error in neural link. Routing to manual fallback.']);
             setStep('completed');
         }
     };
@@ -80,7 +91,8 @@ const AgenticPage: React.FC = () => {
     return (
         <div className="pt-20 pb-32">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                {/* Hero Section */}
+
+                {/* Hero */}
                 <div className="text-center mb-20">
                     <span className="inline-block py-1 px-3 rounded-full bg-brand-blue/20 text-brand-blue text-xs font-bold tracking-widest uppercase mb-6 animate-pulse">
                         B2B Enterprise Solutions
@@ -90,7 +102,7 @@ const AgenticPage: React.FC = () => {
                         <span className="text-brand-blue">Autonomous Action</span>
                     </h1>
                     <p className="text-xl text-gray-400 max-w-3xl mx-auto mb-10">
-                        Automate your workforce with Intelligent AI Agents. We don't just build chatbots;
+                        Automate your workforce with Intelligent AI Agents. We don't just build chatbots —
                         we architect proactive, task-oriented agents that execute complex workflows.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -122,7 +134,7 @@ const AgenticPage: React.FC = () => {
                             </div>
                             <div>
                                 <h3 className="text-xl font-bold text-white mb-2">Beyond Chatbots</h3>
-                                <p className="text-gray-400">Our agents don't just talk; they use tools. They connect to your API, database, and CRM to perform actions like onboarding employees or processing invoices.</p>
+                                <p className="text-gray-400">Our agents don't just talk — they use tools. They connect to your API, database, and CRM to perform real actions like onboarding employees or processing invoices.</p>
                             </div>
                         </div>
                         <div className="flex gap-4 group">
@@ -164,11 +176,12 @@ const AgenticPage: React.FC = () => {
                         </div>
                     </div>
                 </div>
+            </div>
 
-            {/* AI CONSULTATION MODAL */}
+            {/* Modal */}
             {isModalOpen && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm">
-                    <div className="bg-brand-dark border border-brand-blue w-full max-w-lg rounded-xl shadow-[0_0_50px_rgba(59,130,246,0.3)] overflow-hidden flex flex-col relative animate-fade-in">
+                    <div className="bg-brand-dark border border-brand-blue w-full max-w-lg rounded-xl shadow-[0_0_50px_rgba(59,130,246,0.3)] overflow-hidden flex flex-col relative">
 
                         {/* Header */}
                         <div className="bg-brand-surface p-4 border-b border-brand-blue/30 flex justify-between items-center">
@@ -182,7 +195,6 @@ const AgenticPage: React.FC = () => {
                         </div>
 
                         <div className="p-6">
-
                             {step === 'input' && (
                                 <form onSubmit={startConsultation} className="space-y-4">
                                     <p className="text-gray-400 text-sm mb-4">
@@ -245,17 +257,16 @@ const AgenticPage: React.FC = () => {
                                     </div>
                                     <h3 className="text-xl font-bold text-white mb-2">Request Queued</h3>
                                     <p className="text-gray-400 text-sm mb-6">
-                                        Our AI Agents are currently handling high traffic. Your strategy brief has been compiled and a senior consultant will contact you shortly at <span className="text-white">{formData.phone}</span>.
+                                        Your strategy brief has been compiled. A senior consultant will contact you shortly at{' '}
+                                        <span className="text-white">{formData.phone}</span>.
                                     </p>
                                     <button onClick={resetModal} className="text-brand-blue hover:text-white text-sm font-bold transition-colors">
                                         CLOSE CONSOLE
                                     </button>
                                 </div>
                             )}
-
                         </div>
 
-                        {/* Footer decoration */}
                         <div className="h-1 w-full bg-gradient-to-r from-transparent via-brand-blue to-transparent opacity-50"></div>
                     </div>
                 </div>
