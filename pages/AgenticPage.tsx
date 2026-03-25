@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import { analyzeBusinessCase } from '../services/aiService';
 import { Calendar, CheckCircle, Terminal, BrainCircuit, Zap, X, Phone, Loader2 } from 'lucide-react';
-import { createLead } from '../services/adminService';
 
 const AgenticPage: React.FC = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -166,16 +164,6 @@ const AgenticPage: React.FC = () => {
                         </div>
                     </div>
                 </div>
-
-                {/* Email Automation Demo Section */}
-                <div className="mt-20">
-                    <div className="text-center mb-8">
-                        <h2 className="text-3xl font-bold text-white">See It In Action</h2>
-                        <p className="text-gray-400 mt-2">Watch a live simulation of our email automation agent processing requests.</p>
-                    </div>
-                    <EmailAutomationDemo />
-                </div>
-            </div>
 
             {/* AI CONSULTATION MODAL */}
             {isModalOpen && (
