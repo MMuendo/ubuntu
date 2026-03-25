@@ -152,6 +152,11 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                       })}
                     </div>
                     <div className="border-t border-white/5 px-4 py-3">
+                      <div>
+                        <p className={`text-sm font-semibold text-white group-hover:${item.color} transition-colors`}>
+                          {item.label}
+                        </p>
+                      </div>
                       <Link
                         to="/academy"
                         onClick={() => { setIsAcademyOpen(false); window.scrollTo(0, 0); }}
