@@ -20,10 +20,6 @@ import DashboardPage from './pages/DashboardPage';
 import EnrollmentOptionsPage from './pages/EnrollmentOptionsPage';
 import ConsultationBookingPage from './pages/ConsultationBookingPage';
 import ConsultationSuccessPage from './pages/ConsultationSuccessPage';
-import ExcelCoursePage from './pages/excelcourse';
-import PowerBICoursePage from './pages/powerbicourse';
-import AIMasteryCoursePage from './pages/aimasterycourse';
-import AIAgentsCoursePage from './pages/aiagentscourse';
 import WebinarDetailsPage from './pages/webinardetails';
 import CourseDetail from './pages/CourseDetail';
 // Admin Pages
@@ -31,7 +27,6 @@ import AdminDashboard from './pages/admin/AdminDashboard';
 import PricingManager from './pages/admin/PricingManager';
 import LeadsManager from './pages/admin/LeadsManager';
 import SettingsManager from './pages/admin/SettingsManager';
-import { Product, Course } from './types';
 import NotFoundPage from './pages/NotFoundPage';
 
 
