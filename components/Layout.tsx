@@ -134,9 +134,11 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 {/* Dropdown panel */}
                 {isAcademyOpen && (
                   <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-72 bg-[#1a1210] border border-white/10 rounded-2xl shadow-2xl shadow-black/50 overflow-hidden z-50">
+                    
                     <div className="p-2">
                       {academyLinks.map((item) => {
                         const Icon = item.icon;
+                
                         return (
                           <Link
                             key={item.label}
@@ -144,31 +146,41 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                             onClick={() => handleAcademyLinkClick(item.path)}
                             className="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-white/5 transition-colors group"
                           >
-                            <div className={`w-9 h-9 rounded-lg ${item.bg} flex items-center justify-center flex-shrink-0`}>
+                            <div
+                              className={`w-9 h-9 rounded-lg ${item.bg} flex items-center justify-center flex-shrink-0`}
+                            >
                               <Icon className={`w-4 h-4 ${item.color}`} />
+                            </div>
+                
+                            {/* Text content MUST be inside map */}
+                            <div>
+                              <p
+                                className={`text-sm font-semibold text-white group-hover:${item.color} transition-colors`}
+                              >
+                                {item.label}
+                              </p>
                             </div>
                           </Link>
                         );
                       })}
                     </div>
+                
                     <div className="border-t border-white/5 px-4 py-3">
-                      <div>
-                        <p className={`text-sm font-semibold text-white group-hover:${item.color} transition-colors`}>
-                          {item.label}
-                        </p>
-                      </div>
                       <Link
                         to="/academy"
-                        onClick={() => { setIsAcademyOpen(false); window.scrollTo(0, 0); }}
+                        onClick={() => {
+                          setIsAcademyOpen(false);
+                          window.scrollTo(0, 0);
+                        }}
                         className="text-xs text-gray-500 hover:text-brand-cyan transition-colors flex items-center gap-1"
                       >
                         View all Academy →
                       </Link>
                     </div>
+                
                   </div>
                 )}
-              </div>
-
+                
               {/* Other links */}
               {otherNavLinks.map((link) => (
                 <Link
