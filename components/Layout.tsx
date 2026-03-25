@@ -147,12 +147,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                             <div className={`w-9 h-9 rounded-lg ${item.bg} flex items-center justify-center flex-shrink-0`}>
                               <Icon className={`w-4 h-4 ${item.color}`} />
                             </div>
-                            <div>
-                              <p className={`text-sm font-semibold text-white group-hover:${item.color} transition-colors`}>
-                                {item.label}
-                              </p>
-                              <p className="text-xs text-gray-500 mt-0.5">{item.description}</p>
-                            </div>
                           </Link>
                         );
                       })}
