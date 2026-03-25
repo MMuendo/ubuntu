@@ -35,7 +35,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
   const academyLinks = [
     {
-      label: 'Learning Pathways',
+      label: 'Courses',
       path: '/academy#courses',
       icon: BookOpen,
       description: 'Excel, Power BI, AI & Agents courses',
