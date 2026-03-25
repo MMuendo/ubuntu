@@ -177,10 +177,9 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                         View all Academy →
                       </Link>
                     </div>
-                
                   </div>
                 )}
-                
+              </div>
               {/* Other links */}
               {otherNavLinks.map((link) => (
                 <Link
