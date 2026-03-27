@@ -756,6 +756,16 @@ const AcademyPage: React.FC = () => {
             <div className="absolute right-0 top-0 bottom-2 w-10 bg-gradient-to-l from-[#18100F] to-transparent pointer-events-none" />
           </div>
 
+          {/* Project track instruction */}
+          <div className="max-w-2xl mx-auto mb-6 flex items-start gap-3 px-4 py-3.5 bg-orange-500/6 border border-orange-500/15 rounded-2xl">
+            <span className="text-orange-400 text-lg flex-shrink-0">💡</span>
+            <p className="text-sm text-gray-300 leading-relaxed">
+              <span className="font-bold text-orange-400">Switch between tracks anytime.</span>{' '}
+              The tabs above let you explore projects from all four learning pathways — Excel, Power BI, AI Fluency, and Agentic AI.
+              Each project is standalone — start with any one that matches your level.
+            </p>
+          </div>
+
           {/* Track header */}
           <div className={`mb-8 p-5 rounded-2xl border ${currentTrack.borderColor} ${currentTrack.bgColor} flex items-center gap-4`}>
             <div className={`w-11 h-11 rounded-xl ${currentTrack.bgColor} border ${currentTrack.borderColor} flex items-center justify-center flex-shrink-0`}>
