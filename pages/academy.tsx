@@ -10,6 +10,7 @@ import LoadingSpinner from '../components/LoadingSpinner';
 import { webinars } from '../services/webinarsData';
 import { useAuth } from '../hooks/useAuth';
 import { supabase } from '../lib/supabase';
+import { initializePaystack, generateReference, toSmallestUnit, detectCurrency } from '../lib/paystack';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 interface Project {
@@ -150,10 +151,10 @@ const projectTracks: Track[] = [
 ];
 
 const enhancedCourses = [
-  { id: 'excel-workshop',        title: 'Data Analytics with Excel',        level: 'Foundation',  startDate: '20 June 2025',  rating: 4.9, reviewCount: 60, studentsEnrolled: 15, tag: 'Most Popular',  tagColor: 'bg-blue-500/20 text-blue-300 border-blue-500/30',    description: "Master the world's most-used business tool. Structure problems, build models, and present data that decisions are made on.",    price: 20000, duration: '3 months', Icon: FileSpreadsheet, includes: ['Advanced formulas & logic','Power Query foundations','Pivot table mastery','Board-ready dashboards'],      gradient: 'from-blue-500/8 to-cyan-500/8',    accent: 'text-blue-400',    accentBg: 'bg-blue-500/10',    accentBorder: 'border-blue-500/20',    hoverBorder: 'hover:border-blue-400/50',   hoverGlow: 'hover:shadow-[0_0_40px_rgba(59,130,246,0.06)]',   dotColor: 'bg-blue-400'    },
-  { id: 'powerbi-workshop',      title: 'Business Analytics with Power BI', level: 'Core',        startDate: '7 April 2025',  rating: 4.8, reviewCount: 30, studentsEnrolled: 10, tag: 'Starting Soon', tagColor: 'bg-purple-500/20 text-purple-300 border-purple-500/30', description: 'Turn raw data into decision-ready dashboards and reporting systems that leadership actually trusts and uses.',                   price: 25000, duration: '3 months', Icon: BarChart3,      includes: ['Power Query transformation','Star-schema modelling','DAX time intelligence','Executive Power BI reports'],    gradient: 'from-purple-500/8 to-pink-500/8',  accent: 'text-purple-400',  accentBg: 'bg-purple-500/10',  accentBorder: 'border-purple-500/20',  hoverBorder: 'hover:border-purple-400/50', hoverGlow: 'hover:shadow-[0_0_40px_rgba(168,85,247,0.06)]',   dotColor: 'bg-purple-400'  },
-  { id: 'ai-mastery',            title: 'AI Fluency for Business Leaders',  level: 'AI Mastery',  startDate: '4 May 2025',    rating: 4.9, reviewCount: 15, studentsEnrolled: 12, tag: 'New Cohort',     tagColor: 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30', description: 'Use AI confidently and responsibly to improve decisions, automate repetitive work, and stay ahead of your industry.',          price: 7500,  duration: '1 month',  Icon: Brain,         includes: ['How modern AI thinks','Prompt engineering mastery','AI tools & workflows','Responsible AI in Africa'],          gradient: 'from-emerald-500/8 to-teal-500/8', accent: 'text-emerald-400', accentBg: 'bg-emerald-500/10', accentBorder: 'border-emerald-500/20', hoverBorder: 'hover:border-emerald-400/50',hoverGlow: 'hover:shadow-[0_0_40px_rgba(16,185,129,0.06)]',   dotColor: 'bg-emerald-400'  },
-  { id: 'ai-agents-masterclass', title: 'Agentic AI for Business',          level: 'Advanced',    startDate: '5 May 2025',    rating: 4.7, reviewCount: 80, studentsEnrolled: 25, tag: 'Top Rated',    tagColor: 'bg-orange-500/20 text-orange-300 border-orange-500/30',  description: 'Design AI systems that execute tasks, orchestrate multi-step workflows, and scale operations without constant human oversight.',  price: 12500, duration: '1 month',  Icon: Zap,           includes: ['AI agent design fundamentals','n8n, APIs & agentic workflows','Knowledge, memory & tools','Deploy agents across channels'],  gradient: 'from-orange-500/8 to-red-500/8',   accent: 'text-orange-400',  accentBg: 'bg-orange-500/10',  accentBorder: 'border-orange-500/20',  hoverBorder: 'hover:border-orange-400/50', hoverGlow: 'hover:shadow-[0_0_40px_rgba(249,115,22,0.06)]',   dotColor: 'bg-orange-400'   },
+  { id: 'excel-workshop',        title: 'Data Analytics with Excel',        level: 'Foundation',  startDate: '20 June 2025',  rating: 4.9, reviewCount: 60, studentsEnrolled: 15, tag: 'Most Popular',  tagColor: 'bg-blue-500/20 text-blue-300 border-blue-500/30',    description: "Master the world's most-used business tool. Structure problems, build models, and present data that decisions are made on.",    price: 12500, duration: '3 months', Icon: FileSpreadsheet, includes: ['Advanced formulas & logic','Power Query foundations','Pivot table mastery','Board-ready dashboards'],      gradient: 'from-blue-500/8 to-cyan-500/8',    accent: 'text-blue-400',    accentBg: 'bg-blue-500/10',    accentBorder: 'border-blue-500/20',    hoverBorder: 'hover:border-blue-400/50',   hoverGlow: 'hover:shadow-[0_0_40px_rgba(59,130,246,0.06)]',   dotColor: 'bg-blue-400'    },
+  { id: 'powerbi-workshop',      title: 'Business Analytics with Power BI', level: 'Core',        startDate: '7 April 2025',  rating: 4.8, reviewCount: 30, studentsEnrolled: 10, tag: 'Starting Soon', tagColor: 'bg-purple-500/20 text-purple-300 border-purple-500/30', description: 'Turn raw data into decision-ready dashboards and reporting systems that leadership actually trusts and uses.',                   price: 15000, duration: '3 months', Icon: BarChart3,      includes: ['Power Query transformation','Star-schema modelling','DAX time intelligence','Executive Power BI reports'],    gradient: 'from-purple-500/8 to-pink-500/8',  accent: 'text-purple-400',  accentBg: 'bg-purple-500/10',  accentBorder: 'border-purple-500/20',  hoverBorder: 'hover:border-purple-400/50', hoverGlow: 'hover:shadow-[0_0_40px_rgba(168,85,247,0.06)]',   dotColor: 'bg-purple-400'  },
+  { id: 'ai-mastery',            title: 'AI Fluency for Business Leaders',  level: 'AI Mastery',  startDate: '4 May 2025',    rating: 4.9, reviewCount: 15, studentsEnrolled: 12, tag: 'New Cohort',     tagColor: 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30', description: 'Use AI confidently and responsibly to improve decisions, automate repetitive work, and stay ahead of your industry.',          price: 2500,  duration: '1 month',  Icon: Brain,         includes: ['How modern AI thinks','Prompt engineering mastery','AI tools & workflows','Responsible AI in Africa'],          gradient: 'from-emerald-500/8 to-teal-500/8', accent: 'text-emerald-400', accentBg: 'bg-emerald-500/10', accentBorder: 'border-emerald-500/20', hoverBorder: 'hover:border-emerald-400/50',hoverGlow: 'hover:shadow-[0_0_40px_rgba(16,185,129,0.06)]',   dotColor: 'bg-emerald-400'  },
+  { id: 'ai-agents-masterclass', title: 'Agentic AI for Business',          level: 'Advanced',    startDate: '5 May 2025',    rating: 4.7, reviewCount: 80, studentsEnrolled: 25, tag: 'Top Rated',    tagColor: 'bg-orange-500/20 text-orange-300 border-orange-500/30',  description: 'Design AI systems that execute tasks, orchestrate multi-step workflows, and scale operations without constant human oversight.',  price: 5000, duration: '1 month',  Icon: Zap,           includes: ['AI agent design fundamentals','n8n, APIs & agentic workflows','Knowledge, memory & tools','Deploy agents across channels'],  gradient: 'from-orange-500/8 to-red-500/8',   accent: 'text-orange-400',  accentBg: 'bg-orange-500/10',  accentBorder: 'border-orange-500/20',  hoverBorder: 'hover:border-orange-400/50', hoverGlow: 'hover:shadow-[0_0_40px_rgba(249,115,22,0.06)]',   dotColor: 'bg-orange-400'   },
 ];
 
 const levelColors: Record<string, string> = {
@@ -316,6 +317,10 @@ const AcademyPage: React.FC = () => {
   const [activeSection, setActiveSection] = useState('courses');
   const [activeCertIdx, setActiveCertIdx] = useState(0);
 
+  const [paymentModalOpen, setPaymentModalOpen] = useState(false);
+  const [selectedProjectForUpload, setSelectedProjectForUpload] = useState<{ projectId: string, projectTitle: string, trackId: string, file: File } | null>(null);
+  const [isProcessingPayment, setIsProcessingPayment] = useState(false);
+
   const { ref: statsRef, inView: statsVisible } = useInView(0.3);
   const s1 = useCountUp(150, 2000, statsVisible);
   const s2 = useCountUp(16,  1500, statsVisible);
@@ -351,7 +356,7 @@ const AcademyPage: React.FC = () => {
     window.open(`https://lfqzzbfcgkdfmytrvtwa.supabase.co/storage/v1/object/public/Excel%20Files/${fileName}`, '_blank');
   };
 
-  const handleUpload = async (projectId: string, projectTitle: string, track: string, file: File) => {
+  const processUpload = async (projectId: string, projectTitle: string, track: string, file: File) => {
     if (!user) return;
     setUploading(projectId);
     try {
@@ -374,11 +379,78 @@ const AcademyPage: React.FC = () => {
     finally { setUploading(null); }
   };
 
+  const initiateProjectPayment = (amount: number) => {
+      if (!selectedProjectForUpload || !user?.email) return;
+      setIsProcessingPayment(true);
+      const currency = detectCurrency(amount);
+      const ref = generateReference();
+      initializePaystack({
+          key: '', // automatically falls back to config in implementation
+          email: user.email,
+          amount: toSmallestUnit(amount),
+          currency,
+          ref,
+          metadata: {
+              custom_fields: [
+                  { display_name: "Project", variable_name: "project_title", value: selectedProjectForUpload.projectTitle },
+                  { display_name: "Project ID", variable_name: "project_id", value: selectedProjectForUpload.projectId }
+              ]
+          },
+          onSuccess: async (response) => {
+              setIsProcessingPayment(false);
+              setPaymentModalOpen(false);
+              await processUpload(selectedProjectForUpload.projectId, selectedProjectForUpload.projectTitle, selectedProjectForUpload.trackId, selectedProjectForUpload.file);
+              setSelectedProjectForUpload(null);
+          },
+          onCancel: () => {
+              setIsProcessingPayment(false);
+          }
+      });
+  };
+
   const currentTrack = projectTracks.find((t) => t.id === activeTrack)!;
   const TrackIcon = currentTrack.icon;
 
   return (
     <div className="bg-[#18100F] min-h-screen">
+
+      {/* ── PROJECT PAYMENT MODAL ──────────────────────────────────────────── */}
+      {paymentModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 backdrop-blur-sm px-4">
+          <div className="bg-[#1a1210] border border-white/10 rounded-2xl p-8 max-w-lg w-full relative shadow-2xl">
+            <button onClick={() => { setPaymentModalOpen(false); setSelectedProjectForUpload(null); setIsProcessingPayment(false); }}
+              className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-lg text-gray-500 hover:text-white hover:bg-white/10 transition-all">
+              <X className="w-4 h-4" />
+            </button>
+            <div className="w-14 h-14 bg-brand-cyan/10 border border-brand-cyan/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <FolderOpen className="w-6 h-6 text-brand-cyan" />
+            </div>
+            <h3 className="text-xl font-bold text-white text-center mb-2">Instructor Review Selection</h3>
+            <p className="text-sm text-gray-400 text-center mb-6">Choose how you want your project reviewed by our industry instructors.</p>
+            
+            <div className="space-y-3">
+              {[
+                  { name: 'Basic',   price: 100,  desc: 'Score + Brief Comments', color: 'text-gray-300' },
+                  { name: 'Standard', price: 500,  desc: 'Detailed Feedback and Code/Model Review', color: 'text-brand-cyan' },
+                  { name: 'Premium',  price: 1000, desc: '1-Hour Private Video Walkthrough', color: 'text-purple-400' }
+              ].map(tier => (
+                  <button key={tier.name} onClick={() => initiateProjectPayment(tier.price)} disabled={isProcessingPayment}
+                    className="w-full text-left p-4 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 hover:border-brand-cyan/50 transition-all flex items-center justify-between group disabled:opacity-50 disabled:cursor-not-allowed">
+                      <div>
+                          <p className={`font-bold text-base ${tier.color} mb-1`}>{tier.name}</p>
+                          <p className="text-xs text-gray-400">{tier.desc}</p>
+                      </div>
+                      <div className="text-right">
+                          <p className="font-bold text-white text-lg">KES {tier.price}</p>
+                          <p className="text-[10px] text-gray-500 uppercase tracking-widest mt-0.5 group-hover:text-brand-cyan">Select →</p>
+                      </div>
+                  </button>
+              ))}
+            </div>
+            {isProcessingPayment && <p className="text-center text-sm text-brand-cyan mt-4 animate-pulse">Initializing Secure Payment...</p>}
+          </div>
+        </div>
+      )}
 
       {/* ── LOGIN MODAL ──────────────────────────────────────────── */}
       {showLogin && (
@@ -870,7 +942,7 @@ const AcademyPage: React.FC = () => {
                           : 'bg-white/4 text-white border-white/12 hover:bg-white/8 hover:border-white/20'
                         }`}>
                           <input type="file" className="hidden" accept=".doc,.docx,.pdf,.xlsx" disabled={isUploading}
-                            onChange={(e) => { const f = e.target.files?.[0]; if (f) handleUpload(project.id, project.title, currentTrack.id, f); }} />
+                            onChange={(e) => { const f = e.target.files?.[0]; if (f) { setSelectedProjectForUpload({ projectId: project.id, projectTitle: project.title, trackId: currentTrack.id, file: f }); setPaymentModalOpen(true); } }} />
                           {didUpload    ? <><CheckCircle className="w-3.5 h-3.5" />Submitted!</>
                           : isUploading ? <><div className="w-3.5 h-3.5 border-2 border-gray-600 border-t-transparent rounded-full animate-spin" />Uploading...</>
                           : <><Upload className="w-3.5 h-3.5" />{submission ? 'Re-submit Work' : 'Submit Your Work'}</>}

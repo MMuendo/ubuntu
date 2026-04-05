@@ -16,12 +16,12 @@ interface DataQuestion { text: string; options: string[]; correctIndex: number; 
 
 // ─── Plans ────────────────────────────────────────────────────────
 const AI_PLANS: Record<'starter' | 'advanced', Plan> = {
-    starter: { id: 'ai-mastery',            name: 'AI Fluency for Business Leaders', description: 'Master AI tools, prompting, and business automation. Built for East African professionals stepping into AI.',          price: 7500  },
-    advanced:{ id: 'ai-agents-masterclass', name: 'Agentic AI for Business',          description: 'Build real AI agents using n8n, OpenAI, and automation platforms. Hands-on with real Kenyan business datasets.', price: 12500 },
+    starter: { id: 'ai-mastery',            name: 'AI Fluency for Business Leaders', description: 'Master AI tools, prompting, and business automation. Built for East African professionals stepping into AI.',          price: 2500  },
+    advanced:{ id: 'ai-agents-masterclass', name: 'Agentic AI for Business',          description: 'Build real AI agents using n8n, OpenAI, and automation platforms. Hands-on with real Kenyan business datasets.', price: 5000 },
 };
 const DATA_PLANS: Record<'excel' | 'powerbi', Plan> = {
-    excel:   { id: 'excel-workshop',   name: 'Data Analytics with Excel',        description: 'Master formulas, pivot tables, and dashboards using real data from Safaricom, KCB, and Equity Bank.',                          price: 20000 },
-    powerbi: { id: 'powerbi-workshop', name: 'Business Analytics with Power BI',  description: 'Build executive-grade dashboards with DAX, Power Query, and interactive visuals — East Africa context throughout.', price: 25000 },
+    excel:   { id: 'excel-workshop',   name: 'Data Analytics with Excel',        description: 'Master formulas, pivot tables, and dashboards using real data from Safaricom, KCB, and Equity Bank.',                          price: 12500 },
+    powerbi: { id: 'powerbi-workshop', name: 'Business Analytics with Power BI',  description: 'Build executive-grade dashboards with DAX, Power Query, and interactive visuals — East Africa context throughout.', price: 15000 },
 };
 
 // ─── Data Questions ───────────────────────────────────────────────
@@ -444,10 +444,14 @@ const AssessmentPage: React.FC = () => {
                                 <p className="text-gray-400 leading-relaxed mb-5 max-w-lg mx-auto">{aiPlan.description}</p>
                                 <p className="text-3xl font-bold text-white mb-7">KES {aiPlan.price.toLocaleString()}</p>
                                 <div className="relative rounded-xl overflow-hidden">
-                                    <div className="absolute inset-0 bg-black/65 backdrop-blur-md flex items-center justify-center z-10">
+                                    <div className="absolute inset-0 bg-black/65 backdrop-blur-md flex items-center justify-center z-10 gap-3 flex-col sm:flex-row">
                                         <button onClick={()=>{const p=new URLSearchParams({courseId:aiPlan.id,courseName:aiPlan.name,coursePrice:aiPlan.price.toString(),courseDescription:aiPlan.description});navigate(`/checkout?${p.toString()}`);}}
-                                            className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold rounded-full hover:shadow-[0_0_30px_rgba(34,211,238,0.3)] transition-all">
-                                            <Lock className="w-5 h-5"/> Unlock My Personalised Plan <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform"/>
+                                            className="group inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold rounded-full hover:shadow-[0_0_30px_rgba(34,211,238,0.3)] transition-all text-sm">
+                                            <Lock className="w-4 h-4"/> Take the Course <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform"/>
+                                        </button>
+                                        <button onClick={() => navigate('/academy#projects')}
+                                            className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 border border-white/20 text-white font-bold rounded-full hover:bg-white/20 transition-all text-sm">
+                                            Take a Project
                                         </button>
                                     </div>
                                     <div className="p-5 border border-white/6 rounded-xl space-y-3 opacity-20">
@@ -495,10 +499,14 @@ const AssessmentPage: React.FC = () => {
                             <p className="text-gray-400 leading-relaxed mb-5 max-w-lg mx-auto">{plan.description}</p>
                             <p className="text-3xl font-bold text-white mb-7">KES {plan.price.toLocaleString()}</p>
                             <div className="relative rounded-xl overflow-hidden">
-                                <div className="absolute inset-0 bg-black/65 backdrop-blur-md flex items-center justify-center z-10">
+                                <div className="absolute inset-0 bg-black/65 backdrop-blur-md flex items-center justify-center z-10 gap-3 flex-col sm:flex-row">
                                     <button onClick={()=>{const p=new URLSearchParams({courseId:plan.id,courseName:plan.name,coursePrice:plan.price.toString(),courseDescription:plan.description});navigate(`/checkout?${p.toString()}`);}}
-                                        className={`group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r ${pg} text-white font-bold rounded-full hover:opacity-90 transition-all`}>
-                                        <Lock className="w-5 h-5"/> Unlock My Personalised Plan <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform"/>
+                                        className={`group inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r ${pg} text-white font-bold rounded-full hover:opacity-90 transition-all text-sm`}>
+                                        <Lock className="w-4 h-4"/> Take the Course <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform"/>
+                                    </button>
+                                    <button onClick={() => navigate('/academy#projects')}
+                                        className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 border border-white/20 text-white font-bold rounded-full hover:bg-white/20 transition-all text-sm">
+                                        Take a Project
                                     </button>
                                 </div>
                                 <div className="p-5 border border-white/6 rounded-xl space-y-3 opacity-20">

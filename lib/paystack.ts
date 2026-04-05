@@ -93,10 +93,8 @@ export function toSmallestUnit(amount: number): number {
  * Detect currency based on amount or location
  * Default to KES for Kenya market
  */
-export function detectCurrency(amount: number): 'KES' | 'USD' {
-    // Simple heuristic: amounts > 1000 are likely KES, smaller amounts are USD
-    // You can enhance this with geolocation or user settings
-    return amount >= 1000 ? 'KES' : 'USD';
+export function detectCurrency(_amount: number): 'KES' | 'USD' {
+    return 'KES';
 }
 
 /**

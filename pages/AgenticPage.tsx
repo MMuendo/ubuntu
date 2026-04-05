@@ -349,6 +349,56 @@ const AgenticPage: React.FC = () => {
                     </div>
                 </div>
 
+                {/* ── Agentic Projects Built ────────────────────────── */}
+                <div className="mb-28 mt-24">
+                    <div className="text-center mb-12">
+                        <span className="text-brand-blue text-xs font-bold tracking-wider uppercase bg-brand-blue/10 px-4 py-2 rounded-full border border-brand-blue/20">Portfolio</span>
+                        <h2 className="text-4xl font-bold text-white mt-4 mb-4">Agentic Projects Built</h2>
+                        <p className="text-gray-400 max-w-xl mx-auto">
+                            A showcase of intelligent agents we've architected for active businesses and educational platforms.
+                        </p>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        {[
+                            {
+                                title: 'Ubuntu Widget',
+                                desc: 'An intelligent platform widget built purely from scratch using Python. Demonstrates full-stack AI logic with a bespoke neural architecture for seamless interaction.',
+                                link: '#',
+                                tag: 'Python & AI'
+                            },
+                            {
+                                title: 'Craft Catalyst Eligibility Widget',
+                                desc: 'An AI agent integrated via n8n that instantly analyzes student credentials to determine their eligibility for studying in Malaysia.',
+                                link: 'https://crafted.thecraftcatalyst.com',
+                                tag: 'n8n Workflow'
+                            },
+                            {
+                                title: 'Zoho CRM Agent (Agriculture)',
+                                desc: 'A deeply integrated agentic workflow in Zoho CRM using n8n, designed specifically for an agricultural company to automate lead tracking and operations.',
+                                link: null,
+                                tag: 'Zoho CRM & n8n'
+                            },
+                            {
+                                title: 'Property Management Agent',
+                                desc: 'A specialized AI agent that orchestrates property management workflows—automating inquiries, maintenance requests, and contract renewals.',
+                                link: null,
+                                tag: 'PropTech AI'
+                            }
+                        ].map((project, idx) => (
+                            <div key={idx} className="bg-brand-surface border border-white/8 rounded-2xl p-7 hover:border-brand-blue/40 hover:shadow-[0_0_30px_rgba(59,130,246,0.05)] transition-all duration-300 group flex flex-col">
+                                <span className="text-[10px] font-bold text-brand-blue/60 tracking-widest uppercase mb-3 block">{project.tag}</span>
+                                <h3 className="text-xl font-bold text-white mb-3">{project.title}</h3>
+                                <p className="text-gray-500 text-sm leading-relaxed mb-5 flex-1">{project.desc}</p>
+                                {project.link && (
+                                    <a href={project.link} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-brand-blue font-bold text-sm hover:underline mt-auto">
+                                        View Project <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                                    </a>
+                                )}
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
                 {/* ── CTA Banner ────────────────────────────────── */}
                 <div className="relative rounded-3xl overflow-hidden border border-brand-blue/25 bg-gradient-to-br from-brand-blue/10 via-transparent to-cyan-500/5 p-10 md:p-14 text-center">
                     <div className="absolute inset-0 bg-gradient-to-br from-brand-blue/5 to-transparent pointer-events-none" />

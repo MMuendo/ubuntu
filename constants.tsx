@@ -6,7 +6,7 @@ export const COURSES: Course[] = [
   {
     id: 'excel-workshop',
     title: 'Data Thinking with Excel',
-    price: 20000,
+    price: 12500,
     description: 'Learn how to structure problems, model business logic, and communicate insights — not just use formulas. This program builds the analytical mindset every decision professional needs before scaling to BI or AI.',
     level: 'Excel Workshop',
     tags: ['Data Analysis', 'Productivity', '3 Months']
@@ -14,7 +14,7 @@ export const COURSES: Course[] = [
   {
     id: 'powerbi-workshop',
     title: 'From Reporting to Decision Systems',
-    price: 20000,
+    price: 15000,
     description: 'This mentorship is for professionals who’ve outgrown spreadsheets and want to build decision-ready dashboards that executives actually use. You’ll learn how to translate business questions into automated, scalable decision systems using Power BI.',
     level: 'Power BI Hybrid',
     tags: ['Business Intelligence', 'Dashboards', '3 Months']
@@ -22,7 +22,7 @@ export const COURSES: Course[] = [
   {
     id: 'ai-mastery',
     title: 'AI Fluency for Business Leaders & Analysts',
-    price: 7500,
+    price: 2500,
     description: 'This is not about prompts. It’s about understanding where AI fits — and where it doesn’t — in decision-making, analytics, and leadership. Ideal for professionals who want to lead AI conversations, not follow trends.',
     level: 'AI Mastery',
     tags: ['AI Fluency', 'Prompting', '1 Month']
@@ -30,7 +30,7 @@ export const COURSES: Course[] = [
   {
     id: 'ai-agents-masterclass',
     title: 'Agentic Systems for Decision Automation',
-    price: 12500,
+    price: 5000,
     description: 'Design AI agents that don’t just automate tasks — but support analysis, monitoring, and decision execution in real business environments. This is where analysts transition into system thinkers.',
     level: 'AI Agents',
     tags: ['Agentic AI', 'Automation', '1 Month']
@@ -41,13 +41,13 @@ export const PLANS: { [key: string]: Product } = {
   BASIC: {
     id: 'ai-mastery-plan',
     name: 'AI Mastery Plan',
-    price: 7500,
+    price: 2500,
     description: 'Master AI fundamentals, prompting techniques, and ethics. Includes weekly mentorship check-ins and WhatsApp community access.'
   },
   ADVANCED: {
     id: 'ai-agents-plan',
     name: 'AI Agents Mastery Plan',
-    price: 12500,
+    price: 5000,
     description: 'Design and deploy autonomous AI agents with n8n automation, APIs, and agentic workflows. Includes weekly mentorship and WhatsApp community.'
   }
 };
