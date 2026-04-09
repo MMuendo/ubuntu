@@ -153,7 +153,7 @@ const EnrollmentOptionsPage: React.FC = () => {
 
                         <div className="mb-8 relative z-10">
                             <div className="text-5xl font-bold text-white mb-2">
-                                KES 2,500
+                                KES 1,500
                             </div>
                             <p className="text-sm text-gray-500">One-time payment</p>
                         </div>
