@@ -190,7 +190,7 @@ const AIMasteryCoursePage: React.FC = () => {
               onClick={handleEnroll}
               className="px-8 py-4 bg-gradient-to-r from-emerald-500 to-teal-500 text-white rounded-full font-bold text-lg hover:from-emerald-600 hover:to-teal-600 transition-all shadow-[0_0_30px_rgba(16,185,129,0.3)] hover:shadow-[0_0_40px_rgba(16,185,129,0.5)]"
             >
-              Apply to Join - KES 7,500
+              Apply to Join - KES 2,500
             </button>
             <button
               onClick={() => navigate('/academy')}
@@ -363,7 +363,7 @@ const AIMasteryCoursePage: React.FC = () => {
                   onClick={handleEnroll}
                   className="px-8 py-4 bg-gradient-to-r from-emerald-500 to-teal-500 text-white rounded-full font-bold text-lg hover:from-emerald-600 hover:to-teal-600 transition-all shadow-lg"
                 >
-                  Apply Now - KES 7,500
+                  Apply Now - KES 2,500
                   <ArrowRight className="inline-block w-5 h-5 ml-2" />
                 </button>
                 <button
