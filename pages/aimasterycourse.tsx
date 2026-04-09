@@ -128,7 +128,7 @@ const AIMasteryCoursePage: React.FC = () => {
   ];
 
   const handleEnroll = () => {
-    navigate('/enroll?courseId=ai-mastery&courseName=AI%20Fluency%20for%20Business%20Leaders&coursePrice=7500');
+    navigate('/enroll?courseId=ai-mastery&courseName=AI%20Fluency%20for%20Business%20Leaders&coursePrice=2500');
   };
 
   return (
