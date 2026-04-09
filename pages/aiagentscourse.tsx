@@ -136,7 +136,7 @@ const AIAgentsCoursePage: React.FC = () => {
   ];
 
   const handleEnroll = () => {
-    navigate('/enroll?courseId=ai-agents-masterclass&courseName=Agentic%20Systems%20for%20Decision%20Automation&coursePrice=12500');
+    navigate('/enroll?courseId=ai-agents-masterclass&courseName=Agentic%20Systems%20for%20Decision%20Automation&coursePrice=5000');
   };
 
   return (
