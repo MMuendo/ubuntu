@@ -112,7 +112,7 @@ const PowerBICoursePage: React.FC = () => {
   ];
 
   const handleEnroll = () => {
-    navigate('/enroll?courseId=powerbi-workshop&courseName=Decision%20Systems%20with%20Power%20BI&coursePrice=25000');
+    navigate('/enroll?courseId=powerbi-workshop&courseName=Decision%20Systems%20with%20Power%20BI&coursePrice=15000');
   };
 
   return (
