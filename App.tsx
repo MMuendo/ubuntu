@@ -15,6 +15,10 @@ import BlogPostPage from './pages/BlogPostPage';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
 import AcademyPage from './pages/academy';
+import ExcelCoursePage from './pages/excelcourse';
+import PowerBICoursePage from './pages/powerbicourse';
+import AIMasteryCoursePage from './pages/aimasterycourse';
+import AIAgentsCoursePage  from './pages/aiagentscourse';
 import ResetPasswordPage from './pages/ResetPasswordPage';
 import DashboardPage from './pages/DashboardPage';
 import EnrollmentOptionsPage from './pages/EnrollmentOptionsPage';
@@ -62,6 +66,11 @@ const App: React.FC = () => {
                         </Layout>
                     }
                 />
+
+                <Route path="/course/excel-workshop" element={<ExcelCoursePage />} />
+                <Route path="/course/powerbi-workshop" element={<PowerBICoursePage />} />
+                <Route path="/course/ai-mastery" element={<AIMasteryCoursePage />} />
+                <Route path="/course/ai-agents-masterclass" element={<AIAgentsCoursePage />} />
 
 
                 {/* Dynamic Course Route wrapped in Layout */}
