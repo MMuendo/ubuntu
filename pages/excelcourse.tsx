@@ -142,7 +142,7 @@ const ExcelCoursePage: React.FC = () => {
   ];
 
   const handleEnroll = () => {
-    navigate('/enroll?courseId=excel-workshop&courseName=Data%20Thinking%20with%20Excel&coursePrice=20000');
+    navigate('/enroll?courseId=excel-workshop&courseName=Data%20Thinking%20with%20Excel&coursePrice=12500');
   };
 
   return (
