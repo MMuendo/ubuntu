@@ -440,8 +440,8 @@ const AcademyPage: React.FC = () => {
               </h1>
 
               <p className="text-lg text-gray-400 max-w-xl mb-8 leading-relaxed mx-auto lg:mx-0">
-                World-class training in Data Analytics, AI Fluency, and Agentic Systems —
-                built on real Kenyan companies, real datasets, real outcomes.
+                World-class training in Data Analytics, AI Fluency, and Agentic Systems -
+                built on real Kenyan companies, our datasets, grounded in African data, African context, and African customer behaviour.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-10">
