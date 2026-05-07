@@ -10,6 +10,7 @@ import { getAcademyPrograms, getProjectBriefs } from "@/lib/db/loaders";
 import { checkoutHref } from "@/lib/academy/checkout-links";
 import { academyEvents } from "@/lib/academy/site-content";
 import { LeadCaptureButton } from "@/components/lead-capture-modal";
+import { AIPromptLab } from "@/components/ai-prompt-lab";
 
 const trackIcons = {
   excel: FileSpreadsheet,
@@ -309,6 +310,7 @@ export default async function AcademyPage() {
           </div>
         </div>
       </section>
+      <AIPromptLab />
     </SiteShell>
   );
 }
