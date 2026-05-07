@@ -169,7 +169,7 @@ export function SiteShell({ children }) {
           </div>
           {mobileMenuOpen ? (
             <div id="mobile-navigation" className="border-t border-slate-200 bg-white px-4 py-4 shadow-sm md:hidden">
-              <nav className="ml-auto grid w-[78%] gap-1">
+              <nav className="ml-auto grid w-[68%] min-w-[188px] max-w-[230px] gap-1">
                 {navLinks.map((link) => (
                   <Link
                     key={link.href}
@@ -184,7 +184,7 @@ export function SiteShell({ children }) {
                   </Link>
                 ))}
               </nav>
-              <div className="ml-auto mt-4 grid w-[78%] gap-2">
+              <div className="ml-auto mt-4 grid w-[68%] min-w-[188px] max-w-[230px] gap-2">
                 {user ? (
                   <>
                     <Button asChild size="sm" variant="outline">
