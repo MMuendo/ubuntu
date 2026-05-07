@@ -34,8 +34,8 @@ function formatStartDate(value) {
   return date.toLocaleDateString("en-KE", { day: "numeric", month: "short", year: "numeric" });
 }
 
-function hasWorkingWithDataDiscount(program) {
-  return ["working-with-data-for-professionals", "data-fluency-for-operators-and-managers"].includes(program.slug);
+function hasDiscount(program) {
+  return Number(program.oldPriceKes || 0) > Number(program.priceKes || 0);
 }
 
 function groupByTrack(projects) {
@@ -107,10 +107,10 @@ export default async function AcademyPage() {
                   >
                     <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#007c97]">{program.category}</p>
                     <h2 className="mt-2 text-sm font-semibold text-[#1e1616]">{program.title}</h2>
-                    {hasWorkingWithDataDiscount(program) ? (
+                    {hasDiscount(program) ? (
                       <p className="mt-2 text-xs text-slate-600">
-                        <span className="line-through">KES 12,500</span>{" "}
-                        <span className="font-semibold text-[#1e1616]">KES {program.priceKes.toLocaleString()}</span> - {program.duration}
+                        <span className="font-semibold text-red-600 line-through decoration-red-600 decoration-2">KES {program.oldPriceKes.toLocaleString()}</span>{" "}
+                        <span className="font-bold text-emerald-700">Offer KES {program.priceKes.toLocaleString()}</span> - {program.duration}
                       </p>
                     ) : (
                       <p className="mt-2 text-xs text-slate-600">KES {program.priceKes.toLocaleString()} - {program.duration}</p>
@@ -138,20 +138,20 @@ export default async function AcademyPage() {
               </span>
             ))}
           </div>
-          <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
             {programs.map((program) => (
               <Card key={program.slug} className="flex h-full flex-col border-[#00b4d8]/25 bg-white shadow-[0_18px_42px_rgba(0,0,0,0.28)]">
-                <CardHeader className="space-y-2 p-3">
+                <CardHeader className="space-y-2 p-4 pb-2">
                   <div className="flex items-center justify-between gap-3">
                     <Badge tone="teal">{program.category}</Badge>
                     <Badge tone="default">{program.level}</Badge>
                   </div>
                   <div>
                     <h2 className="text-base font-semibold text-[#1e1616]">{program.title}</h2>
-                    <p className="mt-2 line-clamp-3 text-sm leading-6 text-slate-600">{program.summary}</p>
+                    <p className="mt-2 line-clamp-2 text-sm leading-6 text-slate-600">{program.summary}</p>
                   </div>
                 </CardHeader>
-                <CardContent className="flex flex-1 flex-col gap-3 p-3">
+                <CardContent className="flex flex-1 flex-col gap-3 p-4 pt-2">
                   <div className="rounded-lg bg-[#f1f5f9] p-2.5 text-xs leading-5 text-slate-700">
                     {program.instructor} - {program.instructorTitle}
                   </div>
@@ -161,10 +161,10 @@ export default async function AcademyPage() {
                   <CourseBadgeRow items={program.tools.slice(0, 3)} />
                   <div className="mt-auto space-y-3 border-t border-slate-100 pt-3">
                     <div>
-                      {hasWorkingWithDataDiscount(program) ? (
-                        <div className="flex flex-wrap items-center gap-2">
-                          <span className="rounded-md bg-slate-100 px-2 py-1 text-xs font-semibold text-slate-500 line-through">KES 12,500</span>
-                          <span className="text-sm font-semibold text-[#1e1616]">KES {program.priceKes.toLocaleString()}</span>
+                      {hasDiscount(program) ? (
+                        <div className="flex flex-wrap items-center gap-2 rounded-lg border border-emerald-200 bg-emerald-50 p-2.5">
+                          <span className="rounded-md bg-white px-2 py-1 text-xs font-bold text-red-600 line-through decoration-red-600 decoration-2">KES {program.oldPriceKes.toLocaleString()}</span>
+                          <span className="rounded-md bg-emerald-600 px-2.5 py-1 text-sm font-bold text-white shadow-sm">Offer KES {program.priceKes.toLocaleString()}</span>
                         </div>
                       ) : (
                         <p className="text-sm font-semibold text-[#1e1616]">KES {program.priceKes.toLocaleString()}</p>
@@ -172,7 +172,7 @@ export default async function AcademyPage() {
                       <p className="text-xs text-slate-500">{program.duration}</p>
                     </div>
                     <div className="flex flex-col gap-2 sm:flex-row">
-                      <Button asChild variant="accent" size="sm" className="flex-1">
+                      <Button asChild variant="accent" size="sm" className="h-12 flex-1 text-sm sm:h-8 sm:text-xs">
                         <Link href={checkoutHref({
                           productType: "course",
                           productSlug: program.slug,
@@ -184,8 +184,8 @@ export default async function AcademyPage() {
                           <ArrowRight size={14} />
                         </Link>
                       </Button>
-                      <Button asChild variant="outline" size="sm" className="flex-1">
-                        <Link href={`/pathways/${program.slug}`}>Details</Link>
+                      <Button asChild variant="outline" size="sm" className="h-12 flex-1 text-sm sm:h-8 sm:text-xs">
+                        <Link href={`/pathways/${program.slug}`}>Curriculum</Link>
                       </Button>
                     </div>
                   </div>

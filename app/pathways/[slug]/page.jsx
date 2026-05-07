@@ -22,8 +22,8 @@ function formatStartDate(value) {
   return date.toLocaleDateString("en-KE", { day: "numeric", month: "long", year: "numeric" });
 }
 
-function hasWorkingWithDataDiscount(program) {
-  return ["working-with-data-for-professionals", "data-fluency-for-operators-and-managers"].includes(program.slug);
+function hasDiscount(program) {
+  return Number(program.oldPriceKes || 0) > Number(program.priceKes || 0);
 }
 
 export default async function PathwayDetailPage({ params }) {
@@ -70,7 +70,7 @@ export default async function PathwayDetailPage({ params }) {
 
       <section className="py-10 sm:py-16">
         <div className="mx-auto grid max-w-7xl gap-4 px-4 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8">
-          <Card>
+          <Card className="border-[#00b4d8]/20 shadow-sm">
             <CardHeader className="space-y-3">
               <div className="flex items-center justify-between gap-3">
                 <Badge tone="teal">Mentor</Badge>
@@ -92,7 +92,7 @@ export default async function PathwayDetailPage({ params }) {
               </div>
             </CardHeader>
             <CardContent className="space-y-4">
-              <p className="text-sm font-semibold text-neutral-950">What this pathway covers</p>
+              <p className="text-sm font-semibold text-neutral-950">What This Pathway Covers</p>
               <DetailList items={program.outcomes} />
               <CourseBadgeRow items={program.tools} />
             </CardContent>
@@ -117,13 +117,22 @@ export default async function PathwayDetailPage({ params }) {
                   <p className="text-lg font-semibold text-neutral-950">{formatStartDate(program.startDate)}</p>
                   <p className="mt-1 text-sm text-neutral-600">{program.schedule || "Schedule will be confirmed before enrollment."}</p>
                 </div>
-                {hasWorkingWithDataDiscount(program) ? (
-                  <div className="flex flex-wrap items-center gap-2 rounded-xl border border-[#00b4d8]/20 bg-white p-4">
-                    <span className="rounded-md bg-slate-100 px-2.5 py-1 text-sm font-semibold text-slate-500 line-through">KES 12,500</span>
-                    <span className="rounded-md bg-[#1e1616] px-2.5 py-1 text-sm font-semibold text-white">KES {program.priceKes.toLocaleString()}</span>
-                    <span className="text-sm font-medium text-slate-600">discount price</span>
+                {hasDiscount(program) ? (
+                  <div className="rounded-xl border border-emerald-200 bg-emerald-50 p-4">
+                    <p className="text-xs font-bold uppercase tracking-[0.14em] text-emerald-700">Priority offer</p>
+                    <div className="mt-2 flex flex-wrap items-center gap-2">
+                      <span className="rounded-md bg-white px-2.5 py-1 text-sm font-bold text-red-600 line-through decoration-red-600 decoration-2">KES {program.oldPriceKes.toLocaleString()}</span>
+                      <span className="rounded-md bg-emerald-600 px-2.5 py-1 text-sm font-bold text-white shadow-sm">Offer KES {program.priceKes.toLocaleString()}</span>
+                      <span className="text-sm font-semibold text-emerald-800">discounted price</span>
+                    </div>
                   </div>
                 ) : null}
+                <Button asChild variant="accent" className="w-full">
+                  <Link href={enrollHref}>
+                    Enroll in this course
+                    <Sparkles size={16} />
+                  </Link>
+                </Button>
               </CardContent>
             </Card>
 
@@ -167,7 +176,7 @@ export default async function PathwayDetailPage({ params }) {
               <CardContent className="space-y-3 p-5">
                 <p className="text-sm font-semibold text-neutral-950">Next move</p>
                 <p className="text-sm leading-6 text-neutral-600">
-                  Pair this pathway with project submissions and mentor feedback to generate proof that hiring managers can scan.
+                  Use the curriculum, projects, and mentor context on this page to decide quickly, then enroll when the pathway matches the work you want to do.
                 </p>
                 <DetailCTA href={enrollHref} label="Enroll" />
               </CardContent>

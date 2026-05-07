@@ -43,7 +43,7 @@ values
     'A practical course for professionals who handle reports, spreadsheets, dashboards, and AI-generated answers without trying to become technical analysts.',
     '2026-07-06',
     5,
-    true,
+    false,
     '{"instructor":"Ezra Muinde","instructor_title":"Senior Data Scientist and AI Engineer","schedule":"Classes start 6th July.","modules":["Data confidence","Spreadsheet thinking","Dashboard reading","AI-assisted analysis","Decision communication"],"outcomes":["Read reports with confidence","Ask sharper business questions","Turn data and AI outputs into decisions"],"tools":["Excel","Dashboards","AI assistants","Reports"],"projects":["Weekly business scorecard","Insight memo","Dashboard interpretation exercise"],"roles":["Manager","Operations lead","Finance officer","Program officer"],"demand":["SMEs","NGOs","Operations","Leadership"]}'::jsonb
   ),
   (
@@ -90,7 +90,7 @@ values
   ),
   (
     'ai-agents-masterclass',
-    'Agentic Systems for Decision Automation',
+    'Agentic AI MasterClass',
     'AI',
     'masterclass',
     'Advanced',

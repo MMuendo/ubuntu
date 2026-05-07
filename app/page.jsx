@@ -201,8 +201,8 @@ export default async function Home() {
                 <Button asChild variant="accent" className="w-fit">
                   <Link href={checkoutHref({
                     productType: "course",
-                    productSlug: "working-with-data-for-professionals",
-                    productName: "Working with Data for Professionals",
+                    productSlug: "data-fluency-for-operators-and-managers",
+                    productName: "Working with Data for Professionals Who Are Not Technical Analysts",
                     amountKes: 10000,
                     description: "Practical data confidence for professionals who work with reports, dashboards, spreadsheets, and AI outputs."
                   })}>
@@ -210,23 +210,12 @@ export default async function Home() {
                     <ArrowRight size={16} />
                   </Link>
                 </Button>
-                <details className="group">
-                  <summary className="inline-flex h-10 cursor-pointer list-none items-center justify-center gap-2 rounded-md border border-[#1e1616]/15 bg-white px-4 text-sm font-semibold text-[#1e1616] transition hover:border-[#00b4d8] hover:bg-[#f8fdff] [&::-webkit-details-marker]:hidden">
-                    More details
-                    <ArrowRight size={16} className="transition group-open:rotate-90" />
-                  </summary>
-                  <div className="mt-4 rounded-lg border border-[#00b4d8]/25 bg-white/85 p-4 shadow-sm">
-                    <p className="text-sm font-semibold text-[#1e1616]">You will learn how to:</p>
-                    <ul className="mt-3 grid gap-2 text-sm leading-6 text-slate-700 sm:grid-cols-2">
-                      <li className="rounded-md bg-[#e8f8fb] p-3">Read business reports and separate insight from noise.</li>
-                      <li className="rounded-md bg-[#e8f8fb] p-3">Understand dashboards, KPIs, charts, and decision signals.</li>
-                      <li className="rounded-md bg-[#e8f8fb] p-3">Create useful summaries with pivot tables and spreadsheet logic.</li>
-                      <li className="rounded-md bg-[#e8f8fb] p-3">Ask better questions of Excel, Power BI, and AI-generated answers.</li>
-                      <li className="rounded-md bg-[#e8f8fb] p-3">Use AI to explain data, draft summaries, and prepare next actions.</li>
-                      <li className="rounded-md bg-[#e8f8fb] p-3">Understand agentic systems for handling recurring data tasks.</li>
-                    </ul>
-                  </div>
-                </details>
+                <Button asChild variant="outline" className="w-fit bg-white">
+                  <Link href="/pathways/data-fluency-for-operators-and-managers">
+                    View Details
+                    <ArrowRight size={16} />
+                  </Link>
+                </Button>
               </div>
             </CardContent>
           </Card>

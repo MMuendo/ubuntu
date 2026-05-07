@@ -168,8 +168,8 @@ export function SiteShell({ children }) {
             </div>
           </div>
           {mobileMenuOpen ? (
-            <div id="mobile-navigation" className="border-t border-slate-200 bg-white px-4 py-3 shadow-sm md:hidden">
-              <nav className="ml-auto grid w-[68%] min-w-[188px] max-w-[230px] gap-2">
+            <div id="mobile-navigation" className="border-t border-slate-200 bg-slate-200/85 md:hidden">
+              <div className="ml-auto grid w-[60vw] min-w-[204px] max-w-[250px] gap-2 bg-transparent p-3">
                 {navLinks.map((link) => (
                   <Link
                     key={link.href}
@@ -183,23 +183,21 @@ export function SiteShell({ children }) {
                     {link.label}
                   </Link>
                 ))}
-              </nav>
-              <div className="ml-auto mt-2 grid w-[51%] min-w-[140px] max-w-[174px] gap-2">
                 {user ? (
                   <>
-                    <Button asChild size="sm" variant="outline">
+                    <Button asChild size="sm" variant="outline" className="h-10 w-full">
                       <Link href={workspace}>Workspace</Link>
                     </Button>
-                    <Button type="button" size="sm" variant="accent" onClick={handleLogout}>
+                    <Button type="button" size="sm" variant="accent" className="h-10 w-full" onClick={handleLogout}>
                       Log out
                     </Button>
                   </>
                 ) : (
                   <>
-                    <Button asChild size="sm" variant="outline">
+                    <Button asChild size="sm" variant="outline" className="h-10 w-full">
                       <Link href="/login">Log in</Link>
                     </Button>
-                    <Button asChild size="sm" variant="accent">
+                    <Button asChild size="sm" variant="accent" className="h-10 w-full">
                       <Link href="/signup">Sign up</Link>
                     </Button>
                   </>
