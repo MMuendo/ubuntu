@@ -168,13 +168,13 @@ export function SiteShell({ children }) {
             </div>
           </div>
           {mobileMenuOpen ? (
-            <div id="mobile-navigation" className="border-t border-slate-200 bg-white px-4 py-4 shadow-sm md:hidden">
-              <nav className="ml-auto grid w-[68%] min-w-[188px] max-w-[230px] gap-1">
+            <div id="mobile-navigation" className="border-t border-slate-200 bg-white px-4 py-3 shadow-sm md:hidden">
+              <nav className="ml-auto grid w-[68%] min-w-[188px] max-w-[230px] gap-2">
                 {navLinks.map((link) => (
                   <Link
                     key={link.href}
                     href={link.href}
-                    className={`rounded-md px-3 py-3 text-sm font-semibold transition ${
+                    className={`rounded-md px-3 py-2 text-sm font-semibold transition ${
                       isActive(pathname, link.href)
                         ? "border border-[#00b4d8]/35 bg-[#e8f8fb] text-[#1e1616]"
                         : "border border-transparent text-slate-700 hover:border-slate-200 hover:bg-slate-50"
@@ -184,7 +184,7 @@ export function SiteShell({ children }) {
                   </Link>
                 ))}
               </nav>
-              <div className="ml-auto mt-4 grid w-[68%] min-w-[188px] max-w-[230px] gap-2">
+              <div className="ml-auto mt-2 grid w-[51%] min-w-[140px] max-w-[174px] gap-2">
                 {user ? (
                   <>
                     <Button asChild size="sm" variant="outline">
