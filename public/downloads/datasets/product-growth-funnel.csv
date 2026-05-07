@@ -1,0 +1,6 @@
+stage,users,conversion_rate
+Visit,12000,1.0
+Signup,4800,0.4
+Activation,2600,0.216
+Trial,1400,0.117
+Paid,820,0.068

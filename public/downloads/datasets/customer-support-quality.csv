@@ -1,0 +1,6 @@
+team,response_minutes,resolved_first_contact,escalations
+North Team,12,Yes,1
+South Team,18,No,4
+East Team,9,Yes,0
+West Team,22,No,5
+Central Team,14,Yes,2

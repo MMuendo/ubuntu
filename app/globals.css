@@ -1,0 +1,283 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Geist", "Aptos", "Segoe UI", sans-serif;
+  --color-brand-red: #00b4d8;
+  --color-brand-cyan: #00b4d8;
+  --color-ink: #1e1616;
+  --color-master-surface: #f1f5f9;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #fbfaf7;
+  color: #1e1616;
+  font-family: var(--font-sans);
+  letter-spacing: 0;
+}
+
+button,
+a {
+  cursor: pointer;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #6b7280;
+  opacity: 1;
+}
+
+::selection {
+  background: #1e1616;
+  color: #ffffff;
+}
+
+main > section {
+  position: relative;
+}
+
+main > section + section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  z-index: 1;
+  height: 1px;
+  width: min(1180px, calc(100% - 24px));
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, transparent, rgba(30, 22, 22, 0.14), rgba(0, 180, 216, 0.42), rgba(30, 22, 22, 0.14), transparent);
+  box-shadow: 0 16px 32px rgba(30, 22, 22, 0.05);
+}
+
+.surface-grid {
+  background-color: #fbfaf7;
+  background-image:
+    linear-gradient(180deg, rgba(251, 250, 247, 0.98), rgba(251, 250, 247, 0.72) 80px, rgba(251, 250, 247, 0.72) calc(100% - 80px), rgba(251, 250, 247, 0.98)),
+    linear-gradient(rgba(30, 22, 22, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(30, 22, 22, 0.05) 1px, transparent 1px);
+  background-size: auto, 32px 32px, 32px 32px;
+}
+
+.cyan-grid {
+  background-color: #f1f5f9;
+  background-image:
+    linear-gradient(rgba(0, 180, 216, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 180, 216, 0.12) 1px, transparent 1px);
+  background-size: 34px 34px;
+}
+
+.african-weave {
+  background-color: #fbfaf7;
+  background-image:
+    linear-gradient(180deg, rgba(251, 250, 247, 0.98), rgba(251, 250, 247, 0.7) 80px, rgba(251, 250, 247, 0.7) calc(100% - 80px), rgba(251, 250, 247, 0.98)),
+    linear-gradient(135deg, rgba(0, 180, 216, 0.09) 25%, transparent 25%),
+    linear-gradient(225deg, rgba(0, 180, 216, 0.09) 25%, transparent 25%),
+    linear-gradient(315deg, rgba(30, 22, 22, 0.07) 25%, transparent 25%),
+    linear-gradient(45deg, rgba(30, 22, 22, 0.07) 25%, transparent 25%);
+  background-position: 0 0, 0 0, 0 0, 24px 24px, 24px 24px;
+  background-size: auto, 48px 48px, 48px 48px, 48px 48px, 48px 48px;
+  background-repeat: repeat;
+}
+
+.ubuntu-heritage-bg {
+  background-color: #fbfaf7;
+  background-image:
+    linear-gradient(180deg, rgba(251, 250, 247, 0.98), rgba(251, 250, 247, 0.7) 80px, rgba(251, 250, 247, 0.7) calc(100% - 80px), rgba(251, 250, 247, 0.98)),
+    linear-gradient(135deg, rgba(0, 180, 216, 0.09) 25%, transparent 25%),
+    linear-gradient(225deg, rgba(0, 180, 216, 0.09) 25%, transparent 25%),
+    linear-gradient(315deg, rgba(30, 22, 22, 0.07) 25%, transparent 25%),
+    linear-gradient(45deg, rgba(30, 22, 22, 0.07) 25%, transparent 25%);
+  background-position: 0 0, 0 0, 0 0, 24px 24px, 24px 24px;
+  background-size: auto, 48px 48px, 48px 48px, 48px 48px, 48px 48px;
+  background-repeat: repeat;
+}
+
+.ubuntu-solid-bg {
+  background:
+    linear-gradient(180deg, #241919 0%, #1e1616 82px, #1e1616 calc(100% - 82px), #241919 100%),
+    #1e1616;
+}
+
+.ubuntu-dark-panel {
+  background:
+    linear-gradient(180deg, rgba(30, 22, 22, 0.98), rgba(42, 26, 18, 0.96) 82px, rgba(42, 26, 18, 0.96) calc(100% - 82px), rgba(30, 22, 22, 0.98)),
+    linear-gradient(rgba(255, 255, 255, 0.065) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.065) 1px, transparent 1px),
+    #2a1a12;
+  background-size: auto, 64px 64px, 64px 64px, auto;
+}
+
+.dataset-tool-card {
+  border-color: rgba(0, 180, 216, 0.28);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(232, 248, 251, 0.92)),
+    #ffffff;
+  box-shadow: 0 14px 35px rgba(30, 22, 22, 0.08);
+}
+
+.dataset-side-card {
+  border-color: rgba(30, 22, 22, 0.12);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.97), rgba(241, 245, 249, 0.96)),
+    #ffffff;
+  box-shadow: 0 12px 28px rgba(30, 22, 22, 0.07);
+}
+
+.sales-banner {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.sales-banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(circle at 18% 50%, rgba(0, 180, 216, 0.3), transparent 24%),
+    linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.16) 44%, rgba(0, 180, 216, 0.32) 50%, rgba(255, 255, 255, 0.12) 56%, transparent 100%);
+  background-size: auto, 240% 100%;
+  animation: sales-banner-light 5.5s ease-in-out infinite;
+}
+
+.sales-banner::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0, 180, 216, 0.9), transparent);
+}
+
+.sales-banner-icon {
+  animation: sales-banner-pulse 2.8s ease-in-out infinite;
+}
+
+.data-wordmark {
+  background:
+    linear-gradient(90deg, rgba(0, 180, 216, 0.16), transparent 28%, rgba(20, 83, 45, 0.12) 72%, rgba(132, 77, 14, 0.14)),
+    linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    #1e1616;
+  background-size: auto, 28px 28px, 28px 28px, auto;
+}
+
+.focus-ring {
+  outline: 2px solid #1e1616;
+  outline-offset: 2px;
+}
+
+@keyframes marquee-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-right {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes sales-banner-light {
+  0%,
+  100% {
+    background-position: 0 0, 120% 0;
+    opacity: 0.72;
+  }
+  50% {
+    background-position: 0 0, 0% 0;
+    opacity: 1;
+  }
+}
+
+@keyframes sales-banner-pulse {
+  0%,
+  100% {
+    transform: translateY(0);
+    box-shadow: 0 0 18px rgba(0, 180, 216, 0.42);
+  }
+  50% {
+    transform: translateY(-1px);
+    box-shadow: 0 0 30px rgba(0, 180, 216, 0.68);
+  }
+}
+
+.marquee {
+  mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+}
+
+.marquee-track {
+  animation: marquee-left 30s linear infinite;
+}
+
+.marquee-track.reverse {
+  animation-name: marquee-right;
+}
+
+.ubuntu-slider-track {
+  animation: ubuntu-focus-step 16s ease-in-out infinite;
+}
+
+.ubuntu-slider-track:hover {
+  animation-play-state: paused;
+}
+
+.testimonial-track {
+  animation: marquee-right 42s linear infinite;
+}
+
+.testimonial-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes ubuntu-focus-step {
+  0%,
+  18% {
+    transform: translateX(0);
+  }
+  25%,
+  43% {
+    transform: translateX(-100%);
+  }
+  50%,
+  68% {
+    transform: translateX(-200%);
+  }
+  75%,
+  88% {
+    transform: translateX(-300%);
+  }
+  95%,
+  99.98% {
+    transform: translateX(-400%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track,
+  .ubuntu-slider-track,
+  .testimonial-track,
+  .sales-banner::before,
+  .sales-banner-icon {
+    animation: none;
+  }
+}
