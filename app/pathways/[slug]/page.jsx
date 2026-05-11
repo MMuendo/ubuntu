@@ -26,6 +26,47 @@ function hasDiscount(program) {
   return Number(program.oldPriceKes || 0) > Number(program.priceKes || 0);
 }
 
+function LearningJourneyTable({ schedule }) {
+  return (
+    <div className="space-y-5">
+      {schedule.map((week) => (
+        <div key={week.theme} className="overflow-hidden rounded-xl border border-slate-200">
+          <div className="bg-[#1e1616] px-4 py-3">
+            <h3 className="text-xs font-bold uppercase tracking-[0.14em] text-[#72e6ff]">{week.theme}</h3>
+          </div>
+          <div className="overflow-x-auto">
+            <table className="min-w-[760px] divide-y divide-slate-200 text-left text-sm">
+              <thead className="bg-slate-50 text-xs font-bold uppercase tracking-[0.08em] text-slate-500">
+                <tr>
+                  <th scope="col" className="w-16 px-4 py-3">Week</th>
+                  <th scope="col" className="w-20 px-4 py-3">Lesson</th>
+                  <th scope="col" className="w-28 px-4 py-3">Date</th>
+                  <th scope="col" className="w-32 px-4 py-3">Time</th>
+                  <th scope="col" className="px-4 py-3">What You Will Learn</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-100 bg-white">
+                {week.sessions.map((session) => (
+                  <tr key={`${session.week}-${session.lesson}`} className="align-top">
+                    <td className="px-4 py-4 font-semibold text-slate-700">{session.week}</td>
+                    <td className="px-4 py-4 font-semibold text-slate-700">{session.lesson}</td>
+                    <td className="px-4 py-4 whitespace-nowrap text-slate-600">{session.date}</td>
+                    <td className="px-4 py-4 whitespace-nowrap text-slate-600">{session.time}</td>
+                    <td className="px-4 py-4">
+                      <p className="font-semibold text-neutral-950">{session.title}</p>
+                      <p className="mt-1 leading-6 text-slate-600">{session.description}</p>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export default async function PathwayDetailPage({ params }) {
   const { slug } = await params;
   const programs = await getAcademyPrograms();
@@ -42,6 +83,7 @@ export default async function PathwayDetailPage({ params }) {
     amountKes: program.priceKes,
     description: program.summary
   });
+  const hasJourneySchedule = Array.isArray(program.journeySchedule) && program.journeySchedule.length > 0;
 
   return (
     <SiteShell>
@@ -69,7 +111,7 @@ export default async function PathwayDetailPage({ params }) {
       />
 
       <section className="py-10 sm:py-16">
-        <div className="mx-auto grid max-w-7xl gap-4 px-4 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8">
+        <div className={`mx-auto grid max-w-7xl gap-4 px-4 sm:px-6 lg:px-8 ${hasJourneySchedule ? "" : "lg:grid-cols-[1.05fr_0.95fr]"}`}>
           <Card className="border-[#00b4d8]/20 shadow-sm">
             <CardHeader className="space-y-3">
               <div className="flex items-center justify-between gap-3">
@@ -92,13 +134,15 @@ export default async function PathwayDetailPage({ params }) {
               </div>
             </CardHeader>
             <CardContent className="space-y-4">
-              <p className="text-sm font-semibold text-neutral-950">What This Pathway Covers</p>
-              <DetailList items={program.outcomes} />
+              <p className="text-sm font-semibold uppercase tracking-[0.12em] text-neutral-950">
+                {hasJourneySchedule ? "YOUR LEARNING JOURNEY- Session Schedule" : "What This Pathway Covers"}
+              </p>
+              {hasJourneySchedule ? <LearningJourneyTable schedule={program.journeySchedule} /> : <DetailList items={program.outcomes} />}
               <CourseBadgeRow items={program.tools} />
             </CardContent>
           </Card>
 
-          <div className="grid gap-4">
+          <div className={`grid gap-4 ${hasJourneySchedule ? "lg:grid-cols-3" : ""}`}>
             <Card>
               <CardHeader>
                 <h3 className="font-semibold text-neutral-950">Modules</h3>
