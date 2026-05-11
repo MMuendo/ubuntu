@@ -34,11 +34,23 @@ function LearningJourneyTable({ schedule }) {
           <div className="bg-[#1e1616] px-4 py-3">
             <h3 className="text-xs font-bold uppercase tracking-[0.14em] text-[#72e6ff]">{week.theme}</h3>
           </div>
-          <div className="overflow-x-auto">
-            <table className="min-w-[760px] divide-y divide-slate-200 text-left text-sm">
+          <div className="grid gap-3 bg-slate-50 p-3 md:hidden">
+            {week.sessions.map((session) => (
+              <article key={`${week.theme}-${session.lesson}`} className="rounded-lg border border-slate-200 bg-white p-3 shadow-sm">
+                <div className="flex flex-wrap items-center gap-2 text-xs font-bold uppercase tracking-[0.08em] text-slate-500">
+                  <span className="rounded-md bg-[#e8f8fb] px-2 py-1 text-[#007c97]">Lesson {session.lesson}</span>
+                  <span>{session.date}</span>
+                  <span>{session.time}</span>
+                </div>
+                <h4 className="mt-3 text-base font-semibold text-neutral-950">{session.title}</h4>
+                <p className="mt-2 text-sm leading-6 text-slate-600">{session.description}</p>
+              </article>
+            ))}
+          </div>
+          <div className="hidden md:block">
+            <table className="w-full divide-y divide-slate-200 text-left text-sm">
               <thead className="bg-slate-50 text-xs font-bold uppercase tracking-[0.08em] text-slate-500">
                 <tr>
-                  <th scope="col" className="w-16 px-4 py-3">Week</th>
                   <th scope="col" className="w-20 px-4 py-3">Lesson</th>
                   <th scope="col" className="w-28 px-4 py-3">Date</th>
                   <th scope="col" className="w-32 px-4 py-3">Time</th>
@@ -47,8 +59,7 @@ function LearningJourneyTable({ schedule }) {
               </thead>
               <tbody className="divide-y divide-slate-100 bg-white">
                 {week.sessions.map((session) => (
-                  <tr key={`${session.week}-${session.lesson}`} className="align-top">
-                    <td className="px-4 py-4 font-semibold text-slate-700">{session.week}</td>
+                  <tr key={`${week.theme}-${session.lesson}`} className="align-top">
                     <td className="px-4 py-4 font-semibold text-slate-700">{session.lesson}</td>
                     <td className="px-4 py-4 whitespace-nowrap text-slate-600">{session.date}</td>
                     <td className="px-4 py-4 whitespace-nowrap text-slate-600">{session.time}</td>
