@@ -33,6 +33,14 @@ export function SuccessClient() {
           setStatus("verified");
           setMessage("Payment verified and access has been updated.");
           setPurchase(payload.purchase || null);
+          if (typeof window!== "undefined" && window.fbq && payload.purchase) {
+            window.fbq('track', 'Purchase', {
+              value: Number(payload.purchase.amountKes),
+              currency: 'KES',
+              content_ids: [reference],
+              content_type: 'product'
+            });
+          }
         } else {
           setStatus("failed");
           setMessage(payload.message || "Payment could not be verified.");
