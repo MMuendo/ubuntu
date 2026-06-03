@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 
-export function PageHero({ eyebrow, title, copy, primaryAction, secondaryAction, stats = [], variant = "default", mobileCompact = false }) {
+export function PageHero({ eyebrow, title, copy, supportingCopy = "", primaryAction, secondaryAction, stats = [], variant = "default", mobileCompact = false }) {
   const sectionClass = variant === "heritage" ? "ubuntu-heritage-bg border-b border-neutral-200" : "surface-grid border-b border-neutral-200";
 
   return (
@@ -15,15 +15,22 @@ export function PageHero({ eyebrow, title, copy, primaryAction, secondaryAction,
         mobileCompact ? "gap-6 py-10 lg:gap-10 lg:py-18" : "gap-10 py-14 lg:py-18"
       }`}>
         <div className="flex flex-col justify-center">
-          <Badge tone="teal" className="w-fit">
-            {eyebrow}
-          </Badge>
-          <h1 className={`mt-6 text-balance font-semibold leading-[1.05] tracking-tight text-neutral-950 ${
+          {eyebrow ? (
+            <Badge tone="teal" className="w-fit">
+              {eyebrow}
+            </Badge>
+          ) : null}
+          <h1 className={`${eyebrow ? "mt-6" : "mt-0"} text-balance font-semibold leading-[1.05] tracking-tight text-neutral-950 ${
             mobileCompact ? "text-[2rem] sm:text-4xl md:text-5xl lg:text-6xl" : "text-3xl sm:text-4xl md:text-5xl lg:text-6xl"
           }`}>
             {title}
           </h1>
           <p className={`mt-5 max-w-2xl text-neutral-600 ${mobileCompact ? "text-base leading-7 sm:text-lg sm:leading-8" : "text-lg leading-8"}`}>{copy}</p>
+          {supportingCopy ? (
+            <p className="mt-3 max-w-2xl text-sm font-semibold leading-6 text-[#007c97] sm:text-base">
+              {supportingCopy}
+            </p>
+          ) : null}
           <div className={`${mobileCompact ? "mt-6" : "mt-8"} flex flex-col gap-3 sm:flex-row`}>
             {primaryAction}
             {secondaryAction}

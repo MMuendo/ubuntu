@@ -95,13 +95,21 @@ export default async function PathwayDetailPage({ params }) {
     description: program.summary
   });
   const hasJourneySchedule = Array.isArray(program.journeySchedule) && program.journeySchedule.length > 0;
+  const isAgenticMasterclass = program.slug === "ai-agents-masterclass";
+  const heroStats = [
+    { icon: Clock3, label: "duration", value: program.duration },
+    isAgenticMasterclass ? null : { icon: Award, label: "level", value: program.level },
+    { icon: Users2, label: "mentor", value: program.mentor.name.split(" ")[0] },
+    { icon: Sparkles, label: "price", value: `KES ${program.priceKes.toLocaleString()}` }
+  ].filter(Boolean);
 
   return (
     <SiteShell>
       <PageHero
-        eyebrow={program.category}
+        eyebrow={isAgenticMasterclass ? "" : program.category}
         title={program.title}
         copy={program.summary}
+        supportingCopy={isAgenticMasterclass ? program.heroSubtitle : ""}
         primaryAction={
           <Button asChild variant="accent" className="w-full sm:w-auto">
             <Link href={enrollHref}>Enroll</Link>
@@ -112,12 +120,7 @@ export default async function PathwayDetailPage({ params }) {
             <Link href="/projects">Open project briefs</Link>
           </Button>
         }
-        stats={[
-          { icon: Clock3, label: "duration", value: program.duration },
-          { icon: Award, label: "level", value: program.level },
-          { icon: Users2, label: "mentor", value: program.mentor.name.split(" ")[0] },
-          { icon: Sparkles, label: "price", value: `KES ${program.priceKes.toLocaleString()}` }
-        ]}
+        stats={heroStats}
         mobileCompact
       />
 
