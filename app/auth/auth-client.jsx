@@ -53,7 +53,8 @@ function safeNextForRole(next, authRole) {
 }
 
 export function LoginClient({ initialRole = "student", initialMessage = "", initialTone = "", next = "", authReady = false }) {
-  const selectedRole = selectedRoleFor(initialRole);
+  const isCheckoutEnrollment = next.startsWith("/checkout");
+  const selectedRole = isCheckoutEnrollment ? roles[0] : selectedRoleFor(initialRole);
   const [status, setStatus] = useState(initialMessage);
   const [tone, setTone] = useState(initialTone || (initialMessage ? "error" : ""));
   const [submitting, setSubmitting] = useState(false);
@@ -109,12 +110,12 @@ export function LoginClient({ initialRole = "student", initialMessage = "", init
     <Card>
       <CardHeader>
         <div className="flex items-center justify-between gap-3">
-          <h2 className="font-semibold text-neutral-950">{selectedRole.title} login</h2>
+          <h2 className="font-semibold text-neutral-950">{isCheckoutEnrollment ? "Course enrollment login" : `${selectedRole.title} login`}</h2>
           <Badge tone={authReady ? "green" : "amber"}>{authReady ? "Ready" : "Setup required"}</Badge>
         </div>
       </CardHeader>
       <CardContent className="space-y-5">
-        <RolePicker page="login" selectedRole={selectedRole} next={safeNext} />
+        {isCheckoutEnrollment ? null : <RolePicker page="login" selectedRole={selectedRole} next={safeNext} />}
 
         <form action="/api/auth/login" method="post" onSubmit={handleLogin} onInput={clearStatus} className="space-y-4">
           <input type="hidden" name="role" value={selectedRole.authRole} />
@@ -167,7 +168,9 @@ export function LoginClient({ initialRole = "student", initialMessage = "", init
             <KeyRound className="mt-0.5 shrink-0 text-neutral-700" size={18} />
             <div>
               <p className="text-sm font-semibold text-neutral-950">{selectedRole.title}</p>
-              <p className="mt-2 text-sm leading-6 text-neutral-600">{selectedRole.loginCopy}</p>
+              <p className="mt-2 text-sm leading-6 text-neutral-600">
+                {isCheckoutEnrollment ? "Log in as a learner to continue enrollment and complete payment for this course." : selectedRole.loginCopy}
+              </p>
             </div>
           </div>
         </div>
@@ -191,7 +194,8 @@ export function LoginClient({ initialRole = "student", initialMessage = "", init
 }
 
 export function SignupClient({ initialRole = "student", initialMessage = "", initialTone = "", next = "", authReady = false }) {
-  const selectedRole = selectedRoleFor(initialRole);
+  const isCheckoutEnrollment = next.startsWith("/checkout");
+  const selectedRole = isCheckoutEnrollment ? roles[0] : selectedRoleFor(initialRole);
   const safeNext = useMemo(() => safeNextForRole(next, selectedRole.authRole), [next, selectedRole.authRole]);
   const [status, setStatus] = useState(initialMessage);
   const [tone, setTone] = useState(initialTone || (initialMessage ? "error" : ""));
@@ -208,12 +212,12 @@ export function SignupClient({ initialRole = "student", initialMessage = "", ini
     <Card>
       <CardHeader>
         <div className="flex items-center justify-between gap-3">
-          <h2 className="font-semibold text-neutral-950">{selectedRole.title} sign up</h2>
+          <h2 className="font-semibold text-neutral-950">{isCheckoutEnrollment ? "Create learner account" : `${selectedRole.title} sign up`}</h2>
           <Badge tone={authReady ? "green" : "amber"}>{authReady ? "Ready" : "Setup required"}</Badge>
         </div>
       </CardHeader>
       <CardContent className="space-y-5">
-        <RolePicker page="signup" selectedRole={selectedRole} next={safeNext} />
+        {isCheckoutEnrollment ? null : <RolePicker page="signup" selectedRole={selectedRole} next={safeNext} />}
 
         <form action="/api/auth/signup" method="post" onInput={clearStatus} className="space-y-4">
           <input type="hidden" name="role" value={selectedRole.authRole} />
@@ -296,7 +300,7 @@ export function SignupClient({ initialRole = "student", initialMessage = "", ini
           <StatusMessage id={signupErrorId} tone={tone} message={status} />
           <Button type="submit" variant="accent" className="w-full">
             <BadgeCheck size={16} />
-            Create {selectedRole.title.toLowerCase()} account
+            {isCheckoutEnrollment ? "Create learner account" : `Create ${selectedRole.title.toLowerCase()} account`}
           </Button>
         </form>
 
@@ -304,8 +308,10 @@ export function SignupClient({ initialRole = "student", initialMessage = "", ini
           <div className="flex items-start gap-3">
             <ClipboardCheck className="mt-0.5 shrink-0 text-neutral-700" size={18} />
             <div>
-              <p className="text-sm font-semibold text-neutral-950">Next profile step</p>
-              <p className="mt-2 text-sm leading-6 text-neutral-600">{selectedRole.signupCopy}</p>
+              <p className="text-sm font-semibold text-neutral-950">{isCheckoutEnrollment ? "Next step: payment" : "Next profile step"}</p>
+              <p className="mt-2 text-sm leading-6 text-neutral-600">
+                {isCheckoutEnrollment ? "After signup, you will return to checkout with this course already selected." : selectedRole.signupCopy}
+              </p>
             </div>
           </div>
         </div>

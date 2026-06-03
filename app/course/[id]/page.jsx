@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 const legacyCourseMap = {
   "excel-workshop": "excel-workshop",
   "powerbi-workshop": "powerbi-workshop",
-  "ai-mastery": "ai-mastery",
+  "ai-mastery": "data-fluency-for-operators-and-managers",
   "ai-agents-masterclass": "ai-agents-masterclass",
   "python-for-analytics": "python-for-analytics",
   "sql-for-analysts": "sql-for-analysts",

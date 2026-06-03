@@ -187,7 +187,7 @@ export default async function Home() {
           <Card className="border-[#00b4d8]/25 bg-[#e8f8fb]">
             <CardContent className="p-6">
               <Badge tone="teal">Limited offer</Badge>
-              <h2 className="mt-4 text-3xl font-semibold tracking-tight text-[#1e1616]">Working with Data for Professionals</h2>
+              <h2 className="mt-4 text-3xl font-semibold tracking-tight text-[#1e1616]">Data & AI Fluency for Business Leaders</h2>
               <p className="mt-3 text-sm leading-6 text-slate-700">
                 A practical course for professionals who handle reports, spreadsheets, dashboards, and AI-generated answers but are not trying to become technical analysts.
               </p>
@@ -202,7 +202,7 @@ export default async function Home() {
                   <Link href={checkoutHref({
                     productType: "course",
                     productSlug: "data-fluency-for-operators-and-managers",
-                    productName: "Working with Data for Professionals Who Are Not Technical Analysts",
+                    productName: "Data & AI Fluency for Business Leaders",
                     amountKes: 10000,
                     description: "Practical data confidence for professionals who work with reports, dashboards, spreadsheets, and AI outputs."
                   })}>

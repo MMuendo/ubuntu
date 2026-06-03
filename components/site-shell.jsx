@@ -79,7 +79,7 @@ export function SiteShell({ children }) {
               <span className="sales-banner-icon flex size-7 shrink-0 items-center justify-center rounded-full bg-[#00b4d8] text-[#1e1616] shadow-[0_0_24px_rgba(0,180,216,0.55)]">
                 <Megaphone size={15} />
               </span>
-              <span className="min-w-0 flex-1 truncate text-xs font-semibold sm:hidden">Working with Data...</span>
+              <span className="min-w-0 flex-1 truncate text-xs font-semibold sm:hidden">Data & AI Fluency...</span>
               <span className="hidden min-w-0 flex-1 truncate font-semibold sm:inline lg:flex-none">{salesBanner.title}</span>
               <span className="shrink-0 rounded-full bg-white/10 px-2 py-0.5 text-[11px] font-semibold text-slate-200 sm:text-xs">
                 Was KES 12,500

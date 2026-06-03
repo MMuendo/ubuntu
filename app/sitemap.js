@@ -15,7 +15,6 @@ const staticRoutes = [
   "/projects/showcase",
   "/pathways/excel-workshop",
   "/pathways/powerbi-workshop",
-  "/pathways/ai-mastery",
   "/pathways/ai-agents-masterclass",
   "/pathways/python-for-analytics",
   "/pathways/sql-for-analysts",

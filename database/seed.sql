@@ -76,7 +76,7 @@ values
   ),
   (
     'ai-mastery',
-    'AI Fluency for Business Leaders & Analysts',
+    'Data & AI Fluency for Business Leaders',
     'AI',
     'mastery',
     'AI Mastery',
@@ -85,7 +85,7 @@ values
     'Understand where AI fits, where it fails, and how to use it safely in analysis, leadership, and day-to-day work.',
     '2026-05-04',
     30,
-    true,
+    false,
     '{"instructor":"Ezra Muinde","instructor_title":"Senior Data Scientist and AI Engineer","modules":["AI fundamentals","Prompting for business","Tool selection","AI risk","Decision workflows"],"outcomes":["Lead AI conversations","Use AI without exposing sensitive data","Turn AI outputs into usable decisions"],"tools":["AI assistants","Prompt frameworks","Reports","Spreadsheets"],"projects":["AI Tools Audit","Prompt Engineering Workbook","AI Strategy Memo"],"roles":["Manager","Analyst","Founder","Team lead"],"demand":["SMEs","NGOs","Analytics teams","Operations"]}'::jsonb
   ),
   (
@@ -132,7 +132,7 @@ values
   ),
   (
     'data-fluency-for-operators-and-managers',
-    'Working with Data for Professionals Who Are Not Technical Analysts',
+    'Data & AI Fluency for Business Leaders',
     'Business',
     'course',
     'Beginner',
@@ -140,7 +140,7 @@ values
     10000,
     'Read reports, ask better data questions, use AI safely, and turn everyday workplace data into decisions without becoming technical.',
     '2026-07-06',
-    70,
+    30,
     true,
     '{"instructor":"Ezra Muinde","instructor_title":"Senior Data Scientist and AI Engineer","schedule":"Classes start 6th July.","modules":["Business questions","Metric definitions","Dashboard reading","Data quality traps","AI-assisted summaries"],"outcomes":["Read dashboards with confidence","Spot weak metrics and quality issues","Turn reports into practical next steps"],"tools":["Excel","Dashboards","AI assistants","Reports"],"projects":["Weekly business scorecard","Manager-ready insight memo"],"roles":["Operations manager","Sales lead","Finance assistant","Program officer"],"demand":["SMEs","NGOs","Operations","Customer support"]}'::jsonb
   )

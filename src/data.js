@@ -555,7 +555,7 @@ export const academyPrograms = [
   {
     id: "p7",
     slug: "data-fluency-for-operators-and-managers",
-    title: "Working with Data for Professionals Who Are Not Technical Analysts",
+    title: "Data & AI Fluency for Business Leaders",
     category: "Business",
     level: "Beginner",
     summary: "Read reports, ask better data questions, use AI safely, and turn everyday workplace data into decisions without becoming technical.",
