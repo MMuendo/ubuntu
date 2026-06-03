@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { CheckCircle2, Loader2, ReceiptText, ShieldAlert } from "lucide-react";
@@ -14,11 +14,31 @@ export function SuccessClient() {
   const [status, setStatus] = useState(reference ? "verifying" : "missing");
   const [message, setMessage] = useState(reference ? "Verifying payment..." : "No payment reference was provided.");
   const [purchase, setPurchase] = useState(null);
+  const purchaseTrackedRef = useRef(false);
 
   useEffect(() => {
     if (!reference) return;
 
     let cancelled = false;
+    function trackPurchase(purchaseData) {
+      if (typeof window === "undefined" || !purchaseData || purchaseTrackedRef.current) return false;
+      if (!window.fbq) return false;
+
+      const storageKey = `ua-purchase-tracked-${reference}`;
+      if (window.sessionStorage.getItem(storageKey)) return true;
+
+      purchaseTrackedRef.current = true;
+      window.sessionStorage.setItem(storageKey, "1");
+      window.fbq("track", "Purchase", {
+        value: Number(purchaseData.amountKes || 0),
+        currency: "KES",
+        content_ids: [reference],
+        content_name: purchaseData.productName || "Ubuntu Analytiq purchase",
+        content_type: "product"
+      });
+      return true;
+    }
+
     async function verify() {
       try {
         const response = await fetch("/api/paystack/verify", {
@@ -33,13 +53,10 @@ export function SuccessClient() {
           setStatus("verified");
           setMessage("Payment verified and access has been updated.");
           setPurchase(payload.purchase || null);
-          if (typeof window!== "undefined" && window.fbq && payload.purchase) {
-            window.fbq('track', 'Purchase', {
-              value: Number(payload.purchase.amountKes),
-              currency: 'KES',
-              content_ids: [reference],
-              content_type: 'product'
-            });
+          if (!trackPurchase(payload.purchase)) {
+            window.setTimeout(() => {
+              trackPurchase(payload.purchase);
+            }, 800);
           }
         } else {
           setStatus("failed");
