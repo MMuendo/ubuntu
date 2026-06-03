@@ -4,7 +4,7 @@ import Script from "next/script";
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.ubuntuanalytiq.com";
 const siteName = "Ubuntu Analytiq";
 const siteDescription =
-  "Ubuntu Analytiq builds Data & AI-fluent professionals and organizations through learning, mentorship, consulting, projects, capacity building, and intelligent automation grounded in real-world execution.";
+  "Building African intelligence systems from our context, markets, and opportunities through Data & AI";
 
 export const metadata = {
   metadataBase: new URL(siteUrl),

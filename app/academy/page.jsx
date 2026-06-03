@@ -55,7 +55,7 @@ export default async function AcademyPage() {
 
   return (
     <SiteShell>
-      <section className="ubuntu-heritage-bg border-b border-slate-200">
+      <section className="ubuntu-heritage-bg kenya-watermark border-b border-slate-200">
         <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8 lg:py-16">
           <div className="flex flex-col justify-center">
             <Badge tone="teal" className="w-fit">Academy</Badge>
@@ -63,7 +63,7 @@ export default async function AcademyPage() {
               Learn by building proof.
             </h1>
             <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-600">
-              Academy helps you choose the right learning path, build practical skills, and turn your work into proof through guided projects.
+              Practical courses, local projects, and guided learning built around need, not hype.
             </p>
             <div className="mt-5 flex flex-wrap gap-2">
               {["Assess", "Enroll", "Build", "Submit", "Review"].map((step) => (
@@ -124,12 +124,12 @@ export default async function AcademyPage() {
         </div>
       </section>
 
-      <section id="courses" className="ubuntu-dark-panel py-16 text-white">
+      <section id="courses" className="ubuntu-dark-panel africa-watermark watermark-dark py-16 text-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionTitle
             eyebrow="Courses"
             title="Choose a course that matches your work."
-            copy="Excel, Power BI, AI Fluency, Agentic AI, Python, SQL, and practical data confidence are organized by the skills professionals need most."
+            copy="Courses are built around practical business needs, local context, and guided execution."
             tone="dark"
           />
           <div className="mt-6 flex flex-wrap gap-2">
@@ -254,7 +254,7 @@ export default async function AcademyPage() {
           <SectionTitle
             eyebrow="Projects"
             title="Tracked projects from Excel to agents."
-            copy="Each track contains standalone briefs with skills, deliverables, rubrics, and submission flow."
+            copy="Briefs use familiar markets, useful datasets, clear deliverables, and mentor review."
           />
           <div className="mt-10 grid gap-5">
             {Object.entries(groupedProjects).map(([track, trackProjects]) => {

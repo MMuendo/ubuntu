@@ -36,7 +36,7 @@ export default async function ProjectsPage() {
       <PageHero
         eyebrow="Project workspace"
         title="Download, build, submit, score"
-        copy="Every project has a dataset, a walkthrough, a rubric, and a place for feedback that hiring managers can read."
+        copy="Projects use familiar markets, practical datasets, clear rubrics, and feedback hiring managers can read."
         variant="heritage"
         primaryAction={
           <Button asChild variant="accent">
@@ -68,7 +68,7 @@ export default async function ProjectsPage() {
             <div className="absolute bottom-4 left-4 rounded-lg border border-white/10 bg-[#1e1616]/88 p-4 text-white backdrop-blur">
               <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#00b4d8]">Project proof</p>
               <p className="mt-2 max-w-md text-sm leading-6 text-slate-100">
-                Realistic briefs, datasets, rubrics, and mentor notes make each project easier to inspect and trust.
+                Local briefs, datasets, rubrics, and mentor notes make each project easier to inspect and trust.
               </p>
             </div>
           </div>
@@ -82,7 +82,7 @@ export default async function ProjectsPage() {
                 <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#007c97]">Project workbench</p>
                 <h2 className="mt-2 text-2xl font-semibold tracking-tight text-[#1e1616]">Briefs, datasets, rubrics, and mentor review in one flow.</h2>
                 <p className="mt-3 text-sm leading-6 text-slate-600">
-                  Learners move from a clear business prompt into a real artifact, then get scored on accuracy, decision quality, and communication.
+                  Learners move from a real business prompt into an artifact scored on accuracy, decision quality, and communication.
                 </p>
               </div>
             </CardContent>

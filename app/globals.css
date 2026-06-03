@@ -116,6 +116,46 @@ main > section + section::before {
   background-size: auto, 64px 64px, 64px 64px, auto;
 }
 
+.africa-watermark,
+.kenya-watermark {
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.africa-watermark > *,
+.kenya-watermark > * {
+  position: relative;
+  z-index: 1;
+}
+
+.africa-watermark::after,
+.kenya-watermark::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-repeat: no-repeat;
+  background-position: right clamp(16px, 8vw, 96px) center;
+}
+
+.africa-watermark::after {
+  background-image: url("/images/africa-watermark.svg");
+  background-size: clamp(220px, 34vw, 460px) auto;
+  opacity: 0.1;
+}
+
+.kenya-watermark::after {
+  background-image: url("/images/kenya-watermark.svg");
+  background-size: clamp(170px, 27vw, 330px) auto;
+  opacity: 0.12;
+}
+
+.watermark-dark::after {
+  opacity: 0.16;
+  filter: brightness(1.8);
+}
+
 .dataset-tool-card {
   border-color: rgba(0, 180, 216, 0.28);
   background:

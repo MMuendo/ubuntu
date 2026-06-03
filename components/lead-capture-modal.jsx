@@ -182,7 +182,7 @@ export function LeadCaptureButton({
 
 export function DataAIConsultations() {
   return (
-    <section className="ubuntu-heritage-bg py-16" id="consultations">
+    <section className="ubuntu-heritage-bg kenya-watermark py-16" id="consultations">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-8 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)] lg:items-start">
           <div className="max-w-2xl lg:sticky lg:top-24">
@@ -191,7 +191,7 @@ export function DataAIConsultations() {
               Build systems, train teams, improve decisions, and automate operations.
             </h2>
             <p className="mt-4 text-base leading-7 text-slate-600">
-              Practical advisory for teams that need dashboards, automation, data strategy, migration support, analytics, and AI capability that survives real work.
+              Practical advisory for teams building dashboards, automation, data strategy, migration support, analytics, and AI capability for their market.
             </p>
             <LeadCaptureButton
               label="Book Consultation"

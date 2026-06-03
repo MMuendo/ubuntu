@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
-import { ArrowRight, CalendarCheck, DatabaseZap, LayoutDashboard, LogIn, LogOut, Megaphone, Menu, ShieldCheck, X } from "lucide-react";
+import { ArrowRight, CalendarCheck, DatabaseZap, ExternalLink, LayoutDashboard, LogIn, LogOut, Megaphone, Menu, ShieldCheck, X } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { CookieConsent } from "@/components/cookie-consent";
@@ -214,9 +214,17 @@ export function SiteShell({ children }) {
         <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-8 sm:px-6 md:flex-row md:items-center md:justify-between lg:px-8">
           <div>
             <p className="text-sm font-semibold text-neutral-950">Ubuntu Analytiq</p>
-            <p className="mt-1 text-sm text-neutral-500">African data and AI learning, mentorship, projects, datasets, consulting, and proof.</p>
+            <p className="mt-1 text-sm text-neutral-500">Our markets. Our context. Our opportunities.</p>
           </div>
           <div className="flex flex-wrap gap-2">
+            <Link href="https://www.facebook.com/profile.php?id=61590134952098" className="inline-flex h-6 items-center rounded-md border border-neutral-200 bg-neutral-50 px-2 text-xs font-medium text-neutral-700 transition hover:border-[#00b4d8] hover:text-neutral-950" target="_blank" rel="noreferrer">
+              <ExternalLink size={13} className="mr-1" />
+              Facebook
+            </Link>
+            <Link href="https://www.instagram.com/ubuntuanalytiq/" className="inline-flex h-6 items-center rounded-md border border-neutral-200 bg-neutral-50 px-2 text-xs font-medium text-neutral-700 transition hover:border-[#00b4d8] hover:text-neutral-950" target="_blank" rel="noreferrer">
+              <ExternalLink size={13} className="mr-1" />
+              Instagram
+            </Link>
             <span className="inline-flex h-6 items-center rounded-md border border-neutral-200 bg-neutral-50 px-2 text-xs font-medium text-neutral-700">
               <ShieldCheck size={13} className="mr-1" />
               Mentor first

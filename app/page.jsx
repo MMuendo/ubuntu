@@ -144,7 +144,7 @@ export default async function Home() {
 
   return (
     <SiteShell>
-      <section className="ubuntu-heritage-bg overflow-hidden border-b border-slate-200 text-[#1e1616]">
+      <section className="ubuntu-heritage-bg africa-watermark overflow-hidden border-b border-slate-200 text-[#1e1616]">
         <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-[0.95fr_1.05fr] lg:px-8 lg:py-16">
           <div className="flex flex-col justify-center">
             <Badge tone="teal" className="w-fit border-[#00b4d8]/30 bg-white/90 text-[#007c97]">
@@ -154,7 +154,7 @@ export default async function Home() {
               Unlock Your Knowledge Potential in Data & AI
             </h1>
             <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-700">
-              Ubuntu Analytiq builds Data & AI-fluent professionals and organizations through learning, mentorship, consulting, projects, capacity building, and intelligent automation grounded in real-world execution.
+              Building African intelligence systems from our context, markets, and opportunities through Data & AI
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Button asChild variant="accent" size="lg">
@@ -249,8 +249,8 @@ export default async function Home() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionTitle
             eyebrow="Academy"
-            title="Assess, enroll, then build proof."
-            copy="Start with the assessment if you are unsure, choose the right course, then use projects to turn learning into visible work."
+            title="Learn for the work around us."
+            copy="Choose a practical path, build with familiar business problems, and turn learning into proof."
           />
           <div className="mt-6 flex flex-wrap gap-2">
             {["1. Take assessment", "2. Enroll in a course", "3. Build a project", "4. Submit for review"].map((step) => (
@@ -302,8 +302,8 @@ export default async function Home() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionTitle
             eyebrow="Mentorship"
-            title="Six months of guidance, plus free project access."
-            copy="Mentorship includes a fee to be discussed, runs for 6 months, and is tracked around learner goals, mentor expertise, project submissions, and review rhythm."
+            title="Guided by industry experts."
+            copy="Mentorship is practical, project-led, and grounded in the work learners are actually trying to do."
             tone="dark"
           />
           <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
@@ -344,10 +344,10 @@ export default async function Home() {
           <div>
             <Badge tone="teal">Datasets</Badge>
             <h2 className="mt-4 text-3xl font-semibold tracking-tight text-[#1e1616] md:text-4xl">
-              Generate practice data with a 1,000-credit free allowance.
+              Generate practice data for our markets.
             </h2>
             <p className="mt-3 text-base leading-7 text-slate-600">
-              Generate realistic practice datasets tailored to your industry, columns, and row requirements with 1,000 free credits to get started.
+              Build datasets for local scenarios, business questions, and real practice.
             </p>
             <Button asChild variant="accent" className="mt-6">
               <Link href="/datasets">

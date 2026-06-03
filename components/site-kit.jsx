@@ -7,7 +7,7 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 
 export function PageHero({ eyebrow, title, copy, supportingCopy = "", primaryAction, secondaryAction, stats = [], variant = "default", mobileCompact = false }) {
-  const sectionClass = variant === "heritage" ? "ubuntu-heritage-bg border-b border-neutral-200" : "surface-grid border-b border-neutral-200";
+  const sectionClass = variant === "heritage" ? "ubuntu-heritage-bg kenya-watermark border-b border-neutral-200" : "surface-grid africa-watermark border-b border-neutral-200";
 
   return (
     <section className={sectionClass}>
@@ -47,17 +47,17 @@ export function PageHero({ eyebrow, title, copy, supportingCopy = "", primaryAct
         <div className={`${mobileCompact ? "hidden md:block" : ""} rounded-2xl border border-neutral-200 bg-white p-4 shadow-sm`}>
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="rounded-xl border border-neutral-200 bg-[#f1f5f9] p-4">
-              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-neutral-500">Live surface</p>
-              <h3 className="mt-2 text-lg font-semibold text-neutral-950">Learner workspace</h3>
+              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-neutral-500">Our context</p>
+              <h3 className="mt-2 text-lg font-semibold text-neutral-950">Local problems</h3>
               <p className="mt-2 text-sm leading-6 text-neutral-600">
-                Project briefs, mentor feedback, and proof artifacts are always visible.
+                Datasets, projects, and examples stay close to the markets learners know.
               </p>
             </div>
             <div className="rounded-xl border border-neutral-200 bg-white p-4">
-              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-neutral-500">Next action</p>
-              <h3 className="mt-2 text-lg font-semibold text-neutral-950">Build, submit, review</h3>
+              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-neutral-500">Need, not hype</p>
+              <h3 className="mt-2 text-lg font-semibold text-neutral-950">Build what helps</h3>
               <p className="mt-2 text-sm leading-6 text-neutral-600">
-                Every page gives the user a clear next step without extra narration.
+                Tools are taught through decisions, systems, and practical output.
               </p>
             </div>
           </div>

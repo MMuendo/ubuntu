@@ -14,7 +14,7 @@ export default async function PathwaysPage() {
       <PageHero
         eyebrow="Pathways"
         title="Choose the path after mentor matching"
-        copy="Each pathway includes the mentor, outcomes, tools, and projects students need to build visible proof."
+        copy="Each pathway connects tools, mentors, datasets, and projects to the work learners actually face."
         primaryAction={
           <Button asChild variant="accent">
             <Link href="/mentorships">Find a mentor</Link>
@@ -38,7 +38,7 @@ export default async function PathwaysPage() {
           <SectionTitle
             eyebrow="Catalog"
             title="Production pathways with mentors attached."
-            copy="Students can compare level, price, mentor, modules, and project outcomes before starting."
+            copy="Compare level, price, mentor, modules, and project outcomes before starting."
           />
 
           <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-3">

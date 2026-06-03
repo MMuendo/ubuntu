@@ -10,14 +10,14 @@ import { blogPosts } from "@/lib/academy/site-content";
 export default function BlogsPage() {
   return (
     <SiteShell>
-      <section className="ubuntu-solid-bg border-b border-slate-200 text-white">
+      <section className="ubuntu-solid-bg africa-watermark watermark-dark border-b border-slate-200 text-white">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
           <Badge tone="teal" className="border-white/10 bg-white/10 text-[#00b4d8]">Blogs</Badge>
           <h1 className="mt-5 max-w-4xl text-5xl font-semibold leading-[1.02] tracking-tight md:text-6xl">
             Thinking aloud about data, AI, automation, and African work.
           </h1>
           <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-300">
-            Practical essays on systems, Agentic AI, Power BI, mentorship, and why Excel still matters.
+            Practical essays on systems, Agentic AI, Power BI, mentorship, and why Excel still matters here.
           </p>
         </div>
       </section>

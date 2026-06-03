@@ -124,7 +124,7 @@ export default async function PathwayDetailPage({ params }) {
         mobileCompact
       />
 
-      <section className="py-10 sm:py-16">
+      <section className="kenya-watermark py-10 sm:py-16">
         <div className={`mx-auto grid max-w-7xl gap-4 px-4 sm:px-6 lg:px-8 ${hasJourneySchedule ? "" : "lg:grid-cols-[1.05fr_0.95fr]"}`}>
           <Card className="border-[#00b4d8]/20 shadow-sm">
             <CardHeader className="space-y-3">
@@ -215,7 +215,7 @@ export default async function PathwayDetailPage({ params }) {
           <SectionTitle
             eyebrow="Market fit"
             title="Demand and roles"
-            copy="See the roles, demand areas, and next steps this pathway prepares you for."
+            copy="See where this pathway fits in local teams, markets, and practical work."
           />
           <div className="mt-8 grid gap-4 md:grid-cols-3">
             <Card>
@@ -234,7 +234,7 @@ export default async function PathwayDetailPage({ params }) {
               <CardContent className="space-y-3 p-5">
                 <p className="text-sm font-semibold text-neutral-950">Next move</p>
                 <p className="text-sm leading-6 text-neutral-600">
-                  Use the curriculum, projects, and mentor context on this page to decide quickly, then enroll when the pathway matches the work you want to do.
+                  Enroll when the pathway matches the work, decisions, or systems you want to build.
                 </p>
                 <DetailCTA href={enrollHref} label="Enroll" />
               </CardContent>

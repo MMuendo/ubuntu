@@ -32,7 +32,7 @@ export default async function MentorshipsPage() {
 
   return (
     <SiteShell>
-      <section className="ubuntu-solid-bg border-b border-slate-200 text-white">
+      <section className="ubuntu-solid-bg kenya-watermark watermark-dark border-b border-slate-200 text-white">
         <div className="mx-auto grid max-w-7xl gap-8 px-4 py-12 sm:px-6 lg:grid-cols-[0.95fr_1.05fr] lg:px-8">
           <div>
             <Badge tone="green" className="border-white/10 bg-white/10 text-[#00b4d8]">Mentorship</Badge>
@@ -40,7 +40,7 @@ export default async function MentorshipsPage() {
               <span className="text-white">Six months of mentor guidance, project access, and tracked growth.</span>
             </h1>
             <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-300">
-              Pick a mentor by skill, goal, availability, and project type. Mentorship lasts 6 months, includes a fee to be discussed, and includes free access to projects.
+              Pick a mentor by skill, goal, availability, and project type. Guidance is practical, local, and built around real work.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Button asChild variant="accent" size="lg">
