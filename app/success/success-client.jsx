@@ -35,7 +35,7 @@ export function SuccessClient() {
         content_ids: [reference],
         content_name: purchaseData.productName || "Ubuntu Analytiq purchase",
         content_type: "product"
-      });
+      }, { eventID: reference });
       return true;
     }
 
@@ -53,10 +53,14 @@ export function SuccessClient() {
           setStatus("verified");
           setMessage("Payment verified and access has been updated.");
           setPurchase(payload.purchase || null);
-          if (!trackPurchase(payload.purchase)) {
-            window.setTimeout(() => {
-              trackPurchase(payload.purchase);
-            }, 800);
+          if (typeof window !== "undefined" && !trackPurchase(payload.purchase)) {
+            let attempts = 0;
+            const purchaseRetry = window.setInterval(() => {
+              attempts += 1;
+              if (trackPurchase(payload.purchase) || attempts >= 20) {
+                window.clearInterval(purchaseRetry);
+              }
+            }, 500);
           }
         } else {
           setStatus("failed");
@@ -101,7 +105,7 @@ export function SuccessClient() {
               <p className="mt-2 break-all font-mono text-sm text-[#1e1616]">{reference}</p>
               {purchase ? (
                 <p className="mt-3 text-sm text-slate-600">
-                  {purchase.productName} · KES {Number(purchase.amountKes || 0).toLocaleString()} · {purchase.status}
+                  {purchase.productName} - KES {Number(purchase.amountKes || 0).toLocaleString()} - {purchase.status}
                 </p>
               ) : null}
             </div>
