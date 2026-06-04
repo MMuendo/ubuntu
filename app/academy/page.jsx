@@ -9,7 +9,6 @@ import { CourseBadgeRow, QuickStat, SectionTitle } from "@/components/site-kit";
 import { getAcademyPrograms, getProjectBriefs } from "@/lib/db/loaders";
 import { checkoutHref } from "@/lib/academy/checkout-links";
 import { academyEvents } from "@/lib/academy/site-content";
-import { LeadCaptureButton } from "@/components/lead-capture-modal";
 import { AIPromptLab } from "@/components/ai-prompt-lab";
 
 const trackIcons = {
@@ -229,13 +228,9 @@ export default async function AcademyPage() {
                   <CourseBadgeRow items={event.topics.slice(0, 4)} />
                   <div className="mt-auto">
                     {event.status === "Coming Soon" ? (
-                      <LeadCaptureButton
-                        label={event.cta}
-                        title="Share your email for Data Career Reality Day"
-                        defaultType="Data Career Reality Day"
-                        source="event"
-                        className="w-full"
-                      />
+                      <Button asChild variant="accent" className="w-full">
+                        <Link href={event.href}>{event.cta}</Link>
+                      </Button>
                     ) : (
                       <Button asChild variant="outline" className="w-full">
                         <Link href={`/academy#events`}>{event.cta}</Link>
