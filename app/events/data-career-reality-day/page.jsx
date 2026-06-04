@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, CalendarDays, MapPin, Mic2, Ticket, Users } from "lucide-react";
+import { ArrowRight, CalendarDays, MapPin, Mic2, Ticket } from "lucide-react";
 
 import { SiteShell } from "@/components/site-shell";
 import { Badge } from "@/components/ui/badge";
@@ -57,11 +57,11 @@ export default function DataCareerRealityDayPage() {
             </div>
           </div>
 
-          <div className="mx-auto w-full max-w-md overflow-hidden rounded-lg border border-white/10 bg-white/5 p-2 shadow-2xl lg:max-w-lg">
+          <div className="mx-auto flex w-full max-w-md justify-center overflow-hidden rounded-lg border border-white/10 bg-white/5 p-2 shadow-2xl lg:max-w-lg">
             <img
               src={event.poster}
               alt="Data Career Reality Day poster"
-              className="h-auto w-full rounded-md object-cover"
+              className="max-h-[78vh] w-auto max-w-full rounded-md object-contain lg:max-h-[760px]"
             />
           </div>
         </div>
@@ -120,21 +120,6 @@ export default function DataCareerRealityDayPage() {
                     {topic}
                   </div>
                 ))}
-              </div>
-
-              <div className="mt-7 rounded-lg border border-[#00b4d8]/25 bg-[#e8f8fb] p-4">
-                <div className="flex items-start gap-3">
-                  <Users className="mt-0.5 shrink-0 text-[#007c97]" size={20} />
-                  <p className="text-sm leading-6 text-[#1e1616]">
-                    Leave your email through the questionnaire so Ubuntu Analytiq can share updates once the date, venue, and charges are confirmed.
-                  </p>
-                </div>
-                <Button asChild variant="accent" className="mt-4 w-full sm:w-auto">
-                  <Link href={event.formUrl} target="_blank" rel="noreferrer">
-                    Open questionnaire
-                    <ArrowRight size={16} />
-                  </Link>
-                </Button>
               </div>
             </CardContent>
           </Card>
