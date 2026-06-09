@@ -9,6 +9,7 @@ const staticRoutes = [
   "/projects",
   "/datasets",
   "/events/data-career-reality-day",
+  "/events/data-reporting-automation-doing-more-with-less",
   "/proof",
   "/companies",
   "/operations",
