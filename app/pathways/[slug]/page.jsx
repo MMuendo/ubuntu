@@ -1,6 +1,6 @@
 ﻿import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Award, Clock3, Sparkles, Users2 } from "lucide-react";
+import { Award, BriefcaseBusiness, Clock3, ExternalLink, MessageCircle, Sparkles, Users2 } from "lucide-react";
 
 import { SiteShell } from "@/components/site-shell";
 import { Badge } from "@/components/ui/badge";
@@ -10,6 +10,7 @@ import { ubuntuCourses } from "@/lib/academy/catalog";
 import { CourseBadgeRow, DetailCTA, DetailList, PageHero, SectionTitle } from "@/components/site-kit";
 import { getAcademyPrograms } from "@/lib/db/loaders";
 import { checkoutHref } from "@/lib/academy/checkout-links";
+import { contactChannels } from "@/lib/academy/site-content";
 
 export function generateStaticParams() {
   return ubuntuCourses.map((program) => ({ slug: program.slug }));
@@ -25,6 +26,31 @@ function formatStartDate(value) {
 function hasDiscount(program) {
   return Number(program.oldPriceKes || 0) > Number(program.priceKes || 0);
 }
+
+const coachProfile = {
+  name: "Ezra Muinde",
+  title: "Data Scientist At Naivas",
+  company: "Founder of Ubuntu Analytiq",
+  location: "Nairobi, Kenya",
+  avatar: `data:image/svg+xml;utf8,${encodeURIComponent(
+    '<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128"><rect width="128" height="128" rx="24" fill="#0e7490"/><text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" font-family="Arial, sans-serif" font-size="42" font-weight="700" fill="#ffffff">EM</text></svg>'
+  )}`,
+  bio:
+    "Ezra coaches learners using practical data, analytics, and AI systems experience from retail, training, founder work, and live community programs.",
+  linkedin: "https://www.linkedin.com/in/ezra-muinde-ba8a5263/",
+  proof: [
+    "Data Scientist at Naivas",
+    "Founder of Ubuntu Analytiq",
+    "Masterminded Phoenix Analytics AI Agents Summit 2025",
+    "Hosted over 6 webinars on Agentic AI",
+    "Panelist at over 7 events"
+  ],
+  stats: [
+    { label: "Mentees", value: "13", detail: "currently mentoring on Data & AI" },
+    { label: "Agentic AI", value: "80+", detail: "students trained" },
+    { label: "Excel & Power BI", value: "150+", detail: "students trained" }
+  ]
+};
 
 function LearningJourneyTable({ schedule }) {
   return (
@@ -96,10 +122,11 @@ export default async function PathwayDetailPage({ params }) {
   });
   const hasJourneySchedule = Array.isArray(program.journeySchedule) && program.journeySchedule.length > 0;
   const isAgenticMasterclass = program.slug === "ai-agents-masterclass";
+  const chatHref = contactChannels.find((channel) => channel.label === "WhatsApp")?.href || "/mentorships";
   const heroStats = [
     { icon: Clock3, label: "duration", value: program.duration },
     isAgenticMasterclass ? null : { icon: Award, label: "level", value: program.level },
-    { icon: Users2, label: "mentor", value: program.mentor.name.split(" ")[0] },
+    { icon: Users2, label: "coach", value: coachProfile.name.split(" ")[0] },
     { icon: Sparkles, label: "price", value: `KES ${program.priceKes.toLocaleString()}` }
   ].filter(Boolean);
 
@@ -117,7 +144,10 @@ export default async function PathwayDetailPage({ params }) {
         }
         secondaryAction={
           <Button asChild variant="outline" className="w-full sm:w-auto">
-            <Link href="/projects">Open project briefs</Link>
+            <a href={chatHref}>
+              Chat with Ezra
+              <MessageCircle size={16} />
+            </a>
           </Button>
         }
         stats={heroStats}
@@ -129,25 +159,53 @@ export default async function PathwayDetailPage({ params }) {
           <Card className="border-[#00b4d8]/20 shadow-sm">
             <CardHeader className="space-y-3">
               <div className="flex items-center justify-between gap-3">
-                <Badge tone="teal">Mentor</Badge>
-                <Badge tone="default">{program.mentor.experience}</Badge>
+                <Badge tone="teal">Coach Profile</Badge>
+                <Badge tone="default">Data & AI</Badge>
               </div>
               <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
                 <img
-                  src={program.mentor.avatar}
-                  alt={program.mentor.name}
+                  src={coachProfile.avatar}
+                  alt={coachProfile.name}
                   className="size-14 rounded-2xl object-cover ring-1 ring-neutral-200 sm:size-16"
                 />
                 <div className="min-w-0">
-                  <h2 className="text-xl font-semibold text-neutral-950">{program.mentor.name}</h2>
+                  <h2 className="text-xl font-semibold text-neutral-950">{coachProfile.name}</h2>
                   <p className="text-sm text-neutral-600">
-                    {program.instructorTitle || program.mentor.title} · {program.mentor.company} · {program.mentor.location}
+                    {coachProfile.title} · {coachProfile.company} · {coachProfile.location}
                   </p>
-                  <p className="mt-3 text-sm leading-6 text-neutral-600">{program.mentor.bio}</p>
+                  <p className="mt-3 text-sm leading-6 text-neutral-600">{coachProfile.bio}</p>
                 </div>
               </div>
             </CardHeader>
             <CardContent className="space-y-4">
+              <div className="grid gap-3 sm:grid-cols-3">
+                {coachProfile.stats.map((stat) => (
+                  <div key={stat.label} className="rounded-xl border border-cyan-100 bg-cyan-50/60 p-3">
+                    <p className="text-2xl font-semibold leading-none text-neutral-950">{stat.value}</p>
+                    <p className="mt-1 text-xs font-bold uppercase tracking-[0.12em] text-cyan-800">{stat.label}</p>
+                    <p className="mt-1 text-xs leading-5 text-neutral-600">{stat.detail}</p>
+                  </div>
+                ))}
+              </div>
+              <div className="rounded-xl border border-neutral-200 bg-white p-4">
+                <p className="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.12em] text-neutral-950">
+                  <BriefcaseBusiness size={16} />
+                  What Ezra has done
+                </p>
+                <div className="mt-3 grid gap-2 sm:grid-cols-2">
+                  {coachProfile.proof.map((item) => (
+                    <div key={item} className="rounded-lg bg-neutral-50 px-3 py-2 text-sm text-neutral-700">
+                      {item}
+                    </div>
+                  ))}
+                </div>
+                <Button asChild variant="outline" size="sm" className="mt-4">
+                  <a href={coachProfile.linkedin} target="_blank" rel="noreferrer">
+                    View LinkedIn Profile
+                    <ExternalLink size={14} />
+                  </a>
+                </Button>
+              </div>
               <p className="text-sm font-semibold uppercase tracking-[0.12em] text-neutral-950">
                 {hasJourneySchedule ? "YOUR LEARNING JOURNEY- Session Schedule" : "What This Pathway Covers"}
               </p>
@@ -179,9 +237,8 @@ export default async function PathwayDetailPage({ params }) {
                   <div className="rounded-xl border border-emerald-200 bg-emerald-50 p-4">
                     <p className="text-xs font-bold uppercase tracking-[0.14em] text-emerald-700">Priority offer</p>
                     <div className="mt-2 flex flex-wrap items-center gap-2">
-                      <span className="rounded-md bg-white px-2.5 py-1 text-sm font-bold text-red-600 line-through decoration-red-600 decoration-2">KES {program.oldPriceKes.toLocaleString()}</span>
-                      <span className="rounded-md bg-emerald-600 px-2.5 py-1 text-sm font-bold text-white shadow-sm">Offer KES {program.priceKes.toLocaleString()}</span>
-                      <span className="text-sm font-semibold text-emerald-800">discounted price</span>
+                      <span className="rounded-md bg-white px-2.5 py-1 text-sm font-bold text-red-600 line-through decoration-red-600 decoration-2">Was KES {program.oldPriceKes.toLocaleString()}</span>
+                      <span className="rounded-md bg-emerald-600 px-2.5 py-1 text-sm font-bold text-white shadow-sm">Now KES {program.priceKes.toLocaleString()}</span>
                     </div>
                   </div>
                 ) : null}
