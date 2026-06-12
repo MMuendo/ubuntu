@@ -84,7 +84,7 @@ function LearningJourneyTable({ schedule }) {
                   <span>{session.time}</span>
                 </div>
                 <h4 className="mt-3 text-base font-semibold text-neutral-950">{session.title}</h4>
-                <p className="mt-2 text-sm leading-6 text-slate-600">{session.description}</p>
+                <p className="mt-2 whitespace-pre-line text-sm leading-6 text-slate-600">{session.description}</p>
               </article>
             ))}
           </div>
@@ -106,7 +106,7 @@ function LearningJourneyTable({ schedule }) {
                     <td className="px-4 py-4 whitespace-nowrap text-slate-600">{session.time}</td>
                     <td className="px-4 py-4">
                       <p className="font-semibold text-neutral-950">{session.title}</p>
-                      <p className="mt-1 leading-6 text-slate-600">{session.description}</p>
+                      <p className="mt-1 whitespace-pre-line leading-6 text-slate-600">{session.description}</p>
                     </td>
                   </tr>
                 ))}
