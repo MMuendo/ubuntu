@@ -150,15 +150,15 @@ export default async function PathwayDetailPage({ params }) {
         copy={program.summary}
         supportingCopy={isAgenticMasterclass ? program.heroSubtitle : ""}
         primaryAction={
-          <Button asChild variant="accent" className="w-full animate-pulse shadow-lg shadow-cyan-500/25 sm:h-12 sm:w-auto sm:px-7 sm:text-base">
+          <Button asChild variant="accent" className="w-full animate-pulse shadow-xl shadow-cyan-500/30 ring-2 ring-cyan-200/70 sm:h-14 sm:w-auto sm:px-9 sm:text-base">
             <Link href={enrollHref}>
               Enroll
-              <ArrowRight size={18} />
+              <ArrowRight size={20} />
             </Link>
           </Button>
         }
         secondaryAction={
-          <Button asChild variant="outline" className="w-full border-[#25D366] bg-[#25D366] text-white hover:bg-[#1ebe5d] sm:w-auto">
+          <Button asChild variant="outline" className="w-full border-[#25D366] bg-white text-[#128C7E] hover:bg-[#e9fcef] sm:w-auto">
             <a href={chatHref}>
               Chat with Ezra
               <MessageCircle size={16} />
@@ -250,10 +250,10 @@ export default async function PathwayDetailPage({ params }) {
                   <p className="text-lg font-semibold text-neutral-950">{formatStartDate(program.startDate)}</p>
                   <p className="mt-1 text-sm text-neutral-600">{program.schedule || "Schedule will be confirmed before enrollment."}</p>
                 </div>
-                <Button asChild variant="accent" className="w-full animate-pulse shadow-lg shadow-cyan-500/25 sm:h-12 sm:text-base">
+                <Button asChild variant="accent" className="w-full animate-pulse shadow-xl shadow-cyan-500/30 ring-2 ring-cyan-200/70 sm:h-14 sm:text-base">
                   <Link href={enrollHref}>
                     Enroll in this course
-                    <ArrowRight size={18} />
+                    <ArrowRight size={20} />
                   </Link>
                 </Button>
               </CardContent>
