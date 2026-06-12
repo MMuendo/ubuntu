@@ -1,6 +1,6 @@
 ﻿import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Award, BriefcaseBusiness, Clock3, ExternalLink, MessageCircle, Sparkles, Users2 } from "lucide-react";
+import { ArrowRight, BriefcaseBusiness, ExternalLink, MessageCircle, Sparkles } from "lucide-react";
 
 import { SiteShell } from "@/components/site-shell";
 import { Badge } from "@/components/ui/badge";
@@ -46,11 +46,26 @@ const coachProfile = {
     "Panelist at over 7 events"
   ],
   stats: [
-    { label: "Mentees", value: "13", detail: "currently mentoring on Data & AI" },
-    { label: "Agentic AI", value: "80+", detail: "students trained" },
-    { label: "Excel & Power BI", value: "150+", detail: "students trained" }
+    { label: "Mentees", value: "13", detail: "Currently mentoring on Data & AI" },
+    { label: "Agentic AI", value: "80+", detail: "Students trained" },
+    { label: "Excel & Power BI", value: "150+", detail: "Students trained" }
   ]
 };
+
+function PriceDisplay({ program, compact = false }) {
+  return (
+    <span className="inline-flex flex-wrap items-baseline gap-x-2 gap-y-1">
+      {hasDiscount(program) ? (
+        <span className={`${compact ? "text-xs" : "text-sm"} font-bold text-red-600 line-through decoration-red-600 decoration-2`}>
+          Was KES {program.oldPriceKes.toLocaleString()}
+        </span>
+      ) : null}
+      <span className={`${compact ? "text-base" : "text-lg"} font-bold text-neutral-950`}>
+        Now KES {program.priceKes.toLocaleString()}
+      </span>
+    </span>
+  );
+}
 
 function LearningJourneyTable({ schedule }) {
   return (
@@ -124,10 +139,7 @@ export default async function PathwayDetailPage({ params }) {
   const isAgenticMasterclass = program.slug === "ai-agents-masterclass";
   const chatHref = contactChannels.find((channel) => channel.label === "WhatsApp")?.href || "/mentorships";
   const heroStats = [
-    { icon: Clock3, label: "duration", value: program.duration },
-    isAgenticMasterclass ? null : { icon: Award, label: "level", value: program.level },
-    { icon: Users2, label: "coach", value: coachProfile.name.split(" ")[0] },
-    { icon: Sparkles, label: "price", value: `KES ${program.priceKes.toLocaleString()}` }
+    { icon: Sparkles, label: "price", value: <PriceDisplay program={program} compact /> }
   ].filter(Boolean);
 
   return (
@@ -138,12 +150,15 @@ export default async function PathwayDetailPage({ params }) {
         copy={program.summary}
         supportingCopy={isAgenticMasterclass ? program.heroSubtitle : ""}
         primaryAction={
-          <Button asChild variant="accent" className="w-full sm:w-auto">
-            <Link href={enrollHref}>Enroll</Link>
+          <Button asChild variant="accent" className="w-full animate-pulse shadow-lg shadow-cyan-500/25 sm:h-12 sm:w-auto sm:px-7 sm:text-base">
+            <Link href={enrollHref}>
+              Enroll
+              <ArrowRight size={18} />
+            </Link>
           </Button>
         }
         secondaryAction={
-          <Button asChild variant="outline" className="w-full sm:w-auto">
+          <Button asChild variant="outline" className="w-full border-[#25D366] bg-[#25D366] text-white hover:bg-[#1ebe5d] sm:w-auto">
             <a href={chatHref}>
               Chat with Ezra
               <MessageCircle size={16} />
@@ -190,25 +205,27 @@ export default async function PathwayDetailPage({ params }) {
               <div className="rounded-xl border border-neutral-200 bg-white p-4">
                 <p className="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.12em] text-neutral-950">
                   <BriefcaseBusiness size={16} />
-                  What Ezra has done
+                  About Ezra
                 </p>
-                <div className="mt-3 grid gap-2 sm:grid-cols-2">
+                <ul className="mt-3 grid list-disc gap-2 pl-5 text-sm leading-6 text-neutral-700 sm:grid-cols-2">
                   {coachProfile.proof.map((item) => (
-                    <div key={item} className="rounded-lg bg-neutral-50 px-3 py-2 text-sm text-neutral-700">
+                    <li key={item} className="pr-3">
                       {item}
-                    </div>
+                    </li>
                   ))}
-                </div>
-                <Button asChild variant="outline" size="sm" className="mt-4">
+                </ul>
+                <Button asChild variant="outline" size="sm" className="mt-4 border-[#0A66C2] bg-[#0A66C2] text-white hover:bg-[#084f96]">
                   <a href={coachProfile.linkedin} target="_blank" rel="noreferrer">
                     View LinkedIn Profile
                     <ExternalLink size={14} />
                   </a>
                 </Button>
               </div>
-              <p className="text-sm font-semibold uppercase tracking-[0.12em] text-neutral-950">
-                {hasJourneySchedule ? "YOUR LEARNING JOURNEY- Session Schedule" : "What This Pathway Covers"}
-              </p>
+              <div className="border-t border-neutral-200 pt-5">
+                <p className="text-sm font-semibold uppercase tracking-[0.12em] text-neutral-950">
+                  {hasJourneySchedule ? "YOUR LEARNING JOURNEY- Session Schedule" : "What This Pathway Covers"}
+                </p>
+              </div>
               {hasJourneySchedule ? <LearningJourneyTable schedule={program.journeySchedule} /> : <DetailList items={program.outcomes} />}
               <CourseBadgeRow items={program.tools} />
             </CardContent>
@@ -233,19 +250,10 @@ export default async function PathwayDetailPage({ params }) {
                   <p className="text-lg font-semibold text-neutral-950">{formatStartDate(program.startDate)}</p>
                   <p className="mt-1 text-sm text-neutral-600">{program.schedule || "Schedule will be confirmed before enrollment."}</p>
                 </div>
-                {hasDiscount(program) ? (
-                  <div className="rounded-xl border border-emerald-200 bg-emerald-50 p-4">
-                    <p className="text-xs font-bold uppercase tracking-[0.14em] text-emerald-700">Priority offer</p>
-                    <div className="mt-2 flex flex-wrap items-center gap-2">
-                      <span className="rounded-md bg-white px-2.5 py-1 text-sm font-bold text-red-600 line-through decoration-red-600 decoration-2">Was KES {program.oldPriceKes.toLocaleString()}</span>
-                      <span className="rounded-md bg-emerald-600 px-2.5 py-1 text-sm font-bold text-white shadow-sm">Now KES {program.priceKes.toLocaleString()}</span>
-                    </div>
-                  </div>
-                ) : null}
-                <Button asChild variant="accent" className="w-full">
+                <Button asChild variant="accent" className="w-full animate-pulse shadow-lg shadow-cyan-500/25 sm:h-12 sm:text-base">
                   <Link href={enrollHref}>
                     Enroll in this course
-                    <Sparkles size={16} />
+                    <ArrowRight size={18} />
                   </Link>
                 </Button>
               </CardContent>

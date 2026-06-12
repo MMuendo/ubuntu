@@ -36,7 +36,7 @@ export function PageHero({ eyebrow, title, copy, supportingCopy = "", primaryAct
             {secondaryAction}
           </div>
           {stats.length > 0 ? (
-            <div className={`${mobileCompact ? "mt-6 gap-2 sm:gap-3" : "mt-8 gap-3"} grid grid-cols-2 sm:grid-cols-4`}>
+            <div className={`${mobileCompact ? "mt-6 gap-2 sm:gap-3" : "mt-8 gap-3"} grid ${stats.length === 1 ? "max-w-md grid-cols-1" : "grid-cols-2 sm:grid-cols-4"}`}>
               {stats.map((stat) => (
                 <MetricTile key={stat.label} icon={stat.icon} label={stat.label} value={stat.value} />
               ))}
