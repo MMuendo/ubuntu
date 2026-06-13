@@ -11,6 +11,7 @@ import { CourseBadgeRow, DetailCTA, DetailList, PageHero, SectionTitle } from "@
 import { getAcademyPrograms } from "@/lib/db/loaders";
 import { checkoutHref } from "@/lib/academy/checkout-links";
 import { contactChannels } from "@/lib/academy/site-content";
+import { AiAgentsTrackedLink, AiAgentsViewContentEvent } from "./pixel-events";
 
 export function generateStaticParams() {
   return ubuntuCourses.map((program) => ({ slug: program.slug }));
@@ -144,6 +145,7 @@ export default async function PathwayDetailPage({ params }) {
 
   return (
     <SiteShell>
+      <AiAgentsViewContentEvent enabled={isAgenticMasterclass} />
       <PageHero
         eyebrow={isAgenticMasterclass ? "" : program.category}
         title={program.title}
@@ -151,18 +153,23 @@ export default async function PathwayDetailPage({ params }) {
         supportingCopy={isAgenticMasterclass ? program.heroSubtitle : ""}
         primaryAction={
           <Button asChild variant="accent" className="w-full animate-pulse shadow-xl shadow-cyan-500/30 ring-2 ring-cyan-200/70 sm:h-14 sm:w-auto sm:px-9 sm:text-base">
-            <Link href={enrollHref}>
+            <AiAgentsTrackedLink
+              enabled={isAgenticMasterclass}
+              eventName="InitiateCheckout"
+              eventParams={{ value: 5000, currency: "KES" }}
+              href={enrollHref}
+            >
               Enroll
               <ArrowRight size={20} />
-            </Link>
+            </AiAgentsTrackedLink>
           </Button>
         }
         secondaryAction={
           <Button asChild variant="outline" className="w-full border-[#25D366] bg-white text-[#128C7E] hover:bg-[#e9fcef] sm:w-auto">
-            <a href={chatHref}>
+            <AiAgentsTrackedLink enabled={isAgenticMasterclass} eventName="Contact" href={chatHref}>
               Chat with Ezra
               <MessageCircle size={16} />
-            </a>
+            </AiAgentsTrackedLink>
           </Button>
         }
         stats={heroStats}
@@ -251,10 +258,15 @@ export default async function PathwayDetailPage({ params }) {
                   <p className="mt-1 text-sm text-neutral-600">{program.schedule || "Schedule will be confirmed before enrollment."}</p>
                 </div>
                 <Button asChild variant="accent" className="w-full animate-pulse shadow-xl shadow-cyan-500/30 ring-2 ring-cyan-200/70 sm:h-14 sm:text-base">
-                  <Link href={enrollHref}>
+                  <AiAgentsTrackedLink
+                    enabled={isAgenticMasterclass}
+                    eventName="InitiateCheckout"
+                    eventParams={{ value: 5000, currency: "KES" }}
+                    href={enrollHref}
+                  >
                     Enroll in this course
                     <ArrowRight size={20} />
-                  </Link>
+                  </AiAgentsTrackedLink>
                 </Button>
               </CardContent>
             </Card>
