@@ -10,6 +10,7 @@ const staticRoutes = [
   "/datasets",
   "/events/data-career-reality-day",
   "/events/data-reporting-automation-doing-more-with-less",
+  "/events/from-code-to-community-how-building-in-public-helps-products-win",
   "/proof",
   "/companies",
   "/operations",
