@@ -63,25 +63,25 @@ export default async function MentorshipsPage() {
 
       <section id="cohort-2" className="african-weave border-b border-slate-200 py-12">
         <div className="mx-auto grid max-w-7xl gap-5 px-4 sm:px-6 lg:grid-cols-[0.8fr_1.2fr] lg:px-8">
-          <Card className="border-[#00b4d8]/30 bg-[#e8f8fb]">
+          <Card className="ubuntu-intel-card border-[#00b4d8]/30">
             <CardHeader>
               <Badge tone="teal" className="w-fit">Cohort 2</Badge>
               <h2 className="text-3xl font-semibold tracking-tight text-[#1e1616]">{mentorshipCohort.title}</h2>
             </CardHeader>
             <CardContent className="grid gap-3 sm:grid-cols-2">
-              <div className="rounded-lg bg-white p-4">
+              <div className="ubuntu-card-field rounded-lg p-4">
                 <p className="text-lg font-semibold text-[#1e1616]">{mentorshipCohort.price}</p>
                 <p className="text-xs font-semibold tracking-[0.04em] text-slate-500">Intro Price</p>
               </div>
-              <div className="rounded-lg bg-white p-4">
+              <div className="ubuntu-card-field rounded-lg p-4">
                 <p className="text-lg font-semibold text-[#1e1616]">{mentorshipCohort.duration}</p>
                 <p className="text-xs font-semibold tracking-[0.04em] text-slate-500">Mentorship</p>
               </div>
-              <div className="rounded-lg bg-white p-4">
+              <div className="ubuntu-card-field rounded-lg p-4">
                 <p className="text-lg font-semibold text-[#1e1616]">{mentorshipCohort.startDate}</p>
                 <p className="text-xs font-semibold tracking-[0.04em] text-slate-500">Start Date</p>
               </div>
-              <div className="rounded-lg bg-white p-4">
+              <div className="ubuntu-card-field rounded-lg p-4">
                 <p className="text-lg font-semibold text-[#1e1616]">{mentorshipCohort.seats}</p>
                 <p className="text-xs font-semibold tracking-[0.04em] text-slate-500">Cohort Size</p>
               </div>
@@ -91,7 +91,7 @@ export default async function MentorshipsPage() {
             </CardContent>
           </Card>
 
-          <Card className="bg-white/95">
+          <Card className="ubuntu-intel-card">
             <CardHeader>
               <h2 className="font-semibold text-[#1e1616]">Cohort details and enrollment</h2>
             </CardHeader>
@@ -149,7 +149,7 @@ export default async function MentorshipsPage() {
             </CardHeader>
             <CardContent className="grid gap-3 md:grid-cols-2">
               {academyPrograms.slice(0, 4).map((program) => (
-                <Link key={program.slug} href={`/pathways/${program.slug}`} className="rounded-lg bg-neutral-50 p-4 transition hover:bg-neutral-100">
+                <Link key={program.slug} href={`/pathways/${program.slug}`} className="ubuntu-route-card rounded-lg p-4 transition duration-200">
                   <p className="text-sm font-semibold text-neutral-950">{program.title}</p>
                   <p className="mt-2 text-xs leading-5 text-neutral-500">{program.mentor.name}</p>
                 </Link>

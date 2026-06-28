@@ -44,16 +44,16 @@ export function PageHero({ eyebrow, title, copy, supportingCopy = "", primaryAct
           ) : null}
         </div>
 
-        <div className={`${mobileCompact ? "hidden md:block" : ""} rounded-2xl border border-neutral-200 bg-white p-4 shadow-sm`}>
+        <div className={`${mobileCompact ? "hidden md:block" : ""} ubuntu-light-panel rounded-xl p-4`}>
           <div className="grid gap-4 sm:grid-cols-2">
-            <div className="rounded-xl border border-neutral-200 bg-[#f1f5f9] p-4">
+            <div className="ubuntu-card-field rounded-xl p-4">
               <p className="text-xs font-semibold uppercase tracking-[0.14em] text-neutral-500">Our context</p>
               <h3 className="mt-2 text-lg font-semibold text-neutral-950">Local problems</h3>
               <p className="mt-2 text-sm leading-6 text-neutral-600">
                 Datasets, projects, and examples stay close to the markets learners know.
               </p>
             </div>
-            <div className="rounded-xl border border-neutral-200 bg-white p-4">
+            <div className="ubuntu-card-field rounded-xl p-4">
               <p className="text-xs font-semibold uppercase tracking-[0.14em] text-neutral-500">Need, not hype</p>
               <h3 className="mt-2 text-lg font-semibold text-neutral-950">Build what helps</h3>
               <p className="mt-2 text-sm leading-6 text-neutral-600">
@@ -62,7 +62,7 @@ export function PageHero({ eyebrow, title, copy, supportingCopy = "", primaryAct
             </div>
           </div>
 
-          <div className="mt-4 rounded-xl bg-[#1e1616] p-4 text-white">
+          <div className="ubuntu-solid-bg mt-4 rounded-xl p-4 text-white">
             <div className="flex items-center justify-between gap-3">
               <div>
                 <p className="text-xs uppercase tracking-[0.14em] text-neutral-400">Today</p>
@@ -106,8 +106,8 @@ export function SectionTitle({ eyebrow, title, copy, align = "left", tone = "lig
 
 export function MetricTile({ label, value, icon: Icon }) {
   return (
-    <div className="flex items-center gap-3 rounded-xl border border-neutral-200 bg-white p-3 shadow-sm">
-      <span className="flex size-9 items-center justify-center rounded-lg bg-neutral-100 text-neutral-700">
+    <div className="ubuntu-light-panel flex items-center gap-3 rounded-xl p-3">
+      <span className="flex size-9 items-center justify-center rounded-lg bg-[#141014] text-[#00b4d8]">
         {Icon ? <Icon size={17} /> : null}
       </span>
       <div>
@@ -127,7 +127,7 @@ export function MarqueeStrip({ items, reverse = false }) {
         {trackItems.map((item, index) => (
           <span
             key={`${item}-${index}`}
-            className="inline-flex h-10 items-center rounded-full border border-neutral-200 bg-white px-4 text-sm font-medium text-neutral-700 shadow-sm"
+            className="ubuntu-chip inline-flex h-10 items-center rounded-full px-4 text-sm font-medium"
           >
             {item}
           </span>
@@ -150,7 +150,7 @@ function Avatar({ src, name }) {
 
 export function ProgramCard({ program }) {
   return (
-    <Card className="group h-full overflow-hidden transition hover:-translate-y-0.5 hover:border-neutral-300 hover:shadow-sm">
+    <Card className="ubuntu-intel-card group h-full overflow-hidden transition duration-200">
       <Link href={`/pathways/${program.slug}`} className="flex h-full flex-col">
         <CardHeader className="space-y-4">
           <div className="flex items-start justify-between gap-3">
@@ -179,7 +179,7 @@ export function ProgramCard({ program }) {
 
           <div className="mt-4 flex flex-wrap gap-2">
             {program.modules.slice(0, 3).map((module) => (
-              <span key={module} className="rounded-full bg-neutral-100 px-3 py-1 text-xs font-medium text-neutral-700">
+              <span key={module} className="ubuntu-chip rounded-full px-3 py-1 text-xs font-medium">
                 {module}
               </span>
             ))}
@@ -229,7 +229,7 @@ export function ProjectBriefCard({ project, signedIn = false }) {
   }[project.track || "practice-labs"] || "from-[#1e1616] to-cyan-900";
 
   return (
-    <Card className="h-full overflow-hidden transition hover:-translate-y-0.5 hover:border-neutral-300 hover:shadow-sm">
+    <Card className="ubuntu-intel-card h-full overflow-hidden transition duration-200">
       <CardHeader className="space-y-2 p-3">
         <div className="flex items-start gap-3">
           <div className={`relative flex size-10 shrink-0 items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br ${trackTone} text-xs font-bold text-white shadow-sm`}>
@@ -266,14 +266,14 @@ export function ProjectBriefCard({ project, signedIn = false }) {
         {project.skills?.length ? (
           <div className="flex flex-wrap gap-2">
             {project.skills.slice(0, 3).map((skill) => (
-              <span key={skill} className="rounded-full bg-white px-2.5 py-1 text-xs font-medium text-neutral-700 ring-1 ring-neutral-200">
+              <span key={skill} className="ubuntu-chip rounded-full px-2.5 py-1 text-xs font-medium">
                 {skill}
               </span>
             ))}
           </div>
         ) : null}
 
-        <div className="rounded-lg bg-neutral-50 p-3">
+        <div className="ubuntu-card-field rounded-lg p-3">
           <p className="text-xs font-semibold uppercase tracking-[0.12em] text-neutral-500">Scoring</p>
           <div className="mt-2 grid gap-1.5">
             {project.scoreBands.slice(0, 2).map((band) => (
@@ -312,7 +312,7 @@ export function ProjectBriefCard({ project, signedIn = false }) {
 
 export function ShowcaseCard({ item }) {
   return (
-    <Card className="group h-full overflow-hidden transition hover:-translate-y-0.5 hover:border-neutral-300 hover:shadow-sm">
+    <Card className="ubuntu-intel-card group h-full overflow-hidden transition duration-200">
       <CardHeader className="space-y-4">
         <div className="flex items-start justify-between gap-3">
           <div>
@@ -339,7 +339,7 @@ export function ShowcaseCard({ item }) {
           </div>
         </div>
 
-        <div className="rounded-xl bg-neutral-50 p-4 text-sm text-neutral-600">
+        <div className="ubuntu-card-field rounded-xl p-4 text-sm text-neutral-600">
           <p className="font-medium text-neutral-950">Impact</p>
           <p className="mt-2 leading-6">{item.impact}</p>
           <p className="mt-4 text-xs font-semibold uppercase tracking-[0.14em] text-neutral-500">{item.featuredQuote}</p>
@@ -347,7 +347,7 @@ export function ShowcaseCard({ item }) {
 
         <div className="flex flex-wrap gap-2">
           {item.tools.map((tool) => (
-            <span key={tool} className="rounded-full bg-white px-3 py-1 text-xs font-medium text-neutral-700 ring-1 ring-neutral-200">
+            <span key={tool} className="ubuntu-chip rounded-full px-3 py-1 text-xs font-medium">
               {tool}
             </span>
           ))}
@@ -359,7 +359,7 @@ export function ShowcaseCard({ item }) {
 
 export function MentorCard({ mentor }) {
   return (
-    <Card className="overflow-hidden transition hover:-translate-y-0.5 hover:border-neutral-300 hover:shadow-sm">
+    <Card className="ubuntu-intel-card overflow-hidden transition duration-200">
       <CardContent className="space-y-4">
         <div className="flex items-start gap-4">
           <Avatar src={mentor.avatar} name={mentor.name} />
@@ -376,7 +376,7 @@ export function MentorCard({ mentor }) {
 
         <div className="flex flex-wrap gap-2">
           {mentor.specialties.map((specialty) => (
-            <span key={specialty} className="rounded-full bg-neutral-100 px-3 py-1 text-xs font-medium text-neutral-700">
+            <span key={specialty} className="ubuntu-chip rounded-full px-3 py-1 text-xs font-medium">
               {specialty}
             </span>
           ))}
@@ -388,7 +388,7 @@ export function MentorCard({ mentor }) {
 
 export function ProgressPanel({ label, value }) {
   return (
-    <div className="space-y-2 rounded-xl border border-neutral-200 bg-white p-4">
+    <div className="ubuntu-light-panel space-y-2 rounded-xl p-4">
       <div className="flex items-center justify-between text-sm">
         <span className="font-medium text-neutral-700">{label}</span>
         <span className="text-neutral-500">{value}%</span>
@@ -400,13 +400,13 @@ export function ProgressPanel({ label, value }) {
 
 export function QuickStat({ icon: Icon, value, label }) {
   return (
-    <div className="rounded-xl border border-neutral-200 bg-white p-4 shadow-sm">
+    <div className="ubuntu-light-panel rounded-xl p-4">
       <div className="flex items-center justify-between gap-3">
         <div>
           <p className="text-2xl font-semibold text-neutral-950">{value}</p>
           <p className="mt-1 text-xs font-medium uppercase tracking-[0.14em] text-neutral-500">{label}</p>
         </div>
-        <span className="flex size-10 items-center justify-center rounded-xl bg-neutral-100 text-neutral-700">
+        <span className="flex size-10 items-center justify-center rounded-xl bg-[#141014] text-[#00b4d8]">
           <Icon size={18} />
         </span>
       </div>
@@ -431,7 +431,7 @@ export function CourseBadgeRow({ items }) {
   return (
     <div className="flex flex-wrap gap-2">
       {items.map((item) => (
-        <span key={item} className="rounded-full bg-neutral-100 px-3 py-1 text-xs font-medium text-neutral-700">
+        <span key={item} className="ubuntu-chip rounded-full px-3 py-1 text-xs font-medium">
           {item}
         </span>
       ))}

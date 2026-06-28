@@ -203,7 +203,7 @@ export function DataAIConsultations() {
 
           <div className="grid gap-4 sm:grid-cols-2">
             {consultationGroups.map((group) => (
-              <Card key={group.title} className="h-full border-[#00b4d8]/20 bg-white/95 shadow-sm">
+              <Card key={group.title} className="ubuntu-intel-card h-full shadow-sm">
                 <CardContent className="flex h-full flex-col p-5">
                   <div className="flex items-start gap-3">
                     <span className="flex size-10 shrink-0 items-center justify-center rounded-md bg-[#1e1616] text-[#00b4d8]">

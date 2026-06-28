@@ -18,7 +18,7 @@ const steps = [
   },
   {
     title: "What pulls you in",
-    copy: "Choose the subjects that should shape your first pathway and project.",
+    copy: "Choose the subjects that can shape your first pathway and project.",
     eyebrow: "Step 2"
   },
   {

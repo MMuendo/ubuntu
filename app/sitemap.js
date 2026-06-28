@@ -2,11 +2,16 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.ubuntuanalytiq.
 
 const staticRoutes = [
   "",
+  "/advisory",
   "/academy",
   "/assessment",
   "/blogs",
+  "/for-organizations",
   "/mentorships",
   "/projects",
+  "/resources",
+  "/responsible-ai",
+  "/solutions",
   "/datasets",
   "/events/data-career-reality-day",
   "/events/data-reporting-automation-doing-more-with-less",

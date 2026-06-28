@@ -4,21 +4,29 @@ import Script from "next/script";
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.ubuntuanalytiq.com";
 const siteName = "Ubuntu Analytiq";
 const siteDescription =
-  "Building African intelligence systems from our context, markets, and opportunities through Data & AI";
+  "African AI advisory, agentic AI solutions, reporting automation, and practical Data & AI training for organizations and learners.";
 
 export const metadata = {
   metadataBase: new URL(siteUrl),
   applicationName: siteName,
   title: {
-    default: "Ubuntu Analytiq | Data & AI Learning, Mentorship, and Consulting",
+    default: "Ubuntu Analytiq | African AI Advisory, Solutions, and Data & AI Training",
     template: "%s | Ubuntu Analytiq"
   },
   description: siteDescription,
   keywords: [
     "Ubuntu Analytiq",
     "data analytics training",
+    "Data and AI training",
     "AI training",
+    "AI advisory Africa",
+    "AI advisory Kenya",
+    "AI solutions Kenya",
+    "agentic AI solutions",
+    "responsible AI advisory",
     "Power BI training",
+    "Power BI training Kenya",
+    "Excel training Kenya",
     "Python for data analytics",
     "data mentorship",
     "AI consulting",
@@ -41,7 +49,7 @@ export const metadata = {
     locale: "en_KE",
     url: siteUrl,
     siteName,
-    title: "Ubuntu Analytiq | Data & AI Learning, Mentorship, and Consulting",
+    title: "Ubuntu Analytiq | African AI Advisory, Solutions, and Data & AI Training",
     description: siteDescription,
     images: [
       {
@@ -54,7 +62,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ubuntu Analytiq | Data & AI Learning, Mentorship, and Consulting",
+    title: "Ubuntu Analytiq | African AI Advisory, Solutions, and Data & AI Training",
     description: siteDescription,
     images: ["/images/ubuntu-data-workshop.png"]
   },

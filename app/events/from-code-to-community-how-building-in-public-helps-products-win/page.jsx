@@ -70,7 +70,7 @@ export default function FromCodeToCommunityPage() {
       <section className="ubuntu-heritage-bg kenya-watermark py-12 sm:py-16">
         <div className="mx-auto grid max-w-7xl gap-5 px-4 sm:px-6 lg:grid-cols-[0.82fr_1.18fr] lg:px-8">
           <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
-            <Card className="bg-white/95">
+            <Card className="ubuntu-intel-card">
               <CardContent className="flex items-center gap-3 p-4">
                 <CalendarDays className="text-[#00b4d8]" size={22} />
                 <div>
@@ -79,7 +79,7 @@ export default function FromCodeToCommunityPage() {
                 </div>
               </CardContent>
             </Card>
-            <Card className="bg-white/95">
+            <Card className="ubuntu-intel-card">
               <CardContent className="flex items-center gap-3 p-4">
                 <MapPin className="text-[#00b4d8]" size={22} />
                 <div>
@@ -88,7 +88,7 @@ export default function FromCodeToCommunityPage() {
                 </div>
               </CardContent>
             </Card>
-            <Card className="bg-white/95">
+            <Card className="ubuntu-intel-card">
               <CardContent className="flex items-center gap-3 p-4">
                 <Ticket className="text-[#00b4d8]" size={22} />
                 <div>
@@ -99,7 +99,7 @@ export default function FromCodeToCommunityPage() {
             </Card>
           </div>
 
-          <Card className="bg-white/95">
+          <Card className="ubuntu-intel-card">
             <CardContent className="p-5 sm:p-6">
               <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
                 <span className="flex size-12 shrink-0 items-center justify-center rounded-md bg-[#1e1616] text-[#00b4d8]">

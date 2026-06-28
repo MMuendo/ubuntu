@@ -11,7 +11,7 @@ const promptLibrary = [
     category: "Excel",
     title: "Formula architect",
     prompt:
-      "Act as a senior financial analyst. I have a sales dataset with columns: Region, Product, Month, Units Sold, Unit Price, Cost per Unit. Write me the top 5 Excel formulas I should have - including a GP% formula, a YTD total, and a rank by region. Explain each in plain language before giving the syntax.",
+      "Act as a senior financial analyst. I have a sales dataset with columns: Region, Product, Month, Units Sold, Unit Price, Cost per Unit. Write me the top 5 Excel formulas I need - including a GP% formula, a YTD total, and a rank by region. Explain each in plain language before giving the syntax.",
     why: "Role + real column names + layered ask. Forces specific, usable output."
   },
   {
@@ -39,7 +39,7 @@ const promptLibrary = [
     category: "Power BI",
     title: "Misleading dashboard detector",
     prompt:
-      "I'm a non-technical manager reviewing a Power BI report. Teach me 5 visual tricks that make data look better than it is - truncated Y-axes, cherry-picked dates, missing benchmarks, wrong chart types, selective filters. For each one, tell me the exact question I should ask the analyst.",
+      "I'm a non-technical manager reviewing a Power BI report. Teach me 5 visual tricks that make data look better than it is - truncated Y-axes, cherry-picked dates, missing benchmarks, wrong chart types, selective filters. For each one, give me the exact question to ask the analyst.",
     why: "Builds critical thinking and data confidence."
   },
   {
@@ -60,7 +60,7 @@ const promptLibrary = [
     category: "AI fluency",
     title: "Analyst brief",
     prompt:
-      "You are my junior analyst. I'll give you a business report. Do these in order and label each: Step 1: Summarize the 3 most important findings in plain language. Step 2: Identify 2 data claims I should verify before acting - and why. Step 3: Recommend one decision I can make today, and one to wait on. Here is the report: [paste report]",
+      "You are my junior analyst. I'll give you a business report. Do these in order and label each: Step 1: Summarize the 3 most important findings in plain language. Step 2: Identify 2 data claims to verify before acting - and why. Step 3: Recommend one decision I can make today, and one to wait on. Here is the report: [paste report]",
     why: "Numbered steps make outputs easy to scan and act on."
   },
   {
@@ -82,7 +82,7 @@ const promptLibrary = [
     title: "The impossible cultural collision",
     prompt:
       "A Maasai warrior standing on a neon-lit Tokyo street at 3am, wearing full traditional beadwork and holding a glowing spear, cherry blossoms falling, rain-soaked reflections on the pavement, cinematic wide shot, dramatic lighting, hyper-realistic, 8K.",
-    why: "Two worlds that should never meet, but do."
+    why: "Unexpected cultural contrast creates a more memorable image."
   },
   {
     category: "Image gen",

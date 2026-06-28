@@ -157,7 +157,7 @@ export default async function ProjectDetailPage({ params }) {
           <SectionTitle
             eyebrow="Related proof"
             title="Strong submissions surface here"
-            copy="These cards show what the finished work should feel like once the project has been scored."
+            copy="See the standard learners work toward: clear analysis, practical recommendations, and portfolio-ready delivery."
           />
           <div className="mt-8 grid gap-4 md:grid-cols-3">
             {related.map((item) => (

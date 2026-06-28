@@ -101,7 +101,7 @@ export default async function ProposeProjectPage({ searchParams }) {
                     id="rubric"
                     name="rubric"
                     rows={4}
-                    placeholder="List the scoring criteria learners should be judged on."
+                    placeholder="List the scoring criteria mentors will use to review learner submissions."
                     className="mt-2 w-full rounded-md border border-neutral-200 bg-neutral-50 px-3 py-2 text-sm outline-none transition focus:border-neutral-400 focus:bg-white"
                   />
                 </div>

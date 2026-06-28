@@ -10,11 +10,11 @@ import { CookieConsent } from "@/components/cookie-consent";
 import { salesBanner } from "@/lib/academy/site-content";
 
 const navLinks = [
+  { label: "Advisory", href: "/advisory" },
+  { label: "Solutions", href: "/solutions" },
   { label: "Academy", href: "/academy" },
-  { label: "Mentorship", href: "/mentorships" },
   { label: "Projects", href: "/projects" },
-  { label: "Datasets", href: "/datasets" },
-  { label: "Blogs", href: "/blogs" },
+  { label: "Resources", href: "/resources" },
   { label: "Assessment", href: "/assessment" }
 ];
 
@@ -71,7 +71,7 @@ export function SiteShell({ children }) {
   }
 
   return (
-    <div className="min-h-screen bg-[#f1f5f9] text-neutral-950">
+    <div className="ubuntu-ambient-shell min-h-screen text-neutral-950">
       <div className="sticky top-0 z-50">
         <div className="sales-banner border-b border-[#00b4d8]/35 bg-[#1e1616] text-white shadow-[0_10px_32px_rgba(0,0,0,0.22)]">
           <div className="mx-auto flex max-w-7xl flex-col gap-2 px-3 py-2 text-sm sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
@@ -79,10 +79,10 @@ export function SiteShell({ children }) {
               <span className="sales-banner-icon flex size-7 shrink-0 items-center justify-center rounded-full bg-[#00b4d8] text-[#1e1616] shadow-[0_0_24px_rgba(0,180,216,0.55)]">
                 <Megaphone size={15} />
               </span>
-              <span className="min-w-0 flex-1 truncate text-xs font-semibold sm:hidden">Data & AI Fluency...</span>
+              <span className="min-w-0 flex-1 truncate text-xs font-semibold sm:hidden">{salesBanner.mobileTitle || salesBanner.title}</span>
               <span className="hidden min-w-0 flex-1 truncate font-semibold sm:inline lg:flex-none">{salesBanner.title}</span>
               <span className="shrink-0 rounded-full bg-white/10 px-2 py-0.5 text-[11px] font-semibold text-slate-200 sm:text-xs">
-                Was KES 12,500
+                Was {salesBanner.oldPrice}
               </span>
             </div>
             <div className="flex w-full min-w-0 items-center gap-2 lg:w-auto lg:justify-end">
@@ -99,7 +99,7 @@ export function SiteShell({ children }) {
           </div>
         </div>
 
-        <header className="border-b border-slate-200 bg-[#f1f5f9]/92 backdrop-blur">
+        <header className="border-b border-[#00b4d8]/18 bg-[#fbfaf7]/88 shadow-[0_10px_30px_rgba(20,16,20,0.05)] backdrop-blur-xl">
           <div className="mx-auto flex h-16 max-w-7xl items-center gap-4 px-4 sm:px-6 lg:px-8">
             <Link href="/" className="flex items-center gap-3">
               <span className="flex size-8 items-center justify-center rounded-md bg-[#1e1616] text-sm font-semibold text-white">
@@ -115,8 +115,8 @@ export function SiteShell({ children }) {
                   href={link.href}
                   className={`rounded-md px-3 py-2 text-sm font-medium transition-colors ${
                     isActive(pathname, link.href)
-                      ? "bg-white text-neutral-950 shadow-sm ring-1 ring-neutral-200"
-                      : "text-neutral-600 hover:bg-white hover:text-neutral-950"
+                      ? "bg-[#141014] text-white shadow-sm ring-1 ring-[#00b4d8]/30"
+                      : "text-neutral-600 hover:bg-white/85 hover:text-neutral-950 hover:ring-1 hover:ring-[#00b4d8]/16"
                   }`}
                 >
                   {link.label}
@@ -168,7 +168,7 @@ export function SiteShell({ children }) {
             </div>
           </div>
           {mobileMenuOpen ? (
-            <div id="mobile-navigation" className="border-t border-slate-200 bg-slate-200/85 md:hidden">
+            <div id="mobile-navigation" className="border-t border-[#00b4d8]/16 bg-[#fbfaf7]/92 backdrop-blur-xl md:hidden">
               <div className="ml-auto grid w-[60vw] min-w-[204px] max-w-[250px] gap-2 bg-transparent p-3">
                 {navLinks.map((link) => (
                   <Link
@@ -176,8 +176,8 @@ export function SiteShell({ children }) {
                     href={link.href}
                     className={`rounded-md px-3 py-2 text-sm font-semibold transition ${
                       isActive(pathname, link.href)
-                        ? "border border-[#00b4d8]/35 bg-[#e8f8fb] text-[#1e1616]"
-                        : "border border-transparent text-slate-700 hover:border-slate-200 hover:bg-slate-50"
+                        ? "border border-[#00b4d8]/35 bg-[#141014] text-white"
+                        : "border border-transparent text-slate-700 hover:border-[#00b4d8]/20 hover:bg-white/85"
                     }`}
                   >
                     {link.label}
@@ -210,7 +210,7 @@ export function SiteShell({ children }) {
 
       <main>{children}</main>
 
-      <footer className="border-t border-neutral-200 bg-white">
+      <footer className="border-t border-[#00b4d8]/16 bg-[#fbfaf7]/94">
         <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-8 sm:px-6 md:flex-row md:items-center md:justify-between lg:px-8">
           <div>
             <p className="text-sm font-semibold text-neutral-950">Ubuntu Analytiq</p>

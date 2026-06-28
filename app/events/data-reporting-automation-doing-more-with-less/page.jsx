@@ -84,7 +84,7 @@ export default function DataReportingAutomationPage() {
       <section className="ubuntu-heritage-bg kenya-watermark py-12 sm:py-16">
         <div className="mx-auto grid max-w-7xl gap-5 px-4 sm:px-6 lg:grid-cols-[0.82fr_1.18fr] lg:px-8">
           <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
-            <Card className="bg-white/95">
+            <Card className="ubuntu-intel-card">
               <CardContent className="flex items-center gap-3 p-4">
                 <CalendarDays className="text-[#00b4d8]" size={22} />
                 <div>
@@ -93,7 +93,7 @@ export default function DataReportingAutomationPage() {
                 </div>
               </CardContent>
             </Card>
-            <Card className="bg-white/95">
+            <Card className="ubuntu-intel-card">
               <CardContent className="flex items-center gap-3 p-4">
                 <MapPin className="text-[#00b4d8]" size={22} />
                 <div>
@@ -102,7 +102,7 @@ export default function DataReportingAutomationPage() {
                 </div>
               </CardContent>
             </Card>
-            <Card className="bg-white/95">
+            <Card className="ubuntu-intel-card">
               <CardContent className="flex items-center gap-3 p-4">
                 <Ticket className="text-[#00b4d8]" size={22} />
                 <div>
@@ -113,7 +113,7 @@ export default function DataReportingAutomationPage() {
             </Card>
           </div>
 
-          <Card className="bg-white/95">
+          <Card className="ubuntu-intel-card">
             <CardContent className="p-5 sm:p-6">
               <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
                 <span className="flex size-12 shrink-0 items-center justify-center rounded-md bg-[#1e1616] text-[#00b4d8]">
@@ -121,7 +121,7 @@ export default function DataReportingAutomationPage() {
                 </span>
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#007c97]">Guest speaker: Jacktone Etemesi</p>
-                  <h2 className="mt-2 text-2xl font-semibold tracking-tight text-[#1e1616]">Reporting automation for teams doing more with less.</h2>
+                  <h2 className="mt-2 text-2xl font-semibold tracking-tight text-[#1e1616]">Data & Reporting Automation: Doing More with Less</h2>
                   <p className="mt-3 text-sm leading-7 text-slate-600">
                     Hosted by Mary Wachira, Programs Lead at Ubuntu Analytiq, this session focuses on practical reporting challenges and the steps teams can take before automation becomes expensive or overbuilt.
                   </p>

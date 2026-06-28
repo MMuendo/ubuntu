@@ -14,7 +14,7 @@ export default function BlogsPage() {
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
           <Badge tone="teal" className="border-white/10 bg-white/10 text-[#00b4d8]">Blogs</Badge>
           <h1 className="mt-5 max-w-4xl text-5xl font-semibold leading-[1.02] tracking-tight md:text-6xl">
-            Thinking aloud about data, AI, automation, and African work.
+            Practical essays on data, AI, automation, systems, and African market context.
           </h1>
           <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-300">
             Practical essays on systems, Agentic AI, Power BI, mentorship, and why Excel still matters here.
@@ -25,9 +25,15 @@ export default function BlogsPage() {
       <section className="african-weave py-16">
         <div className="mx-auto grid max-w-7xl gap-5 px-4 sm:px-6 md:grid-cols-2 lg:grid-cols-3 lg:px-8">
           {blogPosts.map((post) => (
-            <Card key={post.id} className="group overflow-hidden bg-white/95 transition hover:-translate-y-0.5 hover:border-[#00b4d8] hover:shadow-sm">
+            <Card key={post.id} className="ubuntu-intel-card group overflow-hidden transition hover:-translate-y-0.5 hover:border-[#00b4d8] hover:shadow-sm">
               <div className="relative h-52 overflow-hidden">
-                <img src={post.image} alt={post.title} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+                <img
+                  src={post.image}
+                  alt={post.title}
+                  className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                  loading="lazy"
+                  decoding="async"
+                />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#1e1616]/75 to-transparent" />
                 <div className="absolute bottom-4 left-4 right-4 flex flex-wrap gap-2">
                   {post.tags.slice(0, 3).map((tag) => (
