@@ -51,6 +51,22 @@ textarea::placeholder {
   opacity: 1;
 }
 
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--ua-cyan-deep);
+  outline-offset: 3px;
+}
+
+.ubuntu-solid-bg a:focus-visible,
+.ubuntu-solid-bg button:focus-visible,
+.ubuntu-dark-panel a:focus-visible,
+.ubuntu-dark-panel button:focus-visible {
+  outline-color: #72e6ff;
+}
+
 ::selection {
   background: var(--ua-ink);
   color: #ffffff;
@@ -447,11 +463,64 @@ main > section + section::before {
 }
 
 .testimonial-track {
-  animation: marquee-right 42s linear infinite;
+  animation: marquee-left 75s linear infinite;
 }
 
-.testimonial-track:hover {
+.testimonial-track:hover,
+.testimonial-track:focus-within,
+.testimonial-track[data-paused="true"] {
   animation-play-state: paused;
+}
+
+.mentorship-voices-section {
+  background-color: #142126;
+  background-image:
+    radial-gradient(circle at 18% 12%, rgba(0, 180, 216, 0.22), transparent 28rem),
+    radial-gradient(circle at 88% 88%, rgba(255, 107, 26, 0.12), transparent 25rem),
+    linear-gradient(rgba(114, 230, 255, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(114, 230, 255, 0.07) 1px, transparent 1px);
+  background-size: auto, auto, 44px 44px, 44px 44px;
+}
+
+.mentorship-voices-window {
+  mask-image: linear-gradient(90deg, transparent, black 3%, black 97%, transparent);
+}
+
+.mentorship-voices-track {
+  animation: marquee-left 85s linear infinite;
+}
+
+.mentorship-voices-track:hover {
+  animation-play-state: paused;
+}
+
+.mentorship-voices-track[data-paused="true"] {
+  animation: none;
+}
+
+.mentorship-voices-window[data-paused="true"] {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+
+.mentorship-voices-track[data-paused="true"] > [aria-hidden="true"] {
+  display: none;
+}
+
+@media (max-width: 639px) {
+  .testimonial-window {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+  }
+
+  .testimonial-track {
+    animation: none;
+  }
+
+  .testimonial-track > [aria-hidden="true"],
+  .testimonial-motion-control {
+    display: none;
+  }
 }
 
 @keyframes ubuntu-focus-step {
@@ -484,8 +553,29 @@ main > section + section::before {
   .marquee-track,
   .ubuntu-slider-track,
   .testimonial-track,
+  .mentorship-voices-track,
   .sales-banner::before,
   .sales-banner-icon {
     animation: none;
+  }
+
+  .testimonial-window {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+  }
+
+  .mentorship-voices-window {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+  }
+
+  .mentorship-voices-track > [aria-hidden="true"],
+  .mentorship-voices-motion-control {
+    display: none;
+  }
+
+  .testimonial-track > [aria-hidden="true"],
+  .testimonial-motion-control {
+    display: none;
   }
 }

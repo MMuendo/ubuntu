@@ -3,19 +3,17 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
-import { ArrowRight, CalendarCheck, DatabaseZap, ExternalLink, LayoutDashboard, LogIn, LogOut, Megaphone, Menu, ShieldCheck, X } from "lucide-react";
+import { ArrowRight, ExternalLink, LayoutDashboard, LogIn, LogOut, Menu, X } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { CookieConsent } from "@/components/cookie-consent";
-import { salesBanner } from "@/lib/academy/site-content";
+import { OrganizationMenu } from "@/components/organization-menu";
 
 const navLinks = [
-  { label: "Advisory", href: "/advisory" },
-  { label: "Solutions", href: "/solutions" },
+  { label: "Mentorship", href: "/mentorships" },
+  { label: "For organizations", href: "/for-organizations" },
   { label: "Academy", href: "/academy" },
-  { label: "Projects", href: "/projects" },
-  { label: "Resources", href: "/resources" },
-  { label: "Assessment", href: "/assessment" }
+  { label: "Blogs", href: "/blogs" }
 ];
 
 function isActive(pathname, href) {
@@ -72,33 +70,8 @@ export function SiteShell({ children }) {
 
   return (
     <div className="ubuntu-ambient-shell min-h-screen text-neutral-950">
+      <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-white focus:px-4 focus:py-3 focus:text-[#141014]">Skip to main content</a>
       <div className="sticky top-0 z-50">
-        <div className="sales-banner border-b border-[#00b4d8]/35 bg-[#1e1616] text-white shadow-[0_10px_32px_rgba(0,0,0,0.22)]">
-          <div className="mx-auto flex max-w-7xl flex-col gap-2 px-3 py-2 text-sm sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
-            <div className="flex w-full min-w-0 items-center gap-2 lg:w-auto">
-              <span className="sales-banner-icon flex size-7 shrink-0 items-center justify-center rounded-full bg-[#00b4d8] text-[#1e1616] shadow-[0_0_24px_rgba(0,180,216,0.55)]">
-                <Megaphone size={15} />
-              </span>
-              <span className="min-w-0 flex-1 truncate text-xs font-semibold sm:hidden">{salesBanner.mobileTitle || salesBanner.title}</span>
-              <span className="hidden min-w-0 flex-1 truncate font-semibold sm:inline lg:flex-none">{salesBanner.title}</span>
-              <span className="shrink-0 rounded-full bg-white/10 px-2 py-0.5 text-[11px] font-semibold text-slate-200 sm:text-xs">
-                Was {salesBanner.oldPrice}
-              </span>
-            </div>
-            <div className="flex w-full min-w-0 items-center gap-2 lg:w-auto lg:justify-end">
-              <span className="shrink-0 rounded-full bg-[#00b4d8] px-2.5 py-1 text-[11px] font-bold text-[#1e1616] shadow-[0_0_22px_rgba(0,180,216,0.45)] sm:text-xs">
-                Now {salesBanner.price}
-              </span>
-              <Link href={salesBanner.href} className="inline-flex min-w-0 flex-1 items-center justify-center gap-1.5 truncate rounded-full border border-[#00b4d8]/35 bg-[#00b4d8]/10 px-2.5 py-1 text-[11px] font-semibold text-[#72e6ff] transition hover:border-[#00b4d8] hover:bg-[#00b4d8] hover:text-[#1e1616] sm:w-fit sm:flex-none sm:px-3 sm:text-sm">
-                <span className="truncate">{salesBanner.classStart}</span>
-                <span className="hidden text-current opacity-55 min-[380px]:inline">/</span>
-                <span className="shrink-0">{salesBanner.slots}</span>
-                <ArrowRight size={14} className="shrink-0" />
-              </Link>
-            </div>
-          </div>
-        </div>
-
         <header className="border-b border-[#00b4d8]/18 bg-[#fbfaf7]/88 shadow-[0_10px_30px_rgba(20,16,20,0.05)] backdrop-blur-xl">
           <div className="mx-auto flex h-16 max-w-7xl items-center gap-4 px-4 sm:px-6 lg:px-8">
             <Link href="/" className="flex items-center gap-3">
@@ -109,7 +82,7 @@ export function SiteShell({ children }) {
             </Link>
 
             <nav className="hidden flex-1 items-center justify-center gap-1 md:flex">
-              {navLinks.map((link) => (
+              {navLinks.map((link) => link.href === "/for-organizations" ? <OrganizationMenu key={link.href} /> : (
                 <Link
                   key={link.href}
                   href={link.href}
@@ -158,8 +131,8 @@ export function SiteShell({ children }) {
                     </Link>
                   </Button>
                   <Button asChild size="sm" variant="accent">
-                    <Link href="/signup">
-                      Sign up
+                    <Link href="/for-organizations#contact">
+                      Talk to us
                       <ArrowRight size={15} />
                     </Link>
                   </Button>
@@ -168,9 +141,9 @@ export function SiteShell({ children }) {
             </div>
           </div>
           {mobileMenuOpen ? (
-            <div id="mobile-navigation" className="border-t border-[#00b4d8]/16 bg-[#fbfaf7]/92 backdrop-blur-xl md:hidden">
+            <div id="mobile-navigation" className="max-h-[calc(100dvh-4rem)] overflow-y-auto overscroll-contain border-t border-[#00b4d8]/16 bg-[#fbfaf7]/92 backdrop-blur-xl md:hidden">
               <div className="ml-auto grid w-[60vw] min-w-[204px] max-w-[250px] gap-2 bg-transparent p-3">
-                {navLinks.map((link) => (
+                {navLinks.map((link) => link.href === "/for-organizations" ? <OrganizationMenu key={link.href} mobile /> : (
                   <Link
                     key={link.href}
                     href={link.href}
@@ -208,7 +181,7 @@ export function SiteShell({ children }) {
         </header>
       </div>
 
-      <main>{children}</main>
+      <main id="main-content" tabIndex={-1}>{children}</main>
 
       <footer className="border-t border-[#00b4d8]/16 bg-[#fbfaf7]/94">
         <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-8 sm:px-6 md:flex-row md:items-center md:justify-between lg:px-8">
@@ -225,18 +198,9 @@ export function SiteShell({ children }) {
               <ExternalLink size={13} className="mr-1" />
               Instagram
             </Link>
-            <span className="inline-flex h-6 items-center rounded-md border border-neutral-200 bg-neutral-50 px-2 text-xs font-medium text-neutral-700">
-              <ShieldCheck size={13} className="mr-1" />
-              Mentor first
-            </span>
-            <span className="inline-flex h-6 items-center rounded-md border border-neutral-200 bg-neutral-50 px-2 text-xs font-medium text-neutral-700">
-              <CalendarCheck size={13} className="mr-1" />
-              Project proof
-            </span>
-            <span className="inline-flex h-6 items-center rounded-md border border-neutral-200 bg-neutral-50 px-2 text-xs font-medium text-neutral-700">
-              <DatabaseZap size={13} className="mr-1" />
-              AI datasets
-            </span>
+            <Link href="/mentorships" className="inline-flex h-6 items-center rounded-md border border-neutral-200 bg-neutral-50 px-2 text-xs font-medium text-neutral-700 hover:border-[#00b4d8]">Mentorship</Link>
+            <Link href="/for-organizations" className="inline-flex h-6 items-center rounded-md border border-neutral-200 bg-neutral-50 px-2 text-xs font-medium text-neutral-700 hover:border-[#00b4d8]">For organizations</Link>
+            <Link href="/academy" className="inline-flex h-6 items-center rounded-md border border-neutral-200 bg-neutral-50 px-2 text-xs font-medium text-neutral-700 hover:border-[#00b4d8]">Academy</Link>
           </div>
         </div>
       </footer>

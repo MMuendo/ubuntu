@@ -6,6 +6,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { blogPosts } from "@/lib/academy/site-content";
+import { pageMetadata } from "@/lib/seo";
+
+export const metadata = pageMetadata("/blogs", "Practical Data & AI Articles", "Practical essays on systems, Agentic AI, Power BI, mentorship, and why Excel still matters here.");
 
 export default function BlogsPage() {
   return (

@@ -1,11 +1,13 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useId, useMemo, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { ArrowRight, Building2, CheckCircle2, Mail, X } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { consultationGroups } from "@/lib/academy/site-content";
+import { whatsappHref } from "@/lib/whatsapp";
 
 function initialForm(defaultType) {
   return {
@@ -19,73 +21,92 @@ function initialForm(defaultType) {
 }
 
 export function LeadCaptureButton({
-  label = "Book Consultation",
+  label = "Request a consultation",
   title = "Share your details",
   defaultType = "AI & Intelligent Automation",
-  source = "consultation",
+  notesLabel = "Notes",
+  notesPlaceholder = "",
+  notesRequired = false,
   variant = "accent",
   size = "default",
   className = ""
 }) {
   const [open, setOpen] = useState(false);
   const [form, setForm] = useState(() => initialForm(defaultType));
-  const [status, setStatus] = useState("");
-  const [submitting, setSubmitting] = useState(false);
+  const dialogRef = useRef(null);
+  const returnFocusRef = useRef(null);
+  const titleId = useId();
+
+  useEffect(() => {
+    if (!open) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    dialogRef.current?.querySelector("input")?.focus();
+
+    function handleKeyDown(event) {
+      if (event.key === "Escape") {
+        setOpen(false);
+        return;
+      }
+      if (event.key !== "Tab") return;
+      const focusable = dialogRef.current?.querySelectorAll(
+        'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled])'
+      );
+      if (!focusable?.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    }
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = previousOverflow;
+      returnFocusRef.current?.focus();
+    };
+  }, [open]);
 
   const consultationOptions = useMemo(() => {
     const options = consultationGroups.flatMap((group) => group.options);
     return options.includes(defaultType) ? options : [defaultType, ...options];
   }, [defaultType]);
 
+  const message = [
+    `Hello Ubuntu Analytiq, I would like to ask about ${form.consultationType}.`,
+    form.fullName.trim() && `Name: ${form.fullName.trim()}`,
+    form.email.trim() && `Email: ${form.email.trim()}`,
+    form.phone.trim() && `Phone: ${form.phone.trim()}`,
+    form.organization.trim() && `Organization: ${form.organization.trim()}`,
+    form.notes.trim() && `${notesLabel}: ${form.notes.trim()}`
+  ].filter(Boolean).join("\n");
+  const chatHref = whatsappHref(message);
+  const canContinue = !notesRequired || Boolean(form.notes.trim());
+
   function updateField(field, value) {
     setForm((current) => ({ ...current, [field]: value }));
   }
 
-  async function submitForm(event) {
-    event.preventDefault();
-    setSubmitting(true);
-    setStatus("");
-
-    try {
-      const response = await fetch("/api/consultations", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          ...form,
-          consultationType: form.consultationType || defaultType,
-          courseName: defaultType,
-          metadata: { source, organization: form.organization }
-        })
-      });
-      const payload = await response.json().catch(() => ({}));
-      if (!response.ok || !payload.ok) {
-        setStatus(payload.message || "We could not save this yet. Please try again.");
-        return;
-      }
-
-      setStatus("Thank you. Ubuntu Analytiq will follow up with you.");
-      setForm(initialForm(defaultType));
-    } catch {
-      setStatus("We could not reach the form service. Please try again shortly.");
-    } finally {
-      setSubmitting(false);
-    }
-  }
-
   return (
     <>
-      <Button type="button" variant={variant} size={size} className={className} onClick={() => setOpen(true)}>
+      <Button type="button" variant={variant} size={size} className={className} onClick={(event) => { returnFocusRef.current = event.currentTarget; setOpen(true); }}>
         {label}
         <ArrowRight size={16} />
       </Button>
 
-      {open ? (
-        <div className="fixed inset-0 z-[80] flex items-center justify-center bg-[#1e1616]/70 px-4 py-6 backdrop-blur-sm">
-          <div className="w-full max-w-xl rounded-lg border border-white/10 bg-white shadow-2xl">
+      {open ? createPortal(
+        <div className="fixed inset-0 z-[80] flex items-center justify-center bg-[#1e1616]/70 px-4 py-4 backdrop-blur-sm sm:py-6">
+          <div ref={dialogRef} role="dialog" aria-modal="true" aria-labelledby={titleId} className="max-h-[calc(100dvh-2rem)] w-full max-w-xl overflow-y-auto rounded-lg border border-white/10 bg-white shadow-2xl sm:max-h-[calc(100dvh-3rem)]">
             <div className="flex items-start justify-between gap-4 border-b border-neutral-100 p-5">
               <div>
                 <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#007c97]">Follow-up request</p>
-                <h2 className="mt-2 text-2xl font-semibold tracking-tight text-[#1e1616]">{title}</h2>
+                <h2 id={titleId} className="mt-2 text-2xl font-semibold tracking-tight text-[#1e1616]">{title}</h2>
               </div>
               <button
                 type="button"
@@ -97,54 +118,57 @@ export function LeadCaptureButton({
               </button>
             </div>
 
-            <form onSubmit={submitForm} className="grid gap-4 p-5">
-              <div className="grid gap-4 sm:grid-cols-2">
-                <label className="grid gap-2 text-sm font-semibold text-[#1e1616]">
-                  Full name
+            <div className="grid w-full min-w-0 grid-cols-1 gap-4 p-5">
+              <div className="grid w-full min-w-0 grid-cols-1 gap-4 sm:grid-cols-2">
+                <label className="grid min-w-0 gap-2 text-sm font-semibold text-[#1e1616]">
+                  Full name (optional)
                   <input
-                    required
+                    autoComplete="name"
                     value={form.fullName}
                     onChange={(event) => updateField("fullName", event.target.value)}
-                    className="h-11 rounded-md border border-neutral-200 bg-neutral-50 px-3 text-sm font-normal outline-none focus:border-[#00b4d8] focus:bg-white"
+                    className="h-11 min-w-0 w-full rounded-md border border-neutral-200 bg-neutral-50 px-3 text-sm font-normal outline-none focus:border-[#00b4d8] focus:bg-white"
                   />
                 </label>
-                <label className="grid gap-2 text-sm font-semibold text-[#1e1616]">
-                  Email
+                <label className="grid min-w-0 gap-2 text-sm font-semibold text-[#1e1616]">
+                  Email (optional)
                   <input
-                    required
                     type="email"
+                    autoComplete="email"
                     value={form.email}
                     onChange={(event) => updateField("email", event.target.value)}
-                    className="h-11 rounded-md border border-neutral-200 bg-neutral-50 px-3 text-sm font-normal outline-none focus:border-[#00b4d8] focus:bg-white"
+                    className="h-11 min-w-0 w-full rounded-md border border-neutral-200 bg-neutral-50 px-3 text-sm font-normal outline-none focus:border-[#00b4d8] focus:bg-white"
                   />
                 </label>
               </div>
 
-              <div className="grid gap-4 sm:grid-cols-2">
-                <label className="grid gap-2 text-sm font-semibold text-[#1e1616]">
-                  Phone
+              <div className="grid w-full min-w-0 grid-cols-1 gap-4 sm:grid-cols-2">
+                <label className="grid min-w-0 gap-2 text-sm font-semibold text-[#1e1616]">
+                  Phone (optional)
                   <input
+                    type="tel"
+                    autoComplete="tel"
                     value={form.phone}
                     onChange={(event) => updateField("phone", event.target.value)}
-                    className="h-11 rounded-md border border-neutral-200 bg-neutral-50 px-3 text-sm font-normal outline-none focus:border-[#00b4d8] focus:bg-white"
+                    className="h-11 min-w-0 w-full rounded-md border border-neutral-200 bg-neutral-50 px-3 text-sm font-normal outline-none focus:border-[#00b4d8] focus:bg-white"
                   />
                 </label>
-                <label className="grid gap-2 text-sm font-semibold text-[#1e1616]">
-                  Organization
+                <label className="grid min-w-0 gap-2 text-sm font-semibold text-[#1e1616]">
+                  Organization (optional)
                   <input
+                    autoComplete="organization"
                     value={form.organization}
                     onChange={(event) => updateField("organization", event.target.value)}
-                    className="h-11 rounded-md border border-neutral-200 bg-neutral-50 px-3 text-sm font-normal outline-none focus:border-[#00b4d8] focus:bg-white"
+                    className="h-11 min-w-0 w-full rounded-md border border-neutral-200 bg-neutral-50 px-3 text-sm font-normal outline-none focus:border-[#00b4d8] focus:bg-white"
                   />
                 </label>
               </div>
 
-              <label className="grid gap-2 text-sm font-semibold text-[#1e1616]">
+              <label className="grid min-w-0 gap-2 text-sm font-semibold text-[#1e1616]">
                 Interest
                 <select
                   value={form.consultationType}
                   onChange={(event) => updateField("consultationType", event.target.value)}
-                  className="h-11 rounded-md border border-neutral-200 bg-neutral-50 px-3 text-sm font-normal outline-none focus:border-[#00b4d8] focus:bg-white"
+                  className="h-11 min-w-0 w-full rounded-md border border-neutral-200 bg-neutral-50 px-3 text-sm font-normal outline-none focus:border-[#00b4d8] focus:bg-white"
                 >
                   {consultationOptions.map((option) => (
                     <option key={option} value={option}>{option}</option>
@@ -152,29 +176,29 @@ export function LeadCaptureButton({
                 </select>
               </label>
 
-              <label className="grid gap-2 text-sm font-semibold text-[#1e1616]">
-                Notes
+              <label className="grid min-w-0 gap-2 text-sm font-semibold text-[#1e1616]">
+                {notesLabel}{notesRequired ? "" : " (optional)"}
                 <textarea
+                  placeholder={notesPlaceholder}
                   rows={4}
                   value={form.notes}
                   onChange={(event) => updateField("notes", event.target.value)}
-                  className="rounded-md border border-neutral-200 bg-neutral-50 px-3 py-3 text-sm font-normal outline-none focus:border-[#00b4d8] focus:bg-white"
+                  className="min-w-0 w-full rounded-md border border-neutral-200 bg-neutral-50 px-3 py-3 text-sm font-normal outline-none focus:border-[#00b4d8] focus:bg-white"
                 />
               </label>
 
-              {status ? <p className="rounded-md bg-[#e8f8fb] p-3 text-sm text-[#1e1616]">{status}</p> : null}
+              <p className="text-sm text-slate-600">WhatsApp opens with your message ready. Review it and tap Send there.</p>
 
               <div className="flex flex-col gap-2 sm:flex-row sm:justify-end">
                 <Button type="button" variant="outline" onClick={() => setOpen(false)}>
                   Close
                 </Button>
-                <Button type="submit" variant="accent" disabled={submitting}>
-                  {submitting ? "Submitting..." : "Submit details"}
-                </Button>
+                {canContinue ? <Button asChild variant="accent"><a href={chatHref} target="_blank" rel="noopener noreferrer">Continue in WhatsApp</a></Button> : <Button type="button" variant="accent" disabled>Describe the decision first</Button>}
               </div>
-            </form>
+            </div>
           </div>
-        </div>
+        </div>,
+        document.body
       ) : null}
     </>
   );
@@ -194,14 +218,14 @@ export function DataAIConsultations() {
               Practical advisory for teams building dashboards, automation, data strategy, migration support, analytics, and AI capability for their market.
             </p>
             <LeadCaptureButton
-              label="Book Consultation"
-              title="Book a Data & AI Consultation"
+              label="Ask on WhatsApp"
+              title="Request a Data & AI Consultation"
               defaultType="AI & Intelligent Automation"
               className="mt-7 w-full sm:w-auto"
             />
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-2">
+          <div className="grid min-w-0 gap-4 sm:grid-cols-2">
             {consultationGroups.map((group) => (
               <Card key={group.title} className="ubuntu-intel-card h-full shadow-sm">
                 <CardContent className="flex h-full flex-col p-5">

@@ -4,7 +4,10 @@ import { SignupClient } from "@/app/auth/auth-client";
 import { SiteShell } from "@/components/site-shell";
 import { Badge } from "@/components/ui/badge";
 import { dashboardForRole, getCurrentUser } from "@/lib/auth/session";
-import { hasDatabaseEnv } from "@/lib/db/config";
+import { isDatabaseReady } from "@/lib/db/client";
+
+export const dynamic = "force-dynamic";
+export const metadata = { robots: { index: false, follow: false } };
 
 const messages = {
   "password-mismatch": "The two passwords do not match.",
@@ -30,6 +33,8 @@ function safeSignedInNext(value, role) {
       next.startsWith("/projects") ||
       next.startsWith("/pathways") ||
       next.startsWith("/academy") ||
+      next.startsWith("/mentorships/apply") ||
+      next.startsWith("/mentorships/workspace") ||
       next.startsWith("/datasets") ||
       next.startsWith("/synthetic-data")
     )
@@ -49,7 +54,7 @@ export default async function SignupPage({ searchParams }) {
   }
 
   const message = messages[params?.message];
-  const authReady = hasDatabaseEnv();
+  const authReady = await isDatabaseReady();
 
   return (
     <SiteShell>
@@ -61,7 +66,7 @@ export default async function SignupPage({ searchParams }) {
               Start simple, finish your profile after.
             </h1>
             <p className="mt-5 max-w-2xl text-lg leading-8 text-neutral-600">
-              Learners only need the basics to get started. Mentors can join quickly, then complete an approval profile before credits or project proposals go live.
+              Learners only need the basics to get started. Mentors can join, share their background, and wait for approval before reviewing learner work.
             </p>
           </div>
 

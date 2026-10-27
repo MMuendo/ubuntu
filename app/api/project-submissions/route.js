@@ -33,6 +33,14 @@ export async function POST(request) {
   }
 
   try {
+    const { rows: accessRows } = await query(
+      `select id from mentorship_applications
+       where user_id = $1 and status = 'paid' and project_slug = $2 limit 1`,
+      [user.id, projectSlug]
+    );
+    if (!accessRows[0]) {
+      return NextResponse.json({ ok: false, message: "This project needs a paid mentorship application assigned to your account." }, { status: 403 });
+    }
     const { rows: projectRows } = await query("select id, title from project_briefs where slug = $1 limit 1", [projectSlug]);
     const project = projectRows[0];
     if (!project) {

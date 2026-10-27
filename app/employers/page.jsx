@@ -24,7 +24,7 @@ export default function EmployersPage() {
             <div className="mt-6 flex flex-col gap-2 sm:flex-row">
               <Button variant="accent">Review shortlist</Button>
               <Button asChild variant="outline">
-                <Link href="/projects/showcase">View proof gallery</Link>
+                <Link href="/proof">View proof gallery</Link>
               </Button>
             </div>
           </div>

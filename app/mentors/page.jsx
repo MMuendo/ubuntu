@@ -168,7 +168,7 @@ export default async function MentorsPage({ searchParams }) {
                   </div>
                 </div>
                 <Button asChild variant="accent" className="w-full">
-                  <Link href="/projects/propose">Propose a project</Link>
+                  <Link href="/mentors/propose">Propose a mentorship project</Link>
                 </Button>
               </CardContent>
             </Card>

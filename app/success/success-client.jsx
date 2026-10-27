@@ -114,8 +114,8 @@ export function SuccessClient() {
           <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
             {verified ? (
               <Button asChild variant="accent">
-                <Link href="/learners">
-                  Open learner workspace
+                <Link href={purchase?.productName?.startsWith("Mentorship:") ? "/mentorships/workspace" : "/learners"}>
+                  {purchase?.productName?.startsWith("Mentorship:") ? "Open mentorship work" : "Open learner workspace"}
                   <ReceiptText size={16} />
                 </Link>
               </Button>
@@ -125,7 +125,7 @@ export function SuccessClient() {
               </Button>
             )}
             <Button asChild variant="outline">
-              <Link href="/projects">Open projects</Link>
+              <Link href="/mentorships">Explore mentorship</Link>
             </Button>
           </div>
         </div>

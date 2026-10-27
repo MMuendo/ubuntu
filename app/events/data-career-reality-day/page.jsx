@@ -9,11 +9,12 @@ import { academyEvents } from "@/lib/academy/site-content";
 import { ShareLinkButton } from "./share-link-button";
 
 const event = academyEvents.find((item) => item.id === "data-career-reality-day");
-const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://www.ubuntuanalytiq.com").replace(/\/$/, "");
+const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://ubuntuanalytiq.co.ke").replace(/\/$/, "");
 const eventUrl = `${siteUrl}/events/data-career-reality-day`;
 
 export const metadata = {
   title: "Data Career Reality Day",
+  alternates: { canonical: eventUrl },
   description:
     "An honest, peer-led Ubuntu Analytiq conversation about certificates, bootcamps, slow progress, career switches, and what helps aspiring data professionals move forward.",
   openGraph: {
@@ -38,7 +39,7 @@ export default function DataCareerRealityDayPage() {
         <div className="mx-auto grid max-w-7xl gap-8 px-4 py-12 sm:px-6 lg:grid-cols-[0.88fr_1.12fr] lg:px-8 lg:py-16">
           <div className="flex flex-col justify-center">
             <Badge tone="teal" className="w-fit border-white/10 bg-white/10 text-[#00b4d8]">
-              Coming Soon
+              Date to be confirmed
             </Badge>
             <h1 className="mt-5 text-4xl font-semibold leading-[1.02] tracking-tight sm:text-5xl lg:text-6xl">
               Data Career Reality Day
@@ -75,7 +76,7 @@ export default function DataCareerRealityDayPage() {
                 <CalendarDays className="text-[#00b4d8]" size={22} />
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-[0.12em] text-slate-500">Date</p>
-                  <p className="font-semibold text-[#1e1616]">August 2026</p>
+                  <p className="font-semibold text-[#1e1616]">To be confirmed</p>
                 </div>
               </CardContent>
             </Card>

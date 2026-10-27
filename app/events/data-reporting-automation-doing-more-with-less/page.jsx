@@ -9,13 +9,14 @@ import { academyEvents } from "@/lib/academy/site-content";
 import { ShareLinkButton } from "../data-career-reality-day/share-link-button";
 
 const event = academyEvents.find((item) => item.id === "data-reporting-automation-doing-more-with-less");
-const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://www.ubuntuanalytiq.com").replace(/\/$/, "");
+const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://ubuntuanalytiq.co.ke").replace(/\/$/, "");
 const eventUrl = `${siteUrl}/events/data-reporting-automation-doing-more-with-less`;
 
 export const metadata = {
   title: "Data & Reporting Automation: Doing More with Less",
+  alternates: { canonical: eventUrl },
   description:
-    "A live Ubuntu Analytiq webinar on the cost of manual reporting, automating reports with limited resources, and Power BI automated reporting pipelines.",
+    "Ubuntu Analytiq event information on manual reporting, automation, and Power BI pipelines. The previously listed date has passed; event status is being confirmed.",
   openGraph: {
     title: "Data & Reporting Automation: Doing More with Less | Ubuntu Analytiq",
     description:
@@ -36,7 +37,7 @@ export default function DataReportingAutomationPage() {
         <div className="mx-auto grid max-w-7xl gap-8 px-4 py-12 sm:px-6 lg:grid-cols-[0.88fr_1.12fr] lg:px-8 lg:py-16">
           <div className="flex flex-col justify-center">
             <Badge tone="teal" className="w-fit border-white/10 bg-white/10 text-[#00b4d8]">
-              Live Webinar
+              Past date · status to confirm
             </Badge>
             <h1 className="mt-5 text-4xl font-semibold leading-[1.02] tracking-tight sm:text-5xl lg:text-6xl">
               Data & Reporting Automation: Doing More with Less
@@ -46,8 +47,8 @@ export default function DataReportingAutomationPage() {
             </p>
             <div className="mt-7 flex flex-col gap-3 sm:flex-row">
               <Button asChild variant="accent" size="lg" className="w-full sm:w-auto">
-                <Link href={event.formUrl} target="_blank" rel="noreferrer">
-                  Register now
+                <Link href="/academy#events">
+                  Browse current events
                   <ArrowRight size={18} />
                 </Link>
               </Button>
@@ -89,7 +90,7 @@ export default function DataReportingAutomationPage() {
                 <CalendarDays className="text-[#00b4d8]" size={22} />
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-[0.12em] text-slate-500">Date</p>
-                  <p className="font-semibold text-[#1e1616]">Wednesday, 24 June 2026</p>
+                  <p className="font-semibold text-[#1e1616]">Previously listed: Wednesday, 24 June 2026</p>
                 </div>
               </CardContent>
             </Card>

@@ -48,7 +48,7 @@ export async function POST(request) {
   let pending;
   try {
     pending = await transaction(async (client) => {
-      const product = await resolveCheckoutProduct(client, { productType, productSlug });
+      const product = await resolveCheckoutProduct(client, { productType, productSlug, userId: user.id });
       const lead = await upsertLead(client, {
         email: payerEmail,
         fullName: payerName,

@@ -2,7 +2,14 @@ import { NextResponse } from "next/server";
 
 import { upsertLead } from "@/lib/academy/commerce";
 import { hasDatabaseEnv } from "@/lib/db/config";
-import { transaction } from "@/lib/db/client";
+import { isDatabaseReady, transaction } from "@/lib/db/client";
+
+export async function GET() {
+  return NextResponse.json(
+    { ready: await isDatabaseReady() },
+    { headers: { "Cache-Control": "no-store" } }
+  );
+}
 
 function clean(value) {
   return String(value || "").trim();
@@ -22,6 +29,9 @@ export async function POST(request) {
 
   const email = clean(body.email).toLowerCase();
   const fullName = clean(body.fullName || body.full_name || body.name);
+  if (body.metadata?.source === "decision-lab-pilot" && !clean(body.notes)) {
+    return NextResponse.json({ ok: false, message: "Describe one decision your team struggles to make." }, { status: 400 });
+  }
   if (!fullName || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     return NextResponse.json({ ok: false, message: "Add a name and valid email address." }, { status: 400 });
   }
@@ -72,6 +82,10 @@ export async function POST(request) {
 
     return NextResponse.json({ ok: true, consultation });
   } catch (error) {
-    return NextResponse.json({ ok: false, message: error.message || "Consultation could not be saved." }, { status: 400 });
+    console.error("Consultation save failed", error);
+    return NextResponse.json(
+      { ok: false, message: "We could not save your request. Please contact us on WhatsApp." },
+      { status: 503 }
+    );
   }
 }

@@ -4,7 +4,10 @@ import { LoginClient } from "@/app/auth/auth-client";
 import { SiteShell } from "@/components/site-shell";
 import { Badge } from "@/components/ui/badge";
 import { dashboardForRole, getCurrentUser } from "@/lib/auth/session";
-import { hasDatabaseEnv } from "@/lib/db/config";
+import { isDatabaseReady } from "@/lib/db/client";
+
+export const dynamic = "force-dynamic";
+export const metadata = { robots: { index: false, follow: false } };
 
 const messages = {
   "email-required": "We need your email to get started.",
@@ -32,6 +35,8 @@ function safeSignedInNext(value, role) {
       next.startsWith("/projects") ||
       next.startsWith("/pathways") ||
       next.startsWith("/academy") ||
+      next.startsWith("/mentorships/apply") ||
+      next.startsWith("/mentorships/workspace") ||
       next.startsWith("/datasets") ||
       next.startsWith("/synthetic-data")
     )
@@ -51,7 +56,7 @@ export default async function LoginPage({ searchParams }) {
   }
 
   const message = messages[params?.message];
-  const authReady = hasDatabaseEnv();
+  const authReady = await isDatabaseReady();
 
   return (
     <SiteShell>

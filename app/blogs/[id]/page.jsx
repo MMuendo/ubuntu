@@ -6,9 +6,17 @@ import { SiteShell } from "@/components/site-shell";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { blogPosts, getBlogPost } from "@/lib/academy/site-content";
+import { pageMetadata } from "@/lib/seo";
 
 export function generateStaticParams() {
   return blogPosts.map((post) => ({ id: post.id }));
+}
+
+export async function generateMetadata({ params }) {
+  const { id } = await params;
+  const post = getBlogPost(id);
+  if (!post) return {};
+  return pageMetadata(`/blogs/${id}`, post.title, post.excerpt, post.image);
 }
 
 export default async function BlogPostPage({ params }) {
@@ -56,6 +64,22 @@ export default async function BlogPostPage({ params }) {
             </div>
 
             <div className="space-y-9 p-6 md:p-10">
+              {post.imageCaption ? <p className="text-sm text-slate-400">{post.imageCaption}</p> : null}
+              {post.blocks ? post.blocks.map((block, index) => {
+                if (block.type === "heading") return <h2 key={index} className="text-2xl font-semibold tracking-tight text-white">{block.text}</h2>;
+                if (block.type === "quote") return <blockquote key={index} className="border-l-4 border-[#00b4d8] pl-5 text-lg leading-8 text-slate-200">{block.text}</blockquote>;
+                if (block.type === "image") return (
+                  <figure key={index}>
+                    <img src={block.src} alt={block.alt || block.caption || ""} loading="lazy" decoding="async" className="w-full rounded-lg" />
+                    {block.caption ? <figcaption className="mt-2 text-sm text-slate-400">{block.caption}</figcaption> : null}
+                  </figure>
+                );
+                if (block.type === "list") {
+                  const List = block.ordered ? "ol" : "ul";
+                  return <List key={index} className={`space-y-3 pl-6 text-base leading-8 text-slate-300 ${block.ordered ? "list-decimal" : "list-disc"}`}>{block.items.map((item, itemIndex) => <li key={itemIndex}>{item}</li>)}</List>;
+                }
+                return <p key={index} className="text-base leading-8 text-slate-300">{block.text}</p>;
+              }) : <>
               <p className="text-lg leading-8 text-slate-300">{post.excerpt}</p>
               {post.sections.map((section, index) => (
                 <section key={section.heading || index}>
@@ -70,9 +94,10 @@ export default async function BlogPostPage({ params }) {
               <div className="rounded-lg border border-[#00b4d8]/30 bg-[#00b4d8]/10 p-5">
                 <p className="text-sm font-semibold uppercase tracking-[0.14em] text-[#00b4d8]">Next step</p>
                 <p className="mt-2 text-sm leading-6 text-slate-200">
-                  Turn the idea into practice through the Academy, Mentorship, Projects, or Datasets workflow.
+                  Turn the idea into practice through the Academy, project-based Mentorship, or Datasets workflow.
                 </p>
               </div>
+              </>}
             </div>
           </div>
         </div>

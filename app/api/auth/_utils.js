@@ -46,6 +46,8 @@ export function safeNextForRole(value, role) {
       next.startsWith("/projects") ||
       next.startsWith("/pathways") ||
       next.startsWith("/academy") ||
+      next.startsWith("/mentorships/apply") ||
+      next.startsWith("/mentorships/workspace") ||
       next.startsWith("/datasets") ||
       next.startsWith("/synthetic-data")
     )

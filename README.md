@@ -1,4 +1,14 @@
-# Ubuntu Academy
+# Ubuntu Analytiq
+
+## Current mentorship flow
+
+Mentorship is separate from Academy. There is no standalone Projects entry: existing `/projects` links redirect to Mentorship, and project briefs are offered inside the mentee application based on the chosen tool or topic.
+
+Mentees create an account, choose a focus and support level, and submit an application. An admin reviews it at `/admin/mentorship`, assigns the starting project, and can set a session count and KES price. Pricing stays open until review. Payment opens only for a priced, approved application. A verified payment unlocks `/mentorships/workspace`, where the mentee can download their assigned dataset, submit work, and then access the worked walkthrough. Group requests are handled at `/mentorships/groups`.
+
+To use applications and submissions locally, set `DATABASE_URL` in `.env.local`, then run `npm run db:apply` and `npm run db:check`. Paystack credentials are needed to test payment. Without PostgreSQL, the public pages render but applications and paid workspaces remain unavailable. Dataset and walkthrough files live under `private/downloads` and are served through the access-checked Mentorship route.
+
+The sections below describe earlier product plans and may contain old route names or pricing.
 
 Ubuntu Academy is a mentor-first learning and talent platform for African learners, mentors, employers, and internal operators.
 

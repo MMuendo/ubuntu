@@ -39,6 +39,7 @@ export default async function AdminPage() {
             <p className="mt-3 max-w-2xl text-base leading-7 text-neutral-600">
               Role access, content operations, billing events, mentor verification, and AI usage controls.
             </p>
+            <Button asChild variant="accent" className="mt-5"><Link href="/admin/mentorship">Review mentorship applications</Link></Button>
           </div>
           <div className="grid gap-3 md:grid-cols-4">
             <QuickStat icon={WalletCards} label="plans" value={subscriptionPlans.length} />

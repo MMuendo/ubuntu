@@ -1,20 +1,19 @@
 import Link from "next/link";
-import { ArrowRight, BarChart3, Brain, Calendar, CheckCircle2, ClipboardList, Clock, FileSpreadsheet, FolderKanban, Sparkles, Video, Zap } from "lucide-react";
+import { ArrowRight, Brain, Calendar, ClipboardList, Clock, Sparkles, Video } from "lucide-react";
 
 import { SiteShell } from "@/components/site-shell";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { CourseBadgeRow, QuickStat, SectionTitle } from "@/components/site-kit";
-import { getAcademyPrograms, getProjectBriefs } from "@/lib/db/loaders";
+import { getAcademyPrograms } from "@/lib/db/loaders";
 import { checkoutHref } from "@/lib/academy/checkout-links";
 import { academyEvents } from "@/lib/academy/site-content";
+import { pageMetadata } from "@/lib/seo";
 import { AIPromptLab } from "@/components/ai-prompt-lab";
 
 export const metadata = {
-  title: "Data & AI Training in Excel, Power BI, AI Agents, SQL, and Python",
-  description:
-    "Practical Data & AI training for African learners and teams: Excel, Power BI, AI Fluency, Agentic AI, SQL, Python, projects, mentorship, and assessment.",
+  ...pageMetadata("/academy", "Data & AI Training in Excel, Power BI, AI Agents, SQL, and Python", "Practical Data & AI training for African learners and teams: Excel, Power BI, AI Fluency, Agentic AI, SQL, Python, and assessment."),
   keywords: [
     "Data and AI training",
     "Excel training Kenya",
@@ -22,57 +21,28 @@ export const metadata = {
     "AI agents training",
     "Agentic AI MasterClass",
     "SQL for analysts",
-    "Python for data analytics",
-    "data analytics mentorship"
+    "Python for data analytics"
   ]
-};
-
-const trackIcons = {
-  excel: FileSpreadsheet,
-  powerbi: BarChart3,
-  "ai-mastery": Brain,
-  "ai-agents": Zap,
-  "practice-labs": FolderKanban
-};
-
-const trackNames = {
-  excel: "Excel",
-  powerbi: "Power BI",
-  "ai-mastery": "AI Fluency",
-  "ai-agents": "Agentic AI",
-  "practice-labs": "Practice Labs"
 };
 
 const academyFlow = [
   { label: "Assess", detail: "Find the right starting point" },
   { label: "Learn", detail: "Excel, BI, AI, SQL, Python" },
-  { label: "Build", detail: "Local projects and workflows" },
-  { label: "Prove", detail: "Mentor review and portfolio proof" }
+  { label: "Practice", detail: "Try course exercises" },
+  { label: "Apply", detail: "Use the skill in your work" }
 ];
 
 function formatStartDate(value) {
-  if (!value) return "To be announced";
-  const date = value instanceof Date ? value : new Date(`${value}T00:00:00`);
-  if (Number.isNaN(date.getTime())) return value;
-  return date.toLocaleDateString("en-KE", { day: "numeric", month: "short", year: "numeric" });
+  // Course dates remain open until Ubuntu confirms the next cohort.
+  return "To be confirmed";
 }
 
 function hasDiscount(program) {
   return Number(program.oldPriceKes || 0) > Number(program.priceKes || 0);
 }
 
-function groupByTrack(projects) {
-  return projects.reduce((groups, project) => {
-    const key = project.track || "practice-labs";
-    groups[key] = groups[key] || [];
-    groups[key].push(project);
-    return groups;
-  }, {});
-}
-
 export default async function AcademyPage() {
-  const [programs, projects] = await Promise.all([getAcademyPrograms(), getProjectBriefs()]);
-  const groupedProjects = groupByTrack(projects);
+  const programs = await getAcademyPrograms();
   const featuredPrograms = programs.slice(0, 4);
 
   return (
@@ -82,10 +52,10 @@ export default async function AcademyPage() {
           <div className="flex flex-col justify-center">
             <Badge tone="teal" className="w-fit border-[#00b4d8]/35 bg-[#00b4d8]/10 text-[#72e6ff]">Academy</Badge>
             <h1 className="mt-6 text-3xl font-semibold leading-[1.05] tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
-              Learn by building proof.
+              Learn skills you can put to work.
             </h1>
             <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-300">
-              Practical courses, local projects, and guided learning built around need, not hype.
+              Practical courses in Excel, Power BI, AI, SQL, and Python. If you want a separate project with mentor feedback, explore Mentorship.
             </p>
             <div className="mt-7 grid gap-2 sm:grid-cols-2">
               {academyFlow.map((step, index) => (
@@ -110,14 +80,13 @@ export default async function AcademyPage() {
                 </Link>
               </Button>
               <Button asChild variant="outline" size="lg" className="border-white/15 bg-white/8 text-white hover:bg-white/14">
-                <Link href="#projects">Browse projects</Link>
+                <Link href="#courses">Browse courses</Link>
               </Button>
             </div>
-            <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
+            <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3">
               <QuickStat icon={ClipboardList} label="courses" value={programs.length} />
-              <QuickStat icon={FolderKanban} label="projects" value={projects.length} />
+              <QuickStat icon={Calendar} label="events" value={academyEvents.length} />
               <QuickStat icon={Sparkles} label="assessment" value="Live" />
-              <QuickStat icon={CheckCircle2} label="proof" value="Built" />
             </div>
           </div>
 
@@ -258,15 +227,9 @@ export default async function AcademyPage() {
                   </div>
                   <CourseBadgeRow items={event.topics.slice(0, 4)} />
                   <div className="mt-auto">
-                    {event.status === "Coming Soon" ? (
-                      <Button asChild variant="accent" className="w-full">
-                        <Link href={event.href}>{event.cta}</Link>
-                      </Button>
-                    ) : (
-                      <Button asChild variant="outline" className="w-full">
-                        <Link href={`/academy#events`}>{event.cta}</Link>
-                      </Button>
-                    )}
+                    <Button asChild variant="outline" className="w-full">
+                      <Link href={event.href || "/academy#events"}>{event.cta}</Link>
+                    </Button>
                   </div>
                 </CardContent>
               </Card>
@@ -275,44 +238,25 @@ export default async function AcademyPage() {
         </div>
       </section>
 
-      <section id="projects" className="ubuntu-heritage-bg py-16">
+      <section className="ubuntu-heritage-bg border-t border-[#00b4d8]/15 py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionTitle
-            eyebrow="Projects"
-            title="Tracked projects from Excel to agents."
-            copy="Briefs use familiar markets, useful datasets, clear deliverables, and mentor review."
+            eyebrow="Keep learning"
+            title="More ways to build your skills."
+            copy="Read practical writing, check your starting point, or move from a course into a mentored project."
           />
-          <div className="mt-10 grid gap-5">
-            {Object.entries(groupedProjects).map(([track, trackProjects]) => {
-              const Icon = trackIcons[track] || FolderKanban;
-              return (
-                <div key={track} className="ubuntu-light-panel rounded-xl p-5">
-                  <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-                    <div className="flex items-center gap-3">
-                      <span className="flex size-10 items-center justify-center rounded-md bg-[#1e1616] text-[#00b4d8]">
-                        <Icon size={18} />
-                      </span>
-                      <div>
-                        <h2 className="text-xl font-semibold text-[#1e1616]">{trackNames[track] || track}</h2>
-                        <p className="text-sm text-slate-500">{trackProjects.length} project briefs</p>
-                      </div>
-                    </div>
-                    <Button asChild variant="accent" size="sm">
-                      <Link href="/projects">Open all projects</Link>
-                    </Button>
-                  </div>
-                  <div className="mt-5 grid gap-3 md:grid-cols-2 xl:grid-cols-4">
-                    {trackProjects.slice(0, 4).map((project) => (
-                      <Link key={project.slug} href={`/projects/${project.slug}`} className="ubuntu-route-card rounded-lg p-4 transition duration-200">
-                        <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#007c97]">{project.level}</p>
-                        <h3 className="mt-2 text-sm font-semibold text-[#1e1616]">{project.title}</h3>
-                        <p className="mt-2 text-xs leading-5 text-slate-600">{project.company} - {project.estimatedTime}</p>
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              );
-            })}
+          <div className="mt-8 grid gap-4 md:grid-cols-3">
+            {[
+              { title: "Blogs", copy: "Essays on data, AI, systems, and African market context.", href: "/blogs", action: "Read blogs" },
+              { title: "Assessment", copy: "Check where to start across data and AI skills.", href: "/assessment", action: "Take assessment" },
+              { title: "Mentorship", copy: "Choose a project and get feedback on the work you build.", href: "/mentorships", action: "Explore mentorship" }
+            ].map((item) => (
+              <Link key={item.title} href={item.href} className="ubuntu-intel-card flex min-h-48 flex-col rounded-xl border border-[#00b4d8]/20 p-6 transition hover:border-[#007c97] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#007c97]">
+                <h2 className="text-xl font-semibold text-[#1e1616]">{item.title}</h2>
+                <p className="mt-3 text-sm leading-6 text-slate-600">{item.copy}</p>
+                <span className="mt-auto inline-flex items-center gap-2 pt-5 text-sm font-semibold text-[#007c97]">{item.action}<ArrowRight size={16} aria-hidden="true" /></span>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
@@ -331,7 +275,7 @@ export default async function AcademyPage() {
               <Link href="/assessment">Start assessment</Link>
             </Button>
             <Button asChild variant="outline" size="lg">
-              <Link href="/projects">Browse projects</Link>
+              <Link href="/academy#courses">Browse courses</Link>
             </Button>
           </div>
         </div>

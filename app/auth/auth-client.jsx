@@ -7,6 +7,7 @@ import { BadgeCheck, ClipboardCheck, KeyRound, LockKeyhole, ShieldCheck, UserRou
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { whatsappHref } from "@/lib/whatsapp";
 
 const roles = [
   {
@@ -14,7 +15,7 @@ const roles = [
     authRole: "learner",
     title: "Learner",
     icon: UserRoundCheck,
-    loginCopy: "Open your pathway, mentor notes, datasets, project work, and learner workspace.",
+    loginCopy: "Open your pathway, mentor notes, project work, and learner workspace.",
     signupCopy: "Sign up, tell us what you want to learn, and match with a mentor."
   },
   {
@@ -22,7 +23,7 @@ const roles = [
     authRole: "mentor",
     title: "Mentor",
     icon: UsersRound,
-    loginCopy: "Review learners, manage sessions, and submit project ideas for approval.",
+    loginCopy: "Review learners, manage sessions, and guide project work.",
     signupCopy: "Sign up, share your background, and start reviewing learner work."
   }
 ];
@@ -115,6 +116,7 @@ export function LoginClient({ initialRole = "student", initialMessage = "", init
         </div>
       </CardHeader>
       <CardContent className="space-y-5">
+        {!authReady ? <p role="status" className="rounded-md border border-amber-300 bg-amber-50 p-3 text-sm text-neutral-800">Account access is unavailable right now. <a className="font-semibold underline" href={whatsappHref("Hello Ubuntu Analytiq, I need help with account access.")} target="_blank" rel="noopener noreferrer">Ask on WhatsApp</a>.</p> : null}
         {isCheckoutEnrollment ? null : <RolePicker page="login" selectedRole={selectedRole} next={safeNext} />}
 
         <form action="/api/auth/login" method="post" onSubmit={handleLogin} onInput={clearStatus} className="space-y-4">
@@ -127,6 +129,7 @@ export function LoginClient({ initialRole = "student", initialMessage = "", init
             <input
               id="email"
               name="email"
+              disabled={!authReady}
               type="email"
               required
               aria-invalid={hasError}
@@ -145,6 +148,7 @@ export function LoginClient({ initialRole = "student", initialMessage = "", init
             <input
               id="password"
               name="password"
+              disabled={!authReady}
               type="password"
               required
               aria-invalid={hasError}
@@ -157,7 +161,7 @@ export function LoginClient({ initialRole = "student", initialMessage = "", init
             />
           </div>
           <StatusMessage id={loginErrorId} tone={tone} message={status} />
-          <Button type="submit" variant="accent" className="w-full" disabled={submitting}>
+          <Button type="submit" variant="accent" className="w-full" disabled={submitting || !authReady}>
             <LockKeyhole size={16} />
             {submitting ? "Signing in..." : "Log in"}
           </Button>
@@ -176,7 +180,7 @@ export function LoginClient({ initialRole = "student", initialMessage = "", init
         </div>
 
         <p className="text-center text-sm text-neutral-600">
-          New to Ubuntu Academy?{" "}
+          New to Ubuntu Analytiq?{" "}
           <Link href={safeNext ? `/signup?role=${selectedRole.id}&next=${encodeURIComponent(safeNext)}` : "/signup"} className="font-semibold text-neutral-950 underline underline-offset-4">
             Create an account
           </Link>
@@ -217,6 +221,7 @@ export function SignupClient({ initialRole = "student", initialMessage = "", ini
         </div>
       </CardHeader>
       <CardContent className="space-y-5">
+        {!authReady ? <p role="status" className="rounded-md border border-amber-300 bg-amber-50 p-3 text-sm text-neutral-800">Account creation is unavailable right now. <a className="font-semibold underline" href={whatsappHref("Hello Ubuntu Analytiq, I would like to ask about Data & AI mentorship.")} target="_blank" rel="noopener noreferrer">Ask about Mentorship on WhatsApp</a>.</p> : null}
         {isCheckoutEnrollment ? null : <RolePicker page="signup" selectedRole={selectedRole} next={safeNext} />}
 
         <form action="/api/auth/signup" method="post" onInput={clearStatus} className="space-y-4">
@@ -229,6 +234,7 @@ export function SignupClient({ initialRole = "student", initialMessage = "", ini
             <input
               id="full_name"
               name="full_name"
+              disabled={!authReady}
               required
               aria-invalid={hasError}
               aria-describedby={hasError ? signupErrorId : undefined}
@@ -246,6 +252,7 @@ export function SignupClient({ initialRole = "student", initialMessage = "", ini
             <input
               id="email"
               name="email"
+              disabled={!authReady}
               type="email"
               required
               aria-invalid={hasError}
@@ -265,6 +272,7 @@ export function SignupClient({ initialRole = "student", initialMessage = "", ini
               <input
                 id="password"
                 name="password"
+                disabled={!authReady}
                 type="password"
                 required
                 minLength={8}
@@ -284,6 +292,7 @@ export function SignupClient({ initialRole = "student", initialMessage = "", ini
               <input
                 id="confirm_password"
                 name="confirm_password"
+                disabled={!authReady}
                 type="password"
                 required
                 minLength={8}
@@ -298,7 +307,7 @@ export function SignupClient({ initialRole = "student", initialMessage = "", ini
             </div>
           </div>
           <StatusMessage id={signupErrorId} tone={tone} message={status} />
-          <Button type="submit" variant="accent" className="w-full">
+          <Button type="submit" variant="accent" className="w-full" disabled={!authReady}>
             <BadgeCheck size={16} />
             {isCheckoutEnrollment ? "Create learner account" : `Create ${selectedRole.title.toLowerCase()} account`}
           </Button>

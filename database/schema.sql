@@ -255,6 +255,49 @@ create table if not exists public.mentor_match_requests (
   created_at timestamptz not null default now()
 );
 
+create table if not exists public.mentorship_applications (
+  id uuid primary key default gen_random_uuid(),
+  user_id uuid not null references public.profiles(id) on delete cascade,
+  tool text not null default '',
+  topic text not null default '',
+  project_slug text,
+  tier text not null check (tier in ('practice', 'guided', 'reviewed')),
+  format text not null default 'project' check (format in ('project', 'full_mentor')),
+  skill_level text not null,
+  goal text not null,
+  availability text not null,
+  status text not null default 'pending' check (status in ('pending', 'approved', 'declined', 'paid')),
+  review_notes text,
+  approved_price_kes integer check (approved_price_kes > 0),
+  approved_session_count integer check (approved_session_count > 0),
+  offer_plan_id uuid unique references public.plans(id) on delete set null,
+  reviewed_by uuid references public.profiles(id) on delete set null,
+  reviewed_at timestamptz,
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now(),
+  check (tool <> '' or topic <> '')
+);
+
+create unique index if not exists mentorship_one_pending_application_per_user_idx
+  on public.mentorship_applications (user_id) where status = 'pending';
+create index if not exists mentorship_applications_status_created_idx
+  on public.mentorship_applications (status, created_at desc);
+
+create table if not exists public.mentorship_group_requests (
+  id uuid primary key default gen_random_uuid(),
+  full_name text not null,
+  email text not null,
+  organization text,
+  group_size integer not null check (group_size > 1),
+  focus text not null,
+  goals text not null,
+  status text not null default 'new' check (status in ('new', 'contacted', 'closed')),
+  created_at timestamptz not null default now()
+);
+
+create index if not exists mentorship_group_requests_status_created_idx
+  on public.mentorship_group_requests (status, created_at desc);
+
 create table if not exists public.mentor_sessions (
   id uuid primary key default gen_random_uuid(),
   learner_id uuid not null references public.profiles(id) on delete cascade,

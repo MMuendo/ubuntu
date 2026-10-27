@@ -1,24 +1,26 @@
 import "./globals.css";
-import Script from "next/script";
+import { organizationId, siteUrl } from "@/lib/seo";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.ubuntuanalytiq.com";
 const siteName = "Ubuntu Analytiq";
 const siteDescription =
-  "African AI advisory, agentic AI solutions, reporting automation, and practical Data & AI training for organizations and learners.";
+  "Project mentorship for individuals and Data & AI engineering consultancy for organizations in Kenya and beyond.";
 
 export const metadata = {
   metadataBase: new URL(siteUrl),
   applicationName: siteName,
   title: {
-    default: "Ubuntu Analytiq | African AI Advisory, Solutions, and Data & AI Training",
+    default: "Ubuntu Analytiq | Mentorship and Data & AI Engineering",
     template: "%s | Ubuntu Analytiq"
   },
   description: siteDescription,
   keywords: [
     "Ubuntu Analytiq",
-    "data analytics training",
+    "data migration consultancy Kenya",
+    "data engineering Kenya",
+    "analytics engineering Kenya",
+    "AI engineering Kenya",
+    "project mentorship Kenya",
     "Data and AI training",
-    "AI training",
     "AI advisory Africa",
     "AI advisory Kenya",
     "AI solutions Kenya",
@@ -49,20 +51,20 @@ export const metadata = {
     locale: "en_KE",
     url: siteUrl,
     siteName,
-    title: "Ubuntu Analytiq | African AI Advisory, Solutions, and Data & AI Training",
+    title: "Ubuntu Analytiq | Mentorship and Data & AI Engineering",
     description: siteDescription,
     images: [
       {
         url: "/images/ubuntu-data-workshop.png",
-        width: 1200,
-        height: 630,
+        width: 1672,
+        height: 941,
         alt: "Ubuntu Analytiq Data and AI learning workspace"
       }
     ]
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ubuntu Analytiq | African AI Advisory, Solutions, and Data & AI Training",
+    title: "Ubuntu Analytiq | Mentorship and Data & AI Engineering",
     description: siteDescription,
     images: ["/images/ubuntu-data-workshop.png"]
   },
@@ -83,16 +85,22 @@ export default function RootLayout({ children }) {
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
+    "@id": organizationId,
     name: siteName,
     url: siteUrl,
     logo: `${siteUrl}/ua-icon.svg`,
-    sameAs: [],
+    sameAs: ["https://www.facebook.com/profile.php?id=61590134952098", "https://www.instagram.com/ubuntuanalytiq/"],
+    email: "ezra@ubuntuanalytiq.com",
+    telephone: "+254732277459",
+    address: { "@type": "PostalAddress", addressLocality: "Nairobi", addressCountry: "KE" },
     description: siteDescription
   };
 
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
+    "@id": `${siteUrl}/#website`,
+    publisher: { "@id": organizationId },
     name: siteName,
     url: siteUrl,
     description: siteDescription
@@ -101,29 +109,6 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body suppressHydrationWarning>
-        <Script id="meta-pixel" strategy="afterInteractive">
-          {`
-            !function(f,b,e,v,n,t,s)
-            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-            n.queue=[];t=b.createElement(e);t.async=!0;
-            t.src=v;s=b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t,s)}(window, document,'script',
-            'https://connect.facebook.net/en_US/fbevents.js');
-            fbq('init', '2033770513874581');
-            fbq('track', 'PageView');
-          `}
-        </Script>
-        <noscript>
-          <img
-            height="1"
-            width="1"
-            style={{ display: "none" }}
-            src="https://www.facebook.com/tr?id=2033770513874581&ev=PageView&noscript=1"
-            alt=""
-          />
-        </noscript>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify([organizationSchema, websiteSchema]) }}

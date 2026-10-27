@@ -8,11 +8,10 @@ import { Card, CardContent } from "@/components/ui/card";
 import { SectionTitle } from "@/components/site-kit";
 import { LeadCaptureButton } from "@/components/lead-capture-modal";
 import { responsibleAiPrinciples } from "@/lib/academy/strategy-content";
+import { pageMetadata } from "@/lib/seo";
 
 export const metadata = {
-  title: "Responsible AI Framework",
-  description:
-    "A practical responsible AI framework for African organizations adopting AI with privacy, governance, human review, and measurable value.",
+  ...pageMetadata("/responsible-ai", "Responsible AI Framework", "A practical responsible AI framework for African organizations adopting AI with privacy, governance, human review, and measurable value."),
   keywords: [
     "responsible AI framework",
     "responsible AI Kenya",
@@ -39,7 +38,7 @@ export default function ResponsibleAiPage() {
             <div className="mt-7 flex flex-col gap-3 sm:flex-row">
               <LeadCaptureButton label="Build our AI policy" title="Build a Responsible AI Policy" defaultType="AI & Data Capability Enablement" />
               <Button asChild variant="outline" size="lg" className="border-white/15 bg-white/5 text-white hover:bg-white/10">
-                <Link href="/advisory">Back to advisory</Link>
+                <Link href="/for-organizations/advisory">Back to advisory</Link>
               </Button>
             </div>
           </div>

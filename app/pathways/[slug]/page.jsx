@@ -12,16 +12,21 @@ import { getAcademyPrograms } from "@/lib/db/loaders";
 import { checkoutHref } from "@/lib/academy/checkout-links";
 import { contactChannels } from "@/lib/academy/site-content";
 import { AiAgentsTrackedLink, AiAgentsViewContentEvent } from "./pixel-events";
+import { pageMetadata } from "@/lib/seo";
 
 export function generateStaticParams() {
   return ubuntuCourses.map((program) => ({ slug: program.slug }));
 }
 
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+  const program = ubuntuCourses.find((course) => course.slug === slug);
+  if (!program) return {};
+  return pageMetadata(`/pathways/${slug}`, program.title, program.summary);
+}
+
 function formatStartDate(value) {
-  if (!value) return "To be announced";
-  const date = value instanceof Date ? value : new Date(`${value}T00:00:00`);
-  if (Number.isNaN(date.getTime())) return value;
-  return date.toLocaleDateString("en-KE", { day: "numeric", month: "long", year: "numeric" });
+  return "To be confirmed";
 }
 
 function hasDiscount(program) {
@@ -30,7 +35,7 @@ function hasDiscount(program) {
 
 const coachProfile = {
   name: "Ezra Muinde",
-  title: "Data Scientist At Naivas",
+  title: "Data & AI Engineer",
   company: "Founder of Ubuntu Analytiq",
   location: "Nairobi, Kenya",
   avatar: `data:image/svg+xml;utf8,${encodeURIComponent(
@@ -81,7 +86,7 @@ function LearningJourneyTable({ schedule }) {
               <article key={`${week.theme}-${session.lesson}`} className="rounded-lg border border-slate-200 bg-white p-3 shadow-sm">
                 <div className="flex flex-wrap items-center gap-2 text-xs font-bold uppercase tracking-[0.08em] text-slate-500">
                   <span className="rounded-md bg-[#e8f8fb] px-2 py-1 text-[#007c97]">Lesson {session.lesson}</span>
-                  <span>{session.date}</span>
+                  <span>To be confirmed</span>
                   <span>{session.time}</span>
                 </div>
                 <h4 className="mt-3 text-base font-semibold text-neutral-950">{session.title}</h4>
@@ -103,7 +108,7 @@ function LearningJourneyTable({ schedule }) {
                 {week.sessions.map((session) => (
                   <tr key={`${week.theme}-${session.lesson}`} className="align-top">
                     <td className="px-4 py-4 font-semibold text-slate-700">{session.lesson}</td>
-                    <td className="px-4 py-4 whitespace-nowrap text-slate-600">{session.date}</td>
+                    <td className="px-4 py-4 whitespace-nowrap text-slate-600">To be confirmed</td>
                     <td className="px-4 py-4 whitespace-nowrap text-slate-600">{session.time}</td>
                     <td className="px-4 py-4">
                       <p className="font-semibold text-neutral-950">{session.title}</p>
@@ -255,7 +260,7 @@ export default async function PathwayDetailPage({ params }) {
               <CardContent className="space-y-3">
                 <div className="rounded-xl bg-[#e8f8fb] p-4">
                   <p className="text-lg font-semibold text-neutral-950">{formatStartDate(program.startDate)}</p>
-                  <p className="mt-1 text-sm text-neutral-600">{program.schedule || "Schedule will be confirmed before enrollment."}</p>
+                  <p className="mt-1 text-sm text-neutral-600">Full schedule will be shared after the start date is confirmed.</p>
                 </div>
                 <Button asChild variant="accent" className="w-full animate-pulse shadow-xl shadow-cyan-500/30 ring-2 ring-cyan-200/70 sm:h-14 sm:text-base">
                   <AiAgentsTrackedLink

@@ -19,7 +19,7 @@ function csv(value) {
 export async function submitMentorProjectProposal(formData) {
   const user = await requireUser({
     role: "mentor",
-    redirectTo: "/projects/propose",
+    redirectTo: "/mentors/propose",
     statuses: ["active", "pending"]
   });
 
@@ -35,7 +35,7 @@ export async function submitMentorProjectProposal(formData) {
   const creditValueRequested = Number(clean(formData.get("credit_value_requested")) || 0);
 
   if (!title || !problemStatement || !difficulty || !finalDeliverable) {
-    redirect("/projects/propose?message=required");
+    redirect("/mentors/propose?message=required");
   }
 
   try {
@@ -62,8 +62,8 @@ export async function submitMentorProjectProposal(formData) {
       ]
     );
   } catch {
-    redirect("/projects/propose?message=save-error");
+    redirect("/mentors/propose?message=save-error");
   }
 
-  redirect("/projects/propose?message=submitted");
+  redirect("/mentors/propose?message=submitted");
 }
