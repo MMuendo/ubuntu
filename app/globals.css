@@ -515,23 +515,8 @@ main > section + section::before {
   animation: marquee-left var(--mentee-logo-duration, 45s) linear infinite;
 }
 
-.mentee-organizations-track:hover,
-.mentee-organizations-track:focus-within,
-.mentee-organizations-track[data-in-view="false"] {
+.mentee-organizations-track:hover {
   animation-play-state: paused;
-}
-
-.mentee-organizations-track[data-paused="true"] {
-  animation: none;
-}
-
-.mentee-organizations-window[data-paused="true"] {
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-}
-
-.mentee-organizations-window[data-paused="true"] [aria-hidden="true"] {
-  display: none;
 }
 
 @media (max-width: 639px) {
@@ -607,8 +592,7 @@ main > section + section::before {
     scroll-snap-type: x mandatory;
   }
 
-  .mentee-organizations-window [aria-hidden="true"],
-  .mentee-organizations-motion-control {
+  .mentee-organizations-window [aria-hidden="true"] {
     display: none;
   }
 
