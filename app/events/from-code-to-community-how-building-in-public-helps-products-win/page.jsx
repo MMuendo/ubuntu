@@ -9,7 +9,7 @@ import { academyEvents } from "@/lib/academy/site-content";
 import { ShareLinkButton } from "../data-career-reality-day/share-link-button";
 
 const event = academyEvents.find((item) => item.id === "from-code-to-community-how-building-in-public-helps-products-win");
-const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://ubuntuanalytiq.co.ke").replace(/\/$/, "");
+const siteUrl = (process.env.SITE_URL || process.env.NEXT_PUBLIC_SITE_URL || "https://ubuntuanalytiq.co.ke").replace(/\/$/, "");
 const eventUrl = `${siteUrl}/events/from-code-to-community-how-building-in-public-helps-products-win`;
 
 export const metadata = {

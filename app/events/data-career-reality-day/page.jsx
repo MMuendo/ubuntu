@@ -9,7 +9,7 @@ import { academyEvents } from "@/lib/academy/site-content";
 import { ShareLinkButton } from "./share-link-button";
 
 const event = academyEvents.find((item) => item.id === "data-career-reality-day");
-const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://ubuntuanalytiq.co.ke").replace(/\/$/, "");
+const siteUrl = (process.env.SITE_URL || process.env.NEXT_PUBLIC_SITE_URL || "https://ubuntuanalytiq.co.ke").replace(/\/$/, "");
 const eventUrl = `${siteUrl}/events/data-career-reality-day`;
 
 export const metadata = {

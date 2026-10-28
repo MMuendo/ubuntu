@@ -11,7 +11,7 @@ function clean(value) {
 }
 
 function siteUrl() {
-  return (process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:4173").replace(/\/$/, "");
+  return (process.env.SITE_URL || process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:4173").replace(/\/$/, "");
 }
 
 export async function POST(request) {
