@@ -10,6 +10,7 @@ import { whatsappHref } from "@/lib/whatsapp";
 import { pageMetadata, serviceSchema } from "@/lib/seo";
 import { StructuredData } from "@/components/structured-data";
 import { MentorshipTestimonialsMarquee } from "@/components/mentorship-testimonials-marquee";
+import { MenteeOrganizationsMarquee } from "@/components/mentee-organizations-marquee";
 
 const sampleBriefs = [
   { tool: "Excel", title: "Make sense of a small business sales file", outcome: "Clean the data, compare products and months, and explain one decision the owner could make." },
@@ -99,17 +100,8 @@ export default async function MentorshipsPage() {
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#007c97]">Our mentee community</p>
           <h2 id="mentee-organizations-title" className="mt-2 max-w-3xl text-3xl font-semibold text-[#1e1616]">Organizations our mentees work in.</h2>
           <p className="mt-3 max-w-3xl text-sm leading-7 text-slate-600">Our mentees bring experience from different teams and industries. These are their workplaces, not Ubuntu Analytiq clients or sponsors.</p>
-          <ul className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
-            {menteeOrganizations.map((organization) => (
-              <li key={organization.name} className="flex min-h-36 flex-col items-center justify-center rounded-xl border border-slate-200 bg-white px-4 py-5 text-center shadow-sm">
-                <span className={`flex h-16 w-full items-center justify-center rounded-md p-2 ${organization.dark ? "bg-[#063b74]" : ""}`}>
-                  <img src={organization.logo} alt={`${organization.name} logo`} width="180" height="64" loading="lazy" className="max-h-14 max-w-full object-contain" />
-                </span>
-                <span className="mt-3 text-xs font-semibold leading-5 text-[#1e1616]">{organization.name}</span>
-              </li>
-            ))}
-          </ul>
         </div>
+        <MenteeOrganizationsMarquee organizations={menteeOrganizations} />
       </section>
 
       <section id="choose-your-focus" className="scroll-mt-24 py-14">

@@ -507,6 +507,33 @@ main > section + section::before {
   display: none;
 }
 
+.mentee-organizations-window {
+  mask-image: linear-gradient(90deg, transparent, black 4%, black 96%, transparent);
+}
+
+.mentee-organizations-track {
+  animation: marquee-left var(--mentee-logo-duration, 45s) linear infinite;
+}
+
+.mentee-organizations-track:hover,
+.mentee-organizations-track:focus-within,
+.mentee-organizations-track[data-in-view="false"] {
+  animation-play-state: paused;
+}
+
+.mentee-organizations-track[data-paused="true"] {
+  animation: none;
+}
+
+.mentee-organizations-window[data-paused="true"] {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+
+.mentee-organizations-window[data-paused="true"] [aria-hidden="true"] {
+  display: none;
+}
+
 @media (max-width: 639px) {
   .testimonial-window {
     overflow-x: auto;
@@ -554,6 +581,7 @@ main > section + section::before {
   .ubuntu-slider-track,
   .testimonial-track,
   .mentorship-voices-track,
+  .mentee-organizations-track,
   .sales-banner::before,
   .sales-banner-icon {
     animation: none;
@@ -571,6 +599,16 @@ main > section + section::before {
 
   .mentorship-voices-track > [aria-hidden="true"],
   .mentorship-voices-motion-control {
+    display: none;
+  }
+
+  .mentee-organizations-window {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+  }
+
+  .mentee-organizations-window [aria-hidden="true"],
+  .mentee-organizations-motion-control {
     display: none;
   }
 
